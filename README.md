@@ -1,5 +1,5 @@
 # Tributech DataSpace Kit Documentation
-
+![Publish docs via GitHub Pages](https://github.com/tributech-solutions/tributech-DSK-docs/workflows/Publish%20docs%20via%20GitHub%20Pages/badge.svg?branch=master)
 ---
 The Tributech DataSpace Kit documentation and covers the components DataSpace Hub, Node and Agent. This documentation is written in markdown syntax and hosted via mkdocs and mkdocs material theme on Github Pages.
 
