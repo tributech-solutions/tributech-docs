@@ -1,0 +1,70 @@
+# Project information
+site_name: 'Tributech DataSpace Kit Documentation'
+site_author: 'Patrick Lamplmair'
+
+# Copyright
+copyright: 'Copyright &copy; 2018 - 2020 Tributech Solutions GmbH'
+
+nav:
+  - Introduction: index.md
+  - Terminology: general/terminology.md
+  - DataSpace Kit Explained: architecture/dataspace-kit-explained.md
+  - System Topology: architecture/system-topology.md
+ # - Quickstart Guide: setup-quickstart.md
+  - User Guides:
+    - '1 Create Dataset' : 'guides/guide-create-dataset.md'
+    - '2 Integrate Data Source' : 'guides/guide-integrate-data-source.md'
+    - '3 Publish Dataset' : 'guides/guide-publish-dataset.md'
+    - '4 Request Dataset' : 'guides/guide-request-dataset.md'
+    - '5 Data via Dashboards' : 'guides/guide-data-via-dashboards.md'
+    - '6 Data via APIs' : 'guides/guide-data-via-apis.md'
+    - '7 Verify Data Stream' : 'guides/guide-verify-data-stream.md'
+    - 'User Management' : 'guides/guide-user-management.md'
+  - Setup Instructions:
+    - 'Setup Node' : 'setup-instructions/setup-node.md'
+    - 'Setup Agent' : 'setup-instructions/setup-agent.md'
+    - 'Setup DataSpace' : 'setup-instructions/setup-dataspace.md'
+  - APIs:
+    - 'Trust API' : 'apis/apis-trust-api.md'
+    - 'Data API' : 'apis/apis-data-api.md'
+  - About: 
+    - 'Support' : 'general/about-support.md'
+    - 'Licence' : 'general/about-licence.md'
+ #   - 'Release Notes': 'about-release-notes.md'
+
+# Configuration
+theme: 
+  name: material
+  feature:
+    taps: true
+  palette:
+    primary: 'light blue'
+    accent: 'green'
+  font:
+    text: 'Source Sans Pro'
+    code: 'Roboto Mono'
+  logo: 'img/icon_white.svg'
+  favicon: 'img/favicon.png'
+
+    # Customization
+extra:
+  manifest: 'manifest.webmanifest'
+  social:
+    - type: 'facebook'
+      link: 'https://www.facebook.com/tributech.io/'
+    - type: 'linkedin'
+      link: 'https://www.linkedin.com/company/tributechsolutions'
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+      use_pygments: true
+#      noclasses: true
+#      pygments_style: monokai
+  - toc:
+      permalink: true
+
+# extra_css:
+#  - css/shadow.css
