@@ -3,9 +3,6 @@ site_name: 'Tributech DataSpace Kit Documentation'
 site_author: 'Tributech Solutions'
 docs_dir: docs/
 
-repo_name: 'tributech-solutions/tributech-DSK-docs'
-repo_url: 'https://github.com/tributech-solutions/tributech-DSK-docs'
-
 # Copyright
 copyright: 'Copyright &copy; 2018 - 2020 Tributech Solutions GmbH'
 
