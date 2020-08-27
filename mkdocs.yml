@@ -6,6 +6,10 @@ docs_dir: docs/
 # Copyright
 copyright: 'Copyright &copy; 2018 - 2020 Tributech Solutions GmbH'
 
+# Repo reference
+repo_name: 'tributech-solutions/tributech-DSK-docs'
+repo_url: 'https://github.com/tributech-solutions/tributech-DSK-docs'
+
 nav:
   - Introduction: index.md
   - Terminology: general/terminology.md
@@ -67,5 +71,5 @@ markdown_extensions:
   - toc:
       permalink: true
 
-# extra_css:
-#  - css/shadow.css
+extra_css:
+  - css/customization.css

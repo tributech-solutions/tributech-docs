@@ -33,3 +33,9 @@ Download, build and run the docker image:
 ```
 docker run --rm -it -d -p 80:8000 -v ${PWD}:/docs squidfunk/mkdocs-material
 ```
+
+## Styling
+Styling can be customized through CSS in the ./css/customization.css file.
+
+## Deployment
+Deployment is triggered automatically through a Github Action when a push to the master branch is registered.
