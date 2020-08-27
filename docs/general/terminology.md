@@ -21,7 +21,7 @@ A **DataSpace Node** is acting as a gateway/broker that is required to participa
 
 The **DataSpace Agent** is a software agent (with optional support for hardware-based key storages) to provide cross-system data security for any type of device/source like e.g. sensors, IoT-devices, IoT-gateways, SCADA-systems, PPS-systems, ERP-systems and more. A scalable process for generating cryptographic proofs and a secure connection to the trust layer guarantees the raw data’s authenticity and integrity for an entire ecosystem of DataSpace Nodes.
 
-## DataSpace Coordinator
+## DataSpace Hub
 
 The **DataSpace Coordinator** contains the metadata storage and the public key infrastructure that is required for setting up an ecosystem of DataSpace Nodes. The DataSpace Coordinator is responsible for: storing the metadata of published datasets, managing public keys, managing identities, the inclusion of new nodes and issuing certificates.
 
