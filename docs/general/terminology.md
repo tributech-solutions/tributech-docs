@@ -27,9 +27,9 @@ The **DataSpace Hub** contains the metadata storage and the public key infrastru
 
 >**Important Note:** A DataSpace Hub is not on the route of the traffic of data exchange and even a man-in-the-middle-attack would fail because >the DataSpace Hub has no private-key material of DataSpace Nodes or Agents.
 
-## DataSpace Ecosystem or Network
+## DataSpace Ecosystem
 
-A **DataSpace Ecosystem or Network** consists of a single DataSpace Hub and associated DataSpace Nodes that are participating in this ecosystem. 
+A **DataSpace Ecosystem** consists of a single DataSpace Hub and associated DataSpace Nodes that are participating in this ecosystem. 
 
 An ecosystem can represent, for example, a value chain in which customers, suppliers and manufacturers use the DataSpace Kit in order to exchange and verify different kinds of data streams to optimize their supply chain processes.
 
