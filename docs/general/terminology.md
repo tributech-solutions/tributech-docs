@@ -2,7 +2,7 @@
 title: Terminology
 summary: Description of DataSpace Kit specific terms.
 authors:
-    - Patrick Lamplmair
+    - Patrick Lamplmair, Raphael Breuer
 ---
 
 # Terminology
@@ -11,27 +11,27 @@ There are some specific terms associated with the Tributech DataSpace Kit. If yo
 
 ## DataSpace Kit
 
-The **Tributech DataSpace Kit** is a containerized software-tool-kit to create ecosystems for trusted data sharing between businesses and their systems, platforms or clouds. It consists of the three modules DataSpace Node, DataSpace Agent and DataSpace Coordinator.
+The **Tributech DataSpace Kit** is a containerized software-tool-kit to create ecosystems for trusted data sharing between businesses and their systems, platforms or clouds. It consists of the three modules: DataSpace Node, DataSpace Agent and DataSpace Coordinator.
 
 ## DataSpace Node
 
-A **DataSpace Node** is acting as a gateway/broker that is required to participate in a DataSpace Ecosystem. It contains all necessary services for the data exchange and data verification capabilities with other nodes inside a DataSpace.
+A **DataSpace Node** is acting as a gateway/broker that is required to participate in a DataSpace Ecosystem. It contains all necessary services for the data exchange and data verification capabilities with other nodes inside a DataSpace Ecosystem.
 
 ## DataSpace Agent
 
-The **DataSpace Agent** is a software agent (with optional support for hardware-based key storages) to provide cross-system data security for any type of device/source like e.g. sensors, IoT-devices, IoT-gateways, SCADA-systems, PPS-systems, ERP-systems and more. A scalable process for generating cryptographic proofs and a secure connection to the trust layer guarantees the raw data’s authenticity and integrity for an entire ecosystem of DataSpace Nodes.
+The **DataSpace Agent** is a software agent (with optional support for hardware-based key storages) to provide cross-system data security for any type of device/source like e.g. sensors, IoT-devices, IoT-gateways, SCADA-systems, PPS-systems and more. A scalable process for generating cryptographic proofs and a secure connection to the trust layer guarantees the raw data’s authenticity and integrity for an entire ecosystem of DataSpace Nodes.
 
 ## DataSpace Hub
 
-The **DataSpace Coordinator** contains the metadata storage and the public key infrastructure that is required for setting up an ecosystem of DataSpace Nodes. The DataSpace Coordinator is responsible for: storing the metadata of published datasets, managing public keys, managing identities, the inclusion of new nodes and issuing certificates.
+The **DataSpace Hub** contains the metadata storage and the public key infrastructure that is required for setting up an ecosystem of DataSpace Nodes. The DataSpace Hub is responsible for: storing the metadata of published datasets, managing public keys, managing identities, the inclusion of new nodes and issuing certificates.
 
->**Important Note:** A DataSpace Coordinator is not on the route of the traffic of for data exchange and even a man-in-the-middle-attack would fail because >the coordinator has no private-key material of DataSpace Nodes or Agents.
+>**Important Note:** A DataSpace Hub is not on the route of the traffic of data exchange and even a man-in-the-middle-attack would fail because >the DataSpace Hub has no private-key material of DataSpace Nodes or Agents.
 
 ## DataSpace Ecosystem or Network
 
-A **DataSpace Ecosystem or Network** consists of a single DataSpace Coordinator and associated DataSpace Nodes that are participating in this ecosystem. 
+A **DataSpace Ecosystem or Network** consists of a single DataSpace Hub and associated DataSpace Nodes that are participating in this ecosystem. 
 
-An ecosystem can represent, for example, a value chain were customers, suppliers and manufacturers use the DataSpace Kit in order to exchange and verify different kinds of data streams to optimize their supply chain processes.
+An ecosystem can represent, for example, a value chain in which customers, suppliers and manufacturers use the DataSpace Kit in order to exchange and verify different kinds of data streams to optimize their supply chain processes.
 
 ## Trust Layer
 
