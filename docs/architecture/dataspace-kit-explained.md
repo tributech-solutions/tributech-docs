@@ -13,18 +13,18 @@ Based on the containerized and modular architecture, the technology can be integ
 
 ## The building blocks for a DataSpace Ecosystem
 
-The Tributech DataSpace Kit consists of three building blocks that allows you to create your own DataSpace Ecosystem or to join an existing one. These building blocks are the DataSpace Coordinator, DataSpace Node and DataSpace Agent.
+The Tributech DataSpace Kit consists of three building blocks that allows you to create your own DataSpace Ecosystem or to join an existing one. These building blocks are the DataSpace Hub, DataSpace Node and DataSpace Agent.
 
-Every ecosystem consists of one single DataSpace Coordinator, a DataSpace Node for each participating stakeholder integrated in his infrastructure (cloud, hybrid or on-premise) and DataSpace Agents integrated into  each data source/device that requires the data verification and tracing capabilities.
+Every ecosystem consists of one single DataSpace Hub, a DataSpace Node for each participating stakeholder integrated in his infrastructure (cloud, hybrid or on-premise) and DataSpace Agents integrated into  each data source/device that requires the data verification and tracing capabilities.
 
 ![DataSpace Kit - Building Blocks](img/dataspace-kit-schema.png)
 *Fig.1: DataSpace Kit Building Blocks & Schema*
 
 The distributed components of the DataSpace Kit are connected via channels to exchange the different kinds of data within an ecosystem. APIs provide an interface for the data integration within the infrastructure of each connected stakeholder.
 
-## DataSpace Coordinator
+## DataSpace Hub
 
-The DataSpace Coordinator provides the metadata storage and the public key infrastucture that is required for setting up an ecosystem of DataSpace Nodes, he is responsible for:
+The DataSpace Hub provides the metadata storage and the public key infrastucture that is required for setting up an ecosystem of DataSpace Nodes, he is responsible for:
 
 - storing the metadata of published datasets
 - adding new DataSpace Nodes to the ecosystem
@@ -34,7 +34,7 @@ The DataSpace Coordinator provides the metadata storage and the public key infra
 
 >###Important Note:
 >
->A DataSpace Coordinator is not on the route of the traffic for the data exchange and even a man-in-the-middle-attack would fail because the coordinator has no private-key material of DataSpace Nodes or Agents.
+>A DataSpace Hub is not on the route of the traffic for the data exchange and even a man-in-the-middle-attack would fail because the Hub has no private-key material of DataSpace Nodes or Agents.
 
 ## DataSpace Node
 
@@ -80,7 +80,7 @@ The different kinds of data inside a DataSpace Ecosystem are classified into 3 t
 
 | Type          | Description |
 | :---          |    :----    |
-| Metadata      | Metadata of datasets is stored at the DataSpace Coordinator and will be cached at the client in order to provide metadata of datasets inside a DataSpace Ecosystem. |
+| Metadata      | Metadata of datasets is stored at the DataSpace Hub and will be cached at the client in order to provide metadata of datasets inside a DataSpace Ecosystem. |
 | Data Streams   | Data streams remain without exception at the owner's DataSpace Node. Every DataSpace Node stores his own streams and all streams that has been shared with him.|
 | Proofs        | Proofs, that are generated through the hashing and signing process of DataSpace Agents at the data’s source, are stored in the trust layer. The metadata (proof location) for each proof, that is required for verification and audit processes, is stored at the agent’s associated DataSpace Node and will be provided to other nodes if they consume that data stream portion. |
 
