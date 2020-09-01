@@ -41,13 +41,13 @@ To visualize your data via the dashboarding system the only thing you have to do
 
 **2. Navigate -** Navigate to "Tools" and click on the "Dashboards" icon
 
-![Navigate](img/dashboards-navigate.png)
+![Navigate](img/create-dataset-navigate.png)
 
 **3. Add a new Dashboard -** Click the "+" button and click on the "Dashboard" field to create a new dashboard
 
 ![Create Dashboard](img/dashboards-create-dashboard.png)
 
-**4. Dashboard Settings -** Click on the settings symbol, **enter a name** for your dashboard (it is recommond to use the same name as in the admin interface), select the folder **subscriptions** and **save** your changes
+**4. Dashboard Settings -** Click on the settings symbol, **enter a name** for your dashboard (it is recommended to use the same name as in the admin interface), select the folder **subscriptions** and **save** your changes
 
 ![Dashboard Settings](img/dashboards-settings.png)
 
@@ -59,7 +59,7 @@ To visualize your data via the dashboarding system the only thing you have to do
 
 ![Rename Row](img/dataset-add-new-panel.png)
 
-**7. Rewname Row -** Rename the created row with the data source name and click on the **Update** button
+**7. Rename Row -** Rename the created row with the data source name and click on the **Update** button
 
 ![Dashboard Copy](img/dashboards-update-source-name.png)
 
@@ -67,7 +67,7 @@ To visualize your data via the dashboarding system the only thing you have to do
 
 ![Edit Panel](img/dashboards-edit-panel.png)
 
-**9. Repalce UUID -** Replace the exisiting UUID with the UUID of your selected stream (see subscriptoions in your admin interface), replace the **unit**,select the **SlaveDB** and save your changes
+**9. Replace UUID -** Replace the exisiting UUID with the UUID of your selected stream (see subscriptoions in your admin interface), replace the **unit**,select the **SlaveDB** and save your changes
 
 ![Dashboard Copy](img/dashbaords-change-uuid.png)
 

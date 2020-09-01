@@ -12,7 +12,7 @@ authors:
 
 Deploy a pre-configured Tributech DataSpace Node, join our sandbox DataSpace and get started just in a few minutes!
 
-Note: In this quickstart guide we don't care about setting up a Coordinator or DataSpace Agents because we are using the Tributech's sandbox system which already includes a Coordinator, DataSpace Agents and datasets to get started.
+Note: In this quickstart guide we don't care about setting up a DataSpace Hub or  Agent because we are using the Tributech's sandbox system which already includes a DataSpace Hub, Agent and datasets to get started.
 
 ## Deploy your Dataspace Node
 

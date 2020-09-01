@@ -11,7 +11,7 @@ There are some specific terms associated with the Tributech DataSpace Kit. If yo
 
 ## DataSpace Kit
 
-The **Tributech DataSpace Kit** is a containerized software-tool-kit to create ecosystems for trusted data sharing between businesses and their systems, platforms or clouds. It consists of the three modules: DataSpace Node, DataSpace Agent and DataSpace Coordinator.
+The **Tributech DataSpace Kit** is a containerized software-tool-kit to create ecosystems for trusted data sharing between businesses and their systems, platforms or clouds. It consists of the three modules: DataSpace Node, DataSpace Agent and DataSpace Hub.
 
 ## DataSpace Node
 

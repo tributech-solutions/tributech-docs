@@ -17,7 +17,7 @@ The Tributech DataSpace Kit consists of three building blocks that allows you to
 
 Every ecosystem consists of one single DataSpace Hub, a DataSpace Node for each participating stakeholder integrated in his infrastructure (cloud, hybrid or on-premise) and DataSpace Agents integrated into  each data source/device that requires the data verification and tracing capabilities.
 
-![DataSpace Kit - Building Blocks](img/dataspace-kit-schema.png)
+![DataSpace Kit - Building Blocks](img/dsk-infographic.png)
 *Fig.1: DataSpace Kit Building Blocks & Schema*
 
 The distributed components of the DataSpace Kit are connected via channels to exchange the different kinds of data within an ecosystem. APIs provide an interface for the data integration within the infrastructure of each connected stakeholder.

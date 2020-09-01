@@ -9,13 +9,13 @@ The DataSpace Kit has a distributed system topology in order to provide secure p
 
 ## DataSpace Ecosystem Topology
 
-A DataSpace Ecosystem requires a **single** DataSpace Coordinator, can have from **one to multiple** DataSpace Nodes and **one to multiple** DataSpace Agents for each node. The following topology schema outlines an ecosystem with:
+A DataSpace Ecosystem requires a **single** DataSpace Hub, can have from **one to multiple** DataSpace Nodes and **one to multiple** DataSpace Agents for each node. The following topology schema outlines an ecosystem with:
 
-- a DataSpace Coordinator
+- a DataSpace Hub
 - a DataSpace Node each stakeholder & infrastructure
 - a DataSpace Agent each data source
 
-![DataSpace Topology Schema](img/dataspace-topology-schema.png)
+![DataSpace Topology Schema](img/dsk-topology.png)
 *Fig.1: DataSpace Ecosystem System Topology*
 
 The **Tributech DataSpace Kit** is a containerized software-tool-kit that covers the whole data transfer between DataSpace Nodes (which usually represents a companies cloud or server infrastructure) and it covers the transfer of cryptographic proofs between the DataSpace Agents and the trust layer.
@@ -30,11 +30,11 @@ A **DataSpace Node** is acting as a gateway/broker that is required to participa
 
 The **DataSpace Agent** is a software agent (with optional support for hardware-based key storages) to provide cross-system data security for any type of device/source like sensors, IoT-devices, IoT-gateways, SCADA-systems, PPS-systems, ERP-systems and more. A scalable process for generating cryptographic proofs and a secure connection to the trust layer guarantees the raw data’s authenticity and integrity for an entire ecosystem of DataSpace Nodes.
 
-### DataSpace Coordinator
+### DataSpace Hub
 
-The **DataSpace Coordinator** provides the metadata storage and the public key infrastructure that is required for setting up an ecosystem of DataSpace Nodes. The DataSpace Coordinator is responsible for: storing the metadata of published datasets, managing public keys, the inclusion of new nodes and issuing certificates.
+The **DataSpace Hub** provides the metadata storage and the public key infrastructure that is required for setting up an ecosystem of DataSpace Nodes. The DataSpace Hub is responsible for: storing the metadata of published datasets, managing public keys, the inclusion of new nodes and issuing certificates.
 
->**Important Note:** A DataSpace Coordinator is not on the route of the traffic of the data exchange and even a man-in-the-middle-attack would fail because >the coordinator has no private-key material of DataSpace Nodes or Agents.
+>**Important Note:** A DataSpace Hub is not on the route of the traffic of the data exchange and even a man-in-the-middle-attack would fail because >the Hub has no private-key material of DataSpace Nodes or Agents.
 
 ### Channels and APIs
 
@@ -43,7 +43,7 @@ The **DataSpace Coordinator** provides the metadata storage and the public key i
 | Channel       | Description |
 | :---          |    :----    |
 | **P2P Data Sync Channels**  | A channel to exchange requested streams of sensor-, processes- or business data peer-to-peer between DataSpace Nodes.|
-| **Metadata Channels**    | A channel to exchange required metadata (e.g. published datasets) of the ecosystem between the DataSpace Nodes and their associated DataSpace Coordinator.|
+| **Metadata Channels**    | A channel to exchange required metadata (e.g. published datasets) of the ecosystem between the DataSpace Nodes and their associated DataSpace Hub.|
 | **Trust Channels**  | A channel to transfer hashes and signatures directly from the DataSpace Agents to the trust layer of the associated DataSpace Node.|
 
 **APIs** are well documented and supported interfaces for the different types of data in the ecosystem in order to integrate sensors, databases and applications within the infrastructure of each participating stakeholder. These APIs are separated into:
