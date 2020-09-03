@@ -63,6 +63,10 @@ Once your request is granted by the owner, the state changes to **granted** and 
 
 ![Granted](img/request-dataset-granted.png)
 
+However, if the owner denies your request the state of your subscription changes to "Revoked by Owner".
+
+![Revoked] (img/request-dataset-revoked)
+
 ## Next step: consume a data stream
 
 In this guide, you have learned how to set up an request for a dataset. To learn more about options of how you can use data of your subscription, continue with the guide [Data via APIs](/guides/guide-data-via-apis) or [Data via Dashboards](/guides/guide-data-via-dashboards).

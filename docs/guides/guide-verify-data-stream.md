@@ -19,8 +19,8 @@ In this guide you will learn how you can verify the authenticity and integrity o
 
 The prerequisites for verifying a data stream via the Trust API are the following:
 
-- A DataSpace Angent is integrated into the data source (common way for e.g. IoT ddge Devices) or a data stream is stored via Trust API and the method which contains the hashing and signing process of the Agent (common way for server-side sources)
-- If you own the data -> Data existists on owner side within the selected time-frame (Master DB)
+- A DataSpace Angent is integrated into the data source (common way for e.g. IoT Edge Devices) or a data stream is stored via Trust API and the method which contains the hashing and signing process of the Agent (common way for server-side sources)
+- If you own the data -> Data exists on owner side within the selected time-frame (Master DB)
 - If you consume the data -> Data is allready synchronised on the consumer side within the selected time-frame (Slave DB)
 
 ## Verfiy a stream
