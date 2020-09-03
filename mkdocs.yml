@@ -4,7 +4,7 @@ site_author: 'Tributech Solutions'
 docs_dir: docs/
 
 # Copyright
-copyright: 'Copyright &copy; 2018 - 2020 Tributech Solutions GmbH'
+copyright: 'Copyright &copy; 2018 - <script>document.write(new Date().getFullYear())</script> Tributech Solutions GmbH'
 
 # Repo reference
 repo_name: 'tributech-solutions/tributech-DSK-docs'
