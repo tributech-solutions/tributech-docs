@@ -28,8 +28,8 @@ The dashboarding system is built on the open source technology <a href="https://
 
 The structure of dashboards is based on the same logic as in the interface of your DataSpace Node:
 
-- **Dashboards: My Datasets** / Master DB - contains owned datasets that are connected to your DataSpace Node
-- **Dashboards: Subscriptions** / Slave DB - contains subscriptions to datasets from other mebers of your ecosystem
+- **Dashboards: My Datasets** / Master DB - contains owned datasets that are connected to your DataSpace Node.
+- **Dashboards: Subscriptions** / Slave DB - contains subscriptions to datasets from other members of your ecosystem.
 
 ## Create a Dashboard
 
@@ -41,7 +41,7 @@ To visualize your data via the dashboarding system the only thing you have to do
 
 **2. Navigate -** Navigate to "Tools" and click on the "Dashboards" icon
 
-![Navigate](img/create-dataset-navigate.png)
+![Navigate](img/dashboards-navigate.png)
 
 **3. Add a new Dashboard -** Click the "+" button and click on the "Dashboard" field to create a new dashboard
 
@@ -59,7 +59,11 @@ To visualize your data via the dashboarding system the only thing you have to do
 
 ![Rename Row](img/dataset-add-new-panel.png)
 
-**7. Rename Row -** Rename the created row with the data source name and click on the **Update** button
+**7. Rename Row -** If you scroll to the newly created row a settings and a delete symbol will appear. Click on the settings symbol. 
+
+![Dashboard rename row](img/dashboard-rename-row.png)
+
+Rename the created row with the data source name and click on the **Update** button
 
 ![Dashboard Copy](img/dashboards-update-source-name.png)
 

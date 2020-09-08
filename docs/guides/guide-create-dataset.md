@@ -22,7 +22,7 @@ In this guide you will learn how-to create a new dataset via the built in datase
 
 ## What is a Dataset?
 
-A data set can consist of any combination of data sources and streams. Descriptive metadata and a unique identifier each stream in a DataSpace represents these datasets.
+A dataset can consist of any combination of data sources and streams. Descriptive metadata and a unique identifier for each stream in a DataSpace represents these datasets.
 
 A data stream in a dataset is not limited to a specific type or format. Data streams are structured as key-value pairs, where the key represents the time-stamp of a certain value. So your dataset can include, for example, time-series sensor data streams from your IoT devices or EDI-documents from your ERP system.
 
@@ -44,17 +44,18 @@ To be able to connect data streams and sources to your DataSpace Node, the first
 
 ![Navigate](img/create-dataset-navigate.png)
 
-**3 Add a new Dataset -** Click the "+" button on the right upper corner
+**3 Add a new Dataset -** Click the "+ New Dataset" button on the right upper corner
 
 ![Click button](img/create-dataset-button.png)
 
 **4 Create your Dataset -** Fill in your metadata and create a dataset
 
-![New dataset](img/create-dataset-new-dataset.png)
+![New dataset-1](img/create-dataset-new-dataset-1.png)
+![New dataset-2](img/create-dataset-new-dataset-2.png)
 
-### Title
+### Dataset name
 
-Include a title that describes your dataset and that is useful for other relevant users, for example: "Sensor data of assembly line 1".
+Include a title that describes your dataset and that is useful for other relevant users, for example: "Sensor data Renault Zoe 1".
 
 ### Category
 
@@ -85,7 +86,7 @@ Now you can add data streams to each source and fill in the metadata.
 The following table provides an example and description of the different metadata fields:
 
 | Field         | Desciption          | Required              |Example              |
-| :---          |    :----            |    :----              |                     |
+| :---          |    :----            |    :----              |    :----            |
 | Name |Name of the data stream| yes | Voltage |
 | Type | Type stream (produces continuous data) or event (produces only data if e.g. a certain state changes) | yes | Stream |
 | Unit | The physical unit of your data stream | no | [V] |

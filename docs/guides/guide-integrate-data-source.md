@@ -20,7 +20,7 @@ In this guide you will learn how-to integrate a new data source via the built in
 
 ## Prerequisites
 
-Bevor you can connect data sources, you have to create the metadata for a dataset. If you haven't already created one, follow the instructions of the [Create a Dataset](/guides/guide-integrate-data-source/#prerequisits) guide.
+Before you can connect data sources, you have to create the metadata for a dataset. If you haven't already created one, follow the instructions of the [Create a Dataset](/guides/guide-integrate-data-source/#prerequisits) guide.
 
 Once you created a dataset, you can click on the button **View Dataset** to show all the sources and streams that it contains:
 
@@ -40,7 +40,7 @@ Every DataSpace Node, provides interfaces to integrate different types of data a
 
 ### Integration via Trust API
 
-The Trust API provides the interface to store signed hashes of DataSpace Agents and/or to store values by using the Trust API's built in Agent (the recommond way to integrate server-side data sources). Every method requires the **UUID** of a data stream.
+The Trust API provides the interface to store signed hashes of DataSpace Agents and/or to store values by using the Trust API's built in Agent (the recommended way to integrate server-side data sources). Every method requires the **UUID** of a data stream.
 
 Navigate to the Trust API via the "Tools" section of your DataSpace Node or you can follow this link to our demo instance: <a href="https://trust-layer-api.tributech.dataspace.network/" target="_blank">Trust API</a>
 
@@ -56,7 +56,7 @@ The data management of different data sources beyond the boundaries of a company
 
 ### External data storage support
 
-For providing an ready to use solution, every DataSpace Node is shipped with an integrated master/slave storage solution based on Postgres SQL databases. If you want to use your own storage solution, please contact our [Customer Advisory Team](mailto:customer-advisory@tributech.io) for further information and support.
+For providing a ready to use solution, every DataSpace Node is shipped with an integrated master/slave storage solution based on Postgres SQL databases. If you want to use your own storage solution, please contact our [Customer Advisory Team](mailto:customer-advisory@tributech.io) for further information and support.
 
 ### Preview: Plugable connectors & data conversion pipelines
 
@@ -64,7 +64,7 @@ Two really exciting upcoming features are pluggable connectors and data conversi
 
 **Pluggable connectors** are simplifying the way of managing and maintaining the connection between different data sources and your DataSpace Node. This simplifies the handling of data sources and their different types of protocols, standards, and semantics. Now, sources like IoT services, storage systems, ERP systems, business applications and 3rd party services can be combined easily.
 
-**Data conversion pipelines** allows users to configure a pipeline with one or multible data transformation steps by configuring the required conversion steps between the data provider service and the data consumer service.
+**Data conversion pipelines** allows users to configure a pipeline with one or multiple data transformation steps by configuring the required conversion steps between the data provider service and the data consumer service.
 
 If you want to join the preview program or learn more about this upcoming feature, please contact our [Customer Advisory Team](mailto:customer-advisory@tributech.io).
 

@@ -34,6 +34,7 @@ In the data preview you can browse through the list of available data sources an
 ### Select sources and streams
 
 Select the sources and stream you want to consume.
+>Note: You can selectively choose data streams out of one dataset. You don't have to subscribe to all data streams of a dataset.
 
 ![Select](img/request-dataset-select.png)
 
@@ -65,7 +66,7 @@ Once your request is granted by the owner, the state changes to **granted** and 
 
 However, if the owner denies your request the state of your subscription changes to "Revoked by Owner".
 
-![Revoked] (img/request-dataset-revoked)
+![Revoked](img/request-dataset-revoked.png)
 
 ## Next step: consume a data stream
 
