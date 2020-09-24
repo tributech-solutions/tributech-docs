@@ -1,17 +1,17 @@
 ---
-title: Create a dataset guide
-summary: Description of how to create datasets.
+title: Create a Dataset guide
+summary: Description of how to create Datasets.
 authors:
     - Patrick Lamplmair
 ---
 
-# Create a dataset guide
+# Create a Dataset guide
 
-In this guide you will learn how-to create a new dataset via the built in dataset editor in the admin web-interface of your DataSpace Node. This guide covers the following topics:
+In this guide you will learn how-to create a new Dataset via the built in Dataset editor in the admin web-interface of your DataSpace Node. This guide covers the following topics:
 
-- [What is a dataset?](/guides/guide-create-dataset/#what-is-a-dataset)
-- [The structure of datasets](/guides/guide-create-dataset/#the-structure-of-datasets)
-- [Create a dataset](/guides/guide-create-dataset/#create-a-dataset)
+- [What is a Dataset?](/guides/guide-create-dataset/#what-is-a-dataset)
+- [The structure of Datasets](/guides/guide-create-dataset/#the-structure-of-datasets)
+- [Create a Dataset](/guides/guide-create-dataset/#create-a-dataset)
     - [Title](/guides/guide-create-dataset/#title)
     - [Category](/guides/guide-create-dataset/#category)
     - [Description](/guides/guide-create-dataset/#description)
@@ -22,11 +22,11 @@ In this guide you will learn how-to create a new dataset via the built in datase
 
 ## What is a Dataset?
 
-A dataset can consist of any combination of data sources and streams. Descriptive metadata and a unique identifier for each stream in a DataSpace represents these datasets.
+A Dataset can consist of any combination of data sources and streams. Descriptive metadata and a unique identifier for each stream in a DataSpace represents these Datasets.
 
-A data stream in a dataset is not limited to a specific type or format. Data streams are structured as key-value pairs, where the key represents the time-stamp of a certain value. So your dataset can include, for example, time-series sensor data streams from your IoT devices or EDI-documents from your ERP system.
+A data stream in a Dataset is not limited to a specific type or format. Data streams are structured as key-value pairs, where the key represents the time-stamp of a certain value. So your Dataset can include, for example, time-series sensor data streams from your IoT devices or EDI-documents from your ERP system.
 
-## The structure of datasets
+## The structure of Datasets
 
 Datasets have a generic tree structure to support any combination of data sources and streams.
 
@@ -48,28 +48,28 @@ To be able to connect data streams and sources to your DataSpace Node, the first
 
 ![Click button](img/create-dataset-button.png)
 
-**4 Create your Dataset -** Fill in your metadata and create a dataset
+**4 Create your Dataset -** Fill in your metadata and create a Dataset
 
 ![New dataset-1](img/create-dataset-new-dataset-1.png)
 ![New dataset-2](img/create-dataset-new-dataset-2.png)
 
 ### Dataset name
 
-Include a title that describes your dataset and that is useful for other relevant users, for example: "Sensor data Renault Zoe 1".
+Include a title that describes your Dataset and that is useful for other relevant users, for example: "Sensor data Renault Zoe 1".
 
 ### Category
 
-Enter a category description that match to your dataset like, for example: "Mobility", "Manufacturing" or "Steel Devision".
+Enter a category description that match to your Dataset like, for example: "Mobility", "Manufacturing" or "Steel Devision".
 
 ### Description
 
-Enter a short description that outlines which sources & streams your dataset contains and what's the purpose of it is. For example, a description might look like this:
+Enter a short description that outlines which sources & streams your Dataset contains and what's the purpose of it is. For example, a description might look like this:
 
->This dataset provides sensor telemetry data of electric vehicles, that is collected via an OBD2 tracking solution. The research project Proof-of-Reach provides this data from different electric vehicles. Anyone interested can request this dataset, please submit a short description of your use-case.
+>This Dataset provides sensor telemetry data of electric vehicles, that is collected via an OBD2 tracking solution. The research project Proof-of-Reach provides this data from different electric vehicles. Anyone interested can request this Dataset, please submit a short description of your use-case.
 
 ### Tags
 
-Enter tags that match to your dataset and that provide additional useful information to other users. You can add as many tags as you like, there are also predefined tags you can select via the interface.
+Enter tags that match to your Dataset and that provide additional useful information to other users. You can add as many tags as you like, there are also predefined tags you can select via the interface.
 
 ### Sources
 
@@ -95,4 +95,4 @@ The following table provides an example and description of the different metadat
 
 ## Next step: connect your data
 
-In this guide, you created the metadata for a dataset with data sources and streams. To learn more about how you can connect your data, continue to the guide for the [data source integration](/guides/guide-integrate-data-source).
+In this guide, you created the metadata for a Dataset with data sources and streams. To learn more about how you can connect your data, continue to the guide for the [data source integration](/guides/guide-integrate-data-source).

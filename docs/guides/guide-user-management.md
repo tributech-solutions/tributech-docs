@@ -1,6 +1,6 @@
 ---
 title: User management guide
-summary: Description of how to manage users inside a dataspace ecosystem.
+summary: Description of how to manage users inside a DataSpace Ecosystem.
 authors:
     - Patrick Lamplmair
 ---

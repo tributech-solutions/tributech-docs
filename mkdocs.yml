@@ -27,6 +27,7 @@ nav:
     - 'User Management' : 'guides/guide-user-management.md'
   - Setup Instructions:
     - 'Setup Node' : 'setup-instructions/setup-node.md'
+    - 'Setup Node via Azure Marketplace' : 'setup-instructions/setup-node-azure-marketplace.md'
     - 'Setup Agent' : 'setup-instructions/setup-agent.md'
     - 'Setup DataSpace' : 'setup-instructions/setup-dataspace.md'
   - APIs:

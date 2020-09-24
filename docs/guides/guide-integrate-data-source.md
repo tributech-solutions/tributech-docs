@@ -16,17 +16,17 @@ In this guide you will learn how-to integrate a new data source via the built in
 - [Further support for connecting data](/guides/guide-integrate-data-source/#further-support-connecting-data)
     - [External data storage support](/guides/guide-integrate-data-source/#external-data-storage-support)
     - [Preview: Plugable connectors & data conversion pipelines](/guides/guide-integrate-data-source/#preview-plugable-connectors-data-conversion-pipelines)
-- [Next step: publish a dataset](/guides/guide-integrate-data-source/#next-step-publish-a-dataset)
+- [Next step: publish a Dataset](/guides/guide-integrate-data-source/#next-step-publish-a-dataset)
 
 ## Prerequisites
 
-Before you can connect data sources, you have to create the metadata for a dataset. If you haven't already created one, follow the instructions of the [Create a Dataset](/guides/guide-integrate-data-source/#prerequisits) guide.
+Before you can connect data sources, you have to create the metadata for a Dataset. If you haven't already created one, follow the instructions of the [Create a Dataset](/guides/guide-integrate-data-source/#prerequisits) guide.
 
-Once you created a dataset, you can click on the button **View Dataset** to show all the sources and streams that it contains:
+Once you created a Dataset, you can click on the button **View Dataset** to show all the sources and streams that it contains:
 
 ![Enter URL](img/integrate-data-source-click-button.png)
 
-For every data stream of a dataset, a **UUID** is automatically created. This generated UUID (<a href="https://en.wikipedia.org/wiki/Universally_unique_identifier" target="_blank">Universally unique identifier</a>) provides a globally unique identifier and the reference for a data stream across all stakeholders in a DataSpace Ecosystem. You can **copy this UUID to your clipboard** if you click on the copy symbol on the right side of each data stream:
+For every data stream of a Dataset, a **UUID** is automatically created. This generated UUID (<a href="https://en.wikipedia.org/wiki/Universally_unique_identifier" target="_blank">Universally unique identifier</a>) provides a globally unique identifier and the reference for a data stream across all stakeholders in a DataSpace Ecosystem. You can **copy this UUID to your clipboard** if you click on the copy symbol on the right side of each data stream:
 
 ![Enter URL](img/integrate-data-source-view-dataset.png)
 
@@ -68,6 +68,6 @@ Two really exciting upcoming features are pluggable connectors and data conversi
 
 If you want to join the preview program or learn more about this upcoming feature, please contact our [Customer Advisory Team](mailto:customer-advisory@tributech.io).
 
-## Next step: publish a dataset
+## Next step: publish a Dataset
 
-In this guide, you have learned how data sources can be integrated into your DataSpace Node. To learn more about the differnt publishing options for a dataset, continue to the guide [publish a dataset](/guides/guide-publish-dataset).
+In this guide, you have learned how data sources can be integrated into your DataSpace Node. To learn more about the differnt publishing options for a Dataset, continue to the guide [publish a Dataset](/guides/guide-publish-dataset).

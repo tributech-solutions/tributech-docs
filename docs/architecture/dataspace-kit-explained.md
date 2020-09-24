@@ -13,9 +13,9 @@ Based on the containerized and modular architecture, the technology can be integ
 
 ## The building blocks for a DataSpace Ecosystem
 
-The Tributech DataSpace Kit consists of three building blocks that allows you to create your own DataSpace Ecosystem or to join an existing one. These building blocks are the DataSpace Hub, DataSpace Node and DataSpace Agent.
+The Tributech DataSpace Kit consists of three building blocks that allow you to create your own DataSpace Ecosystem or to join an existing one. These building blocks are the DataSpace Hub, DataSpace Node and DataSpace Agent.
 
-Every ecosystem consists of one single DataSpace Hub, a DataSpace Node for each participating stakeholder integrated in his infrastructure (cloud, hybrid or on-premise) and DataSpace Agents integrated into  each data source/device that requires the data verification and tracing capabilities.
+Every ecosystem consists of one single DataSpace Hub, a DataSpace Node for each participating stakeholder integrated in his infrastructure (cloud, hybrid or on-premise) and DataSpace Agents integrated into each data source/device that requires the data verification and tracing capabilities.
 
 ![DataSpace Kit - Building Blocks](img/dsk-infographic.png)
 *Fig.1: DataSpace Kit Building Blocks & Schema*
@@ -86,12 +86,12 @@ The different kinds of data inside a DataSpace Ecosystem are classified into 3 t
 
 ## Data Sharing Process
 
-To provide a traceable and straightforward data sharing processes, we have implemented the publish-, request- and grant workflows for datasets into the admin web interface that is part of a DataSpace Node. Data sources and streams that are connected with DataSpace Nodes are structured into datasets that can be requested and shared with other DataSpace Nodes participating in the ecosystem.
+To provide a traceable and straightforward data sharing processes, we have implemented the publish-, request- and grant workflows for Datasets into the admin web interface that is part of a DataSpace Node. Data sources and streams that are connected with DataSpace Nodes are structured into Datasets that can be requested and shared with other DataSpace Nodes participating in the Ecosystem.
 
-The design of the data sharing process ensures that the control of data and sovereignty remains at each participating stakeholder and his DataSpace Node. The modular and fine-grained data access management enables a subscription in every possible combination of streams and time-frames for a dataset - to meet the demands of data providers and consumers.
+The design of the data sharing process ensures that the control of data and sovereignty remains at each participating stakeholder and his DataSpace Node. The modular and fine-grained data access management enables a Subscription in every possible combination of streams and time-frames for a Dataset - to meet the demands of data providers and consumers.
 
 | Workflow          | Description |
 | :---          |    :----    |
-| **Publish a Dataset**   | Dataset owners can publish a dataset (or just a part of it) to the whole ecosystem or only to selected DataSpace Nodes. A publication contains only descriptive metadata and not the data itself. A publication makes available datasets visible for other members inside a DataSpace Ecosystem. |
-| **Request a Dataset**   | Every user of a DataSpace Node  within the ecosystem can create and send a request for selected streams, sources and time-frame to the owner of the dataset. |
-| **Grant/Deny a Request**     |  Dataset owners can grant or deny submitted requests for their datasets. Once a request is confirmed, the synchronization starts and the data can be consumed by the requester via the integrated dashboards or via APIs. |
+| **Publish a Dataset**   | Dataset owners can publish a Dataset (or just a part of it) to the whole Ecosystem or only to selected DataSpace Nodes. A Publication contains only descriptive metadata and not the data itself. A Publication makes available Datasets visible for other members inside a DataSpace Ecosystem. |
+| **Request a Dataset**   | Every user of a DataSpace Node  within the Ecosystem can create and send a Request for selected streams, sources and time-frame to the owner of the Dataset. |
+| **Grant/Deny a Request**     |  Dataset owners can grant or deny submitted Requests for their Datasets. Once a Request is confirmed, the synchronization starts and the data can be consumed by the Requester via the integrated dashboards or via APIs. |

@@ -7,7 +7,7 @@ authors:
 
 # Consume data via APIs guide
 
-In this guide you will learn how you can consume your own datasets and subscriptions via the built in APIs of your DataSpace Node. This guide covers the following topics:
+In this guide you will learn how you can consume your own Datasets and Subscriptions via the built in APIs of your DataSpace Node. This guide covers the following topics:
 
 - [Prerequisites](/guides/guide-data-via-apis/#prerequisites)
 - [Trust API](/guides/guide-data-via-apis/#trust-api)
@@ -16,9 +16,9 @@ In this guide you will learn how you can consume your own datasets and subscript
 
 ## Prerequisites
 
-The prerequisits for consuming data from a subscription via the integrated APIs are the following:
+The prerequisits for consuming data from a Subscription via the integrated APIs are the following:
 
-- A granted subscription to a dataset (you are also able to visualize your own datasets)
+- A granted Subscription to a Dataset (you are also able to visualize your own Datasets)
 - Data exists on owner side within the selected time-frame (Master DB)
 - Data is already synchronised on the consumer side (Slave DB)
 

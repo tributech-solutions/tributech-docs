@@ -1,24 +1,34 @@
 # Setup Node via the Azure Marketplace
 
-**1. Go to Azure Marketplace -** Follow this link: <a href="https://portal.azure.com/#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home/searchQuery/Tributech" target="_blank">Azure Marketplace</a>.
+In this guide you will learn how to deploy a DataSpace Node via the Azure Marketplace.
+
+**1. Go to Azure Marketplace -** Following this link: <a href="https://portal.azure.com/#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home/searchQuery/Tributech" target="_blank">Azure Marketplace</a>.
 
 **2.Click on Tributech Dataspace Node** 
 
-Now your screen should look as follows: 
+Your screen should look as follows: 
 
 ![Startingscreen](img/setup-node-azure-startingscreen.png)
 
-**3. Choose a Hub -** Now you can select between the **DataSpace Node - Trial Hub** and **DataSpace Node - Custom Hub**. After selecting a Hub click on **create**.
-Currently you can only choose the Custom Hub.
+Click on the Tributech DataSpace Node.
+
+**3. Choose a Hub -** Now you can select between 
+| DataSpace Node - Trial Hub    | DataSpace Node - Custom Hub   |
+|:---                           |:-                           |
+|Public Hub for try out purposes (available soon)|Private Hub that can only be entered by invitation |
+After selecting a Hub click on **create**.
 
 ![Trial-and-custom](img/setup-node-azure-trial-and-custom-hub.png)
 
 **4. Fill in basics** 
 
-First you need to fill out the project details. There you have to choose a subscription. In most cases you will select the **Pay-As-You-Go** subscription.
-You also have to choose a resource group. You can either choose one of your existing resource groups or create a new one.
-Secondly, you need to fill out the instance details. Regarding the region please select **West Europe**. If you look at the manged application name you can see that there is already a previously generated name filled out (dsknode....). The reason for that is that the managed application name needs to be unique. You can also change the name as long as it's unique.
-Thirdly, you need to enter a name for your managed resource group. Here you can freely choose a name. For organisational reasons it may be good to develop a naming schema. 
+![Basics](img/setup-node-azure-basics.png)
+
+These details can very because of different organisational guidelines on Azure, therefore we provided a table with general information and recommendations.
+
+|Subscription   |Resource group | Region    |Managed application name   |Managed Resource Group|
+|:-|:-|:-|:-|:-|
+|Choose the Subscription you want to bill for the Azure resources of your DataSpace Node.|Choose the resource group you want to deploy your DataSpace Node in.|It is recommended to choose the nearest datacenter to your location.|This name needs to be unique, therefore it is generated automatically, but can also be changed.|This holds all the resources needed for deploying a managed application. It is recommended to use a consistent naming scheme within your company.
 
 **5. DataSpace App Settings**
 
@@ -34,4 +44,29 @@ Here you need to determine the size of the virtual machine on which the DataSpac
 
 ![VM-size](img/setup-node-azure-vm-size.png)
 
-After choosing the size of the virtual machine you can click **Review + create**
+After choosing the size of the virtual machine you can click **Review + create**. 
+Then it will take 10-15 minutes to deploy your DataSpace Node. Once the deployment is finished you can start to create Datasets as described in the guide [create Dataset](guides/guide-create-dataset).
+
+## Look up parameters of your DataSpace Node
+
+All the details of your DataSpace Node that you filled in at 4. and 5. can be accessed on Azure. 
+Therefore, go to the Azure Marketplace and click on **resource groups**
+![Resource-groups](img/setup-node-azure-resource-groups.png)
+
+**7. Select resource group** 
+
+Select the resource group that you deployed the DataSpace Node in and click on the resource group. In this case the resource group is named "PlaygroundRaphael".
+![Click-resource-group](img/setup-node-azure-click-resource-group.png)
+
+After clicking on the resource group you can see every resource that is deployed in this resource group. In this case only the DataSpace Node is deployed in here.
+
+**8. Click on the DataSpace Node**
+
+Every DataSpace Node has a unique name starting with "dsknode" that is automatically generated during the deployment. Now click on the described name. AFter that click on the section **Parameters and Output**
+
+![Node-parameters](img/setup-node-azure-parameters.png)
+
+Here you can view all the relevant parameters of your managed application. The most important information are highlighted in red. 
+First, you can see the **dskHubUrl**. This URL represents the DataSpace Hub to which your DataSpace Node belongs to.
+Secondly, the **deploymentName**. The deployment name is part of the URL of the DataSpace Node. The URL is composed of "deploymentName".dataspace-node.com.
+In this case the URL of the DataSpace Node is: "tributech.dataspace-node.com".

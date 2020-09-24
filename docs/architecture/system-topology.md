@@ -32,7 +32,7 @@ The **DataSpace Agent** is a software agent (with optional support for hardware-
 
 ### DataSpace Hub
 
-The **DataSpace Hub** provides the metadata storage and the public key infrastructure that is required for setting up an ecosystem of DataSpace Nodes. The DataSpace Hub is responsible for: storing the metadata of published datasets, managing public keys, the inclusion of new nodes and issuing certificates.
+The **DataSpace Hub** provides the metadata storage and the public key infrastructure that is required for setting up an Ecosystem of DataSpace Nodes. The DataSpace Hub is responsible for: storing the metadata of published Datasets, managing public keys, the inclusion of new nodes and issuing certificates.
 
 >**Important Note:** A DataSpace Hub is not on the route of the traffic of the data exchange and even a man-in-the-middle-attack would fail because >the Hub has no private-key material of DataSpace Nodes or Agents.
 
@@ -43,10 +43,10 @@ The **DataSpace Hub** provides the metadata storage and the public key infrastru
 | Channel       | Description |
 | :---          |    :----    |
 | **P2P Data Sync Channels**  | A channel to exchange requested streams of sensor-, processes- or business data peer-to-peer between DataSpace Nodes.|
-| **Metadata Channels**    | A channel to exchange required metadata (e.g. published datasets) of the ecosystem between the DataSpace Nodes and their associated DataSpace Hub.|
+| **Metadata Channels**    | A channel to exchange required metadata (e.g. published Datasets) of the Ecosystem between the DataSpace Nodes and their associated DataSpace Hub.|
 | **Trust Channels**  | A channel to transfer hashes and signatures directly from the DataSpace Agents to the trust layer of the associated DataSpace Node.|
 
-**APIs** are well documented and supported interfaces for the different types of data in the ecosystem in order to integrate sensors, databases and applications within the infrastructure of each participating stakeholder. These APIs are separated into:
+**APIs** are well documented and supported interfaces for the different types of data in the Ecosystem in order to integrate sensors, databases and applications within the infrastructure of each participating stakeholder. These APIs are separated into:
 
 | API       | Description |
 | :---          |    :----    |
@@ -74,4 +74,4 @@ As shown in Fig.1, a DataSpace Node contains all the required services for the d
 | **Admin Interface** | A web-interface for users of the DataSpace Node in order to manage the access of data streams via the publish-, request-, and grant workflows. |
 | **P2P Sync Service** | The P2P Sync Service executes the data sharing/exchange process and also covers the networking, data processing and encryption between DataSpace Nodes. It handles the synchronization processes of data streams between the Data API, the storage system and the data consumers. |
 | **Trust Layer Service** | The Trust Layer Service includes an instance of the distributed ledger, verification services, and the Trust API in order to provide the verification capabilities for data streams. By storing and providing proofs from DataSpace Agents, the Trust Layer Service can guarantee the auditability of authenticity and integrity for data streams - forever.|
-| **Node Dashboards** | In addition to the Data API - Node Dashboards provides an additional option to consume data streams via dashboards, especially for members of a DataSpace ecosystem that have a lower digitalization level and do not have their own visualization system.|
+| **Node Dashboards** | In addition to the Data API - Node Dashboards provides an additional option to consume data streams via dashboards, especially for members of a DataSpace Ecosystem that have a lower digitalization level and do not have their own visualization system.|
