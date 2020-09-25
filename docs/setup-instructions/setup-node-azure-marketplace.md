@@ -32,9 +32,15 @@ These details can very because of different organisational guidelines on Azure, 
 
 **5. DataSpace App Settings**
 
-First, you need to fill out the user details according to your name and company name. 
-More important is the DataSpace Node name, as it determines the name of the app url. In this case the app url would be demo-docs.dataspace-node.com.
-Lastly, you need to enter the email adress of the DataSpace Node Admin user and create a password.
+First, you need to fill out the user details according to your name and company. 
+In the admin user section you need to provide an e-mail adress and a password, which will be needed to log in to your DataSpace Node.
+
+DataSpace Hub parameters are only relevant if you chose the Custom Hub. As already mentioned the Custom Hub is a private Hub, that means it can only be entered on invitation. This invitation has to contain the Hub URL and the Hub ID. 
+
+If you chose the Trial Hub (which will be available soon) you don't need to enter the Hub URL and Hub ID.
+
+More important is the DataSpace Node name, as it determines the name of the app url. The URl is composed as follows: *name*.dataspace-node.com. In this case the app url would be demo-docs.dataspace-node.com.
+
 
 ![DataSpace-app-settings](img/setup-node-azure-dataspace-app-settings.png)
 
