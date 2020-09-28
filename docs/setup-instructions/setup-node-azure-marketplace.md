@@ -13,9 +13,10 @@ Your screen should look as follows:
 Click on the Tributech DataSpace Node.
 
 **3. Choose a Hub -** Now you can select between 
-| DataSpace Node - Trial Hub    | DataSpace Node - Custom Hub   |
+| Plan  | Description   |
 |:---                           |:-                           |
-|Public Hub for try out purposes (available soon)|Private Hub that can only be entered by invitation |
+|Trial Hub | Free trial for try out purposes, available for 30 days |
+|Custom Hub | Private Hub that can only be entered on invitation. In order to get a connection to the host please contact our [Customer Advisory Team](mailto:customer-advisory@tributech.io) |
 After selecting a Hub click on **create**.
 
 ![Trial-and-custom](img/setup-node-azure-trial-and-custom-hub.png)
@@ -35,11 +36,9 @@ These details can very because of different organisational guidelines on Azure, 
 First, you need to fill out the user details according to your name and company. 
 In the admin user section you need to provide an e-mail adress and a password, which will be needed to log in to your DataSpace Node.
 
-DataSpace Hub parameters are only relevant if you chose the Custom Hub. As already mentioned the Custom Hub is a private Hub, that means it can only be entered on invitation. This invitation has to contain the Hub URL and the Hub ID. 
+DataSpace Hub parameters are only relevant if you chose the Custom Hub.
 
-If you chose the Trial Hub (which will be available soon) you don't need to enter the Hub URL and Hub ID.
-
-More important is the DataSpace Node name, as it determines the name of the app url. The URl is composed as follows: *name*.dataspace-node.com. In this case the app url would be demo-docs.dataspace-node.com.
+More important is the DataSpace Node name, as it determines the name of the app url. The URL is composed as follows: *deployment-name*.dataspace-node.com. In this case the app url would be demo-docs.dataspace-node.com.
 
 
 ![DataSpace-app-settings](img/setup-node-azure-dataspace-app-settings.png)
@@ -53,20 +52,27 @@ Here you need to determine the size of the virtual machine on which the DataSpac
 After choosing the size of the virtual machine you can click **Review + create**. 
 Then it will take 10-15 minutes to deploy your DataSpace Node. Once the deployment is finished you can start to create Datasets as described in the guide [create Dataset](guides/guide-create-dataset).
 
+**7. Log in your DataSpace Node**
+
+After the deployment of your DataSpace Node is finished you can log in the webinterface. Therefore, enter *deployment-name*.dataspace-node.com. Then you will be directed to the log in screen that you can see below. 
+
+![Log in](img/setup-node-azure-log-in.png)
+
 ## Look up parameters of your DataSpace Node
 
 All the details of your DataSpace Node that you filled in at 4. and 5. can be accessed on Azure. 
 Therefore, go to the Azure Marketplace and click on **resource groups**
+
 ![Resource-groups](img/setup-node-azure-resource-groups.png)
 
-**7. Select resource group** 
+**Select resource group** 
 
 Select the resource group that you deployed the DataSpace Node in and click on the resource group. In this case the resource group is named "PlaygroundRaphael".
 ![Click-resource-group](img/setup-node-azure-click-resource-group.png)
 
 After clicking on the resource group you can see every resource that is deployed in this resource group. In this case only the DataSpace Node is deployed in here.
 
-**8. Click on the DataSpace Node**
+**Click on the DataSpace Node**
 
 Every DataSpace Node has a unique name starting with "dsknode" that is automatically generated during the deployment. Now click on the described name. AFter that click on the section **Parameters and Output**
 
