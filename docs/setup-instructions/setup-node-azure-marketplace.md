@@ -16,7 +16,7 @@ Click on the Tributech DataSpace Node.
 | Plan  | Description   |
 |:---                           |:-                           |
 |Trial Hub | Free trial for try out purposes, available for 30 days |
-|Custom Hub | Private Hub that can only be entered on invitation. In order to get a connection to the host please contact our [Customer Advisory Team](mailto:customer-advisory@tributech.io) |
+|Custom Hub | Private Hub that can only be entered on invitation. In order to get connected to an existing Data Ecosystem please contact our [Customer Advisory Team](mailto:customer-advisory@tributech.io) |
 After selecting a Hub click on **create**.
 
 ![Trial-and-custom](img/setup-node-azure-trial-and-custom-hub.png)
@@ -60,7 +60,7 @@ After the deployment of your DataSpace Node is finished you can log in the webin
 
 ## Look up parameters of your DataSpace Node
 
-All the details of your DataSpace Node that you filled in at 4. and 5. can be accessed on Azure. 
+All the details of your DataSpace Node that you filled in at 4. and 5. can be accessed on Azure in case you forgot important parameters like the deployment name. 
 Therefore, go to the Azure Marketplace and click on **resource groups**
 
 ![Resource-groups](img/setup-node-azure-resource-groups.png)
