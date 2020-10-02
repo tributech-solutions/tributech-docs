@@ -9,7 +9,7 @@ authors:
 
 The Data API provides the interface to consume/store or consume values according to an **UUID** of an data stream.
 
-Navigate to the Data API via the "Tools" section of your DataSpace Node or you can follow this link to our demonstrator instance: <a href="https://data-api.tributech.dataspace.network/swagger" target="_blank">Data API</a>.
+Navigate to the Data API via the "Tools" section of your DataSpace Node or you can follow this link to our demonstrator instance: <a href="https://data-api.azuretrial-node-a.dataspace-node.com/" target="_blank">Data API</a>.
 
 ## Authorization
 
