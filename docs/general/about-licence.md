@@ -7,7 +7,7 @@ authors:
 
 # Licence
 
-Copyright © 2018 - 2019 Tributech Solutions GmbH. All rights reserved.
+Copyright © 2018 - <script>document.write(new Date().getFullYear())</script> Tributech Solutions GmbH. All rights reserved.
 
 **<p>Tributech Solutions GmbH<br>**
 Peter-Behrens-Platz 8<br>
