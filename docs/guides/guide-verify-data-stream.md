@@ -19,16 +19,29 @@ In this guide you will learn how you can verify the authenticity and integrity o
 
 The prerequisites for verifying a data stream via the Trust API are the following:
 
-- A DataSpace Angent is integrated into the data source (common way for e.g. IoT ddge Devices) or a data stream is stored via Trust API and the method which contains the hashing and signing process of the Agent (common way for server-side sources)
-- If you own the data -> Data existists on owner side within the selected time-frame (Master DB)
-- If you consume the data -> Data is allready synchronised on the consumer side within the selected time-frame (Slave DB)
+- A DataSpace Angent is integrated into the data source (common way for example via IoT Edge Devices or the Sensor Security Module) or a data stream is stored via Trust API and the method which contains the hashing and signing process of the Agent (common way for server-side sources)
+- If you own the data -> Data exists on owner side within the selected time-frame (Master DB)
+- If you consume the data -> Data is already synchronised on the consumer side within the selected time-frame (Slave DB)
 
 ## Verfiy a stream
 
-**1. Copy UUID -** Copy the UUID of the stream you want to verify for the admin interface of your DataSpace Node.
+**1. Navigate to Trust API**
 
-**2. Authorize -** Click on the **authorize** button, paste the **client_ID**, paste the **client_secret**, select the **full-access** checkbox and click on the authorize button.
+![Navigate Trust API](img/verify-data-stream-trust-api.png)
 
+Afterwards you are redirected to our Swagger homepage. There you need to authorize your user first. 
+
+![Swagger authorize](img/swagger-authorize.png)
+
+
+
+**2. Navigate back to DataSpace Node web interface** 
+You can find the **client_ID** and **client_secret** if you redirect to the DataSpace Node web interface click on your **user icon**. Then navigate to the **administration menu**.
+
+![API Keys](img/verify-data-stream-api-keys.png)
+
+**3. Authorize** 
+Click on the **authorize** button, paste the **client_ID**, paste the **client_secret**, select the **full-access** checkbox and click on the authorize button.
 ![Enter URL](img/verify-data-stream-authorize-api.png)
 
 ### Built in verification

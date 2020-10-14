@@ -7,7 +7,7 @@ authors:
 
 # Consume data via dashbaords guide
 
-In this guide you will learn how you can consume your own datasets and subscriptions via the built in dashboarding system of your DataSpace Node. This guide covers the following topics:
+In this guide you will learn how you can consume your own Datasets and subscriptions via the built in dashboarding system of your DataSpace Node. This guide covers the following topics:
 
 - [Prerequisites](/guides/guide-data-via-dashboards/#prerequisites)
 - [Dashboard structure & topology](/guides/guide-data-via-dashboards/#dashboard-structure-topology)
@@ -18,7 +18,7 @@ In this guide you will learn how you can consume your own datasets and subscript
 
 The prerequisits for consuming data from a subscription via the integrated dashboarding are the following:
 
-- A granted subscription to a dataset (you are also able to visualize your own datasets)
+- A granted subscription to a Dataset (you are also able to visualize your own Datasets)
 - Data existists on owner side within the selected time-frame (Master DB)
 - Data is allready synchronised on the consumer side (Slave DB)
 
@@ -28,8 +28,8 @@ The dashboarding system is built on the open source technology <a href="https://
 
 The structure of dashboards is based on the same logic as in the interface of your DataSpace Node:
 
-- **Dashboards: My Datasets** / Master DB - contains owned datasets that are connected to your DataSpace Node
-- **Dashboards: Subscriptions** / Slave DB - contains subscriptions to datasets from other mebers of your ecosystem
+- **Dashboards: My Datasets** / Master DB - contains owned Datasets that are connected to your DataSpace Node.
+- **Dashboards: Subscriptions** / Slave DB - contains subscriptions to Datasets from other members of your Ecosystem.
 
 ## Create a Dashboard
 
@@ -47,7 +47,7 @@ To visualize your data via the dashboarding system the only thing you have to do
 
 ![Create Dashboard](img/dashboards-create-dashboard.png)
 
-**4. Dashboard Settings -** Click on the settings symbol, **enter a name** for your dashboard (it is recommond to use the same name as in the admin interface), select the folder **subscriptions** and **save** your changes
+**4. Dashboard Settings -** Click on the settings symbol, **enter a name** for your dashboard (it is recommended to use the same name as in the admin interface), select the folder **Subscriptions** and **save** your changes
 
 ![Dashboard Settings](img/dashboards-settings.png)
 
@@ -55,11 +55,15 @@ To visualize your data via the dashboarding system the only thing you have to do
 
 ![Dashboard Copy](img/dashboards-copy.png)
 
-**6. Add a new Dashboard Row -** Navigate to your previous created dashboard folder in **subscriptions/your-folders-name**, click on the **add panel** button and click on **convert to row**
+**6. Add a new Dashboard Row -** Navigate to your previous created dashboard folder in **Subscriptions/your-folders-name**, click on the **add panel** button and click on **convert to row**
 
 ![Rename Row](img/dataset-add-new-panel.png)
 
-**7. Rewname Row -** Rename the created row with the data source name and click on the **Update** button
+**7. Rename Row -** If you scroll to the newly created row a settings and a delete symbol will appear. Click on the settings symbol. 
+
+![Dashboard rename row](img/dashboard-rename-row.png)
+
+Rename the created row with the data source name and click on the **Update** button
 
 ![Dashboard Copy](img/dashboards-update-source-name.png)
 
@@ -67,7 +71,7 @@ To visualize your data via the dashboarding system the only thing you have to do
 
 ![Edit Panel](img/dashboards-edit-panel.png)
 
-**9. Repalce UUID -** Replace the exisiting UUID with the UUID of your selected stream (see subscriptoions in your admin interface), replace the **unit**,select the **SlaveDB** and save your changes
+**9. Replace UUID -** Replace the exisiting UUID with the UUID of your selected stream (see subscriptoions in your admin interface), replace the **unit**,select the **SlaveDB** and save your changes
 
 ![Dashboard Copy](img/dashbaords-change-uuid.png)
 
@@ -86,4 +90,4 @@ ORDER BY 1
 
 ## Next step: consume data via APIs
 
-In this guide, you have learned how to set up a new panel for your data stream via the built-in dashboarding system. To learn more about how you can use data of your subscription via the APIs, continue with the guide [Data via APIs](/guides/guide-data-via-apis).
+In this guide, you have learned how to set up a new panel for your data stream via the built-in dashboarding system. To learn more about how you can use data of your Subscription via the APIs, continue with the guide [Data via APIs](/guides/guide-data-via-apis).

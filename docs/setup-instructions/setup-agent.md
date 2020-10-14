@@ -19,20 +19,20 @@ Since the term "data source" allows a lot of room for interpretation, here is ou
 
 **1. Integration on Server-Level**
 
-To integrate the DataSpace Agent on server-side data sources like e.g. ERP Systems or MES you have to options:
+To integrate the DataSpace Agent on server-side data sources like e.g. ERP Systems or MES you have two options:
 
-- Integrate the containerized Agent into your application/service
-- Use the into the Trust API integrated Agent of your DataSpace Node
+- Integrate the containerized DataSpace Agent into your application/service
+- Use the into the DataSpace Agent that is integrated into the Trust API of your DataSpace Node
 
 **2. Integration on Edge-Level**
 
-To integrate the DataSpace Agent on edge devices like e.g. IoT gateways or local servers you can integrate the DataSpace Agent as containerized service into your data sources. To simplify the configuration, deployment and life-cycle management it is recommond to use a managed edge runtime (e.g. Azure IoT Edge) for the device management.
+To integrate the DataSpace Agent on edge devices like e.g. IoT gateways or local servers you can integrate the DataSpace Agent as containerized service into your data sources. To simplify the configuration, deployment and life-cycle management it is recommended to use a managed edge runtime (e.g. Azure IoT Edge) for the device management.
 
 **3. Integration on Sensor-Level**
 
-In order to integrate the agent where data is generated, as close as possible to the sensor, we are currently working on a separate version. This release will also include hardware-based security support to full fill the security requirements for high sensitive industrial applications.
+In order to integrate the agent where data is generated, as close as possible to the sensor, we are currently working on a separate version. This release will also include hardware-based security support to fulfill the security requirements for highly sensitive industrial applications.
 
-*More information is commoing soon.*
+*More information is coming soon.*
 
 ## Infrastructure requirements
 

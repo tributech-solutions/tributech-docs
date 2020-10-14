@@ -28,7 +28,7 @@ If you have any questions regarding infrastructure requirements, please talk to 
 
 ## Select a DataSpace Ecosystem
 
-If you install a new DataSpace Node in your infrastructure you have to join a DataSpace Ecosystem. In general, there are no limitations on how you can structure a DataSpace ecosystem. We recommend a segmentation in 2 categories:
+If you install a new DataSpace Node in your infrastructure you have to join a DataSpace Ecosystem. In general, there are no limitations on how you can structure a DataSpace Ecosystem. We recommend a segmentation in 2 categories:
 
 **Private DataSpace Ecosystems** for the data exchange in your value chain with for example your customers, suppliers and partners.
 
@@ -36,12 +36,12 @@ If you install a new DataSpace Node in your infrastructure you have to join a Da
 
 **If you want to join a DataSpace, please slelect one of the follwoing options:**
 
-- Existing ecosystem - please contract the operater of this ecosystem
-- New ecosystem - please contact our [Customer Advisory Team](mailto:customer-advisory@tributech.io)
+- Existing Ecosystem - please contract the operater of this Ecosystem
+- New Ecosystem - please contact our [Customer Advisory Team](mailto:customer-advisory@tributech.io)
 - Tributech Open DataSpace Network - please contact our [Customer Advisory Team](mailto:customer-advisory@tributech.io)
 
 ## Install a DataSpace Node
 
-To install a DataSpace Node, you have to meet the infrastructure requirements as mentioned above, and you need to execute the installation script with the matching configuration for the selected ecosystem.
+To install a DataSpace Node, you have to meet the infrastructure requirements as mentioned above, and you need to execute the installation script with the matching configuration for the selected Ecosystem.
 
-Self-installation is currently not supported, please contact the ecosystem operator or our [Customer Advisory Team](mailto:customer-advisory@tributech.io)
+Self-installation is currently not supported, please contact the Ecosystem operator or our [Customer Advisory Team](mailto:customer-advisory@tributech.io)
