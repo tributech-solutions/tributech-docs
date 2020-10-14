@@ -26,13 +26,14 @@ The prerequisits for consuming data from a Subscription via the integrated APIs 
 
 The Trust API provides the interface to consume/store signed hashes of DataSpace Agents and/or to consume/store values by using the Trust API's built in Agent (the recommended way to integrate server-side data sources). Every method requires the **UUID** of a data stream.
 
-Navigate to the Trust API via the "Tools" section of your DataSpace Node or you can follow this link to our demonstrator instance: <a href="https://trust-layer-api.tributech.dataspace.network/" target="_blank">Trust API</a>
+Navigate to the Trust API via the "Tools" section of your DataSpace Node or you can follow this link to our demonstrator instance: <a href="https://trust-layer-api.azuretrial-node-a.dataspace-node.com/" target="_blank">Trust API</a>
 
 ## Data API
 
 The Data API provides the interface to consume/store values according to an **UUID** of an data stream.
 
-Navigate to the Data API via the "Tools" section of your DataSpace Node or you can follow this link to our demonstrator instance: <a href="https://data-api.tributech.dataspace.network/swagger" target="_blank">Data API</a>
+Navigate to the Data API via the "Tools" section of your DataSpace Node or you can follow this link to our demonstrator instance: <a href="https://data-api.azuretrial-node-a.dataspace-node.com/" target="_blank">Data API</a>
+
 
 ## Next step: verify a data stream
 
