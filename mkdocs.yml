@@ -1,5 +1,6 @@
 # Project information
 site_name: 'Tributech DataSpace Kit Documentation'
+site_description: 'Data exchange reinvented - Secure. Traceable. Trusted.'
 site_author: 'Tributech Solutions'
 docs_dir: docs/
 
@@ -10,33 +11,44 @@ copyright: 'Copyright &copy; 2018 - <script>document.write(new Date().getFullYea
 repo_name: 'tributech-solutions/tributech-DSK-docs'
 repo_url: 'https://github.com/tributech-solutions/tributech-DSK-docs'
 
+# Navigation 
 nav:
-  - Introduction: index.md
-  - Terminology: general/terminology.md
-  - DataSpace Kit Explained: architecture/dataspace-kit-explained.md
-  - System Topology: architecture/system-topology.md
- # - Quickstart Guide: setup-quickstart.md
-  - User Guides:
-    - '1 Create Dataset' : 'guides/guide-create-dataset.md'
-    - '2 Integrate Data Source' : 'guides/guide-integrate-data-source.md'
-    - '3 Publish Dataset' : 'guides/guide-publish-dataset.md'
-    - '4 Request Dataset' : 'guides/guide-request-dataset.md'
-    - '5 Data via Dashboards' : 'guides/guide-data-via-dashboards.md'
-    - '6 Data via APIs' : 'guides/guide-data-via-apis.md'
-    - '7 Verify Data Stream' : 'guides/guide-verify-data-stream.md'
-    - 'User Management' : 'guides/guide-user-management.md'
-  - Setup Instructions:
-    - 'Setup Node' : 'setup-instructions/setup-node.md'
-    - 'Setup Node via Azure Marketplace' : 'setup-instructions/setup-node-azure-marketplace.md'
-    - 'Setup Agent' : 'setup-instructions/setup-agent.md'
-    - 'Setup DataSpace' : 'setup-instructions/setup-dataspace.md'
-  - APIs:
-    - 'Trust API' : 'apis/apis-trust-api.md'
-    - 'Data API' : 'apis/apis-data-api.md'
-  - About: 
-    - 'Support' : 'general/about-support.md'
-    - 'Licence' : 'general/about-licence.md'
- #   - 'Release Notes': 'about-release-notes.md'
+  - Home: index.md
+  - Quick Start:
+    - Overview: quickstart/overview.md
+    - Install Owner Node: quickstart/install-owner-node.md
+    - Create a Dataset: quickstart/create-dataset.md
+    - Install DSK IoT Bridge: quickstart/install-bridge.md
+    - Setup IoT Device: quickstart/setup-device.md
+    - Publish Dataset: quickstart/publish-dataset.md
+    - Install Consumer Node: quickstart/install-consumer-node.md
+    - Subscribe to Dataset: quickstart/subscribe-dataset.md
+  - DSK Explained:
+    - Overview: dsk-explained/dsk-overview.md
+    - Terminology: dsk-explained/terminology.md
+    - System Topology: dsk-explained/system-topology.md
+    - DSK Explained: dsk-explained/dataspace-kit-explained.md
+  - Setup:
+    - Overview: setup-instructions/component-overview.md
+    - DSK Node:
+      - Setup Options: setup/node/options.md
+      - Prerequisites: setup/node/prerequisites.md
+      - Setup Steps:  setup-instructions/setup-node-azure-marketplace.md
+      - Next Steps: setup/node/next-steps.md
+    - DSK Agent:
+      - Setup Options: setup/agent/options.md
+      - Prerequisites: setup/agent/prerequisites.md
+      - Setup Agent : setup-instructions/setup-agent.md
+      - Next Steps: setup/agent/next-steps.md
+    - DSK IoT Hub Bridge: setup-instructions/iot-hub-bridge.md
+  - Integration:
+    - Overview: integration/overview.md
+    - DSK Node APIs:
+      - Integration Examples: integration/node-api/integration-examples.md
+      - API Authentication: integration/node-api/api-authentication.md
+      - Next Steps': integration/node-api/next-steps.md
+    - Agent Edge Interface:
+      - Integration Examples: integration/agent/examples.md
 
 # Configuration
 theme: 
@@ -51,6 +63,9 @@ theme:
     code: 'Roboto Mono'
   logo: 'img/icon_white.svg'
   favicon: 'img/favicon.png'
+  custom_dir: theme-overrides
+  features:
+    - navigation.tabs
 
 # Customization
 extra:
