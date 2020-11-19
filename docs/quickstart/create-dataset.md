@@ -2,17 +2,19 @@
 
 Once the deployment is complete you should be able to access the newly created Node under "[deployment-name].dataspace-node.com". You will be redirected to a login-page, enter the credentials specified in the setup process. After a successfull login the admin-app of the Data Space Node should be visible
 
+## Add - New Dataset
+
 To create a new dataset click "Add" and then "New Dataset"
 
 ![Node landing page](img/node-landing-page.png)
 
-----------------
+## Enter title and description
 
 Enter some descriptive metadata for the new dataset
 
 ![Create dataset - fill in metadata](img/create-dataset-1.png)
 
-----------------
+## Add new Data Source
 
 Add a new Data Source. Create streams for "Machine Temperature", "Machine Pressure", "Ambient Temperature" and "Ambient Humidity". Data for these streams will later be provided by the simulated Edge Device.
 

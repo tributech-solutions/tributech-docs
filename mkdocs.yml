@@ -25,8 +25,8 @@ nav:
     - Subscribe to Dataset: quickstart/subscribe-dataset.md
   - DSK Explained:
     - Overview: dsk-explained/dsk-overview.md
-    - Terminology: dsk-explained/terminology.md
-    - System Topology: dsk-explained/system-topology.md
+    - DSK Terminology: dsk-explained/terminology.md
+    - DSK Topology: dsk-explained/system-topology.md
     - DSK Explained: dsk-explained/dataspace-kit-explained.md
   - Setup:
     - Overview: setup-instructions/component-overview.md
@@ -46,7 +46,7 @@ nav:
     - DSK Node APIs:
       - Integration Examples: integration/node-api/integration-examples.md
       - API Authentication: integration/node-api/api-authentication.md
-      - Next Steps': integration/node-api/next-steps.md
+      - Next Steps: integration/node-api/next-steps.md
     - Agent Edge Interface:
       - Integration Examples: integration/agent/examples.md
 

@@ -31,7 +31,7 @@ cd <path-to-directory>/
 Download, build and run the docker image:
 
 ```
-docker run --rm -it -d -p 80:8000 -v ${PWD}:/docs squidfunk/mkdocs-material
+docker run --rm -it -p 80:8000 -v ${PWD}:/docs squidfunk/mkdocs-material
 ```
 
 ## Styling
