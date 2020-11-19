@@ -1,4 +1,4 @@
-# Request a dataset guide
+# Subscribe to Dataset
 
 After the setup of the consumer node is complete, it can subscibe to the dataset that was created before.
 

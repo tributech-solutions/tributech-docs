@@ -1,6 +1,6 @@
 # Project information
 site_name: 'Tributech DataSpace Kit Documentation'
-site_description: 'Data exchange reinvented - Secure. Traceable. Trusted.'
+site_description: 'Data audit & sharing technology ensuring trustworthy data'
 site_author: 'Tributech Solutions'
 docs_dir: docs/
 
@@ -57,7 +57,7 @@ theme:
     taps: true
   palette:
     primary: 'light blue'
-    accent: 'green'
+    accent: 'light blue'
   font:
     text: 'Source Sans Pro'
     code: 'Roboto Mono'
