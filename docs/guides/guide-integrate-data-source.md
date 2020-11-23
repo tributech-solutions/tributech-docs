@@ -56,7 +56,7 @@ The data management of different data sources beyond the boundaries of a company
 
 ### External data storage support
 
-For providing a ready to use solution, every DataSpace Node is shipped with an integrated master/slave storage solution based on Postgres SQL databases. If you want to use your own storage solution, please contact our [Customer Advisory Team](mailto:customer-advisory@tributech.io) for further information and support.
+For providing a ready to use solution, every DataSpace Node is shipped with an integrated storage solution based on Postgres SQL databases. If you want to use your own storage solution, please contact our [Customer Advisory Team](mailto:customer-advisory@tributech.io) for further information and support.
 
 ### Preview: Plugable connectors & data conversion pipelines
 

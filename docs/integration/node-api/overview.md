@@ -14,8 +14,8 @@ In this guide you will learn how you can consume your own Datasets and Subscript
 The prerequisits for consuming data from a Subscription via the integrated APIs are the following:
 
 - A granted Subscription to a Dataset (you are also able to visualize your own Datasets)
-- Data exists on owner side within the selected time-frame (Master DB)
-- Data is already synchronised on the consumer side (Slave DB)
+- Data exists on owner side within the selected time-frame (Owner DB)
+- Data is already synchronised on the consumer side (Consumer DB)
 
 ## Trust API
 

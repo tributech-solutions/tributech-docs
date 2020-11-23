@@ -19,17 +19,17 @@ In this guide you will learn how you can consume your own Datasets and subscript
 The prerequisits for consuming data from a subscription via the integrated dashboarding are the following:
 
 - A granted subscription to a Dataset (you are also able to visualize your own Datasets)
-- Data existists on owner side within the selected time-frame (Master DB)
-- Data is allready synchronised on the consumer side (Slave DB)
+- Data existists on owner side within the selected time-frame (Owner DB)
+- Data is allready synchronised on the consumer side (Consumer DB)
 
 ## Dashboard structure & topology
 
-The dashboarding system is built on the open source technology <a href="https://grafana.com/" target="_blank">Grafana</a>. It comes with pre-configured data sources for the in your DataSpace Node integrated Postgre SQL master/slave databases.
+The dashboarding system is built on the open source technology <a href="https://grafana.com/" target="_blank">Grafana</a>. It comes with pre-configured data sources for the in your DataSpace Node integrated Postgre SQL databases.
 
 The structure of dashboards is based on the same logic as in the interface of your DataSpace Node:
 
-- **Dashboards: My Datasets** / Master DB - contains owned Datasets that are connected to your DataSpace Node.
-- **Dashboards: Subscriptions** / Slave DB - contains subscriptions to Datasets from other members of your Ecosystem.
+- **Dashboards: My Datasets** / Owner DB - contains owned Datasets that are connected to your DataSpace Node.
+- **Dashboards: Subscriptions** / Consumer DB - contains subscriptions to Datasets from other members of your Ecosystem.
 
 ## Create a Dashboard
 
@@ -71,7 +71,7 @@ Rename the created row with the data source name and click on the **Update** but
 
 ![Edit Panel](img/dashboards-edit-panel.png)
 
-**9. Replace UUID -** Replace the exisiting UUID with the UUID of your selected stream (see subscriptoions in your admin interface), replace the **unit**,select the **SlaveDB** and save your changes
+**9. Replace UUID -** Replace the exisiting UUID with the UUID of your selected stream (see subscriptoions in your admin interface), replace the **unit**,select the **ConsumerDB** and save your changes
 
 ![Dashboard Copy](img/dashbaords-change-uuid.png)
 
