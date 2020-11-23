@@ -29,26 +29,28 @@ nav:
     - DSK Topology: dsk-explained/system-topology.md
     - DSK Explained: dsk-explained/dataspace-kit-explained.md
   - Setup:
-    - Overview: setup-instructions/component-overview.md
+    - Overview: setup/overview.md
     - DSK Node:
       - Setup Options: setup/node/options.md
       - Prerequisites: setup/node/prerequisites.md
-      - Setup Steps:  setup-instructions/setup-node-azure-marketplace.md
+      - Setup Steps:  setup/node/setup.md
       - Next Steps: setup/node/next-steps.md
     - DSK Agent:
       - Setup Options: setup/agent/options.md
       - Prerequisites: setup/agent/prerequisites.md
-      - Setup Agent : setup-instructions/setup-agent.md
+      - Setup Agent : setup/agent/setup.md
       - Next Steps: setup/agent/next-steps.md
-    - DSK IoT Hub Bridge: setup-instructions/iot-hub-bridge.md
+    - DSK IoT Hub Bridge: setup/iot-hub-bridge.md
   - Integration:
     - Overview: integration/overview.md
     - DSK Node APIs:
+      - Overview: integration/node-api/overview.md
       - Integration Examples: integration/node-api/integration-examples.md
       - API Authentication: integration/node-api/api-authentication.md
       - Next Steps: integration/node-api/next-steps.md
     - Agent Edge Interface:
       - Integration Examples: integration/agent/examples.md
+      - Next Steps: integration/agent/next-steps.md
 
 # Configuration
 theme: 

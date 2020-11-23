@@ -87,17 +87,52 @@ The DSK Edge Agent can also be found in the [Marketplace](https://azuremarketpla
 
 ![Step 3](img/agent-3.png) 
 
-| Variable                                        | Sample Value                                                  | Description                                                                                                      |
-|-------------------------------------------------|---------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------|
-| EdgeDeviceOptions__AgentID                      | 6ead0b19fd89450c                                              | Choose a unique string                                                                                           |
-| ProofSinkOptions__TrustAPIBaseUrl               | https://trust-api.my-company-xyz.dataspace-node.com           | Trust API Url. Replace 'my-company-xyz' with the name of your node.                                              |
-| ProofSinkOptions__AuthUrl                       | https://id.azuretrial.dataspace-hub.com/connect/token         | Auth Url. This default should work for most cases.                                                               |
-| ProofSinkOptions__AuthScope                     | data-api-endpoint trust-api-endpoint                          | Auth Scope. This default should work for most cases.                                                             |
-| ProofSinkOptions__ClientID                      | 6d94960d-3f24-4b6d-a56e-317dce752661                          | Client ID from the Node Web Interface.                                                                           |
-| ProofSinkOptions__ClientSecret                  | ************************************                          | Client Secret from the Node Web Interface.                                                                       |
-| EdgeDeviceOptions__DataStreamID__[DataStreamID] | SimulatedTemperatureSensorValueSource__0__Machine_Temperature | Replace [DataStreamID] from the variable name with the DataStream ID generated in this [step](../create-dataset) |
-| EdgeDeviceOptions__DataStreamID__[DataStreamID] | SimulatedTemperatureSensorValueSource__0__Machine_Pressure    | Replace [DataStreamID] from the variable name with the DataStream ID generated in this [step](../create-dataset) |
-| EdgeDeviceOptions__DataStreamID__[DataStreamID] | SimulatedTemperatureSensorValueSource__0__Ambient_Temperature | Replace [DataStreamID] from the variable name with the DataStream ID generated in this [step](../create-dataset) |
-| EdgeDeviceOptions__DataStreamID__[DataStreamID] | SimulatedTemperatureSensorValueSource__0__Ambient_Humidity    | Replace [DataStreamID] from the variable name with the DataStream ID generated in this [step](../create-dataset) |
+- **EdgeDeviceOptions__AgentID**
+    - Choose a unique string
+- **ProofSinkOptions__TrustAPIBaseUrl**
+    - **Sample:** `https://trust-api.my-company-xyz.dataspace-node.com`
+    - Trust API Url. Replace 'my-company-xyz' with the name of your node.
+- **ProofSinkOptions__AuthUrl**
+    - **Value:** `https://id.azuretrial.dataspace-hub.com/connect/token`
+    - Auth Url from before. This default should work for most cases.
+- **ProofSinkOptions__AuthScope**
+    - **Value:** `data-api-endpoint trust-api-endpoint`
+    - Auth Scope from before. This default should work for most cases.
+- **ProofSinkOptions__ClientID**
+    - Client ID from the Node Web Interface.
+- **ProofSinkOptions__ClientSecret**
+    - Client Secret from the Node Web Interface.
+- **EdgeDeviceOptions__DataStreamID__[DataStreamID]**
+    - Replace `[DataStreamID]` from the variable name with the DataStream ID generated in this [step](../create-dataset)
+    - **Variables:**
+        - Key: `EdgeDeviceOptions__DataStreamID__[DataStreamID]` Value: `SimulatedTemperatureSensorValueSource__0__Machine_Temperature`
+        - Key: `EdgeDeviceOptions__DataStreamID__[DataStreamID]` Value: `SimulatedTemperatureSensorValueSource__0__Machine_Pressure`
+        - Key: `EdgeDeviceOptions__DataStreamID__[DataStreamID]` Value: `SimulatedTemperatureSensorValueSource__0__Ambient_Temperature`
+        - Key: `EdgeDeviceOptions__DataStreamID__[DataStreamID]` Value: `SimulatedTemperatureSensorValueSource__0__Ambient_Humidity`
+
+#### Finally click on "Review + Create" and then on "Create"
+
+![Step 5](img/agent-4.png)
 
 ### Add Routes
+
+#### Open the IoT Hub and select the Device
+
+![Step 1](img/routes-1.png)
+
+#### Click on "Set Modules"
+
+![Step 2](img/routes-2.png)
+
+#### Click on "Next: Routes"
+
+![Step 3](img/routes-3.png)
+
+#### Set the routes and click creaete
+
+| Name                      | Route                                                                                                                                                                 |
+|---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| SimulatedSensorToDSKAgent | FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint("/modules/TributechDataSpaceAgent/inputs/AzureSimulatedSensorValue" |
+| DSKEdgeAgentValuesToCloud | FROM /messages/modules/TributechDataSpaceAgent/outputs/ValueSink INTO $upstream                                                                                       |
+
+![Step 4](img/routes-4.png)

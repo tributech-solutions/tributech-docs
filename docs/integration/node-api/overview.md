@@ -5,14 +5,9 @@ authors:
     - Patrick Lamplmair
 ---
 
-# Consume data via APIs guide
+# Overview
 
-In this guide you will learn how you can consume your own Datasets and Subscriptions via the built in APIs of your DataSpace Node. This guide covers the following topics:
-
-- [Prerequisites](/guides/guide-data-via-apis/#prerequisites)
-- [Trust API](/guides/guide-data-via-apis/#trust-api)
-- [Data API](/guides/guide-data-via-apis/#data-api)
-- [Next step: verify a data stream](/guides/guide-data-via-apis/#next-step-verify-a-data-stream)
+In this guide you will learn how you can consume your own Datasets and Subscriptions via the built in APIs of your DataSpace Node.
 
 ## Prerequisites
 
@@ -26,15 +21,10 @@ The prerequisits for consuming data from a Subscription via the integrated APIs 
 
 The Trust API provides the interface to consume/store signed hashes of DataSpace Agents and/or to consume/store values by using the Trust API's built in Agent (the recommended way to integrate server-side data sources). Every method requires the **UUID** of a data stream.
 
-Navigate to the Trust API via the "Tools" section of your DataSpace Node or you can follow this link to our demonstrator instance: <a href="https://trust-layer-api.azuretrial-node-a.dataspace-node.com/" target="_blank">Trust API</a>
+Navigate to the Trust API via the "Tools" section of your DataSpace Node or you can follow this link to our demonstrator instance: <a href="https://trust-api.azuretrial-node-a.dataspace-node.com/" target="_blank">Trust API</a>
 
 ## Data API
 
 The Data API provides the interface to consume/store values according to an **UUID** of an data stream.
 
 Navigate to the Data API via the "Tools" section of your DataSpace Node or you can follow this link to our demonstrator instance: <a href="https://data-api.azuretrial-node-a.dataspace-node.com/" target="_blank">Data API</a>
-
-
-## Next step: verify a data stream
-
-In this guide, you have learned how to consume data via APIs of your DataSpace Node. To learn more about how you can verify a data stream, continue with the guide [Verify Data Stream](/guides/guide-verify-data-stream).
