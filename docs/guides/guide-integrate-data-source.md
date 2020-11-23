@@ -42,7 +42,7 @@ Every DataSpace Node, provides interfaces to integrate different types of data a
 
 The Trust API provides the interface to store signed hashes of DataSpace Agents and/or to store values by using the Trust API's built in Agent (the recommended way to integrate server-side data sources). Every method requires the **UUID** of a data stream.
 
-Navigate to the Trust API via the "Tools" section of your DataSpace Node or you can follow this link to our demo instance: <a href="https://trust-layer-api.azuretrial-node-a.dataspace-node.com/" target="_blank">Trust API</a>
+Navigate to the Trust API via the "Tools" section of your DataSpace Node or you can follow this link to our demo instance: <a href="https://trust-api.azuretrial-node-a.dataspace-node.com/" target="_blank">Trust API</a>
 
 ### Integration via Data API
 
