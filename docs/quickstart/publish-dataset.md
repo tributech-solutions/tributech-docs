@@ -12,9 +12,9 @@ Select one of your Datasets and click on "Add Publication" for the selected Data
 
 Publishing a Dataset means that you make the descriptive metadata visible for other members of your DataSpace Ecosystem, so they can request access to your Datasets and subscribe to them if you grant access. If you want to publish a Dataset you have two different options.
 
-Selecting "Public" means that metadata is visible for all members of the Ecosystem. The data is not automatically shared with all members. Instead other members will get the option to reuest access to your dataset.
+Selecting "Public" means that metadata is visible for all members of the Ecosystem. The data is not automatically shared with all members. Instead other members will get the option to request access to your dataset.
 
-Selecting "Invite" means that the data will only be visible to selected group of members.
+Selecting "Invite" means that the data will only be visible to a selected group of members.
 
 For the purpose of this guide select "Public". 
 
@@ -27,11 +27,11 @@ Select the sources and streams you want to share. As you see in the example you 
 
 ![Select Streams](img/publish-dataset-select-streams.png)
 
-### Select a time-frame
+### Select a timeframe
 
-Select a time-frame for your Publication or invite. This time-frame sets the period for possible subscribers that they can request. The real consumable time-frame depends on the availability of each stream. The available date for each stream is defined by the metadata field "Available from" that is set at the initial metadata generation.
+Select a timeframe for your Publication or invite. This timeframe sets the period for possible subscribers that they can request. The real consumable timeframe depends on the availability of each stream. The available date for each stream is defined by the metadata field "Available from" that is set at the initial metadata generation.
 
-![Select Timeframe](img/publish-dataset-time-frame.png)
+![Select Timeframe](img/publish-dataset-timeframe.png)
 
 ### Select a contract
 

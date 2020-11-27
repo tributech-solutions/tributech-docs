@@ -19,4 +19,4 @@ Look at our [quick start guide](../../quickstart/overview.md) on how to install 
 
 The Agent can be installed on any platform that supports running docker-contaienrs. 
 
-Self-installation is currently not supported if you want to deploy a DataSpace Agent, please talk to your contact person at Tributech our send an email to our [Customer Advisory Team](https://www.tributech.io/about-us/).
+Self-installation is currently not supported if you want to deploy a DataSpace Agent, please talk to your contact person at Tributech or send an email to our [Customer Advisory Team](https://www.tributech.io/about-us/).

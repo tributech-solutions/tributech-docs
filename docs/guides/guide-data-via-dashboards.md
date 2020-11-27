@@ -19,8 +19,8 @@ In this guide you will learn how you can consume your own Datasets and subscript
 The prerequisits for consuming data from a subscription via the integrated dashboarding are the following:
 
 - A granted subscription to a Dataset (you are also able to visualize your own Datasets)
-- Data existists on owner side within the selected time-frame (Owner DB)
-- Data is allready synchronised on the consumer side (Consumer DB)
+- Data exists on owner side within the selected timeframe (Owner DB)
+- Data is already synchronised on the consumer side (Consumer DB)
 
 ## Dashboard structure & topology
 

@@ -1,6 +1,6 @@
 # Setup Options
 
-There is three different variations of the Agent. You can choose to set up which one fits your usecase the best. 
+There are three different variations of the Agent. You can choose to set up which one fits your usecase the best. 
 
 ## Hardware Based Agent
 

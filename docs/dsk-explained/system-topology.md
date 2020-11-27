@@ -18,7 +18,7 @@ A DataSpace Ecosystem requires a **single** DataSpace Hub, can have from **one t
 ![DataSpace Topology Schema](img/dsk-topology.png)
 *Fig.1: DataSpace Ecosystem System Topology*
 
-The **Tributech DataSpace Kit** is a containerized software-tool-kit that covers the whole data transfer between DataSpace Nodes (which usually represents a companies cloud or server infrastructure) and it covers the transfer of cryptographic proofs between the DataSpace Agents and the trust layer.
+The **Tributech DataSpace Kit** is a containerized software-tool-kit that covers the whole data transfer between DataSpace Nodes (which usually represents a company's cloud or server infrastructure) and it covers the transfer of cryptographic proofs between the DataSpace Agents and the trust layer.
 
 > **Important Note:** The DataSpace Kit doesn't influence or cover the client-server communication between devices/sources and the stakeholder's platform. The DataSpace Agent "only" transfers hashes and signatures through a dedicated publisher trust channel to his associated DataSpace Node.
 

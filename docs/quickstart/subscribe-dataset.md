@@ -17,19 +17,19 @@ Select the sources and stream you want to consume.
 
 ![Select](img/request-dataset-select.png)
 
-### Select a time-frame
+### Select a timeframe
 
-Select the time-frame in which you want to subscribe and consume the selected data streams. The dates for **"Available from"** and **"Available to"** of each data stream is also visible via the Request form.
+Select the timeframe in which you want to subscribe and consume the selected data streams. The dates for **"Available from"** and **"Available to"** of each data stream is also visible via the Request form.
 
-![Time-Frame](img/request-dataset-time-frame.png)
+![timeframe](img/request-dataset-time-frame.png)
 
 ### Accept terms and conditions
 
-If the owner of the dataset has defined terms and conditions of use, you have to agree on before you can send a Request to the owner.
+If the owner of the dataset has defined terms and conditions of use, you have to agree with those before you can send a Request to the owner.
 
 ### Send a Request
 
-Once you have selected the data sources and streams of your choice, set the time-frame and agreed to the terms and conditions of use, you can send a Request to the owner of the selected dataset.
+Once you have selected the data sources and streams of your choice, set the timeframe and agreed to the terms and conditions of use, you can send a Request to the owner of the selected dataset.
 
 ![Review](img/request-dataset-review.png)
 
@@ -39,14 +39,10 @@ After the Request is sent, a new entry appears in the "Subscriptions" sections o
 
 ![Pending](img/request-dataset-pending.png)
 
-Once your Request is granted by the owner, the state changes to **granted** and the synchronisation process starts - depending on the selcted time-frame and available data on the owner side.
+Once your Request is granted by the owner, the state changes to **granted** and the synchronisation process starts - depending on the selcted timeframe and available data on the owner side.
 
 ![Granted](img/request-dataset-granted.png)
 
 However, if the owner denies your Request the state of your Subscription changes to "Revoked by Owner".
 
 ![Revoked](img/request-dataset-revoked.png)
-
-## Next step: consume a data stream
-
-In this guide, you have learned how to set up a Request for a dataset. To learn more about options of how you can use data of your Subscription, continue with the guide [Data via APIs](/guides/guide-data-via-apis) or [Data via Dashboards](/guides/guide-data-via-dashboards).

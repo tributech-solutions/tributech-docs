@@ -1,6 +1,6 @@
 # Setup Options
 
-The easyest way to setup the DSK Node is through the Azure Marketplace. Yet other setup options are also available. 
+Although other setup options are also available, the easiest way to setup the DSK Node is through the Azure Marketplace.
 
 ## Ecosystem
 

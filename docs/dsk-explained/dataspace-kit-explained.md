@@ -34,7 +34,7 @@ The DataSpace Hub provides the metadata storage and the public key infrastucture
 
 >###Important Note:
 >
->A DataSpace Hub is not on the route of the traffic for the data exchange and even a man-in-the-middle-attack would fail because the Hub has no private-key material of DataSpace Nodes or Agents.
+>A DataSpace Hub is not on the route of the traffic for the data exchange and even a man-in-the-middle-attack would fail because Hub has no private-key material of DataSpace Nodes or Agents.
 
 ## DataSpace Node
 
@@ -88,10 +88,10 @@ The different kinds of data inside a DataSpace Ecosystem are classified into 3 t
 
 To provide a traceable and straightforward data sharing processes, we have implemented the publish-, request- and grant workflows for Datasets into the admin web interface that is part of a DataSpace Node. Data sources and streams that are connected with DataSpace Nodes are structured into Datasets that can be requested and shared with other DataSpace Nodes participating in the Ecosystem.
 
-The design of the data sharing process ensures that the control of data and sovereignty remains at each participating stakeholder and his DataSpace Node. The modular and fine-grained data access management enables a Subscription in every possible combination of streams and time-frames for a Dataset - to meet the demands of data providers and consumers.
+The design of the data sharing process ensures that the control of data and sovereignty remains at each participating stakeholder and his DataSpace Node. The modular and fine-grained data access management enables a Subscription in every possible combination of streams and timeframes for a Dataset - to meet the demands of data providers and consumers.
 
 | Workflow          | Description |
 | :---          |    :----    |
 | **Publish a Dataset**   | Dataset owners can publish a Dataset (or just a part of it) to the whole Ecosystem or only to selected DataSpace Nodes. A Publication contains only descriptive metadata and not the data itself. A Publication makes available Datasets visible for other members inside a DataSpace Ecosystem. |
-| **Request a Dataset**   | Every user of a DataSpace Node  within the Ecosystem can create and send a Request for selected streams, sources and time-frame to the owner of the Dataset. |
+| **Request a Dataset**   | Every user of a DataSpace Node  within the Ecosystem can create and send a Request for selected streams, sources and timeframe to the owner of the Dataset. |
 | **Grant/Deny a Request**     |  Dataset owners can grant or deny submitted Requests for their Datasets. Once a Request is confirmed, the synchronization starts and the data can be consumed by the Requester via the integrated dashboards or via APIs. |

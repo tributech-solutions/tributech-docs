@@ -14,5 +14,5 @@ You can find the **client_ID** and **client_secret** if you redirect to the Data
 ![API Keys](../img/verify-data-stream-api-keys.png)
 
 ## 3. Authorize
-Click on the **authorize** button, paste the **client_ID**, paste the **client_secret**, select the **full-access** checkbox and click on the authorize button.
+Click on the **authorize** button, paste the **client_ID**, paste the **client_secret**, select the checkbox for the scope and click on the authorize button.
 ![Enter URL](../img/verify-data-stream-authorize-api.png)

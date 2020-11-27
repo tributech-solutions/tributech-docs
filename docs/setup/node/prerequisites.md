@@ -7,7 +7,7 @@ The requirement to install a DataSpace Node depends significantly on the amount 
 ## Software Requirements
 
 - Any up-to-date Linux distribution
-    - Recommendet: Ubuntu 18.04 LTS or later
+    - Recommended: Ubuntu 18.04 LTS or later
 - Docker
 - Docker-Compose
 
@@ -19,4 +19,4 @@ The requirement to install a DataSpace Node depends significantly on the amount 
 | RAM           |8 GB RAM             |16 GB RAM              |
 | Storage       |100 GB + storage for data depending on config|n/a|
 
-If you have any questions regarding infrastructure requirements, please talk to your contact person at Tributech our send an email to our [Customer Advisory Team](mailto:customer-advisory@tributech.io).
+If you have any questions regarding infrastructure requirements, please talk to your contact person at Tributech or send an email to our [Customer Advisory Team](mailto:customer-advisory@tributech.io).
