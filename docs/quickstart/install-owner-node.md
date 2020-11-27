@@ -22,7 +22,7 @@ Enter personal information for the user-account which will be created on the nod
 ## Select VM Size
 
 
-In the ressource settings it is possible to select the VM Size. The default will work fine for most cases.
+In the resource settings it is possible to select the VM Size. The default will work fine for most cases.
 ![Step 3](img/step3.png)
 
 ## Review and Create

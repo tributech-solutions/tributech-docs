@@ -4,9 +4,9 @@ There are three different variations of the Agent. You can choose to set up whic
 
 ## Hardware Based Agent
 
-The SSM (Sensor Security Module) is our hardware based agent. It reads data directly from sensors and uses a dedicated hardware security module for siging the data-streams.
+The SSM (Sensor Security Module) is our hardware based agent. It reads data directly from sensors and uses a dedicated hardware security module for signing the data-streams.
 
-- This option offers the highest level of security
+- This option offers the highest level of security.
 - Data is signed as close as possible to the data-source.
 - This option should be preferred if you have access to your system on a sensor level.
 
@@ -22,7 +22,7 @@ The DSK Edge Agent is a software-alternative to the Sensor Security Module. Read
 
 ## Integrated Agent
 
-The Data Space Node also comes with an integratet agent. It signs data as soon as it reaches the node. Read more about the [setup](./setup.md).
+The Data Space Node also comes with an integrated agent. It signs data as soon as it reaches the node. Read more about the [setup](./setup.md).
 
 - No additonal setup required.
 - Data is signed as soon as it reaches the node.

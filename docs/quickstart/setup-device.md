@@ -25,7 +25,7 @@ Deploy a Virtual IoT Edge Runtime device from the [Marketplace](https://azuremar
 
 ![step 1](img/edge-runtime-0.png)
 
-The simulated Edge Runtime Device is simply an Ubuntu VM with the Azure IoT Edge Runtime intalled. Choose a good name for the VM. The Size "Standard_B1s" should be fine for the purpose of this guide. If you are planning on processing large ammounts of data consider using a more powerful instance.
+The simulated Edge Runtime Device is simply an Ubuntu VM with the Azure IoT Edge Runtime installed. Choose a good name for the VM. The Size "Standard_B1s" should be fine for the purpose of this guide. If you are planning on processing large amounts of data consider using a more powerful instance.
 
 Configure SSH so that you can log into the VM after it has been created.
 
@@ -40,7 +40,7 @@ After the VM has been created log into the VM via SSH and run the following comm
 
 ## Deploy Edge Runtime Modules
 
-You will need two Azure Edge Runtime modules. A simulated source of sensensor values and the DSK Edge Agent. The job of the data-source is to create simulated values. The Agent is responsible for signing the data and sending the data as well as the signatures to the DSK Node. 
+You will need two Azure Edge Runtime modules. A simulated source of sensor values and the DSK Edge Agent. The job of the data-source is to create simulated values. The Agent is responsible for signing the data and sending the data as well as the signatures to the DSK Node. 
 
 To be able to create signatures the Agent needs to be connected to the Trust-API of the DSK Node. It requires API-Credentials to do so. Credentials for the Trust-API can be obtained similarly to the credentials for the [Data-API](../install-bridge/#find-the-node-credentials). 
 
@@ -70,7 +70,7 @@ After that click on "Update"
 
 ![Step 5](img/simulated-temp-sensor-5.png)
 
-### Add DSK Edge Agnet Module
+### Add DSK Edge Agent Module
 
 The DSK Edge Agent can also be found in the [Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tributechsolutionsgmbh1582568815297.57601ccd-62c3-4842-9f73-3dadd3de5b74?tab=Overview
 ).
@@ -128,7 +128,7 @@ The DSK Edge Agent can also be found in the [Marketplace](https://azuremarketpla
 
 ![Step 3](img/routes-3.png)
 
-#### Set the routes and click creaete
+#### Set the routes and click create
 
 | Name                      | Route                                                                                                                                                                 |
 |---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|

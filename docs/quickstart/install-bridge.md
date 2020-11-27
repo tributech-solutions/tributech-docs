@@ -1,6 +1,6 @@
 # Install DSK IoT Hub Bridge
 
-After the node is successfully deployed we can add an Instance of the Azure IoT Hub. The IoT Hub is an external Service provided by Azure rather than a part of the Data Space Kit. That is why it has to be deployed separately in order to use it. The IoT Hub provides Device-Management and Communication for our Edge Devices. While we use the Azure IoT Hub it is also possible to integrate any other device management solution.
+After the node is successfully deployed we can add an Instance of the Azure IoT Hub. The IoT Hub is an external service provided by Azure rather than a part of the Data Space Kit. That is why it has to be deployed separately in order to use it. The IoT Hub provides Device-Management and Communication for our Edge Devices. While we use the Azure IoT Hub it is also possible to integrate any other device management solution.
 
 ## Find the Node Credentials
 
@@ -46,7 +46,7 @@ Enter the ARM Template that can be found [here](https://github.com/tributech-sol
 
 ## Fill in parameters
 
-Select your ressource group and other parameters. 
+Select your resource group and other parameters. 
 
 ![Step 4](img/iot-hub-bridge-3.png)
 
@@ -67,4 +67,4 @@ Most default parameters will be fine for this deployment. Enter the following va
 
 ## Next Steps
 
-The deployment will run for a couple of minutes. After the deployment is finished there should be a new instance of the Azure IoT Hub in the selected ressource-group. This IoT Hub will be used in the following steps to deploy a simulated Edge Device.
+The deployment will run for a couple of minutes. After the deployment is finished there should be a new instance of the Azure IoT Hub in the selected resource-group. This IoT Hub will be used in the following steps to deploy a simulated Edge Device.

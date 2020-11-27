@@ -1,6 +1,6 @@
 # Create a Dataset
 
-Once the deployment is complete you should be able to access the newly created Node under "[deployment-name].dataspace-node.com". You will be redirected to a login-page, enter the credentials specified in the setup process. After a successfull login the admin-app of the Data Space Node should be visible
+Once the deployment is complete you should be able to access the newly created Node under "[deployment-name].dataspace-node.com". You will be redirected to a login-page, enter the credentials specified in the setup process. After a successfull login, the Dataspace Admin App of the Data Space Node should be visible.
 
 ## Add - New Dataset
 
@@ -22,6 +22,6 @@ Add a new Data Source. Create streams for "Machine Temperature", "Machine Pressu
 
 ## Data Stream IDs
 
-Once the dataset is created it will look somwhat like this. Each of the data streans inside of the dataset now has a uniqe ID. This ID can be copied to the clipboard using the button next to each stream in the column "ID". These DataStreamIDs will later be relevant when setting up the simulated Edge Device.
+Once the dataset is created it will look somwhat like this. Each of the data streams inside of the dataset now has a uniqe ID. This ID can be copied to the clipboard using the button next to each stream in the column "ID". These DataStreamIDs will later be relevant when setting up the simulated Edge Device.
 
 ![Dataset overview](img/dataset.png)

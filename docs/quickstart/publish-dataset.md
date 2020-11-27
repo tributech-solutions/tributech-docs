@@ -1,6 +1,6 @@
 # Publish a Dataset guide
 
-After the Dataset was successfully created it can now be published for sharing 
+After the Dataset was successfully created it can now be published for sharing.
 
 ## Add Publication
 
