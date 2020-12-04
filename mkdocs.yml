@@ -31,15 +31,13 @@ nav:
   - Setup:
       - Overview: setup/overview.md
       - DSK Node:
-          - Setup Options: setup/node/options.md
-          - Prerequisites: setup/node/prerequisites.md
-          - Setup Steps: setup/node/setup.md
-          - Next Steps: setup/node/next-steps.md
+          - Setup Options: setup/node/setup-options.md
+          - Requirements: setup/node/node-requirements.md
+          - Setup Guide: setup/node/setup-guide.md
       - DSK Agent:
           - Setup Options: setup/agent/options.md
           - Prerequisites: setup/agent/prerequisites.md
           - Setup Agent: setup/agent/setup.md
-          - Next Steps: setup/agent/next-steps.md
       - DSK IoT Hub Bridge: setup/iot-hub-bridge/iot-hub-bridge.md
   - Integration:
       - Overview: integration/overview.md
@@ -88,6 +86,7 @@ markdown_extensions:
   #      pygments_style: monokai
   - toc:
       permalink: true
+      toc_depth: 3
 
 extra_css:
   - css/customization.css

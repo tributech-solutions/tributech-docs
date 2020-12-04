@@ -2,7 +2,7 @@
 title: Setup instructions DataSpace Agent
 summary: Description of how to setup a DataSpace Agent.
 authors:
-    - Patrick Lamplmair
+  - Patrick Lamplmair
 ---
 
 # Setup instructions Tributech DataSpace Agent
@@ -13,10 +13,14 @@ The Integrated agent is automatically set up when deploying a node. Data can be 
 
 ## Install DSK Edge Agent on Azure IoT Edge Runtime
 
-Look at our [quick start guide](../../quickstart/overview.md) on how to install the Agent in the Azure IoT Edge Runtime. 
+Look at our [quick start guide](../../quickstart/overview.md) on how to install the Agent in the Azure IoT Edge Runtime.
 
 ## Install DSK Edge Agent on other Platfroms
 
-The Agent can be installed on any platform that supports running docker-contaienrs. 
+The Agent can be installed on any platform that supports running docker-contaienrs.
 
 Self-installation is currently not supported if you want to deploy a DataSpace Agent, please talk to your contact person at Tributech or send an email to our [Customer Advisory Team](https://www.tributech.io/about-us/).
+
+## Next steps
+
+- Check out the [integration](../../integration/agent/examples.md) options of the Agent.
