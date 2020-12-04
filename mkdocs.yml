@@ -37,18 +37,17 @@ nav:
       - DSK Agent:
           - Setup Options: setup/agent/setup-options.md
           - Agent Edge Setup: setup/agent/edge-setup.md
-      #    - Agent Embedded Guide: setup/agent/ssm-setup.md
+          #- Agent Embedded Guide: setup/agent/ssm-setup.md
       - DSK IoT Hub Bridge: setup/iot-hub-bridge/iot-hub-bridge.md
   - Integration:
       - Overview: integration/overview.md
-      - DSK Node APIs:
-          - Overview: integration/node-api/overview.md
-          - Integration Examples: integration/node-api/integration-examples.md
-          - API Authentication: integration/node-api/api-authentication.md
-          - Next Steps: integration/node-api/next-steps.md
-      - Agent Edge Interface:
-          - Integration Examples: integration/agent/examples.md
-          - Next Steps: integration/agent/next-steps.md
+      - DSK Node:
+          - Overview: integration/node/overview.md
+          - Integration Examples: integration/node/integration-examples.md
+          - Swagger UI Authorization: integration/node/swagger-ui-authorization.md
+      - DSK Agent:
+          - Agent Edge: integration/agent/edge.md
+          #- Agent Embedded: integration/agent/ssm.md
 
 # Configuration
 theme:

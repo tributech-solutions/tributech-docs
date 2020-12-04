@@ -9,3 +9,7 @@ There is an existing data-source for OPC UA Data. If you need more information f
 ## Custom data-source
 
 It is possible to implement your own value-source. It requires the values to be sent as messages over a message bus to the agent. If you are interested in creating your own value source feel free to [contact us](https://www.tributech.io/about-us/).
+
+# Next Steps
+
+- Read about [node integration](../node-api/overview.md)

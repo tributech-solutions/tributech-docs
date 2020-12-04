@@ -2,8 +2,18 @@
 title: Integrate a data source guide
 summary: Description of how to integrate data sources.
 authors:
-    - Patrick Lamplmair
+  - Patrick Lamplmair
 ---
+
+In this guide you will learn how you can consume your own Datasets and Subscriptions via the built in APIs of your DataSpace Node.
+
+## Prerequisites
+
+The prerequisits for consuming data from a Subscription via the integrated APIs are the following:
+
+- A granted Subscription to a Dataset (you are also able to visualize your own Datasets)
+- Data exists on owner side within the selected timeframe (Owner DB)
+- Data is already synchronised on the consumer side (Consumer DB)
 
 # Integrate a data source guide
 
@@ -11,11 +21,11 @@ In this guide you will learn how-to integrate a new data source via the built in
 
 - [Prerequisites](/guides/guide-integrate-data-source/#prerequisites)
 - [Options for the data integration](/guides/guide-integrate-data-source/#options-for-the-data-integration)
-    - [Integration via Trust API](/guides/guide-integrate-data-source/#integration-via-trust-api)
-    - [Integration via Data API](/guides/guide-integrate-data-source/#integration-via-data-api)
+  - [Integration via Trust API](/guides/guide-integrate-data-source/#integration-via-trust-api)
+  - [Integration via Data API](/guides/guide-integrate-data-source/#integration-via-data-api)
 - [Further support for connecting data](/guides/guide-integrate-data-source/#further-support-connecting-data)
-    - [External data storage support](/guides/guide-integrate-data-source/#external-data-storage-support)
-    - [Preview: Plugable connectors & data conversion pipelines](/guides/guide-integrate-data-source/#preview-plugable-connectors-data-conversion-pipelines)
+  - [External data storage support](/guides/guide-integrate-data-source/#external-data-storage-support)
+  - [Preview: Plugable connectors & data conversion pipelines](/guides/guide-integrate-data-source/#preview-plugable-connectors-data-conversion-pipelines)
 - [Next step: publish a Dataset](/guides/guide-integrate-data-source/#next-step-publish-a-dataset)
 
 ## Prerequisites
