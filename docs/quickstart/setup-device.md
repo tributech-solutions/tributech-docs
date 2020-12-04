@@ -39,7 +39,7 @@ After the VM has been created log into the VM via SSH and run the following comm
 
 ## Deploy Edge Runtime Modules
 
-You will need two Azure Edge Runtime modules. A simulated source of sensor values and the DSK Edge Agent. The job of the data-source is to create simulated values. The Agent is responsible for signing the data and sending the data as well as the signatures to the DSK Node.
+You will need two Azure Edge Runtime modules. A simulated source of sensor values and the DSK Agent Edge. The job of the data-source is to create simulated values. The Agent is responsible for signing the data and sending the data as well as the signatures to the DSK Node.
 
 To be able to create signatures the Agent needs to be connected to the Trust-API of the DSK Node. It requires API-Credentials to do so. Credentials for the Trust-API can be obtained similarly to the credentials for the [Data-API](../install-bridge/#find-the-node-credentials).
 
@@ -69,11 +69,11 @@ After that click on "Update"
 
 ![Step 5](img/simulated-temp-sensor-5.png)
 
-### Add DSK Edge Agent Module
+### Add DSK Agent Edge Module
 
-The DSK Edge Agent can also be found in the [Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tributechsolutionsgmbh1582568815297.57601ccd-62c3-4842-9f73-3dadd3de5b74?tab=Overview).
+The DSK Agent Edge can also be found in the [Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tributechsolutionsgmbh1582568815297.57601ccd-62c3-4842-9f73-3dadd3de5b74?tab=Overview).
 
-#### Create a new DSK Edge Agent from the Marketplace
+#### Create a new DSK Agent Edge from the Marketplace
 
 ![Step 1](img/agent-1.png)
 

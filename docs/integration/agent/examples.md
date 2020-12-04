@@ -1,6 +1,6 @@
 # Agent Integration
 
-The DSK Edge Agent supports different data-sources. These are implemented as so-called value-sources. 
+The DSK Agent Edge supports different data-sources. These are implemented as so-called value-sources.
 
 ## OPC UA
 
