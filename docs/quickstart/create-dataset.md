@@ -1,6 +1,6 @@
 # Create a Dataset
 
-Once the deployment is complete you should be able to access the newly created Node under "[deployment-name].dataspace-node.com". You will be redirected to a login-page, enter the credentials specified in the setup process. After a successfull login, the Dataspace Admin App of the Data Space Node should be visible.
+Once the deployment is complete you should be able to access the newly created Node under "[deployment-name].dataspace-node.com". You will be redirected to a login-page, enter the credentials specified in the setup process. After a successfull login, the Dataspace Admin App of the DataSpace Node should be visible.
 
 ## Add - New Dataset
 

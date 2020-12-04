@@ -40,7 +40,7 @@ nav:
           - Prerequisites: setup/agent/prerequisites.md
           - Setup Agent: setup/agent/setup.md
           - Next Steps: setup/agent/next-steps.md
-      - DSK IoT Hub Bridge: setup/iot-hub-bridge.md
+      - DSK IoT Hub Bridge: setup/iot-hub-bridge/iot-hub-bridge.md
   - Integration:
       - Overview: integration/overview.md
       - DSK Node APIs:

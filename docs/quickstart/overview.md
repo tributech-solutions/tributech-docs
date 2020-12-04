@@ -1,10 +1,10 @@
 # Quickstart Guide
 
-This guide describes how to quickly get up and running with the Tributech Data Space Kit. The easiest way to get startet with only a few clicks is in the Azuer Cloud. While the Azure Cloud is the quickest and easiest way to get started, other options for deployment, including on premise systems, are also available. Feel free to [contact us](https://www.tributech.io/about-us/).
+This guide describes how to quickly get up and running with the Tributech DataSpace Kit. The easiest way to get startet with only a few clicks is in the Azuer Cloud. While the Azure Cloud is the quickest and easiest way to get started, other options for deployment, including on premise systems, are also available. Feel free to [contact us](https://www.tributech.io/about-us/).
 
 ## Demonstrated Use-Case
 
-This quickstart guide demonstrates how the Data Space Kit can be used to share data between two parties. This could for example enable you to share sensor data from production systems securely with a provider of machine learning services to enable predictive maintenance. The guide shows a Hello-World example that covers all the important features of the Data Space Kit. It includes a simulated edge device which continuously generates several streams of simulated sensor-data. This dataset is then sahred with a Data-Consumer node. If the demo environment works for you, we can upgrade it into a full production ready system. Feel free to [contact us](https://www.tributech.io/about-us/).
+This quickstart guide demonstrates how the DataSpace Kit can be used to share data between two parties. This could for example enable you to share sensor data from production systems securely with a provider of machine learning services to enable predictive maintenance. The guide shows a Hello-World example that covers all the important features of the DataSpace Kit. It includes a simulated edge device which continuously generates several streams of simulated sensor-data. This dataset is then sahred with a Data-Consumer node. If the demo environment works for you, we can upgrade it into a full production ready system. Feel free to [contact us](https://www.tributech.io/about-us/).
 
 ![Data-Owner Data-Consumer usecase overview](img/usecase-overview.jpg)
 

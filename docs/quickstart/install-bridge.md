@@ -1,10 +1,10 @@
 # Install DSK IoT Hub Bridge
 
-After the node is successfully deployed we can add an Instance of the Azure IoT Hub. The IoT Hub is an external service provided by Azure rather than a part of the Data Space Kit. That is why it has to be deployed separately in order to use it. The IoT Hub provides Device-Management and Communication for our Edge Devices. While we use the Azure IoT Hub it is also possible to integrate any other device management solution.
+After the node is successfully deployed we can add an Instance of the Azure IoT Hub. The IoT Hub is an external service provided by Azure rather than a part of the DataSpace Kit. That is why it has to be deployed separately in order to use it. The IoT Hub provides Device-Management and Communication for our Edge Devices. While we use the Azure IoT Hub it is also possible to integrate any other device management solution.
 
 ## Find the Node Credentials
 
-For the IoT Hub to be able to connect to your new node it requires credentials. These can be found in the web interface. Note them down for later steps. 
+For the IoT Hub to be able to connect to your new node it requires credentials. These can be found in the web interface. Note them down for later steps.
 
 ### Open Administrative Settings
 
@@ -24,7 +24,7 @@ Go back to the home-page and open the Data-API section in the left navigation ba
 
 ### Data-API
 
-A new tab will be opened showing the documentation of the Data-API. The URL will be something like https://data-api.my-company-xyz.dataspace-node.com/ with the Name of your Node instead of "my-company-xyz". Note this URL and the Values seen in the Authorization window. 
+A new tab will be opened showing the documentation of the Data-API. The URL will be something like https://data-api.my-company-xyz.dataspace-node.com/ with the Name of your Node instead of "my-company-xyz". Note this URL and the Values seen in the Authorization window.
 
 ![Credentials Step 4](img/credentials-3.png)
 
@@ -46,16 +46,16 @@ Enter the ARM Template that can be found [here](https://github.com/tributech-sol
 
 ## Fill in parameters
 
-Select your resource group and other parameters. 
+Select your resource group and other parameters.
 
 ![Step 4](img/iot-hub-bridge-3.png)
 
 ## Fill in node credentials
 
-Most default parameters will be fine for this deployment. Enter the following values and click on "Purchase". 
+Most default parameters will be fine for this deployment. Enter the following values and click on "Purchase".
 
 | Setting             | Value                                                                 |
-|---------------------|-----------------------------------------------------------------------|
+| ------------------- | --------------------------------------------------------------------- |
 | Image Tag           | Current version of the DSK you are using. The default is likely fine. |
 | Data Api Url        | Url from the browser-window from before.                              |
 | Identity Server Url | Toke Url from before. Without the "/connect/token" in the end.        |
