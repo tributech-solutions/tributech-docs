@@ -36,4 +36,4 @@ Self-installation is currently not supported if you want to deploy a DataSpace A
 
 ## Next steps
 
-- Check out the [integration](../../integration/agent/examples.md) options of the Agent.
+- Check out the [integration](../../integration/agent/edge/integration.md) options of the Agent.

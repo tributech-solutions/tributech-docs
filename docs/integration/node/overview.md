@@ -24,4 +24,4 @@ Both the Trust API and the Data API come with a Swagger UI. Please follow [our g
 ## Next steps
 
 - Check out our [Integration Examples](./integration-examples.md)
-- Learn about [Agent Edge Integration](../agent/edge.md)
+- Learn about [Agent Edge Integration](../agent/edge/integration.md)

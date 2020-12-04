@@ -43,4 +43,4 @@ This option should be preferred if you are looking to use a software system (for
 Data is signed as soon as it reaches the node.
 
 **Integration:**<br />
-Data can be sent to the integrated agent through the Trust-API - have a look at [node integration](../../integration/node-api/overview.md). API Clients for C# can be found [here](https://github.com/tributech-solutions/tributech-dsk-api-clients).
+Data can be sent to the integrated agent through the Trust-API - have a look at [node integration](../../integration/node/overview.md). API Clients for C# can be found [here](https://github.com/tributech-solutions/tributech-dsk-api-clients).

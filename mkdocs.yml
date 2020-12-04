@@ -46,7 +46,9 @@ nav:
           - Integration Examples: integration/node/integration-examples.md
           - Swagger UI Authorization: integration/node/swagger-ui-authorization.md
       - DSK Agent:
-          - Agent Edge: integration/agent/edge.md
+          - Agent Edge:
+              - Integration: integration/agent/edge/integration.md
+              - Configuration: integration/agent/edge/configuration.md
           #- Agent Embedded: integration/agent/ssm.md
 
 # Configuration
