@@ -35,9 +35,9 @@ nav:
           - Requirements: setup/node/node-requirements.md
           - Setup Guide: setup/node/setup-guide.md
       - DSK Agent:
-          - Setup Options: setup/agent/options.md
-          - Prerequisites: setup/agent/prerequisites.md
-          - Setup Agent: setup/agent/setup.md
+          - Setup Options: setup/agent/setup-options.md
+          - Agent Edge Setup: setup/agent/edge-setup.md
+      #    - Agent Embedded Guide: setup/agent/ssm-setup.md
       - DSK IoT Hub Bridge: setup/iot-hub-bridge/iot-hub-bridge.md
   - Integration:
       - Overview: integration/overview.md

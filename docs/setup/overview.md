@@ -15,12 +15,12 @@ The ecosystem consists of the DataSpace Hub and is managed & operated by Tribute
 ## DSK Node
 
 The DataSpace Node serves as a platform and is most likely the part of the architecture that you'll want to setup first. It can either be managed or self-hosted.
-Please refer to the [detailed guide for the DSK Node setup](./node/options.md) to learn about its setup and the available setup options.
+Please refer to the [detailed guide for the DSK Node setup](./node/setup-options.md) to learn about its setup and the available setup options.
 
 ## DSK Agent
 
 The device that is responsible for transimitting auditable data is the DSK Agent. This device can be an Embedded device or also an Edge device.
-Please refer to the [detailed guide for the DSK Agent setup](./agent/options.md) to learn about its setup and the available setup options.
+Please refer to the [detailed guide for the DSK Agent setup](./agent/setup-options.md) to learn about its setup and the available setup options.
 
 ## DSK IoT Hub Bridge
 
