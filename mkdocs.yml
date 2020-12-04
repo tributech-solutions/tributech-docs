@@ -25,9 +25,9 @@ nav:
       - Subscribe to Dataset: quickstart/subscribe-dataset.md
   - Introduction:
       - Introduction: introduction/introduction.md
-      - Overview: dsk-explained/dsk-overview.md
-      - DSK Terminology: dsk-explained/terminology.md
-      - DSK Topology: dsk-explained/system-topology.md
+      - Overview: introduction/dsk-overview.md
+      - DSK Terminology: introduction/terminology.md
+      - DSK Topology: introduction/system-topology.md
   - Setup:
       - Overview: setup/overview.md
       - DSK Node:
