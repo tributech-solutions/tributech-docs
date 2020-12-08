@@ -18,7 +18,7 @@ The required resources to install a DSK Agent Edge are negligible in comparison 
 | CPU  | 1 Core              | 2 Cores               |
 | RAM  | 1 GB Ram            | 2 GB Ram              |
 
-The DSK Agent Edge itself does not actually consume this much RAM; this are the requirements for the whole system. Keep in mind that these requirements strongly depend on the actual load of the agent. These are minimum requirents for rather small to medium amounts of data. If high volumes of data have to be processed the requirements are higher.
+The DSK Agent Edge itself does not actually consume this much RAM; this are the requirements for the whole system. Keep in mind that these requirements strongly depend on the actual load of the agent. These are minimum requirements for rather small to medium amounts of data. If high volumes of data have to be processed the requirements are higher.
 
 If you have any questions regarding infrastructure requirements, please talk to your contact person at Tributech or send an email to our [Customer Advisory Team](mailto:customer-advisory@tributech.io).
 

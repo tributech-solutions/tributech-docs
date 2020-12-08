@@ -1,6 +1,6 @@
 # Subscribe to Dataset
 
-After the setup of the consumer node is complete, it can subscibe to the dataset that was created before.
+After the setup of the consumer node is complete, it can subscribe to the dataset that was created before.
 
 ## Data preview
 
@@ -13,7 +13,8 @@ In the data preview you can browse through the list of available data sources an
 ### Select sources and streams
 
 Select the sources and stream you want to consume.
->Note: You can selectively choose data streams out of one dataset. You don't have to subscribe to all data streams of a dataset.
+
+> Note: You can selectively choose data streams out of one dataset. You don't have to subscribe to all data streams of a dataset.
 
 ![Select](img/request-dataset-select.png)
 
@@ -39,7 +40,7 @@ After the Request is sent, a new entry appears in the "Subscriptions" sections o
 
 ![Pending](img/request-dataset-pending.png)
 
-Once your Request is granted by the owner, the state changes to **granted** and the synchronisation process starts - depending on the selcted timeframe and available data on the owner side.
+Once your Request is granted by the owner, the state changes to **granted** and the synchronisation process starts - depending on the selected timeframe and available data on the owner side.
 
 ![Granted](img/request-dataset-granted.png)
 

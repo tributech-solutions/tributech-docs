@@ -43,7 +43,7 @@ You will need two Azure Edge Runtime modules. A simulated source of sensor value
 
 To be able to create signatures the Agent needs to be connected to the Trust-API of the DSK Node. It requires API-Credentials to do so. Credentials for the Trust-API can be obtained similarly to the credentials for the [Data-API](../install-bridge/#find-the-node-credentials).
 
-### Add Simulated Temperatuer Sensor Module
+### Add Simulated Temperature Sensor Module
 
 The Simulated Temperature Sensor is provided by Azure IoT and can be found in the [Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/azure-iot.simulated-temperature-sensor?tab=Overview).
 
