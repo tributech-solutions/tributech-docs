@@ -163,3 +163,7 @@ Finish the process by clicking "Review + create" and following the process.
 You can verify that everything works as expected by checking the Overview dashboard of your IoT Hub in the Azure Portal:
 
 ![Overview dashboard IoT Hub](img/iot-hub-messages-overview.jpg)
+
+---
+
+## [Next: Publish Dataset](./publish-dataset.md)
