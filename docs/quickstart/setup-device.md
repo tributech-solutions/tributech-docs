@@ -164,6 +164,8 @@ You can verify that everything works as expected by checking the Overview dashbo
 
 ![Overview dashboard IoT Hub](img/iot-hub-messages-overview.jpg)
 
+You can also already create your first dashboard and have the simulated data presented visually. Just follow the [guide for consuming data via Dashboards](./data-consuming/data-via-dashboards.md). Note that for this case you would be in the position of data owner.
+
 ---
 
 ## [Next: Publish Dataset](./publish-dataset.md)

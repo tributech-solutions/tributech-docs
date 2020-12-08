@@ -23,6 +23,9 @@ nav:
       - Publish Dataset: quickstart/publish-dataset.md
       - Install Consumer Node: quickstart/install-consumer-node.md
       - Subscribe to Dataset: quickstart/subscribe-dataset.md
+      - Consuming data:
+          - Via Dashboards: quickstart/data-consuming/data-via-dashboards.md
+          - Via APIs: quickstart/data-consuming/data-via-apis.md
   - Introduction:
       - Introduction: introduction/introduction.md
       - Overview: introduction/dsk-overview.md

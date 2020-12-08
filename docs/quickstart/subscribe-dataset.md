@@ -42,3 +42,5 @@ Once your Request is granted by the owner, the state changes to **granted** and 
 ![Granted](img/request-dataset-granted.png)
 
 > Note: Of course the data owner also has the possibility to revoke access to the shared data stream at all times.
+
+## [Next: Consuming data via Dashboards](./data-consuming/data-via-dashboards.md)
