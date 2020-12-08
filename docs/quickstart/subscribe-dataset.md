@@ -1,42 +1,39 @@
-# Subscribe to Dataset
+# Subscribe to a Dataset
 
-After the setup of the consumer node is complete, it can subscribe to the dataset that was created before.
+After the setup of the consumer node is complete, the consumer node can subscribe to the dataset that was created before with the owner node.
+Execute the following steps by accessing the DataSpace Admin App of the consumer node, e.g. in a new private browser window.
 
-## Data preview
+## Create the Request for a Subscription
 
-In the data preview you can browse through the list of available data sources and streams and view their metadata.
+You can see all available data streams by navigating to "DataSpace Hub" in the left side menu of the DataSpace Admin App.
+In this data preview you can browse through the list of available data sources and streams and view their metadata.
 
 ![Data Preview](img/request-dataset-data-preview.png)
 
-## Configure a Request
+To create a Request to Subscribe to a data stream, click on the "Subscribe to Data" button.
 
-### Select sources and streams
-
-Select the sources and stream you want to consume.
+This will open up a dialog similar to the one shown in the screenshot below. Select the data streams for which you would like to send the Subscription request for and click "Next Step".
 
 > Note: You can selectively choose data streams out of one dataset. You don't have to subscribe to all data streams of a dataset.
 
 ![Select](img/request-dataset-select.png)
 
-### Select a timeframe
-
-Select the timeframe in which you want to subscribe and consume the selected data streams. The dates for **"Available from"** and **"Available to"** of each data stream is also visible via the Request form.
+Next, you can select the timeframe for which you want to subscribe and consume the selected data streams. The dates for when the stream is generally available ("Available from" and "Available to") of each data stream are also shown.
 
 ![timeframe](img/request-dataset-time-frame.png)
 
-### Accept terms and conditions
+In the next step, you might have to agree to terms and conditions of use, if the data owner has defined such a document.
+Finally, once you have selected the data sources and streams of your choice, set the timeframe and agreed to the terms and conditions of use, you can send a Request to the owner of the selected dataset by clicking "Send Request to Subscribe".
 
-If the owner of the dataset has defined terms and conditions of use, you have to agree with those before you can send a Request to the owner.
-
-### Send a Request
-
-Once you have selected the data sources and streams of your choice, set the timeframe and agreed to the terms and conditions of use, you can send a Request to the owner of the selected dataset.
+> Note: You also have the possibility to add a comment for the data owner to your Request.
 
 ![Review](img/request-dataset-review.png)
 
-## The state of your Subscription
+## Your Dataset Subscription
 
-After the Request is sent, a new entry appears in the "Subscriptions" sections of your DataSpace Node. The initial state of this Subscription is "pending" until the owner of the dataset grant or denies your Request.
+After the Request has been sent, a new entry appears in the "Subscriptions" sections of your DataSpace Node (again reachable through the left side menu). The initial state of this Subscription is "pending" until the owner of the dataset grants or denies your Request.
+
+You can switch back to the DataSpace Admin App of the Data Owner Node and grant the request.
 
 ![Pending](img/request-dataset-pending.png)
 
@@ -44,6 +41,4 @@ Once your Request is granted by the owner, the state changes to **granted** and 
 
 ![Granted](img/request-dataset-granted.png)
 
-However, if the owner denies your Request the state of your Subscription changes to "Revoked by Owner".
-
-![Revoked](img/request-dataset-revoked.png)
+> Note: Of course the data owner also has the possibility to revoke access to the shared data stream at all times.

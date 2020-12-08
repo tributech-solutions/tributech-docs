@@ -35,7 +35,7 @@ For this example, select all the streams for the data source.
 
 Next, select a timeframe for your Publication. This timeframe sets the period that possible data-consumers can request to subscribe for. The real consumable timeframe depends on the availability of each stream. The available date for each stream is defined by the metadata field "Available from" that is set initially when the stream of the Dataset is created.
 
-![Select Timeframe](img/publish-publish-dataset-time-frame.png)
+![Select Timeframe](img/publish-dataset-time-frame.png)
 
 ### Select a contract
 
