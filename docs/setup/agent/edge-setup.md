@@ -26,13 +26,14 @@ If you have any questions regarding infrastructure requirements, please talk to 
 
 ### Install DSK Agent Edge on Azure IoT Edge Runtime
 
+The DSK Agent Edge can be installed on the Azure IoT Edge Runtime easiest through the <a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tributechsolutionsgmbh1582568815297.57601ccd-62c3-4842-9f73-3dadd3de5b74?tab=Overview" target="_blank">Azure Marketplace offer</a>.<br />
 Have a look at our [quick start guide](../../quickstart/overview.md) to learn how to install the Agent Edge in the Azure IoT Edge Runtime.
 
 ### Install DSK Agent Edge on other platforms
 
-The Agent can be installed on any platform that supports running docker-containers.
+The Agent can be installed on any platform that supports running docker-containers. A pre-built docker-compose is ready for use - contact our [Customer Advisory Team](https://www.tributech.io/about-us/) for details.
 
-Self-installation is currently not supported if you want to deploy a DataSpace Agent, please talk to your contact person at Tributech or send an email to our [Customer Advisory Team](https://www.tributech.io/about-us/).
+Note that self-installation is currently not supported. If you want to deploy a DataSpace Agent on other platforms, please talk to your contact person at Tributech or send an email to our [Customer Advisory Team](https://www.tributech.io/about-us/).
 
 ## Next steps
 

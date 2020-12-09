@@ -1,6 +1,6 @@
 # Installing the data owner node
 
-A demo of a Tributech DataSpace Node can be deployed with only a few clicks through the [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tributech.tributech_dataspace_kit?tab=Overview), as explained below.
+A demo of a Tributech DataSpace Node can be deployed with only a few clicks through the [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tributechsolutionsgmbh1582568815297.8aa9010b-3dd5-43e0-a4b6-53e2ea552e4a?tab=Overview), as explained below.
 
 ### Go to the Azure Marketplace
 

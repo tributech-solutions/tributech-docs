@@ -10,7 +10,11 @@ If you want to join a DataSpace, please slelect one of the follwoing options:
 
 ## Install a DataSpace Node on Azure
 
+A node on Azure can be installed through <a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tributechsolutionsgmbh1582568815297.8aa9010b-3dd5-43e0-a4b6-53e2ea552e4a?tab=Overview" target="_blank">the Azure Marketplace offer</a>.
+
 See the [quick start guide](../../quickstart/install-owner-node.md) on how to setup a node on Azure in the public Dataspace Ecosystem.
+
+Note, that in order to deploy a node to a custom ecosystem, other then the default Azure Trial ecosystem, you will have to contact us so that we can make it available for you. Please contact our [Customer Advisory Team](mailto:customer-advisory@tributech.io) for such cases.
 
 ## Install a DataSpace Node outside of Azure
 

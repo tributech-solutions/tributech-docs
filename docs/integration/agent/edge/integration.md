@@ -2,10 +2,10 @@
 
 ## Integration
 
-For DSK Agent Edge integration you can use your existing connectors since the Agent is integrated at the message bus layer.<br/>
-The DSK Agent Edge thus supports different data-sources.<br/>
-These are implemented as so-called value-sources, one of which could e.g. be an OPC UA implementation.<br/>
-If you are interested in creating your own value-source feel free to [contact us](https://www.tributech.io/about-us/).
+Integration of the DSK Agent Edge is simple since you can use your default exisiting connectors.
+This is due to the fact, that the agent is integrated at the level of the message bus. <br />
+MQTT is supported by standard, hence the Agent is compatible with all major message brokers & IoT Runtime solutions. It is e.g. tested and deployed in production with Mosquitto and RabbitMQ.</br>
+Conclusively, you can use your exisiting connectors, all you have to do is adapt the configuration / routing.
 
 Configuration Options for the DSK Agent Edge can be found [here](./configuration.md).
 

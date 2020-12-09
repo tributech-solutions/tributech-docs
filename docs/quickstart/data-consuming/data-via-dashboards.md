@@ -39,7 +39,7 @@ To visualize your data via the dashboarding system the only thing you have to do
 **2. Copy and paste the JSON Model template -** First, prepare the JSON template and adjust to your unique stream ids.
 
 - If you are Owner, then copy the json of <a href="https://github.com/tributech-solutions/tributech-dsk-docs/blob/master/docs/assets/dashboard-templates/owner-db-template.json" target="_blank">the Owner DB JSON template</a>
-- If you are Consumer, then copy the json of <a href="https://github.com/tributech-solutions/tributech-dsk-docs/blob/master/docs/assets/dashboard-templates/owner-db-template.json" target="_blank">the Owner DB JSON template</a>
+- If you are Consumer, then copy the json of <a href="https://github.com/tributech-solutions/tributech-dsk-docs/blob/master/docs/assets/dashboard-templates/consumer-db-template.json" target="_blank">the Consumer DB JSON template</a>
 
 Copy the contents to a editor of your choice. In the editor, paste the template JSON and search for "ReplaceWith".
 There should be 4 times where you must replace the `<ReplaceWith...>` strings with the IDs of your data streams, which you can find [as described here](../../create-dataset/#successful-creation-of-the-dataset).

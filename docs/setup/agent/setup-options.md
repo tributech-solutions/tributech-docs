@@ -8,7 +8,7 @@ There are three variants of the DSK Agent available:
 
 ## DSK Agent Edge
 
-The DSK Agent Edge is the most common Agent variant and is perfect for all software-based use-cases. It is available on the Azure Marketplace for straight-forward installation or also in the form of a ready-to-use docker-compose file. Learn how to set it up in our [specific setup guide](./edge-setup.md).
+The DSK Agent Edge is the most common Agent variant and is perfect for all software-based use-cases. It is available <a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tributechsolutionsgmbh1582568815297.57601ccd-62c3-4842-9f73-3dadd3de5b74?tab=Overview" target="_blank">on the Azure Marketplace</a> for straight-forward installation or also in the form of a ready-to-use docker-compose file. Learn how to set it up in our [specific setup guide](./edge-setup.md).
 
 **When to choose:**<br />
 This option should be preferred if you have access to the controllers of the machines on the shop-floor but not to the sensors directly (e.g. Industrial IoT Gateway).
