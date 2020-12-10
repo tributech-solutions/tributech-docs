@@ -27,10 +27,9 @@ nav:
           - Via Dashboards: quickstart/data-consuming/data-via-dashboards.md
           - Via APIs: quickstart/data-consuming/data-via-apis.md
   - Introduction:
-      - Introduction: introduction/introduction.md
-      - Overview: introduction/dsk-overview.md
-      - DSK Terminology: introduction/terminology.md
-      - DSK Topology: introduction/system-topology.md
+      - Product Overview: introduction/product-overview.md
+      - Architecture: introduction/architecture.md
+      - Auditable data: introduction/auditable-data.md
   - Setup:
       - Overview: setup/overview.md
       - DSK Node:
