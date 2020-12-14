@@ -11,49 +11,50 @@ copyright: 'Copyright &copy; 2018 - <script>document.write(new Date().getFullYea
 repo_name: 'tributech-solutions/tributech-DSK-docs'
 repo_url: 'https://github.com/tributech-solutions/tributech-DSK-docs'
 
-# Navigation 
+# Navigation
 nav:
   - Home: index.md
   - Quick Start:
-    - Overview: quickstart/overview.md
-    - Install Owner Node: quickstart/install-owner-node.md
-    - Create a Dataset: quickstart/create-dataset.md
-    - Install DSK IoT Bridge: quickstart/install-bridge.md
-    - Setup IoT Device: quickstart/setup-device.md
-    - Publish Dataset: quickstart/publish-dataset.md
-    - Install Consumer Node: quickstart/install-consumer-node.md
-    - Subscribe to Dataset: quickstart/subscribe-dataset.md
-  - DSK Explained:
-    - Overview: dsk-explained/dsk-overview.md
-    - DSK Terminology: dsk-explained/terminology.md
-    - DSK Topology: dsk-explained/system-topology.md
-    - DSK Explained: dsk-explained/dataspace-kit-explained.md
+      - Overview: quickstart/overview.md
+      - Install Owner Node: quickstart/install-owner-node.md
+      - Create a Dataset: quickstart/create-dataset.md
+      - Install DSK IoT Bridge: quickstart/install-bridge.md
+      - Setup IoT Device: quickstart/setup-device.md
+      - Publish Dataset: quickstart/publish-dataset.md
+      - Install Consumer Node: quickstart/install-consumer-node.md
+      - Subscribe to Dataset: quickstart/subscribe-dataset.md
+      - Consuming data:
+          - Via Dashboards: quickstart/data-consuming/data-via-dashboards.md
+          - Via APIs: quickstart/data-consuming/data-via-apis.md
+  - Introduction:
+      - Product Overview: introduction/product-overview.md
+      - Architecture: introduction/architecture.md
+      - Auditable data: introduction/auditable-data.md
   - Setup:
-    - Overview: setup/overview.md
-    - DSK Node:
-      - Setup Options: setup/node/options.md
-      - Prerequisites: setup/node/prerequisites.md
-      - Setup Steps:  setup/node/setup.md
-      - Next Steps: setup/node/next-steps.md
-    - DSK Agent:
-      - Setup Options: setup/agent/options.md
-      - Prerequisites: setup/agent/prerequisites.md
-      - Setup Agent : setup/agent/setup.md
-      - Next Steps: setup/agent/next-steps.md
-    - DSK IoT Hub Bridge: setup/iot-hub-bridge.md
+      - Overview: setup/overview.md
+      - DSK Node:
+          - Setup Options: setup/node/setup-options.md
+          - Requirements: setup/node/node-requirements.md
+          - Setup Guide: setup/node/setup-guide.md
+      - DSK Agent:
+          - Setup Options: setup/agent/setup-options.md
+          - Agent Edge Setup: setup/agent/edge-setup.md
+          #- Agent Embedded Guide: setup/agent/ssm-setup.md
+      - DSK IoT Hub Bridge: setup/iot-hub-bridge/iot-hub-bridge.md
   - Integration:
-    - Overview: integration/overview.md
-    - DSK Node APIs:
-      - Overview: integration/node-api/overview.md
-      - Integration Examples: integration/node-api/integration-examples.md
-      - API Authentication: integration/node-api/api-authentication.md
-      - Next Steps: integration/node-api/next-steps.md
-    - Agent Edge Interface:
-      - Integration Examples: integration/agent/examples.md
-      - Next Steps: integration/agent/next-steps.md
+      - Overview: integration/overview.md
+      - DSK Node:
+          - Overview: integration/node/overview.md
+          - Integration Examples: integration/node/integration-examples.md
+          - Swagger UI Authorization: integration/node/swagger-ui-authorization.md
+      - DSK Agent:
+          - Agent Edge:
+              - Integration: integration/agent/edge/integration.md
+              - Configuration: integration/agent/edge/configuration.md
+          #- Agent Embedded: integration/agent/ssm.md
 
 # Configuration
-theme: 
+theme:
   name: material
   feature:
     taps: true
@@ -84,10 +85,11 @@ markdown_extensions:
   - codehilite:
       guess_lang: false
       use_pygments: true
-#      noclasses: true
-#      pygments_style: monokai
+  #      noclasses: true
+  #      pygments_style: monokai
   - toc:
       permalink: true
+      toc_depth: 3
 
 extra_css:
   - css/customization.css

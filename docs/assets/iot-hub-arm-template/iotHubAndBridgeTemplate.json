@@ -1,298 +1,295 @@
 {
-	"$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-	"contentVersion": "1.0.0.0",
-	"parameters": {
-		"location": {
-			"type": "string",
-			"defaultValue": "[resourceGroup().location]",
-			"metadata": {
-				"description": "Location for the resources."
-			}
-		},
-		"iotHubName": {
-			"type": "string",
-			"defaultValue": "[concat('dsk-iot-hub-', uniqueString(resourceGroup().id, utcNow()))]",
-			"metadata": {
-				"description": "A unique name for the DSK IoT Hub."
-			}
-		},
-		"functionAppName": {
-			"type": "string",
-			"defaultValue": "[concat('dsk-iot-hub-bridge-func-app-', uniqueString(resourceGroup().id, utcNow()))]",
-			"metadata": {
-				"description": "A unique name for the DSK IoT Hub Bridge Function App, and its relate assets once it is created."
-			}
-		},		
-		"iotHubSkuName": {
-			"type": "string",
-			"defaultValue": "S1",
-			"metadata": {
-				"description": "Pricing and scale tier."
-			}
-		},
-		"iotHubSkuUnits": {
-			"type": "int",
-			"defaultValue": 1,
-			"metadata": {
-				"description": "Number of IoT hub units."
-			}
-		},
-		"iotHubDevicetoCloudPartitions": {
-			"type": "int",
-			"defaultValue": 4,
-			"metadata": {
-				"description": "Device-to-cloud partitions."
-			}
-		},
-		"appServicePlanSkuCode": {
-			"type": "string",
-			"defaultValue": "P1v2"
-		},
-		"appServicePlanNumberOfWorkers": {
-			"type": "int",
-			"defaultValue": 1
-		},
-		"imageTag": {
-			"type": "string",
-			"defaultValue": "1.7.0",
-			"metadata": {
-				"description": "The Docker image tag (aka version) of the DSK IoT Hub Bridge Function App to be deployed."
-			}
-		},
-		"dataApiUrl": {
-			"type": "string",
-			"defaultValue": "https://data-api.dev-node-a.dataspace-node.com",
-			"metadata": {
-				"description": "The URL of the Data-API to which the DSK IoT Hub Bridge should send the Values (without trailing slash)."
-			}
-		},
-		"identityServerUrl": {
-			"type": "string",
-			"defaultValue": "https://id.azuretrial.dataspace-hub.com",
-			"metadata": {
-				"description": "The URL of the IdentityServer used for authentication (without trailing slash)."
-			}
-		},
-		"authClient": {
-			"type": "string",
-			"defaultValue": "bf939274-4bda-4525-ba38-ecfaec6f9d00",
-			"metadata": {
-				"description": "The (node specific) Client used for authentication at the Data-API (e.g. bf939274-4bda-4525-ba38-ecfaec6f9d00)."
-			}
-		},
-		"authApiScope": {
-			"type": "string",
-			"defaultValue": "data-api-endpoint",
-			"metadata": {
-				"description": "The (node specific) Scope used for authentication at the Data-API (e.g. data-api-endpoint)."
-			}
-		},
-		"authClientSecret": {
-			"type": "securestring",
-			"metadata": {
-				"description": "The Secret for (node specific) Client used for authentication at the Data-API."
-			}
-		}
-	},
-	"variables": {
-		"iotHubWorkspaceName": "[concat('dsk-iot-hub-', uniqueString(resourceGroup().id, deployment().name))]",
-		"iotHubSecSolution": "[concat(parameters('iotHubName'), '-sec')]",
-		"appInsightsName": "[concat(parameters('functionAppName'), '-insights')]",
-		"storageAccountName": "[concat('iothubbstrg', uniqueString(resourceGroup().id, deployment().name))]",
-		"appServicePlanName": "[concat(parameters('functionAppName'), '-asp')]",
-		"serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]",
-		"linuxFxVersion": "[concat('DOCKER|', 'pubtributech.azurecr.io', '/', 'dsk-iot-hub-bridge', ':', parameters('imageTag'))]",
-		"alwaysOn": true
-	},
-	"resources": [
-		{
-			"apiVersion": "2019-10-01",
-			"name": "pid-f8c94abb-e983-5f7f-a559-9374d739e874",
-			"type": "Microsoft.Resources/deployments",
-			"properties": {
-				"mode": "Incremental",
-				"template": {
-					"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-					"contentVersion": "1.0.0.0",
-					"resources": []
-				}
-			}
-		},
-		{
-			"apiVersion": "2019-11-04",
-			"type": "Microsoft.Devices/IotHubs",
-			"name": "[parameters('iotHubName')]",
-			"location": "[parameters('location')]",
-			"properties": {
-				"eventHubEndpoints": {
-					"events": {
-						"retentionTimeInDays": 1,
-						"partitionCount": "[parameters('iotHubDevicetoCloudPartitions')]"
-					}
-				}
-			},
-			"sku": {
-				"name": "[parameters('iotHubSkuName')]",
-				"capacity": "[parameters('iotHubSkuUnits')]"
-			}
-		},
-		{
-			"type": "Microsoft.OperationalInsights/workspaces",
-			"apiVersion": "2020-03-01-preview",
-			"name": "[variables('iotHubWorkspaceName')]",
-			"location": "[parameters('location')]",
-			"properties": {
-			},
-			"dependsOn": [
-				"[resourceId('Microsoft.Devices/IotHubs', parameters('iotHubName'))]"
-			]
-		},
-		{
-			"type": "Microsoft.Security/IoTSecuritySolutions",
-			"apiVersion": "2019-08-01",
-			"name": "[variables('iotHubSecSolution')]",
-			"location": "[parameters('location')]",
-			"properties": {
-				"workspace": "[resourceId('Microsoft.OperationalInsights/workspaces', variables('iotHubWorkspaceName'))]",
-				"status": "Enabled",
-				"export": [
-					"RawEvents"
-				],
-				"displayName": "[parameters('iotHubName')]",
-				"iotHubs": [
-					"[resourceId('Microsoft.Devices/IotHubs', parameters('iotHubName'))]"
-				],
-				"unmaskedIpLoggingStatus": "Enabled"
-			},
-			"dependsOn": [
-				"[resourceId('Microsoft.Devices/IotHubs', parameters('iotHubName'))]",
-				"[resourceId('Microsoft.OperationalInsights/workspaces', variables('iotHubWorkspaceName'))]"
-			]
-		},
-		{
-			"apiVersion": "2018-11-01",
-			"name": "[variables('appServicePlanName')]",
-			"type": "Microsoft.Web/serverfarms",
-			"location": "[parameters('location')]",
-			"kind": "linux",
-			"properties": {
-				"name": "[variables('appServicePlanName')]",
-				"numberOfWorkers": "[parameters('appServicePlanNumberOfWorkers')]",
-				"reserved": true
-			},
-			"sku": {
-				"Name": "[parameters('appServicePlanSkuCode')]"
-			}
-		},
-		{
-			"apiVersion": "2018-05-01-preview",
-			"name": "[variables('appInsightsName')]",
-			"type": "Microsoft.Insights/Components",
-			"location": "[parameters('location')]",
-			"properties": {
-				"ApplicationId": "[parameters('functionAppName')]",
-				"Request_Source": "IbizaWebAppExtensionCreate"
-			}
-		},
-		{
-			"apiVersion": "2019-06-01",
-			"type": "Microsoft.Storage/storageAccounts",
-			"name": "[variables('storageAccountName')]",
-			"location": "[parameters('location')]",
-			"sku": {
-				"name": "Standard_LRS"
-			},
-			"properties": {
-				"supportsHttpsTrafficOnly": true
-			}
-		},
-		{
-			"apiVersion": "2018-11-01",
-			"name": "[parameters('functionAppName')]",
-			"type": "Microsoft.Web/sites",
-			"kind": "functionapp,linux,container",
-			"location": "[parameters('location')]",
-			"dependsOn": [
-				"[resourceId('Microsoft.Insights/Components/', variables('appInsightsName'))]",
-				"[resourceId('Microsoft.Web/serverfarms/', variables('appServicePlanName'))]",
-				"[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
-				"[resourceId('Microsoft.Devices/IotHubs/', parameters('iotHubName'))]"
-			],
-			"properties": {
-				"name": "[parameters('functionAppName')]",
-				"siteConfig": {
-					"appSettings": [
-						{
-							"name": "FUNCTIONS_EXTENSION_VERSION",
-							"value": "~3"
-						},
-						{
-							"name": "FUNCTIONS_WORKER_RUNTIME",
-							"value": "dotnet"
-						},
-						{
-							"name": "DOCKER_REGISTRY_SERVER_URL",
-							"value": "https://pubtributech.azurecr.io"
-						},
-						{
-							"name": "DOCKER_REGISTRY_SERVER_USERNAME",
-							"value": "pubtributech"
-						},
-						{
-							"name": "DOCKER_REGISTRY_SERVER_PASSWORD",
-							"value": "8ogoN/ojaW5Ipfl0SNCX9EooP1DS8lcn"
-						},
-						{
-							"name": "WEBSITES_ENABLE_APP_SERVICE_STORAGE",
-							"value": "false"
-						},
-						{
-							"name": "APPINSIGHTS_INSTRUMENTATIONKEY",
-							"value": "[reference(concat('Microsoft.Insights/Components/', variables('appInsightsName')), '2015-05-01').InstrumentationKey]"
-						},
-						{
-							"name": "APPLICATIONINSIGHTS_CONNECTION_STRING",
-							"value": "[reference(concat('Microsoft.Insights/Components/', variables('appInsightsName')), '2015-05-01').ConnectionString]"
-						},
-						{
-							"name": "AzureWebJobsStorage",
-							"value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').keys[0].value,';EndpointSuffix=','core.windows.net')]"
-						},
-						{
-							"name": "EventHubConnectionString",
-							"value": "[concat('Endpoint=', reference(resourceId('Microsoft.Devices/IoTHubs', parameters('iotHubName'))).eventHubEndpoints.events.endpoint, ';EntityPath=', parameters('iotHubName'), ';SharedAccessKeyName=iothubowner;SharedAccessKey=', listKeys(resourceId('Microsoft.Devices/IotHubs', parameters('iotHubName')), '2017-01-19').value[0].primaryKey)]"
-						},
-						{
-							"name": "API_BASE_URL",
-							"value": "[parameters('dataApiUrl')]"
-						},
-						{
-							"name": "AUTH_URL",
-							"value": "[concat(parameters('identityServerUrl'), '/connect/token')]"
-						},
-						{
-							"name": "AUTH_SCOPE",
-							"value": "[parameters('authApiScope')]"
-						},
-						{
-							"name": "CLIENT_ID",
-							"value": "[parameters('authClient')]"
-						},
-						{
-							"name": "CLIENT_SECRET",
-							"value": "[parameters('authClientSecret')]"
-						},
-						{
-							"name": "SKIP_DUPLICATE_VALUES",
-							"value": "False"
-						}
-					],
-					"linuxFxVersion": "[variables('linuxFxVersion')]",
-					"alwaysOn": "[variables('alwaysOn')]"
-				},
-				"serverFarmId": "[variables('serverFarmId')]",
-				"clientAffinityEnabled": false
-			}
-		}
-	]
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "Location for the resources."
+      }
+    },
+    "iotHubName": {
+      "type": "string",
+      "defaultValue": "[concat('dsk-iot-hub-', uniqueString(resourceGroup().id, utcNow()))]",
+      "metadata": {
+        "description": "A unique name for the DSK IoT Hub."
+      }
+    },
+    "functionAppName": {
+      "type": "string",
+      "defaultValue": "[concat('dsk-iot-hub-bridge-func-app-', uniqueString(resourceGroup().id, utcNow()))]",
+      "metadata": {
+        "description": "A unique name for the DSK IoT Hub Bridge Function App, and its related assets once it is created."
+      }
+    },
+    "iotHubSkuName": {
+      "type": "string",
+      "defaultValue": "S1",
+      "metadata": {
+        "description": "Pricing and scale tier."
+      }
+    },
+    "iotHubSkuUnits": {
+      "type": "int",
+      "defaultValue": 1,
+      "metadata": {
+        "description": "Number of IoT hub units."
+      }
+    },
+    "iotHubDevicetoCloudPartitions": {
+      "type": "int",
+      "defaultValue": 4,
+      "metadata": {
+        "description": "Device-to-cloud partitions."
+      }
+    },
+    "appServicePlanSkuCode": {
+      "type": "string",
+      "defaultValue": "P1v2"
+    },
+    "appServicePlanNumberOfWorkers": {
+      "type": "int",
+      "defaultValue": 1
+    },
+    "imageTag": {
+      "type": "string",
+      "defaultValue": "1.7.0",
+      "metadata": {
+        "description": "The Docker image tag (aka version) of the DSK IoT Hub Bridge Function App to be deployed."
+      }
+    },
+    "dataApiUrl": {
+      "type": "string",
+      "defaultValue": "https://data-api.<your-node-name>.dataspace-node.com",
+      "metadata": {
+        "description": "The URL of the Data-API to which the DSK IoT Hub Bridge should send the Values (without trailing slash)."
+      }
+    },
+    "identityServerUrl": {
+      "type": "string",
+      "defaultValue": "https://id.<your-hub-name>.dataspace-hub.com",
+      "metadata": {
+        "description": "The URL of the IdentityServer used for authentication (without trailing slash)."
+      }
+    },
+    "authClient": {
+      "type": "string",
+      "defaultValue": "<your-node-client-id>",
+      "metadata": {
+        "description": "The (node specific) client used for authentication at the Data-API (e.g. bf939274-4bda-4525-ba38-ecfaec6f9d00)."
+      }
+    },
+    "authApiScope": {
+      "type": "string",
+      "defaultValue": "data-api-endpoint",
+      "metadata": {
+        "description": "The (node specific) Scope used for authentication at the Data-API (e.g. data-api-endpoint)."
+      }
+    },
+    "authClientSecret": {
+      "type": "securestring",
+      "metadata": {
+        "description": "The Secret for (node specific) Client used for authentication at the Data-API."
+      }
+    }
+  },
+  "variables": {
+    "iotHubWorkspaceName": "[concat('dsk-iot-hub-', uniqueString(resourceGroup().id, deployment().name))]",
+    "iotHubSecSolution": "[concat(parameters('iotHubName'), '-sec')]",
+    "appInsightsName": "[concat(parameters('functionAppName'), '-insights')]",
+    "storageAccountName": "[concat('iothubbstrg', uniqueString(resourceGroup().id, deployment().name))]",
+    "appServicePlanName": "[concat(parameters('functionAppName'), '-asp')]",
+    "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]",
+    "linuxFxVersion": "[concat('DOCKER|', 'pubtributech.azurecr.io', '/', 'dsk-iot-hub-bridge', ':', parameters('imageTag'))]",
+    "alwaysOn": true
+  },
+  "resources": [
+    {
+      "apiVersion": "2019-10-01",
+      "name": "pid-f8c94abb-e983-5f7f-a559-9374d739e874",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "resources": []
+        }
+      }
+    },
+    {
+      "apiVersion": "2019-11-04",
+      "type": "Microsoft.Devices/IotHubs",
+      "name": "[parameters('iotHubName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "eventHubEndpoints": {
+          "events": {
+            "retentionTimeInDays": 1,
+            "partitionCount": "[parameters('iotHubDevicetoCloudPartitions')]"
+          }
+        }
+      },
+      "sku": {
+        "name": "[parameters('iotHubSkuName')]",
+        "capacity": "[parameters('iotHubSkuUnits')]"
+      }
+    },
+    {
+      "type": "Microsoft.OperationalInsights/workspaces",
+      "apiVersion": "2020-03-01-preview",
+      "name": "[variables('iotHubWorkspaceName')]",
+      "location": "[parameters('location')]",
+      "properties": {},
+      "dependsOn": [
+        "[resourceId('Microsoft.Devices/IotHubs', parameters('iotHubName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Security/IoTSecuritySolutions",
+      "apiVersion": "2019-08-01",
+      "name": "[variables('iotHubSecSolution')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "workspace": "[resourceId('Microsoft.OperationalInsights/workspaces', variables('iotHubWorkspaceName'))]",
+        "status": "Enabled",
+        "export": ["RawEvents"],
+        "displayName": "[parameters('iotHubName')]",
+        "iotHubs": [
+          "[resourceId('Microsoft.Devices/IotHubs', parameters('iotHubName'))]"
+        ],
+        "unmaskedIpLoggingStatus": "Enabled"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Devices/IotHubs', parameters('iotHubName'))]",
+        "[resourceId('Microsoft.OperationalInsights/workspaces', variables('iotHubWorkspaceName'))]"
+      ]
+    },
+    {
+      "apiVersion": "2018-11-01",
+      "name": "[variables('appServicePlanName')]",
+      "type": "Microsoft.Web/serverfarms",
+      "location": "[parameters('location')]",
+      "kind": "linux",
+      "properties": {
+        "name": "[variables('appServicePlanName')]",
+        "numberOfWorkers": "[parameters('appServicePlanNumberOfWorkers')]",
+        "reserved": true
+      },
+      "sku": {
+        "Name": "[parameters('appServicePlanSkuCode')]"
+      }
+    },
+    {
+      "apiVersion": "2018-05-01-preview",
+      "name": "[variables('appInsightsName')]",
+      "type": "Microsoft.Insights/Components",
+      "location": "[parameters('location')]",
+      "properties": {
+        "ApplicationId": "[parameters('functionAppName')]",
+        "Request_Source": "IbizaWebAppExtensionCreate"
+      }
+    },
+    {
+      "apiVersion": "2019-06-01",
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[variables('storageAccountName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "properties": {
+        "supportsHttpsTrafficOnly": true
+      }
+    },
+    {
+      "apiVersion": "2018-11-01",
+      "name": "[parameters('functionAppName')]",
+      "type": "Microsoft.Web/sites",
+      "kind": "functionapp,linux,container",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Insights/Components/', variables('appInsightsName'))]",
+        "[resourceId('Microsoft.Web/serverfarms/', variables('appServicePlanName'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
+        "[resourceId('Microsoft.Devices/IotHubs/', parameters('iotHubName'))]"
+      ],
+      "properties": {
+        "name": "[parameters('functionAppName')]",
+        "siteConfig": {
+          "appSettings": [
+            {
+              "name": "FUNCTIONS_EXTENSION_VERSION",
+              "value": "~3"
+            },
+            {
+              "name": "FUNCTIONS_WORKER_RUNTIME",
+              "value": "dotnet"
+            },
+            {
+              "name": "DOCKER_REGISTRY_SERVER_URL",
+              "value": "https://pubtributech.azurecr.io"
+            },
+            {
+              "name": "DOCKER_REGISTRY_SERVER_USERNAME",
+              "value": "pubtributech"
+            },
+            {
+              "name": "DOCKER_REGISTRY_SERVER_PASSWORD",
+              "value": "8ogoN/ojaW5Ipfl0SNCX9EooP1DS8lcn"
+            },
+            {
+              "name": "WEBSITES_ENABLE_APP_SERVICE_STORAGE",
+              "value": "false"
+            },
+            {
+              "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
+              "value": "[reference(concat('Microsoft.Insights/Components/', variables('appInsightsName')), '2015-05-01').InstrumentationKey]"
+            },
+            {
+              "name": "APPLICATIONINSIGHTS_CONNECTION_STRING",
+              "value": "[reference(concat('Microsoft.Insights/Components/', variables('appInsightsName')), '2015-05-01').ConnectionString]"
+            },
+            {
+              "name": "AzureWebJobsStorage",
+              "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').keys[0].value,';EndpointSuffix=','core.windows.net')]"
+            },
+            {
+              "name": "EventHubConnectionString",
+              "value": "[concat('Endpoint=', reference(resourceId('Microsoft.Devices/IoTHubs', parameters('iotHubName'))).eventHubEndpoints.events.endpoint, ';EntityPath=', parameters('iotHubName'), ';SharedAccessKeyName=iothubowner;SharedAccessKey=', listKeys(resourceId('Microsoft.Devices/IotHubs', parameters('iotHubName')), '2017-01-19').value[0].primaryKey)]"
+            },
+            {
+              "name": "API_BASE_URL",
+              "value": "[parameters('dataApiUrl')]"
+            },
+            {
+              "name": "AUTH_URL",
+              "value": "[concat(parameters('identityServerUrl'), '/connect/token')]"
+            },
+            {
+              "name": "AUTH_SCOPE",
+              "value": "[parameters('authApiScope')]"
+            },
+            {
+              "name": "CLIENT_ID",
+              "value": "[parameters('authClient')]"
+            },
+            {
+              "name": "CLIENT_SECRET",
+              "value": "[parameters('authClientSecret')]"
+            },
+            {
+              "name": "SKIP_DUPLICATE_VALUES",
+              "value": "False"
+            }
+          ],
+          "linuxFxVersion": "[variables('linuxFxVersion')]",
+          "alwaysOn": "[variables('alwaysOn')]"
+        },
+        "serverFarmId": "[variables('serverFarmId')]",
+        "clientAffinityEnabled": false
+      }
+    }
+  ]
 }
