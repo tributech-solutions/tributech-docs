@@ -33,6 +33,6 @@ The distributed **components of the DataSpace Kit are connected via channels** t
 
 ## Next steps
 
-- Learn more about the [architecture of the DataSpace Kit and how it can be integrated](./architecture-integration.md) into your existing infrastructure
+- Learn more about the [architecture of the DataSpace Kit and how it can be integrated](./architecture.md) into your existing infrastructure
 - Learn more about Tributech creates [auditable data](auditable-data.md)
 - Set up a demo of the product through our [quick start guide](../quickstart/overview.md)
