@@ -4,6 +4,10 @@
 
 The Tributech DataSpace Kit documentation and covers the components DataSpace Hub, Node and Agent. This documentation is written in markdown syntax and hosted via mkdocs and mkdocs material theme on Github Pages.
 
+## Why doesn't this repo use Git LFS?
+
+Git LFS is not supported with Github Pages: https://github.com/git-lfs/git-lfs/issues/3498
+
 ## Local Development
 
 ---
