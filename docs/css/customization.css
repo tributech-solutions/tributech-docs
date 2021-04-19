@@ -1,22 +1,19 @@
 :root {
-  --md-default-fg-color: #3f5666;
+  --md-default-fg-color: #304761;
   --md-default-fg-color--light: #9faab2;
   --md-default-fg-color--lighter: #eaecef;
   --md-default-fg-color--lightest: hsla(0, 0%, 0%, 0.07);
-  --md-default-bg-color: hsla(0, 0%, 100%, 1);
+  --md-default-bg-color: white;
   --md-default-bg-color--light: hsla(0, 0%, 100%, 0.7);
   --md-default-bg-color--lighter: hsla(0, 0%, 100%, 0.3);
   --md-default-bg-color--lightest: hsla(0, 0%, 100%, 0.12);
 
-  --md-primary-fg-color: white;
-  --md-primary-fg-color--light: hsla(#{hex2hsl($clr-indigo-400)}, 1);
-  --md-primary-fg-color--dark: hsla(#{hex2hsl($clr-indigo-700)}, 1);
-  --md-primary-bg-color: #04a9f4;
+  --md-primary-fg-color: #304761;
+  --md-primary-bg-color: #01DCFF;
   --md-primary-bg-color--light: hsla(0, 0%, 100%, 0.7);
 
-  --md-accent-fg-color: #04a9f4;
-  --md-accent-fg-color--transparent: hsla(#{hex2hsl($clr-indigo-a200)}, 0.1);
-  --md-accent-bg-color: white;
+  --md-accent-fg-color: #304761;
+  --md-accent-bg-color: #01DCFF;
   --md-accent-bg-color--light: hsla(0, 0%, 100%, 0.7);
 }
 
@@ -24,7 +21,6 @@
   --md-code-fg-color: hsla(200, 18%, 26%, 1);
   --md-code-bg-color: hsla(0, 0%, 96%, 1);
 
-  --md-code-hl-color: hsla(#{hex2hsl($clr-yellow-a200)}, 0.5);
   --md-code-hl-number-color: hsla(0, 67%, 50%, 1);
   --md-code-hl-special-color: hsla(340, 83%, 47%, 1);
   --md-code-hl-function-color: hsla(291, 45%, 50%, 1);
@@ -56,16 +52,12 @@
   --md-footer-fg-color: hsla(0, 0%, 100%, 1);
   --md-footer-fg-color--light: hsla(0, 0%, 100%, 0.7);
   --md-footer-fg-color--lighter: hsla(0, 0%, 100%, 0.3);
-  --md-footer-bg-color: var(--md-primary-bg-color);
+  --md-footer-bg-color: var(--md-default-fg-color);
   --md-footer-bg-color--dark: hsla(0, 0%, 0%, 0.32);
 }
 
 .md-header-nav__source {
   display: none;
-}
-
-.md-main .md-content__inner img {
-  margin: 20px 0;
 }
 
 section.tx-container {
@@ -77,13 +69,13 @@ div.tx-hero {
 }
 
 header.md-header {
-  background-color: var(--md-primary-bg-color);
-  color: var(--md-primary-fg-color);
+  background-color: var(--md-default-fg-color);
+  color: var(--md-default-bg-color);
 }
 
 nav.md-tabs {
-  background-color: var(--md-primary-bg-color);
-  color: var(--md-primary-fg-color);
+  background-color: var(--md-default-fg-color);
+  color: var(--md-default-bg-color);
 }
 
 div.md-header__title {
@@ -93,4 +85,9 @@ div.md-header__title {
 div.md-header__source {
   display: none;
   visibility: hidden;
+}
+
+.md-main .md-content__inner img {
+  margin: 20px 0;
+  box-shadow: 0 0 4px 3px #9faab2;
 }

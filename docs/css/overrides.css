@@ -127,14 +127,17 @@
 .tx-hero .md-button {
   margin-top: 0.5rem;
   margin-right: 0.5rem;
+  transition: all 0.2s ease-in-out;
   color: var(--md-default-fg-color);
   background-color: var(--md-default-bg-color);
   border-color: var(--md-default-fg-color--light);
 }
 .tx-hero .md-button:hover,
 .tx-hero .md-button:focus {
+  transform:scale(1.1);
+  background-color: var(--md-default-bg-color);
   color: var(--md-default-fg-color);
-  background-color: var(--md-default-fg-color--lighter);
+  background-color: var(--md-default-bg-color);
   border-color: var(--md-default-fg-color--light);
 }
 
@@ -145,8 +148,9 @@
 }
 .tx-hero .md-button--primary:hover,
 .tx-hero .md-button--primary:focus {
-    color: var(--md-primary-bg-color);
-    background-color: var(--md-primary-fg-color);
-    border-color: var(--md-primary-bg-color);
+  transform:scale(1.1);
+  color: var(--md-primary-fg-color);
+  background-color: var(--md-primary-bg-color);
+  border-color: var(--md-primary-bg-color);
   }
 /*# sourceMappingURL=overrides.88a3f51b.min.css.map*/
