@@ -58,11 +58,8 @@ theme:
   name: material
   feature:
     taps: true
-  palette:
-    primary: 'light blue'
-    accent: 'light blue'
   font:
-    text: 'Source Sans Pro'
+    text: 'Lato'
     code: 'Roboto Mono'
   logo: 'img/icon_white.svg'
   favicon: 'img/favicon.png'
