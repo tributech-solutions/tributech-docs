@@ -69,6 +69,8 @@ theme:
 
 # Customization
 extra:
+  version:
+    provider: mike
   manifest: 'manifest.webmanifest'
   social:
     - icon: 'fontawesome/brands/facebook'
