@@ -57,7 +57,8 @@ Styling can be customized through CSS in the ./docs/css/customization.css file.
 
 ## Deployment
 
-Deployment is triggered automatically through a Github Action when a push to the master branch is registered.
+Deployment needs to be triggered manually as otherwise we will always override older versions of the documentation.
+See below for details!
 
 ## Updating a specific version
 
