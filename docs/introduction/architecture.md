@@ -3,7 +3,7 @@
 As explained in the [Product Overview](./product-overview.md), the three fundamental components for the Tributech DataSpace Kit are the DataSpace Hub, the DataSpace Node and the DataSpace Agent. A closer look at these components is presented below.
 
 ![DataSpace Architecture Representation](img/architecture.png)
-_Fig.1: DataSpace Architecture Representation
+Fig.1: DataSpace Architecture Representation
 
 ### DataSpace Hub
 
@@ -28,7 +28,7 @@ The Dataspace Node comes with a web UI application called DataSpace Admin which 
 The interface of the app can be seen in Fig.1.
 
 ![DataSpace Admin App](./img/dataspace-admin_new.jpg)
-_Fig.2: DataSpace Admin App_
+Fig.2: DataSpace Admin App_
 
 With a DataSpace Node you can:
 

@@ -25,7 +25,7 @@ Every ecosystem consists of **one single DataSpace Hub**, a **DataSpace Node for
 The Hub holds metadata information and manages identity, required for secure auditable data sharing in the ecosystem - but is not part of the data sharing channels themselves. Actual data is shared only between nodes. The Agents feed auditable data to the nodes.
 
 ![DataSpace Kit - Building Blocks](img/architecture.png)
-_Fig.1: DataSpace Kit Building Blocks & Schema_
+Fig.1: DataSpace Kit Building Blocks & Schema_
 
 The distributed **components of the DataSpace Kit are connected via channels** to exchange the different kinds of data within an ecosystem. **APIs provide an interface** for the data integration within the infrastructure of each connected stakeholder.
 
