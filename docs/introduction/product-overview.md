@@ -6,8 +6,6 @@ The Tributech DataSpace Kit enables companies to share [**auditable data**](./au
 
 In other words, the Tributech DataSpace Kit is a containerized software-tool-kit that covers the whole data transfer between DataSpace Nodes (which usually represents a company's cloud or server infrastructure) and it covers the transfer of cryptographic proofs of the DataSpace Agents which enable data auditability.
 
-![Transform Data](img/transform-data.png)
-
 Based on the containerized and modular architecture, the technology **can be integrated into any kind of platform**, cloud or on-premise system to support the technology stack of all participating stakeholders. Check out our [Integration guide](../integration/overview.md) for details.
 
 If you want to learn more about use-cases for your business, visit our <a href="https://www.tributech.io/use-cases/" target="_blank">website</a>, visit our <a href="https://www.tributech.io/blog/" target="_blank">blog</a> or contact our [Customer Advisory Team](mailto:customer-advisory@tributech.io) that helps you to get started.
@@ -26,13 +24,12 @@ As shown below in Fig.1, these building blocks are:
 Every ecosystem consists of **one single DataSpace Hub**, a **DataSpace Node for each participating stakeholder** integrated in his infrastructure (cloud, hybrid or on-premise) and **multiple DataSpace Agents** integrated into each data-source/device that requires the data auditability capabilities.
 The Hub holds metadata information and manages identity, required for secure auditable data sharing in the ecosystem - but is not part of the data sharing channels themselves. Actual data is shared only between nodes. The Agents feed auditable data to the nodes.
 
-![DataSpace Kit - Building Blocks](img/dsk-infographic.png)
+![DataSpace Kit - Building Blocks](img/architecture.png)
 _Fig.1: DataSpace Kit Building Blocks & Schema_
 
 The distributed **components of the DataSpace Kit are connected via channels** to exchange the different kinds of data within an ecosystem. **APIs provide an interface** for the data integration within the infrastructure of each connected stakeholder.
 
 ## Next steps
 
-- Learn more about the [architecture of the DataSpace Kit and how it can be integrated](./architecture.md) into your existing infrastructure
-- Learn more about Tributech creates [auditable data](auditable-data.md)
+- Learn more about the [architecture of the DataSpace Kit](./architecture.md) and how it can be [integrated](../integration/overview.md) into your existing infrastructure
 - Set up a demo of the product through our [quick start guide](../quickstart/overview.md)

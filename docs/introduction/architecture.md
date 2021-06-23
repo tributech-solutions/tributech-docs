@@ -1,6 +1,9 @@
 # Tributech DataSpace Kit: Architecture
 
-As explained in the [Product Overview](./product-overview.md), the three fundamental components for the Tributech DataSpace Kit are the DataSpace Hub, the DataSpace Node and the DataSpace Agent. A closer look at these components is presented following.
+As explained in the [Product Overview](./product-overview.md), the three fundamental components for the Tributech DataSpace Kit are the DataSpace Hub, the DataSpace Node and the DataSpace Agent. A closer look at these components is presented below.
+
+![DataSpace Architecture Representation](img/architecture.png)
+_Fig.1: DataSpace Architecture Representation
 
 ### DataSpace Hub
 
@@ -24,8 +27,8 @@ The DataSpace Node comes with an integrated Trust Layer, which ensures data audi
 The Dataspace Node comes with a web UI application called DataSpace Admin which allows for easy maintaining of the node and interacting with other members of the ecosystem.
 The interface of the app can be seen in Fig.1.
 
-![DataSpace Admin App](./img/dataspace-admin.jpg)
-_Fig.1: DataSpace Admin App_
+![DataSpace Admin App](./img/dataspace-admin_new.jpg)
+_Fig.2: DataSpace Admin App_
 
 With a DataSpace Node you can:
 
@@ -35,14 +38,17 @@ With a DataSpace Node you can:
 
 **Audit data** by checking the origin and integrity before you start using it. Data can be audited through the integrated Audit tool of the DataSpace Admin app or through the available API. Ready more about how Tributech guarantees the security for your auditable data [here](./auditable-data.md).
 
+**Track & trace conditions** at your data source via a comparable history of configuration changes. Insights from tracked changes provide viable information for e.g. AI/ML applications in order to match anomalies in data with historic configuration changes.
+
 **Visualize data** through the integrated Node dashboards based on the well-known and well-established Open Source technology <a href="https://grafana.com/" target="_blank">Grafana</a>.
+
 
 ### DataSpace Agent
 
 The DataSpace Agent is designed for an integration into the data source for providing cross-system data security for any type of device/source like e.g. sensors, IoT-devices, IoT-gateways, SCADA-systems, PPS-systems, ERP-systems and more. A scalable process for generating cryptographic proofs and a secure connection to the trust layer guarantees the raw data’s authenticity and integrity for an entire ecosystem of DataSpace Nodes.
 
 ![Trust Layer Schema](img/dataspace-agent-schema.png)
-_Fig.2: DataSpace Agent Schema_
+_Fig.3: DataSpace Agent Schema_
 
 The DataSpace Agent enriches a data source in terms of security and reliability. In addition to the existing data telemetry, hashes and signatures are created for each data point/packet/portion and these proofs are transmitted via a dedicated authenticated and encrypted communication channel to the trust layer.
 
@@ -50,5 +56,5 @@ The DataSpace Kit has a distributed system topology in order to provide secure p
 
 ## Next steps
 
-- Learn more about Tributech creates [auditable data](auditable-data.md)
 - Set up a demo of the product through our [quick start guide](../quickstart/overview.md)
+- Learn more about how to [integrate](../integration/overview.md) the DataSpace Kit into your existing infrastructure

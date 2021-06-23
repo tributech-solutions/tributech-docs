@@ -29,7 +29,7 @@ nav:
   - Introduction:
       - Product Overview: introduction/product-overview.md
       - Architecture: introduction/architecture.md
-      - Auditable data: introduction/auditable-data.md
+#      - Auditable data: introduction/auditable-data.md
   - Setup:
       - Overview: setup/overview.md
       - DSK Node:
