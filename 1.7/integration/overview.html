@@ -18,7 +18,7 @@
     
     
       
-        <title>mkdocs-material-dark-theme - Tributech DataSpace Kit Documentation</title>
+        <title>Overview - Tributech DataSpace Kit Documentation</title>
       
     
     
@@ -42,7 +42,7 @@
       <link rel="manifest" href="../manifest.webmanifest" crossorigin="use-credentials">
     
     
-      <link rel="stylesheet" href="customization.css">
+      <link rel="stylesheet" href="../css/customization.css">
     
     
       
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mkdocs-material-dark-theme" class="md-skip">
+        <a href="#integration" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              mkdocs-material-dark-theme
+              Overview
             
           </span>
         </div>
@@ -226,13 +226,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../integration/overview.html" class="md-tabs__link">
+      <a href="overview.html" class="md-tabs__link md-tabs__link--active">
         Integration
       </a>
     </li>
@@ -702,12 +704,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
       
       <label class="md-nav__link" for="__nav_5">
         Integration
@@ -723,11 +727,58 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../integration/overview.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Overview
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="overview.html" class="md-nav__link md-nav__link--active">
         Overview
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dataspace-kit-node" class="md-nav__link">
+    DataSpace Kit Node
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dataspace-kit-agent" class="md-nav__link">
+    DataSpace Kit Agent
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -758,7 +809,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../integration/node/overview.html" class="md-nav__link">
+      <a href="node/overview.html" class="md-nav__link">
         Overview
       </a>
     </li>
@@ -770,7 +821,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../integration/node/integration-examples.html" class="md-nav__link">
+      <a href="node/integration-examples.html" class="md-nav__link">
         Integration Examples
       </a>
     </li>
@@ -782,7 +833,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../integration/node/swagger-ui-authorization.html" class="md-nav__link">
+      <a href="node/swagger-ui-authorization.html" class="md-nav__link">
         Swagger UI Authorization
       </a>
     </li>
@@ -842,7 +893,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../integration/agent/edge/integration.html" class="md-nav__link">
+      <a href="agent/edge/integration.html" class="md-nav__link">
         Integration
       </a>
     </li>
@@ -854,7 +905,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../integration/agent/edge/configuration.html" class="md-nav__link">
+      <a href="agent/edge/configuration.html" class="md-nav__link">
         Configuration
       </a>
     </li>
@@ -898,6 +949,28 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dataspace-kit-node" class="md-nav__link">
+    DataSpace Kit Node
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dataspace-kit-agent" class="md-nav__link">
+    DataSpace Kit Agent
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -908,21 +981,24 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/tributech-solutions/tributech-DSK-docs/edit/master/docs/css/README.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/tributech-solutions/tributech-DSK-docs/edit/master/docs/integration/overview.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="mkdocs-material-dark-theme">mkdocs-material-dark-theme<a class="headerlink" href="#mkdocs-material-dark-theme" title="Permanent link">&para;</a></h1>
-<p>External SCSS/CSS file that can change the appearance of <a href="https://squidfunk.github.io/mkdocs-material/">mkdocs-material theme</a> and render it in dark colors.</p>
-<p>To have proper syntax highlighting, don't forget to add this code to your <code>mkdocs.yml</code> file:</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="nt">codehilite</span><span class="p">:</span>
-            <span class="nt">guess_lang</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
-            <span class="nt">use_pygments</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-            <span class="nt">noclasses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-            <span class="nt">pygments_style</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">monokai</span>
-</code></pre></div>
+                <h1 id="integration">Integration<a class="headerlink" href="#integration" title="Permanent link">&para;</a></h1>
+<p>The Tributech DataSpace Kit can be integrated on many levels, for which an overview is given here.</p>
+<h2 id="dataspace-kit-node">DataSpace Kit Node<a class="headerlink" href="#dataspace-kit-node" title="Permanent link">&para;</a></h2>
+<p>The DSK Node provides a set of REST APIs to access data as well as verify data authenticity and data integrity. Learn more about how to use them in our <a href="node/overview.html">node integration guide</a>.</p>
+<h2 id="dataspace-kit-agent">DataSpace Kit Agent<a class="headerlink" href="#dataspace-kit-agent" title="Permanent link">&para;</a></h2>
+<p>The DSK Agent can be integrated depending on the variant that you are working with:</p>
+<ul>
+<li><a href="agent/edge/integration.html">DSK Agent Edge</a></li>
+<li>DSK Agent Embedded</li>
+<li><a href="node/overview.html">DSK Agent Integrated</a></li>
+</ul>
+<p>Read more about integration details for the <strong>DSK Agent Edge</strong> <a href="agent/edge/integration.html">here</a>.</p>
+<p>The <strong>DSK Agent Integrated</strong> can be used through the Trust-Api - please read about how to use it at the <a href="node/overview.html">node integration guide</a>.</p>
                 
               
               
@@ -938,6 +1014,41 @@
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../setup/iot-hub-bridge/iot-hub-bridge.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: DSK IoT Hub Bridge" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              DSK IoT Hub Bridge
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="node/overview.html" class="md-footer__link md-footer__link--next" aria-label="Next: Overview" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Overview
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

@@ -18,7 +18,7 @@
     
     
       
-        <title>mkdocs-material-dark-theme - Tributech DataSpace Kit Documentation</title>
+        <title>Create a Dataset - Tributech DataSpace Kit Documentation</title>
       
     
     
@@ -42,7 +42,7 @@
       <link rel="manifest" href="../manifest.webmanifest" crossorigin="use-credentials">
     
     
-      <link rel="stylesheet" href="customization.css">
+      <link rel="stylesheet" href="../css/customization.css">
     
     
       
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mkdocs-material-dark-theme" class="md-skip">
+        <a href="#create-a-dataset" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              mkdocs-material-dark-theme
+              Create a Dataset
             
           </span>
         </div>
@@ -178,13 +178,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../quickstart/overview.html" class="md-tabs__link">
+      <a href="overview.html" class="md-tabs__link md-tabs__link--active">
         Quick Start
       </a>
     </li>
@@ -303,12 +305,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       <label class="md-nav__link" for="__nav_2">
         Quick Start
@@ -326,7 +330,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../quickstart/overview.html" class="md-nav__link">
+      <a href="overview.html" class="md-nav__link">
         Overview
       </a>
     </li>
@@ -338,7 +342,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../quickstart/install-owner-node.html" class="md-nav__link">
+      <a href="install-owner-node.html" class="md-nav__link">
         Install Owner Node
       </a>
     </li>
@@ -348,11 +352,79 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../quickstart/create-dataset.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Create a Dataset
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="create-dataset.html" class="md-nav__link md-nav__link--active">
         Create a Dataset
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#open-the-create-dataset-dialog" class="md-nav__link">
+    Open the create Dataset dialog
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#describe-your-dataset" class="md-nav__link">
+    Describe your Dataset
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-the-data-source-and-the-data-streams" class="md-nav__link">
+    Add the data source and the data streams
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#successful-creation-of-the-dataset" class="md-nav__link">
+    Successful creation of the Dataset
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-install-the-dsk-iot-bridge" class="md-nav__link">
+    Next: Install the DSK IoT Bridge
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -362,7 +434,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../quickstart/install-bridge.html" class="md-nav__link">
+      <a href="install-bridge.html" class="md-nav__link">
         Install DSK IoT Bridge
       </a>
     </li>
@@ -374,7 +446,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../quickstart/setup-device.html" class="md-nav__link">
+      <a href="setup-device.html" class="md-nav__link">
         Setup IoT Device
       </a>
     </li>
@@ -386,7 +458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../quickstart/publish-dataset.html" class="md-nav__link">
+      <a href="publish-dataset.html" class="md-nav__link">
         Publish Dataset
       </a>
     </li>
@@ -398,7 +470,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../quickstart/install-consumer-node.html" class="md-nav__link">
+      <a href="install-consumer-node.html" class="md-nav__link">
         Install Consumer Node
       </a>
     </li>
@@ -410,7 +482,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../quickstart/subscribe-dataset.html" class="md-nav__link">
+      <a href="subscribe-dataset.html" class="md-nav__link">
         Subscribe to Dataset
       </a>
     </li>
@@ -443,7 +515,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../quickstart/data-consuming/data-via-dashboards.html" class="md-nav__link">
+      <a href="data-consuming/data-via-dashboards.html" class="md-nav__link">
         Via Dashboards
       </a>
     </li>
@@ -455,7 +527,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../quickstart/data-consuming/data-via-apis.html" class="md-nav__link">
+      <a href="data-consuming/data-via-apis.html" class="md-nav__link">
         Via APIs
       </a>
     </li>
@@ -898,6 +970,49 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#open-the-create-dataset-dialog" class="md-nav__link">
+    Open the create Dataset dialog
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#describe-your-dataset" class="md-nav__link">
+    Describe your Dataset
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-the-data-source-and-the-data-streams" class="md-nav__link">
+    Add the data source and the data streams
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#successful-creation-of-the-dataset" class="md-nav__link">
+    Successful creation of the Dataset
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-install-the-dsk-iot-bridge" class="md-nav__link">
+    Next: Install the DSK IoT Bridge
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -908,21 +1023,28 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/tributech-solutions/tributech-DSK-docs/edit/master/docs/css/README.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/tributech-solutions/tributech-DSK-docs/edit/master/docs/quickstart/create-dataset.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="mkdocs-material-dark-theme">mkdocs-material-dark-theme<a class="headerlink" href="#mkdocs-material-dark-theme" title="Permanent link">&para;</a></h1>
-<p>External SCSS/CSS file that can change the appearance of <a href="https://squidfunk.github.io/mkdocs-material/">mkdocs-material theme</a> and render it in dark colors.</p>
-<p>To have proper syntax highlighting, don't forget to add this code to your <code>mkdocs.yml</code> file:</p>
-<div class="codehilite"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="nt">codehilite</span><span class="p">:</span>
-            <span class="nt">guess_lang</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
-            <span class="nt">use_pygments</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-            <span class="nt">noclasses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-            <span class="nt">pygments_style</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">monokai</span>
-</code></pre></div>
+                <h1 id="create-a-dataset">Create a Dataset<a class="headerlink" href="#create-a-dataset" title="Permanent link">&para;</a></h1>
+<p>Once the deployment is complete you should be able to access the DataSpace Admin App through the newly created Node under "[deployment-name].dataspace-node.com". You will be redirected to a login-page, enter the credentials that you specified in the setup process for the admin user. After the successful login, the Dataspace Admin App of the DataSpace Node should be visible.</p>
+<p>Follow the steps below in order to create the Dataset through usage of the DataSpace Admin App.</p>
+<h3 id="open-the-create-dataset-dialog">Open the create Dataset dialog<a class="headerlink" href="#open-the-create-dataset-dialog" title="Permanent link">&para;</a></h3>
+<p>To create a new dataset click "Add" in the top right and then "New Dataset".</p>
+<p><img alt="Node landing page" src="img/node-landing-page.png" /></p>
+<h3 id="describe-your-dataset">Describe your Dataset<a class="headerlink" href="#describe-your-dataset" title="Permanent link">&para;</a></h3>
+<p>Enter some descriptive metadata for the new dataset in the fields Name, Description and Category. You can also choose some tags for your Dataset.</p>
+<p><img alt="Create dataset - fill in metadata" src="img/create-dataset-1.png" /></p>
+<h3 id="add-the-data-source-and-the-data-streams">Add the data source and the data streams<a class="headerlink" href="#add-the-data-source-and-the-data-streams" title="Permanent link">&para;</a></h3>
+<p>Add a new data-source and give the device a name of your choosing. Now create the data streams for "Machine Temperature", "Machine Pressure", "Ambient Temperature" and "Ambient Humidity". The data for these streams will later be provided by the simulated Edge Device.</p>
+<p><img alt="Create dataset - enter stream data" src="img/create-dataset-2.png" /></p>
+<h3 id="successful-creation-of-the-dataset">Successful creation of the Dataset<a class="headerlink" href="#successful-creation-of-the-dataset" title="Permanent link">&para;</a></h3>
+<p>Once the dataset is created, it will look somewhat like in the screenshot shown below. Each of the data streams inside of the dataset now has been automatically assigned a uniqe ID. This ID can be copied to the clipboard using the button next to each stream in the column "ID". These Data Stream IDs will later be relevant when setting up the simulated Edge Device.</p>
+<p><img alt="Dataset overview" src="img/dataset.png" /></p>
+<hr />
+<h2 id="next-install-the-dsk-iot-bridge"><a href="install-bridge.html">Next: Install the DSK IoT Bridge</a><a class="headerlink" href="#next-install-the-dsk-iot-bridge" title="Permanent link">&para;</a></h2>
                 
               
               
@@ -938,6 +1060,41 @@
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="install-owner-node.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Install Owner Node" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Install Owner Node
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="install-bridge.html" class="md-footer__link md-footer__link--next" aria-label="Next: Install DSK IoT Bridge" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Install DSK IoT Bridge
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
