@@ -3,67 +3,44 @@
 ## ![Publish docs via GitHub Pages](https://github.com/tributech-solutions/tributech-DSK-docs/workflows/Publish%20docs%20via%20GitHub%20Pages/badge.svg?branch=master)
 
 The Tributech DataSpace Kit documentation and covers the components DataSpace Hub, Node and Agent.
-This documentation is written in markdown syntax and hosted via mkdocs and mkdocs material theme
-on Github Pages. For versioning of the documentation [mike](https://github.com/jimporter/mike) is used.
+This documentation is written in markdown syntax using [docusaurus](https://docusaurus.io/docs/) hosted on Github Pages.
 
 ## Why doesn't this repo use Git LFS?
 
 Git LFS is not supported with Github Pages: https://github.com/git-lfs/git-lfs/issues/3498
 
+## Installation
+
+```console
+yarn install
+```
+
 ## Local Development
 
----
-
-For the local development follow the instructions on:
-
-- <https://www.mkdocs.org/#installation> to install mcdocs
-- <https://github.com/squidfunk/mkdocs-material> to install the material theme
-- <https://github.com/jimporter/mike> to install mike
-
-Run the application on localhost for development
-
-```
-cd <path-to-directory>/
-mike serve
+```console
+yarn start
 ```
 
-#### Upgrading your local version of mkdocs-material
+This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
-See https://squidfunk.github.io/mkdocs-material/upgrading/ --> Run
+## Build
 
-```
-pip install --upgrade mkdocs-material
-```
-
-## Deployment via Docker
-
----
-
-Clone repository and navigate into the project folder
-
-```
-cd <path-to-directory>/
+```console
+yarn build
 ```
 
-Download, build and run the docker image:
-
-```
-docker run --rm -it -p 80:8000 -v ${PWD}:/docs squidfunk/mkdocs-material
-```
-
-## Styling
-
-Styling can be customized through CSS in the ./docs/css/customization.css file.
+This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
 ## Deployment
 
-Deployment needs to be triggered manually as otherwise we will always override older versions of the documentation.
-See below for details!
+The master branch get automatically deployed using Github-Actions.
 
-## Updating a specific version
+## Versioning
 
-To update a specific version of the documentation just run `mike deploy [version] -p`.
+### Updating a specific version
 
-## Releasing a new version
+To update a specific version of the documentation just edit the files in the correct folder and merge to master using a PR.
 
-To release a new version you need to run `mike deploy [version] latest -u -p`.
+### Releasing a new version
+
+To release a new version you need to run `yarn run docusaurus docs:version [X.X.X]`.
