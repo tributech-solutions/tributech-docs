@@ -62,8 +62,8 @@ See below for details!
 
 ## Updating a specific version
 
-To update a specific version of the documentation just run ```mike deploy [version] -p```.
+To update a specific version of the documentation just run `mike deploy [version] -p`.
 
 ## Releasing a new version
 
-To release a new version you need to run ```mike deploy [version] latest -u -p```.
+To release a new version you need to run `mike deploy [version] latest -u -p`.

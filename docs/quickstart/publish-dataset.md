@@ -2,6 +2,7 @@
 title: Publish Dataset
 sidebar_position: 6
 ---
+
 # Publish the Dataset
 
 Now that the values are streaming in, we want to simulate the consumer part of the auditable data sharing.

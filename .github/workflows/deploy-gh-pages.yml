@@ -20,6 +20,7 @@ jobs:
       - name: Test Build
         run: |
           yarn install --frozen-lockfile
+          npm run format-check
           npm run build
 
     gh-release:

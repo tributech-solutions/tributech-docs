@@ -2,6 +2,7 @@
 title: Setup IoT Device
 sidebar_position: 5
 ---
+
 # Setup IoT Device
 
 Now that we have the IoT hub set up, we can create the Edge Device for the IoT Hub. <br />
@@ -169,4 +170,3 @@ You can verify that everything works as expected by checking the Overview dashbo
 ![Overview dashboard IoT Hub](../../static/img/quickstart/iot-hub-messages-overview.jpg)
 
 You can also already create your first dashboard and have the simulated data presented visually. Just follow the [guide for consuming data via Dashboards](./data-consuming/data-via-dashboards.md). Note that for this case you would be in the position of data owner.
-

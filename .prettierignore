@@ -1,0 +1,7 @@
+# Add files here to ignore them from prettier formatting
+
+/.github
+/.docusaurus
+/build
+/node_modules
+yarn.lock

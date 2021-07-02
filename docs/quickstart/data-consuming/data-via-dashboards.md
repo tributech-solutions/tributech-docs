@@ -49,4 +49,3 @@ Finally, copy this adjusted template JSON, paste into the settings tab "JSON Mod
 ![Dashboard JSON Model](./img/dashboard-json-model.png)
 
 Optionally, you can now rename the rows / panels to your liking or just play around with your brand new dashboard!
-

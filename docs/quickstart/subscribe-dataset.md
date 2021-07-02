@@ -2,6 +2,7 @@
 title: Subscribe to Dataset
 sidebar_position: 8
 ---
+
 # Subscribe to a Dataset
 
 After the setup of the consumer node is complete, the consumer node can subscribe to the dataset that was created before with the owner node.
@@ -46,4 +47,3 @@ Once your Request is granted by the owner, the state changes to **granted** and 
 ![Granted](../../static/img/quickstart/request-dataset-granted.png)
 
 > Note: Of course the data owner also has the possibility to revoke access to the shared data stream at all times.
-

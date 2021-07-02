@@ -32,5 +32,3 @@ In the resource settings it is possible to select the VM Size. The default will 
 
 Finally, review the entered information and click "Create". Keep in mind that the deployment process takes some time to complete. Why not go and get a coffee now.
 ![Step 4](/img/quickstart/step4.png)
-
-

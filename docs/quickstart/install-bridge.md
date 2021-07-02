@@ -93,4 +93,3 @@ After inserting all the parameters and settings, click "Purchase".
 The deployment will run for a couple of minutes. After the deployment is finished there should be a new instance of the Azure IoT Hub in the selected Resource group. This IoT Hub will be used in the following steps to deploy a simulated Edge Device.
 
 ![Step 5](/img/quickstart/iot-hub-bridge-4.png)
-

@@ -6,7 +6,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.css';
 
 function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   return (
     <header className={clsx('hero hero--dark', styles.heroBanner)}>
       <div className="container">
@@ -15,7 +15,8 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/quickstart/overview">
+            to="/docs/quickstart/overview"
+          >
             Jump to Quickstart
           </Link>
         </div>
@@ -25,15 +26,19 @@ function HomepageHeader() {
 }
 
 export default function Home() {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      description="Description will go into a meta tag in <head />"
+    >
       <HomepageHeader />
       <main>
         {/*<HomepageFeatures />*/}
-        <img className={styles.architectureImg} src="../../static/img/architecture.png"/>
+        <img
+          className={styles.architectureImg}
+          src="../../static/img/architecture.png"
+        />
       </main>
     </Layout>
   );

@@ -2,6 +2,7 @@
 title: Auditable Data
 sidebar_position: 4
 ---
+
 # Auditable data
 
 This page describes how Tributech generates auditable data and ensures secure data communication channels. Furthermore, the Trust layer of each node is presented, which guarantees tamperproof storage for proofs.

@@ -2,9 +2,10 @@
 title: Overview
 sidebar_position: 1
 ---
+
 # Integration
 
-The  Tributech DataSpace Kit can be integrated on many levels, for which an overview is given here.
+The Tributech DataSpace Kit can be integrated on many levels, for which an overview is given here.
 
 ## DataSpace Kit Node
 

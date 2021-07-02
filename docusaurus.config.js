@@ -64,7 +64,7 @@ module.exports = {
             {
               label: 'DataSpace Kit',
               href: 'https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tributech.tributech_dataspace_kit?tab=Overview',
-            }
+            },
           ],
         },
         {
@@ -77,7 +77,7 @@ module.exports = {
             {
               label: 'LinkedIn',
               href: 'https://www.linkedin.com/company/tributechsolutions',
-            }
+            },
           ],
         },
         {
