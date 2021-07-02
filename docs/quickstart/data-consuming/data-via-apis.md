@@ -16,7 +16,7 @@ This could be in one of two ways:
 
 Navigate to the Data API / Trust API of your node and Authorize yourself by following our [Swagger UI Authorization Guide](../../integration/node/swagger-ui-authorization.md).
 
-You can retrieve the `valueMetadataId` which is a unique id for a data stream by copying it in the DataSpace Admin App [as described here](../../create-dataset/#successful-creation-of-the-dataset).
+You can retrieve the `valueMetadataId` which is a unique id for a data stream by copying it in the DataSpace Admin App [as described here](../create-dataset/#successful-creation-of-the-dataset).
 
 ### Retrieving values through the Data API
 
