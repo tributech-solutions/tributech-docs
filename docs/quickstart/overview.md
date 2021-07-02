@@ -1,3 +1,8 @@
+---
+title: Overview
+sidebar_position: 1
+---
+
 # Quickstart Guide
 
 This guide describes how to quickly get up and running with the Tributech DataSpace Kit (DSK). The easiest way to get started with only a few clicks is in the Azure Cloud. While the Azure Cloud is the quickest and easiest way to get started, other options for deployment, including on premise systems, are also available. Check out our [Setup Guide](../setup/overview.md) for detail information..
@@ -8,7 +13,7 @@ This quickstart guide demonstrates how the DataSpace Kit can be used to share da
 
 In the image below you can see the data flow that will be established through this guide: From data source to data owner, which shares selected streams with the data consumer. The data consumer can then verify data integrity and data authenticity through a specific data auditing service.
 
-![Data-Owner Data-Consumer usecase overview](img/usecase-overview.jpg)
+![Data-Owner Data-Consumer usecase overview](/img/quickstart/usecase-overview.jpg)
 
 ## Features
 
@@ -21,14 +26,10 @@ In the image below you can see the data flow that will be established through th
 
 ## This Guide Covers
 
-- How to [setup](../install-owner-node) the Data-Owner-Node in a few clicks
-- How to create the first [dataset](../create-dataset)
-- How to [link](../install-bridge) the Azure IoT Hub to the Data-Owner-Node
-- How to [deploy](../setup-iot-device) a simulated edge device as a data-source using the Azure IoT Hub
-- How to [share](../publish-dataset) the dataset containing the values from the simulated sensor
-- How to [setup](../install-consumer-node) another node as data-consumer to simulate a partner company
-- How to [subscribe](../subscribe-dataset) to a shared dataset of the data-owner
-
----
-
-## [Next: Install the owner node](./install-owner-node.md)
+- How to [setup](./install-owner-node) the Data-Owner-Node in a few clicks
+- How to create the first [dataset](./create-dataset)
+- How to [link](./install-bridge) the Azure IoT Hub to the Data-Owner-Node
+- How to [deploy](./setup-iot-device) a simulated edge device as a data-source using the Azure IoT Hub
+- How to [share](./publish-dataset) the dataset containing the values from the simulated sensor
+- How to [setup](./install-consumer-node) another node as data-consumer to simulate a partner company
+- How to [subscribe](./subscribe-dataset) to a shared dataset of the data-owner

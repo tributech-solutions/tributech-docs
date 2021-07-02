@@ -1,3 +1,7 @@
+---
+title: Setup IoT Device
+sidebar_position: 5
+---
 # Setup IoT Device
 
 Now that we have the IoT hub set up, we can create the Edge Device for the IoT Hub. <br />
@@ -9,15 +13,15 @@ We start with creating the Edge Device in the IoT Hub. In the just deployed reso
 
 As shown in the screenshow below, next, navigate through the side menu to "IoT Edge". In the overview click on "Add an IoT Edge device".
 
-![step 1](img/iot-hub-0.png)
+![step 1](../../static/img/quickstart/iot-hub-0.png)
 
 Give your device a name and click "Save". Your device will be created.
 
-![step 2](img/iot-hub-1.png)
+![step 2](../../static/img/quickstart/iot-hub-1.png)
 
 When the device is created, open the device details by clicking it. Leave this tab open, we will need the primary connetion string in just a second.
 
-![step 3](img/iot-hub-2.png)
+![step 3](../../static/img/quickstart/iot-hub-2.png)
 
 ---
 
@@ -27,7 +31,7 @@ Now we will deploy a simulated IoT Edge Runtime and connect it to our just creat
 
 In a new tab, open the "Azure IoT Edge on Ubuntu" [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu?tab=Overview) listing.
 
-![step 1](img/edge-runtime-0.png)
+![step 1](../../static/img/quickstart/edge-runtime-0.png)
 
 The simulated Edge Runtime Device is simply an Ubuntu VM with the Azure IoT Edge Runtime installed. Choose a good name for the VM. The Size "Standard_B1s" should be fine for the purpose of this guide. If you are planning on processing large amounts of data consider using a more powerful instance.
 
@@ -35,7 +39,7 @@ Configure SSH so that you can log into the VM after it has been created, e.g. th
 
 Create the VM by following the "Review + create" steps.
 
-![step 2](img/edge-runtime-1.png)
+![step 2](../../static/img/quickstart/edge-runtime-1.png)
 
 After the VM has been created log into the VM via SSH in a terminal of your choosing and run the following commands. If you created the SSH access via password, then you can connect through the command
 `ssh username@[your-vm-ip-address]`
@@ -63,25 +67,25 @@ The Simulated Temperature Sensor is provided by Azure IoT and can be found in th
 
 Create a new Simulated Temperature Sensor by clicking "Create" in the Azure Marketplace listing:
 
-![Step 1](img/simulated-temp-sensor-1.png)
+![Step 1](../../static/img/quickstart/simulated-temp-sensor-1.png)
 
 Select your IoT Hub and Edge Device as Target devices for the module and click "Create":
 
-![Step 2](img/simulated-temp-sensor-2.png)
+![Step 2](../../static/img/quickstart/simulated-temp-sensor-2.png)
 
 ### Configure the Simulated Temperature Sensor Module
 
 After the Simulated Temperature Sensor Module has been created, click on the new module to open its settings:
 
-![Step 3](img/simulated-temp-sensor-3.png)
+![Step 3](../../static/img/quickstart/simulated-temp-sensor-3.png)
 
 In the settings, in the tab "Environment Variables", set up the variable "MessageCount" and give it a value of -1. This will allow for an infinite number of sensor readings. After that click on "Update":
 
-![Step 4](img/simulated-temp-sensor-4.png)
+![Step 4](../../static/img/quickstart/simulated-temp-sensor-4.png)
 
 Finalize the setup of the Simulated Temperature Sensor Module by following the "Review + create" steps:
 
-![Step 5](img/simulated-temp-sensor-5.png)
+![Step 5](../../static/img/quickstart/simulated-temp-sensor-5.png)
 
 ### Add DSK Agent Edge Module
 
@@ -89,9 +93,9 @@ The DSK Agent Edge can also be found in the [Marketplace](https://azuremarketpla
 
 Proceed the same way as previously for the Simulated Temperature Sensor Module: Click "Create" in the Azure Marketplace listing and select your IoT Hub and the Edge device and click "Create", shown in the screenshots below.
 
-![Step 1](img/agent-1.png)
+![Step 1](../../static/img/quickstart/agent-1.png)
 
-![Step 2](img/agent-2.png)
+![Step 2](../../static/img/quickstart/agent-2.png)
 
 ### Configure the DSK Agent Edge Module
 
@@ -102,7 +106,7 @@ To be able to create signatures, the Agent needs to be connected to the Trust-AP
 Open the module by clicking it in the list of IoT Edge Modules and navigate to the tab "Environment Variables".
 There you will have a number of variables, which are explained below the screenshot.
 
-![Step 3](img/agent-3.png)
+![Step 3](../../static/img/quickstart/agent-3.png)
 
 | Variable name                                           | Value                                                                                                                                                                                                    | Sample                                                          |
 | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
@@ -125,7 +129,7 @@ Note that you can easily copy the DataStreamID by clicking the copy button in th
 
 **Finally, double check your variables and click "Update". Then follow the "Review + Create" process.**
 
-![Step 5](img/agent-4.png)
+![Step 5](../../static/img/quickstart/agent-4.png)
 
 ### Configure Routes
 
@@ -135,13 +139,13 @@ All that's left now is the configuration of the routes, so that the simulated da
 
 First, open the IoT Hub in the Azure portal and select the device:
 
-![Step 1](img/routes-1.png)
+![Step 1](../../static/img/quickstart/routes-1.png)
 
 Then, click on "Set Modules" and navigate to the routes by clicking "Next: Routes":
 
-![Step 2](img/routes-2.png)
+![Step 2](../../static/img/quickstart/routes-2.png)
 
-![Step 3](img/routes-3.png)
+![Step 3](../../static/img/quickstart/routes-3.png)
 
 #### Set the routes
 
@@ -156,16 +160,13 @@ Two routes are required, one for sending the simulated sensor data to the DSK Ag
 
 Finish the process by clicking "Review + create" and following the process.
 
-![Step 4](img/routes-4.png)
+![Step 4](../../static/img/quickstart/routes-4.png)
 
 ## Verify that messages arrive at IoT Hub
 
 You can verify that everything works as expected by checking the Overview dashboard of your IoT Hub in the Azure Portal:
 
-![Overview dashboard IoT Hub](img/iot-hub-messages-overview.jpg)
+![Overview dashboard IoT Hub](../../static/img/quickstart/iot-hub-messages-overview.jpg)
 
 You can also already create your first dashboard and have the simulated data presented visually. Just follow the [guide for consuming data via Dashboards](./data-consuming/data-via-dashboards.md). Note that for this case you would be in the position of data owner.
 
----
-
-## [Next: Publish Dataset](./publish-dataset.md)

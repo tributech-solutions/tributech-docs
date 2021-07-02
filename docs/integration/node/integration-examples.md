@@ -1,3 +1,8 @@
+---
+title: Examples
+sidebar_position: 3
+---
+
 # Integration Examples
 
 The simplest way to integrate our APIs is through the [offered nuget package](https://www.nuget.org/packages/Tributech.Dsk.Api.Clients).

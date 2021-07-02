@@ -1,3 +1,7 @@
+---
+title: Overview
+sidebar_position: 1
+---
 # DSK Node Integration Overview
 
 The DSK Node offers two APIs which are used for integration: the Data API (values) and the Trust API (proofs).

@@ -1,9 +1,13 @@
+---
+title: Auditable Data
+sidebar_position: 4
+---
 # Auditable data
 
-This page describes how Tributech generates auditable data and ensures secure data communication channels. Furthermore the Trust layer of each node is preseneted, which guarantees tamperproof storage for proofs.
+This page describes how Tributech generates auditable data and ensures secure data communication channels. Furthermore, the Trust layer of each node is presented, which guarantees tamperproof storage for proofs.
 
 An overview of the communication between nodes and the involved internal components can be seen in the image below (open it in a new tab to inspect it and zoom in).
-![Node Architecture with channels](./img/node-architecture-with-channels.jpg)
+![Node Architecture with channels](/img/introduction/node-architecture-with-channels.jpg)
 
 ### Channels and APIs
 
@@ -50,7 +54,3 @@ The design of the data sharing process ensures that the control of data and sove
 | **Publish a Dataset**    | Dataset owners can publish a Dataset (or just a part of it) to the whole Ecosystem or only to selected DataSpace Nodes. A Publication contains only descriptive metadata and not the data itself. A Publication makes available Datasets visible for other members inside a DataSpace Ecosystem. |
 | **Request a Dataset**    | Every user of a DataSpace Node within the Ecosystem can create and send a Request for selected streams, sources and timeframes to the owner of the Dataset.                                                                                                                                      |
 | **Grant/Deny a Request** | Dataset owners can grant or deny submitted Requests for their Datasets. Once a Request is confirmed, the synchronization starts and the data can be consumed by the Requester via the integrated dashboards or via APIs.                                                                         |
-
-## Next steps
-
-- Set up a demo of the product through our [quick start guide](../quickstart/overview.md)
