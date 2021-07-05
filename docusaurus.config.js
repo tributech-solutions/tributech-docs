@@ -100,6 +100,7 @@ module.exports = {
       theme: lightCodeTheme,
       darkTheme: darkCodeTheme,
     },
+    image: 'img/favicon.png',
   },
   presets: [
     [
