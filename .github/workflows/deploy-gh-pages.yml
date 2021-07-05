@@ -41,4 +41,5 @@ jobs:
         run: |
           git config --global user.email "doc@tributech.io"
           git config --global user.name "Documentation"
+          yarn install --frozen-lockfile
           npm run deploy
