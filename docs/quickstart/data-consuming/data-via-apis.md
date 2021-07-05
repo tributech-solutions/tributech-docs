@@ -16,7 +16,7 @@ This could be in one of two ways:
 
 Navigate to the Data API / Trust API of your node and Authorize yourself by following our [Swagger UI Authorization Guide](../../integration/node/swagger-ui-authorization.md).
 
-You can retrieve the `valueMetadataId` which is a unique id for a data stream by copying it in the DataSpace Admin App [as described here](../../create-dataset/#successful-creation-of-the-dataset).
+You can retrieve the `valueMetadataId` which is a unique id for a data stream by copying it in the DataSpace Admin App [as described here](../create-dataset/#successful-creation-of-the-dataset).
 
 ### Retrieving values through the Data API
 
@@ -29,7 +29,3 @@ Click "Try it out", paste the valueMetadataId, scroll down and click "Execute".
 ### Other endpoints
 
 You can access all other endpoints the same way. Note that for a lot of endpoints you will also need a timestamp. A ValueMetadataId and a Timestamp together uniquely identify a certain value.
-
-### Next steps
-
-For further details about API integration, read our [DSK Node Integration Guide](../../integration/node/overview.md).

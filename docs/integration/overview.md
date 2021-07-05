@@ -1,12 +1,17 @@
+---
+title: Overview
+sidebar_position: 1
+---
+
 # Integration
 
-The DSK can be integrated on many levels, for which an overview is given here.
+The Tributech DataSpace Kit can be integrated on many levels, for which an overview is given here.
 
-## DSK Node
+## DataSpace Kit Node
 
 The DSK Node provides a set of REST APIs to access data as well as verify data authenticity and data integrity. Learn more about how to use them in our [node integration guide](./node/overview.md).
 
-## DSK Agent
+## DataSpace Kit Agent
 
 The DSK Agent can be integrated depending on the variant that you are working with:
 

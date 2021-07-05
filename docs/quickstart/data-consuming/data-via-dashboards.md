@@ -42,12 +42,10 @@ To visualize your data via the dashboarding system the only thing you have to do
 - If you are Consumer, then copy the json of <a href="https://github.com/tributech-solutions/tributech-dsk-docs/blob/master/docs/assets/dashboard-templates/consumer-db-template.json" target="_blank">the Consumer DB JSON template</a>
 
 Copy the contents to a editor of your choice. In the editor, paste the template JSON and search for "ReplaceWith".
-There should be 4 times where you must replace the `<ReplaceWith...>` strings with the IDs of your data streams, which you can find [as described here](../../create-dataset/#successful-creation-of-the-dataset).
+There should be 4 times where you must replace the `<ReplaceWith...>` strings with the IDs of your data streams, which you can find [as described here](../create-dataset/#successful-creation-of-the-dataset).
 
 Finally, copy this adjusted template JSON, paste into the settings tab "JSON Model" of your new dashboard and click "Save Changes".
 
 ![Dashboard JSON Model](./img/dashboard-json-model.png)
 
 Optionally, you can now rename the rows / panels to your liking or just play around with your brand new dashboard!
-
-## [Next: Consuming data via APIs](./data-via-apis.md)

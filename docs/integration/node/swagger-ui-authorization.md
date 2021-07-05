@@ -1,3 +1,8 @@
+---
+title: Authorization
+sidebar_position: 2
+---
+
 # Swagger UI Authorization
 
 ### Navigate to the Swagger UI

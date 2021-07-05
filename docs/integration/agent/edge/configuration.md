@@ -1,3 +1,8 @@
+---
+title: Edge Configuration
+sidebar_position: 1
+---
+
 # DSK Agent Edge Configuration Options
 
 This page gives an overview of the available Configuration Options for the DSK Agent Edge.
