@@ -35,10 +35,7 @@ export default function Home() {
       <HomepageHeader />
       <main>
         {/*<HomepageFeatures />*/}
-        <img
-          className={styles.architectureImg}
-          src="../../static/img/architecture.png"
-        />
+        <img className={styles.architectureImg} src="/img/architecture.png" />
       </main>
     </Layout>
   );
