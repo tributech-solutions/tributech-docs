@@ -101,6 +101,11 @@ module.exports = {
       darkTheme: darkCodeTheme,
     },
     image: 'img/favicon.png',
+    algolia: {
+      apiKey: '038c83f2ea7d91ea50d9e914396ec1b5',
+      indexName: 'tributech',
+      contextualSearch: false, // false for now as we dont have versioning yet
+    },
   },
   presets: [
     [
