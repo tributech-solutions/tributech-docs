@@ -28,35 +28,38 @@ When the device is created, open the device details by clicking it. Leave this t
 
 ## Create simulated IoT Edge Runtime VM
 
-Now we will deploy a simulated IoT Edge Runtime and connect it to our just created device.
+We will now deploy a Linux Ubuntu virtual machine with a simulated IoT Edge Runtime and connect it as our IoT edge device.
 
-In a new tab, open the "Azure IoT Edge on Ubuntu" [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu?tab=Overview) listing.
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Ftributech-solutions%2Ftributech-dsk-docs%2Fmaster%2Farm-templates%2Ftributech-simulated-agent-vm-1-2.json)
+[![Visualize](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Ftributech-solutions%2Ftributech-dsk-docs%2Fmaster%2Farm-templates%2Ftributech-simulated-agent-vm-1-2.json)
 
-![step 1](/img/quickstart/edge-runtime-0.png)
+This deployment template creates a Linux Ubuntu virtual machine, automatically [installs the Azure IoT Edge Runtime](https://docs.microsoft.com/en-us/azure/iot-edge/how-to-install-iot-edge) and [provisions the device with its cloud identity](https://docs.microsoft.com/en-us/azure/iot-edge/how-to-install-iot-edge?view=iotedge-2020-11#option-1-authenticate-with-symmetric-keys).
 
-The simulated Edge Runtime Device is simply an Ubuntu VM with the Azure IoT Edge Runtime installed. Choose a good name for the VM. The Size "Standard_B1s" should be fine for the purpose of this guide. If you are planning on processing large amounts of data consider using a more powerful instance.
+![Create simulated IoT Edge Runtime VM - Step 1](../img/quickstart/edge-runtime-0.png)
+Please choose a expressive unique name for the agent and its related resources. The Size `Standard_B1s` should be fine for the purpose of this guide. If you are planning on processing large amounts of data consider using a more powerful instance (e.g. `Standard_DS1_v2`). For more details see [Sizes for virtual machines in Azure
+](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes).
 
-Configure SSH so that you can log into the VM after it has been created, e.g. through setting a password.
+Configure and enable SSH access so that you can log into the VM after it has been created, e.g. through setting a password.
 
 Create the VM by following the "Review + create" steps.
 
-![step 2](/img/quickstart/edge-runtime-1.png)
+![Create simulated IoT Edge Runtime VM - Step 2](../img/quickstart/edge-runtime-1.png)
 
-After the VM has been created log into the VM via SSH in a terminal of your choosing and run the following commands. If you created the SSH access via password, then you can connect through the command
-`ssh username@[your-vm-ip-address]`
+![Create simulated IoT Edge Runtime VM - Step 3](../img/quickstart/edge-runtime-2.png)
 
+![Create simulated IoT Edge Runtime VM - Step 4](../img/quickstart/edge-runtime-3.png)
+
+If the VM has been created with password based SSH access you can log into the VM with a terminal of your choice by running the following commands.  
+`ssh <username>@<your-vm-ip-address>`<br />
+(e.g `ssh tributech@20.101.44.246`)<br />
+
+If you later want to configure the agent with the Agent-Companion you can use SSH port-forwarding to enable remote connections to the agent by supplying additional paramateres at the command.  
+`ssh <username>@<your-vm-ip-address> -L <local-port>:localhost:5000` (agent available at `http://localhost:<local-port>`)<br />
+(e.g `ssh tributech@20.101.44.246 -L 5000:localhost:5000` (agent available at `http://localhost:5000`)<br />
+
+![Create simulated IoT Edge Runtime VM - SSH](../img/quickstart/edge-runtime-ssh.png)
 Note that you can find the ip-address of your vm by navigating to the created VM in the Azure portal.
-You will be prompted to enter the password that you have configured.
-
-Finally, execute the following commands in the terminal connected via SSH to the VM.
-Use the primary connection string from the previously created device, which you should still have available in the device details tab. Replace the "[IoT-Hub-Primary-Connection-String]" with your primary connection string.
-
-    sudo /etc/iotedge/configedge.sh "[IoT-Hub-Primary-Connection-String]"
-    sudo apt-get update
-    sudo apt-get upgrade -y
-    sudo reboot
-
----
+![Create simulated IoT Edge Runtime VM - Public IP](../img/quickstart/edge-runtime-ip.png)
 
 ## Deploy Edge Runtime Modules
 
