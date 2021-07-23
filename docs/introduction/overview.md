@@ -9,7 +9,7 @@ The Tributech DataSpace Kit enables companies to share [**auditable data**](./au
 
 In other words, the Tributech DataSpace Kit is a containerized software-tool-kit that covers the whole data transfer between DataSpace Nodes (which usually represents a company's cloud or server infrastructure) and it covers the transfer of cryptographic proofs of the DataSpace Agents which enable data auditability.
 
-Based on the containerized and modular architecture, the technology **can be integrated into any kind of platform**, cloud or on-premise system to support the technology stack of all participating stakeholders. Check out our [Integration guide](../integration/overview.md) for details.
+Based on the containerized and modular architecture, the technology **can be integrated into any kind of platform**, cloud or on-premise system to support the technology stack of all participating stakeholders. Check out our [Integration guide](../provide_data/overview.md) for details.
 
 If you want to learn more about use-cases for your business, visit our [website](https://www.tributech.io/use-cases/), visit our [blog](https://www.tributech.io/blog/) or contact our [Customer Advisory Team](mailto:customer-advisory@tributech.io) that helps you to get started.
 

@@ -1,3 +1,8 @@
+---
+title: Overview
+sidebar_position: 1
+---
+
 # DSK Agent Edge Setup
 
 ## Requirements
@@ -37,4 +42,4 @@ Note that self-installation is currently not supported. If you want to deploy a 
 
 ## Next steps
 
-- Check out the [integration](../../integration/agent/edge/integration.md) options of the Agent.
+- Check out the [integration](../../provide_data/agent/integration.md) options of the Agent.

@@ -1,3 +1,8 @@
+---
+title: OLD Options
+sidebar_position: 99
+---
+
 # Setup Options
 
 There are three variants of the DSK Agent available:
@@ -8,7 +13,7 @@ There are three variants of the DSK Agent available:
 
 ## DSK Agent Edge
 
-The DSK Agent Edge is the most common Agent variant and is perfect for all software-based use-cases. It is available <a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tributechsolutionsgmbh1582568815297.57601ccd-62c3-4842-9f73-3dadd3de5b74?tab=Overview" target="_blank">on the Azure Marketplace</a> for straight-forward installation or also in the form of a ready-to-use docker-compose file. Learn how to set it up in our [specific setup guide](./edge-setup.md).
+The DSK Agent Edge is the most common Agent variant and is perfect for all software-based use-cases. It is available <a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tributechsolutionsgmbh1582568815297.57601ccd-62c3-4842-9f73-3dadd3de5b74?tab=Overview" target="_blank">on the Azure Marketplace</a> for straight-forward installation or also in the form of a ready-to-use docker-compose file. Learn how to set it up in our [specific setup guide](overview.md).
 
 **When to choose:**<br />
 This option should be preferred if you have access to the controllers of the machines on the shop-floor but not to the sensors directly (e.g. Industrial IoT Gateway).
@@ -43,4 +48,4 @@ This option should be preferred if you are looking to use a software system (for
 Data is signed as soon as it reaches the node.
 
 **Integration:**<br />
-Data can be sent to the integrated agent through the Trust-API - have a look at [node integration](../../integration/node/overview.md). API Clients for C# can be found [here](https://github.com/tributech-solutions/tributech-dsk-api-clients).
+Data can be sent to the integrated agent through the Trust-API - have a look at [node integration](../../provide_data/node/overview.md). API Clients for C# can be found [here](https://github.com/tributech-solutions/tributech-dsk-api-clients).

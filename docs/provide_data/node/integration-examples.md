@@ -13,5 +13,5 @@ If you do not use C# you can generate your own API Client using any one of the p
 
 ## Next steps
 
-- Read about [Agent Edge Integration](../agent/edge/integration.md)
+- Read about [Agent Edge Integration](../agent/integration.md)
 - Check out the API-Clients and code samples [API Clients](https://github.com/tributech-solutions/tributech-dsk-api-clients)

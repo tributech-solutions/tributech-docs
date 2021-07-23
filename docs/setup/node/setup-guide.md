@@ -26,4 +26,4 @@ Self-installation is currently not supported for a set up of a DataSpace Node ou
 
 - Set up the [Azure IoT Hub Bridge](../iot-hub-bridge/iot-hub-bridge.md),
 - or set up the [DSK Agent Edge](../agent/setup-options.md),
-- or read about the [integration](../../integration/overview.md) options of the DSK.
+- or read about the [integration](../../provide_data/overview.md) options of the DSK.

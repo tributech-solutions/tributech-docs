@@ -1,6 +1,6 @@
 ---
-title: Overview
-sidebar_position: 1
+title: OLD Overview
+sidebar_position: 99
 ---
 
 # Integration
@@ -15,10 +15,10 @@ The DSK Node provides a set of REST APIs to access data as well as verify data a
 
 The DSK Agent can be integrated depending on the variant that you are working with:
 
-- [DSK Agent Edge](./agent/edge/integration.md)
+- [DSK Agent Edge](./agent/integration.md)
 - DSK Agent Embedded
 - [DSK Agent Integrated](./node/overview.md)
 
-Read more about integration details for the **DSK Agent Edge** [here](./agent/edge/integration.md).
+Read more about integration details for the **DSK Agent Edge** [here](agent/integration.md).
 
 The **DSK Agent Integrated** can be used through the Trust-Api - please read about how to use it at the [node integration guide](./node/overview.md).

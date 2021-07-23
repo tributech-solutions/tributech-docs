@@ -1,5 +1,5 @@
 ---
-title: Edge Configuration
+title: OLD Edge Configuration
 sidebar_position: 1
 ---
 
