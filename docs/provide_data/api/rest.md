@@ -11,7 +11,7 @@ The Tributech DataSpace Kit provides two REST APIs:
 - Trust Api
 
 The image below shows you how the APIs are integrated into the dataspace kit.
-![Integration via APIs](integration.jpg)
+![Integration via APIs](assets/integration.jpg)
 
 **In short, the Data Api is used for values whereas the Trust Api is used for proofs. Proofs are required in order to verify the validity and consistency of data. The Trust Api also offers some endpoints which integrate the Data Api.**
 
@@ -19,24 +19,26 @@ The image below shows you how the APIs are integrated into the dataspace kit.
 
 ## Data-API specifications
 Data-API calls and specifications can be found by clicking the "Data-API" tab on the node dashboard.
-![image](data_api_tab.png)
+![image](assets/data_api_tab.png)
 
 The page gives an overview of the available calls and actions.
-![image](data_api_base.png)
+![image](assets/data_api_base.png)
 
 ## Trust-API specifications
 The Trust-API specifications can also be found on the node dashboard.
-![image](trust_api_tab.png)
+![image](assets/trust_api_tab.png)
 
 The page gives an overview of the available calls and actions.
-![image](trust_api_base.png)
+![image](assets/trust_api_base.png)
 
 ## Clients
 
 For both APIs, the "Open API" (Swagger) specifications can be found in the top left, which can be used to generate a clients for the APIs.
-![image](data_api_swagger.png)
+![image](assets/data_api_swagger.png)
 
 If C# is the programming language of choice, our already prepared clients can be found here: https://github.com/tributech-solutions/tributech-dsk-api-clients
+
+---
 
 ### Use case examples
 
@@ -71,3 +73,18 @@ A proof can be validated through the `/validate/proof` HTTP POST endpoint of the
 
 ---
 
+### Step-by-step example: **Store a double value with proof**
+
+1. On your node dashboard: Access your profile on the top right and head to "Administration->API Keys" to find your Trust API client secret. Copy it.  
+![image](assets/administration.png) 
+2. Head to the Trust-API specification page.  
+![image](assets/trust_api_tab_small.png)    
+3. Click the "Authorize" button and paste the Trust API client secret.  
+![image](assets/authorize.png)  
+![image](assets/authorize_secret.png)
+4. Scroll down and select the "POST/value/double" endpoint.    
+![image](assets/trust_api_post_double_base.png)
+5. Click "Try it out" and replace the value in the message body with your own value.  
+![image](assets/trust_api_enter_value.png)
+6. Make sure that the server response with a "success" status.  
+![image](assets/server_response_success.png)
