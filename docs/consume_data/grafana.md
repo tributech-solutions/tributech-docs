@@ -30,9 +30,11 @@ The structure of dashboards is based on the same logic as in the interface of yo
 - **Dashboards: My Datasets** / Provider DB - contains owned Datasets that are connected to your DataSpace Node.
 - **Dashboards: Subscriptions** / Consumer DB - contains subscriptions to Datasets from other members of your Ecosystem.
 
-## Create a Dashboard
+## Visualize your data
 
-To visualize your data via the dashboarding system the only thing you have to do is to duplicate the pre-configured template, paste a code snippet and paste the UUID (ValueMetadataId) of your selected data stream.
+The following steps will let you set up a panel for a "double" typed data set. This will require the UUID (ValueMetadataId) of your selected data stream.  
+If you just want to see an example in action, head to "Dashboards->Manage" and select "MY DATASETS->Test Dataset".
+![Example Dashboard](assets/grafana_example_dashboard.png)
 
 **1. Add a new Dashboard -** Click the "+" button and click on the "Dashboard" menu item to create a new Dashboard. Then click on the settings symbol to get to the Dashboard settings of the just created Dashboard, as shown below:
 
@@ -41,15 +43,17 @@ To visualize your data via the dashboarding system the only thing you have to do
 **2. Add a new panel by clicking the "Add panel" button -** Select "Add an empty panel" to create a new panel on the dashboard.
 ![Add Panel](assets/grafana_add_panel.png)
 
-**2. Select a data source for the panel -** Depending on what data set should be used, select 
+**3. Select a data source for the panel -** Depending on what data set should be used, select 
  - "DataApi.MasterDB" if you are the provider of the data set
  - "DataApi.SlaveDB" if you are the consumer of the data set  
 
 ![Select Data Source](assets/grafana_data_source_selection.png)
 
 
-**3. Query the data source -** Switch to the raw SQL editor by clicking the "Edit SQL" button.
+**4. Query the data source -** Switch to the raw SQL editor by clicking the "Edit SQL" button.
 ![Edit SQL](assets/grafana_edit_sql.png)
+
+Copy the following SQL code and replace the placeholder of "ValueMetadataId" with the UUID of your stream:
 
 ```
 SELECT
@@ -58,20 +62,8 @@ SELECT
 FROM "Value"
 WHERE
   $__timeFilter("Timestamp") and
-  "ValueMetadataId" = 'replace_with your own'
+  "ValueMetadataId" = 'replace_with_your_own'
 ORDER BY 1
 ```
-
-**2. Copy and paste the JSON Model template -** First, prepare the JSON template and adjust to your unique stream ids.
-
-- If you are Owner, then copy the json of <a href="https://github.com/tributech-solutions/tributech-dsk-docs/blob/master/docs/assets/dashboard-templates/owner-db-template.json" target="_blank">the Owner DB JSON template</a>
-- If you are Consumer, then copy the json of <a href="https://github.com/tributech-solutions/tributech-dsk-docs/blob/master/docs/assets/dashboard-templates/consumer-db-template.json" target="_blank">the Consumer DB JSON template</a>
-
-Copy the contents to a editor of your choice. In the editor, paste the template JSON and search for "ReplaceWith".
-There should be 4 times where you must replace the `<ReplaceWith...>` strings with the IDs of your data streams, which you can find [as described here](../create-dataset/#successful-creation-of-the-dataset).
-
-Finally, copy this adjusted template JSON, paste into the settings tab "JSON Model" of your new dashboard and click "Save Changes".
-
-![Dashboard JSON Model](assets/dashboard-json-model.png)
 
 Optionally, you can now rename the rows / panels to your liking or just play around with your brand new dashboard!
