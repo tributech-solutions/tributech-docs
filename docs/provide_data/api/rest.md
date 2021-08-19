@@ -42,7 +42,7 @@ If C# is the programming language of choice, our already prepared clients can be
 
 ### Use case examples
 
-_A few cases which should help to understand when to use which Api are explained following._
+_The following use cases should help to understand when to use which Api._
 
 #### Store values
 
