@@ -5,7 +5,7 @@ sidebar_position: 3
 
 # Audit Tool
 
-To ensure data is consistent, every data entry has to have a proof that can be verified. To verify proofs for a data stream, head to the "Audit Tool" at the DSK Node sidebar.
+To ensure data authenticity and data integrity, every data entry has to have a proof that can be verified. To verify proofs for a data stream, head to the "Audit Tool" at the DSK Node sidebar.
 ![Audit tool sidebar](assets/audit_sidebar.png)
 
 The Audit Tool gives an overview of all the available streams. Select a stream in order to open up a detailed view.
