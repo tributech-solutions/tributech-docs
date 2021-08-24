@@ -1,6 +1,6 @@
 # DSK IoT Hub Bridge
 
-The DSK IoT Hub Bridge is the part that connects the DSK Node to the Azure IoT Hub. The IoT Hub is used for device-management and communication. The IoT Hub is also used to deploy the [Edge Agent](../agent/edge-setup) onto an Edge Device. The Edge Agent receives data from one or more data-sources and forwards it to the IoT Hub. The DSK IoT Hub Bridge forwards the data to the DSK Node.
+The DSK IoT Hub Bridge is the part that connects the DSK Node to the Azure IoT Hub. The IoT Hub is used for device-management and communication. The IoT Hub is also used to deploy the [Edge Agent](../agent/overview) onto an Edge Device. The Edge Agent receives data from one or more data-sources and forwards it to the IoT Hub. The DSK IoT Hub Bridge forwards the data to the DSK Node.
 
 ## Setup
 
