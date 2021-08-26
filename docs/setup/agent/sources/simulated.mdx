@@ -1,0 +1,28 @@
+---
+title: Simulated Source
+sidebar_position: 3
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import DskAgentDockerComposeSimulatedSensor from '!!raw-loader!../../../../deployments/dsk-agent/simulated-sensor/docker-compose.override.yml';
+
+The DSK Edge Simulated Sensor allows to simulate a data source on the edge side for testing purposes. The generated data for the streams is transmitted to the DSK Agent via our MQTT broker.
+
+## Automated setup 
+
+During the [automated setup](../docker-compose#agent-automated-setup) of the DSK Agent you can select to additionally deploy the DSK Edge Simulated Sensor for test data generation.
+
+![Deploy Simulated Sensor](./img/deploy-simulated-sensor.png)
+
+## Manual setup
+
+For the manual setup of the DSK Edge Simulated Sensor (`simulated-sensor`) we need the main [DSK Edge services](../docker-compose#agent-manual-setup) as a basis.  
+
+* Copy the [`docker-compose.override.yml`](../../../../deployments/dsk-agent/simulated-sensor/docker-compose.override.yml) file.  
+(see also [Docker doc - Understanding multiple Compose files](https://docs.docker.com/compose/extends/#understanding-multiple-compose-files))
+<CodeBlock className="language-yml" title="docker-compose.override.yml">{DskAgentDockerComposeSimulatedSensor}</CodeBlock>
+
+* Startup all DSK Edge services including the Simulated Sensor (will automatically retrieve the Docker images).
+    ```bash
+    docker-compose up -d
+    ``` 
