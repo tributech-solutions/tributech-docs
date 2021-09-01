@@ -11,7 +11,7 @@ There are three variants of the DSK Agent available:
 - DSK Agent Embedded (hardware-based)
 - DSK Agent Integrated (running at the DSK Node)
 
-## DSK Agent Edge
+## DSK Agent Edge {#dsk-agent-edge}
 
 The DSK Agent Edge is the most common Agent variant and is perfect for all software-based use-cases. It is available <a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tributechsolutionsgmbh1582568815297.57601ccd-62c3-4842-9f73-3dadd3de5b74?tab=Overview" target="_blank">on the Azure Marketplace</a> for straight-forward installation or also in the form of a ready-to-use docker-compose file. Learn how to set it up in our [specific setup guide](overview.md).
 
@@ -24,7 +24,7 @@ Data is signed on the shop-floor still close to the data-source (the closer to t
 **Integration:**<br />
 You can use your existing connectors, the Agent is integrated at the message bus layer.
 
-## DSK Agent Embedded
+## DSK Agent Embedded {#dsk-agent-embedded}
 
 The DSK Agent Embedded reads data directly from sensors and uses a dedicated hardware security module for signing the data-streams. This is available as either a C implementation or as a dedicated hardware module in the form of our Sensor Security Module (SSM).
 
@@ -37,7 +37,7 @@ Data is signed as close as possible to the data-source (the closer to the data-s
 **Acquire:**<br />
 [Contact us](https://www.tributech.io/about-us/) if you need more information or wish to acquire an SSM.
 
-## DSK Agent Integrated
+## DSK Agent Integrated {#dsk-agent-integrated}
 
 The DataSpace Node comes with an integrated agent, there is no additional setup required for it.
 
