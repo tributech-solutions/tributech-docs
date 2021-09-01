@@ -11,17 +11,17 @@ The required resources to install a DSK Agent Edge are negligible in comparison 
 
 ### Software Requirements {#software-requirements}
 
-| Type    | Required                       | Preferred                 |
-| :------ | :----------------------------- | :------------------------ |
-| OS      | Any current Linux Distribution | Ubuntu 18.04 LTS or later |
-| Runtime | Docker Engine (≥20) + Docker-Compose (≥1.26)<br/>or<br/>Azure IoT Edge runtime with Moby container engine (≥1.1)  | Docker Engine + Docker-Compose    |
+| Type    | Required                                                                                                         | Preferred                      |
+| :------ | :--------------------------------------------------------------------------------------------------------------- | :----------------------------- |
+| OS      | Any current Linux Distribution                                                                                   | Ubuntu 18.04 LTS or later      |
+| Runtime | Docker Engine (≥20) + Docker-Compose (≥1.26)<br/>or<br/>Azure IoT Edge runtime with Moby container engine (≥1.1) | Docker Engine + Docker-Compose |
 
 ### Hardware Requirements {#hardware-requirements}
 
-| Type | Minimum Requirement | Recommend Requirement |
-| :--- | :------------------ | :-------------------- |
+| Type | Minimum Requirement      | Recommend Requirement |
+| :--- | :----------------------- | :-------------------- |
 | CPU  | 1 Core (x86-64 / ARM32 ) | 2 Cores               |
-| RAM  | 1 GB Ram            | 2 GB Ram              |
+| RAM  | 1 GB Ram                 | 2 GB Ram              |
 
 The DSK Agent Edge itself does not actually consume this much RAM; this are the requirements for the whole system. Keep in mind that these requirements strongly depend on the actual load of the agent. These are minimum requirements for rather small to medium amounts of data. If high volumes of data have to be processed the requirements are higher.
 
