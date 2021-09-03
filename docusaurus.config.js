@@ -21,7 +21,7 @@ module.exports = {
       },
       items: [
         {
-          href: '/docs/introduction/overview',
+          href: '/docs/introduction/orientation',
           position: 'left',
           label: 'Introduction',
         },
