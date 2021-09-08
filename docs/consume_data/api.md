@@ -1,6 +1,6 @@
 ---
 title: API
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 The Tributech DataSpace Kit provides two REST APIs:

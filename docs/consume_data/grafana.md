@@ -1,6 +1,6 @@
 ---
 title: Grafana
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # Consume data via Grafana dashboards
