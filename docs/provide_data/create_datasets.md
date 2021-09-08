@@ -3,7 +3,7 @@ title: Create and Publish Datasets
 sidebar_position: 2
 ---
 
-Datasets are a collection of data streams, tags and descriptions which you can publish in order to share the dataset with other users of the Dataspace.
+Datasets are a collection of data streams, tags and descriptions which can be published in order to share the dataset and its content with other users of the Dataspace.
 
 # Create a Dataset
 
@@ -17,4 +17,13 @@ Add however many data sources and streams/events are needed for the use case. Th
 ![Add sources and streams](assets/dataset_streams.png)
 
 Once you are done, hit "Generate Dataset" to finish the creation process. The Dataset should now be visible in "My Datasets".
-![MyDatasets](assets/dataset_mydatasets.png)
+![My Datasets](assets/dataset_mydatasets.png)
+
+# Publish a Dataset
+
+Publishing a Dataset makes a certain timeframe of the data available for selected data consumers in the Dataspace.  
+In order to publish the Dataset, head once again to "My Datasets", select the Dataset and hit the "Add Publication" button. 
+
+![My Datasets](assets/dataset_publish.png)
+
+Follow the instructions of the publication dialog and confirm your choices to make the Dataset available to data consumers in the Dataspace.
