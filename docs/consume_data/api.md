@@ -72,7 +72,7 @@ A proof can be validated through the `/validate/proof` HTTP POST endpoint of the
 ---
 
 ### Step-by-step example: **Get a double value with its ValueMetadataId**
-**Note that this requires double values to be provided on the Data-API. Check out the "Provide Data" documentation, if this has not been done yet.**
+**Note that this requires double values to be provided on the Data-API. If the values originate from an external data provider in the Dataspace, they are available in the ![Dataset subscriptions](subscribe_dataset.md). Otherwise check out the ![Provide Data](../provide_data/overview.md) documentation, to provide the values yourself.**
 1. On your node dashboard: Access your profile on the top right and head to "Administration->API Keys" to find your Data-API client secret. Copy it.  
 ![image](assets/administration.png) 
 2. Head to the Data-API specification page.  
