@@ -55,13 +55,14 @@ If you just want to see an example in action, head to "Dashboards->Manage" and s
 
 Copy the following SQL code and replace the placeholder of "ValueMetadataId" with the UUID of your stream:
 
-```
+```SQL
 SELECT
   "Timestamp" AS "time",
-  get_bytea_to_double("Values", 0) as "double"
+  get_bytea_to_double("Values", 0) AS "double" -- for double values
+  -- get_bytea_to_single("Values", 0) AS "float" -- for float values
 FROM "Value"
 WHERE
-  $__timeFilter("Timestamp") and
+  $__timeFilter("Timestamp") AND
   "ValueMetadataId" = 'replace_with_your_own'
 ORDER BY 1
 ```
