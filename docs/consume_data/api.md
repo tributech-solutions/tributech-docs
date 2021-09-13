@@ -16,6 +16,7 @@ The image below shows you how the APIs are integrated into the dataspace kit.
 ---
 
 ## Data-API specifications
+
 Data-API calls and specifications can be found by clicking the "Data-API" tab on the node dashboard.
 ![image](assets/data_api_tab.png)
 
@@ -23,6 +24,7 @@ The page gives an overview of the available calls and actions.
 ![image](assets/data_api_base.png)
 
 ## Trust-API specifications
+
 The Trust-API specifications can also be found on the node dashboard.
 ![image](assets/trust_api_tab.png)
 
@@ -72,17 +74,19 @@ A proof can be validated through the `/validate/proof` HTTP POST endpoint of the
 ---
 
 ### Step-by-step example: **Get a double value with its ValueMetadataId**
-**Note that this requires double values to be provided on the Data-API. If the values originate from an external data provider in the Dataspace, they are available in the ![Dataset subscriptions](subscribe_dataset.md). Otherwise check out the ![Provide Data](../provide_data/overview.md) documentation, to provide the values yourself.**
+
+**Note that this requires double values to be provided on the Data-API. If the values originate from an external data provider in the Dataspace, they are available in the [Dataset subscriptions](./subscribe_dataset.md). Otherwise check out the [Provide Data](../provide_data/overview.md) documentation, to provide the values yourself.**
+
 1. On your node dashboard: Access your profile on the top right and head to "Administration->API Keys" to find your Data-API client secret. Copy it.  
-![image](assets/administration.png) 
+   ![image](assets/administration.png)
 2. Head to the Data-API specification page.  
-![image](assets/data_api_tab_small.png)    
+   ![image](assets/data_api_tab_small.png)
 3. Click the "Authorize" button and paste the Data-API client secret.  
-![image](assets/authorize.png)  
-![image](assets/authorize_secret.png)
+   ![image](assets/authorize.png)  
+   ![image](assets/authorize_secret.png)
 4. Scroll down and select the "GET/values/double/{valueMetadataId}" endpoint.  
-![image](assets/data_api_get_double.png)
+   ![image](assets/data_api_get_double.png)
 5. Click "Try it out" and replace the ValueMetadataId parameter with your own.  
-![image](assets/data_api_enter_id.png)
+   ![image](assets/data_api_enter_id.png)
 6. In the response message, you should now be able to find the double value.  
-![image](assets/server_response_success.png)
+   ![image](assets/server_response_success.png)

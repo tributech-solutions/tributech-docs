@@ -43,12 +43,12 @@ If you just want to see an example in action, head to "Dashboards->Manage" and s
 **2. Add a new panel by clicking the "Add panel" button -** Select "Add an empty panel" to create a new panel on the dashboard.
 ![Add Panel](assets/grafana_add_panel.png)
 
-**3. Select a data source for the panel -** Depending on what data set should be used, select 
- - "DataApi.MasterDB" if you are the provider of the data set
- - "DataApi.SlaveDB" if you are the consumer of the data set  
+**3. Select a data source for the panel -** Depending on what data set should be used, select
+
+- "DataApi.MasterDB" if you are the provider of the data set
+- "DataApi.SlaveDB" if you are the consumer of the data set
 
 ![Select Data Source](assets/grafana_data_source_selection.png)
-
 
 **4. Query the data source -** Switch to the raw SQL editor by clicking the "Edit SQL" button.
 ![Edit SQL](assets/grafana_edit_sql.png)
