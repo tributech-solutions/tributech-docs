@@ -22,12 +22,13 @@ Additional information, like the Root Hash or the Signature, can be viewed by cl
 
 # Automated/bulk verification
 
-To do automated and/or bulk verification, direct access to ![the Data-API and the Trust-API](api.md) is required.  
+To do automated and/or bulk verification, direct access to [the Data-API and the Trust-API](./api.md) is required.  
 For simplicity, the following section is centered around a single data stream. Repeat the steps for all the data streams that need to be verified.  
 While the section can be followed manually, we stronly recommend to execute the steps in an application using our ![clients](https://github.com/tributech-solutions/tributech-dsk-api-clients).
 
 ## Get proof locations
-On the Data-API, request the proof locations for the data stream that is being audited with the ```/prooflocations/{valueMetadataId}``` endpoint, which only requires the data stream ID.  
+
+On the Data-API, request the proof locations for the data stream that is being audited with the `/prooflocations/{valueMetadataId}` endpoint, which only requires the data stream ID.  
 ![Prooflocations](assets/audit_prooflocation.png)
 
 The response will then list all the prooflocations which include the timestamps required to do a validation.  
@@ -35,7 +36,7 @@ The response will then list all the prooflocations which include the timestamps 
 
 ## Validate proofs
 
-Next, on the Trust-API, validate the proofs with either the ```/validate/proof``` endpoint for a single proof or ```/validate/proofs``` endpoint for bulk validation.  
+Next, on the Trust-API, validate the proofs with either the `/validate/proof` endpoint for a single proof or `/validate/proofs` endpoint for bulk validation.  
 ![Validate proofs](assets/audit_validate_proofs.png)
 
 Pass the data stream ID and the timestamp according to the previous prooflocation response.  

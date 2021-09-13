@@ -22,7 +22,7 @@ Once you are done, hit "Generate Dataset" to finish the creation process. The Da
 # Publish a Dataset
 
 Publishing a Dataset makes a certain timeframe of the data available for selected data consumers in the Dataspace.  
-In order to publish the Dataset, head once again to "My Datasets", select the Dataset and hit the "Add Publication" button. 
+In order to publish the Dataset, head once again to "My Datasets", select the Dataset and hit the "Add Publication" button.
 
 ![My Datasets](assets/dataset_publish.png)
 

@@ -18,6 +18,7 @@ The image below shows you how the APIs are integrated into the dataspace kit.
 ---
 
 ## Data-API specifications
+
 Data-API calls and specifications can be found by clicking the "Data-API" tab on the node dashboard.
 ![image](assets/data_api_tab.png)
 
@@ -25,6 +26,7 @@ The page gives an overview of the available calls and actions.
 ![image](assets/data_api_base.png)
 
 ## Trust-API specifications
+
 The Trust-API specifications can also be found on the node dashboard.
 ![image](assets/trust_api_tab.png)
 
@@ -76,15 +78,15 @@ A proof can be validated through the `/validate/proof` HTTP POST endpoint of the
 ### Step-by-step example: **Store a double value with proof**
 
 1. On your node dashboard: Access your profile on the top right and head to "Administration->API Keys" to find your Trust API client secret. Copy it.  
-![image](assets/administration.png) 
+   ![image](assets/administration.png)
 2. Head to the Trust-API specification page.  
-![image](assets/trust_api_tab_small.png)    
+   ![image](assets/trust_api_tab_small.png)
 3. Click the "Authorize" button and paste the Trust API client secret.  
-![image](assets/authorize.png)  
-![image](assets/authorize_secret.png)
-4. Scroll down and select the "POST/value/double" endpoint.    
-![image](assets/trust_api_post_double_base.png)
+   ![image](assets/authorize.png)  
+   ![image](assets/authorize_secret.png)
+4. Scroll down and select the "POST/value/double" endpoint.  
+   ![image](assets/trust_api_post_double_base.png)
 5. Click "Try it out" and replace the value in the message body with your own value.  
-![image](assets/trust_api_enter_value.png)
+   ![image](assets/trust_api_enter_value.png)
 6. Make sure that the server response with a "success" status.  
-![image](assets/server_response_success.png)
+   ![image](assets/server_response_success.png)
