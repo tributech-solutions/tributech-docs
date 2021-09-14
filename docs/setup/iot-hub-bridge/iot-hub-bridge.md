@@ -4,4 +4,4 @@ The DSK IoT Hub Bridge is the part that connects the DSK Node to the Azure IoT H
 
 ## Setup
 
-In Azure the IoT Hub Bridge can easily be set up using an [ARM Template](https://github.com/tributech-solutions/tributech-dsk-docs/blob/master/docs/assets/iot-hub-arm-template/iotHubAndBridgeTemplate.json). This template deploys a new instance of the Azure IoT Hub in combination with the DSK IoT Hub Bridge. The required steps are described in the [quick-start-guide](../../quickstart/install-bridge.md).
+In Azure the IoT Hub Bridge can easily be set up using an [ARM Template](https://github.com/tributech-solutions/tributech-dsk-docs/blob/master/docs/assets/iot-hub-arm-template/iotHubAndBridgeTemplate.json). This template deploys a new instance of the Azure IoT Hub in combination with the DSK IoT Hub Bridge.
