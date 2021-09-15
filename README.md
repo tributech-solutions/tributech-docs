@@ -1,10 +1,5 @@
 # Tributech DataSpace Kit Documentation
 
-# TODOs
-* unify naming
-  * DSK Agent vs. DSK Edge Agent vs. DSK Agent Edge
-  * Agent Companion vs Agent-Companion
-
 ## ![Publish docs via GitHub Pages](https://github.com/tributech-solutions/tributech-DSK-docs/workflows/Publish%20docs%20via%20GitHub%20Pages/badge.svg?branch=master)
 
 The Tributech DataSpace Kit documentation and covers the components DataSpace Hub, Node and Agent.

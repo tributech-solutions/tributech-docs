@@ -69,4 +69,3 @@ Data is signed as soon as it reaches the node.
 
 **Integration:**<br />
 Data can be sent to the integrated agent through the Trust-API - have a look at [API integration](../provide_data/api/rest.md). API Clients for C# can be found [here](https://github.com/tributech-solutions/tributech-dsk-api-clients).
-

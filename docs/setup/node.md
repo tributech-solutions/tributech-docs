@@ -51,5 +51,6 @@ If you want to join a DSK ecosystem, please select one of the following options:
 A DSK Node can be deployed on Azure using the <a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tributechsolutionsgmbh1582568815297.8aa9010b-3dd5-43e0-a4b6-53e2ea552e4a?tab=Overview" target="_blank">Azure Marketplace offer</a>. Take a look at our [quickstart guide](../quickstart/install-owner-node.md) for more details on how to deploy a DSK Node (showcase for deployment to Tributech Playground).
 
 ### Deploy DSK Node on-premises or at other cloud providers
+
 The DSK Node can also be deployed on-premises or in a virtual machine on any of the major public cloud providers.
 Self-installation is currently not supported for a setup of a DSK Node outside of Azure, please talk to your contact person at Tributech or send an email to our [Customer Advisory Team](mailto:customer-advisory@tributech.io).

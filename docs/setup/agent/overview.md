@@ -30,12 +30,11 @@ If you have any questions regarding infrastructure requirements, please talk to 
 | OS      | Any current Linux Distribution                                                                                   | Ubuntu 18.04 LTS or later      |
 | Runtime | Docker Engine (≥20) + Docker-Compose (≥1.26)<br/>or<br/>Azure IoT Edge runtime with Moby container engine (≥1.1) | Docker Engine + Docker-Compose |
 
-
 ### Runtime
 
 #### Docker / Docker Compose {#docker-runtime}
 
-The DSK Edge Agent services can be run using [Docker Engine](https://docs.docker.com/engine/) as a container runtime. We use [Docker Compose](https://docs.docker.com/compose/) for management/orchestration of the Docker services and provide according [samples](./docker-compose#agent-manual-setup) and [automated deployments](./docker-compose#agent-automated-setup).  
+The DSK Edge Agent services can be run using [Docker Engine](https://docs.docker.com/engine/) as a container runtime. We use [Docker Compose](https://docs.docker.com/compose/) for management/orchestration of the Docker services and provide according [samples](./docker-compose#agent-manual-setup) and [automated deployments](./docker-compose#agent-automated-setup).
 
 If you want to use any other container runtime (e.g. containerd) please talk to your contact person at Tributech or send an email to our [Customer Advisory Team](https://www.tributech.io/about-us/).
 

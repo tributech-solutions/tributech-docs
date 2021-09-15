@@ -48,5 +48,5 @@ Finally, review the entered information and click "Create". Keep in mind that th
 
 Once the deployment is complete you should be able to access the DataSpace Admin App through the newly created Node under "[deployment-name].dataspace-node.com". You will be redirected to a login-page, enter the credentials that you specified in the setup process for the admin user.
 ![DataSpace Admin - Login](./img/dataspace-admin-login.png)
- After the successful login, the DataSpace Admin App of the DataSpace Node should be visible.
+After the successful login, the DataSpace Admin App of the DataSpace Node should be visible.
 ![DataSpace Admin](./img/dataspace-admin.png)

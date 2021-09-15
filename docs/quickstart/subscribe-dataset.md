@@ -54,7 +54,7 @@ You can switch back to the DataSpace Admin App of the Data Owner Node and grant 
 ![Publication Request Grant Success](./img/publication-request-5.png)
 :::
 
-Once your Request is granted by the owner you will get a notification and the state for the entry under "Subscriptions" changes to **granted**. 
+Once your Request is granted by the owner you will get a notification and the state for the entry under "Subscriptions" changes to **granted**.
 
 ![Publication Subscribe - Review](./img/publication-subscribe-6.png)
 ![Publication Subscribe - Review](./img/publication-subscribe-7.png)
