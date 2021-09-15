@@ -21,12 +21,18 @@ As described in the definition of data assets, the DSK Node provides a middlewar
 
 To integrate data sources and/or consume data streams, the DSK Node offers REST APIs based on the OAS3 specification, the following table provides an overview of the available interfaces. 
 
-![API Table](../img/introduction/APITable.png)
+| Interface | Type | Capabilities |
+| ------------ | ------------- | ------------ |
+| Data API | OAS3 REST API  | Provide or consume data streams, statistics, sync state |
+| Trust API | OAS3 REST API  | Store proofs / data quality seals, data verification & audits |
+| Agent API | OAS3 REST API  | Provisioning, linking configuration and updates of DSK Agents / SSMs |
+| Twin API | OAS3 REST API  | Store, update and query digital twins of data sources and applications |
+| Message Bus | RabbitMQ Message Broker  | Publish and subscribe to near real time streaming data |
 
 API clients are available as C# client on GitHub and NuGet. In addition, clients can be generated in any programming language based on the OAS3 specification. 
 
-- [GitHub Repo](https://github.com/tributech-solutions/tributech-dsk-api-clients) 
-- [NuGet Packages](https://www.nuget.org/profiles/Tributech)
+- [**GitHub Repo**](https://github.com/tributech-solutions/tributech-dsk-api-clients) 
+- [**NuGet Packages**](https://www.nuget.org/profiles/Tributech)
 
 ## Data and Life Cycle Management 
 

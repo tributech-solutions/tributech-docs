@@ -7,7 +7,7 @@ sidebar_position: 3
 
 In this part we provide an overview of the Tributech DataSpace Kit components, architecture and key aspects of the technology. The three fundamental components for the DSK are the DataSpace Hub, the DataSpace Node and the DataSpace Agent. An overview of the DSK components is presented below.
 
-![Product Overview](../img/introduction/productoverview.jpg)
+![Product Overview](../img/introduction/productoverview.png)
 
 ## Architecture Overview 
 
@@ -45,7 +45,7 @@ In general, we differentiate between three different types of data that are mana
 
 The DSK is built to integrate, qualify and manage any kind of data assets between data providers and data consumers. Data assets in the DSK are defined by three elements: data streams (e.g. time-series data of a sensor or a document from an ERP system), a self-description of the data asset’s properties and a data quality seal that provides cross-system data verification and audit capabilities. 
 
-![Asset Definition](../img/introduction/asset_definition.png)
+![Asset Definition](../img/introduction/asset_definition.svg)
 
 ### Data Streams 
 This type of data contains the runtime data of connected data sources that is owned by data providers. It may contain intellectual property and is in general classified as sensitive data within the DSK technology stack. This data is always stored or cached within the data layer of a DSK Node. By default, this data never leaves the data owners/providers system. It requires the so-called “data contract” that defines the data sharing conditions, and if granted by the owner, data gets synced peer-to-peer between the data provider and consumer. 
