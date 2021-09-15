@@ -27,9 +27,7 @@ In the image below you can see the data flow that will be established through th
 ## This Guide Covers
 
 - How to [setup](./install-owner-node) the Data-Owner-Node in a few clicks
-- How to create the first [dataset](./create-dataset)
-- How to [link](./install-bridge) the Azure IoT Hub to the Data-Owner-Node
-- How to [deploy](./setup-device) a simulated edge device as a data-source using the Azure IoT Hub
+- How to [deploy](./setup-agent) a DSK Edge Agent and Simulated Sensor/Source
 - How to [share](./publish-dataset) the dataset containing the values from the simulated sensor
 - How to [setup](./install-consumer-node) another node as data-consumer to simulate a partner company
 - How to [subscribe](./subscribe-dataset) to a shared dataset of the data-owner

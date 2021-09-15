@@ -1,0 +1,65 @@
+---
+title: Setup Agent
+sidebar_position: 3
+---
+import DockerComposeAutomatedSetup from '../setup/agent/_docker-compose-automated-setup.md';
+import AgentCompanionLogin from '../common/_agent-companion-login.md';
+import AgentCompanionConnect from '../common/_agent-companion-connect.md';
+import AgentCompanionLink from '../common/_agent-companion-link.md';
+import AgentCompanionVerifyAgent from '../common/_agent-companion-verify-agent.md';
+import AgentCompanionVerifyDataset from '../common/_agent-companion-verify-dataset.md';
+import AgentCompanionDownloadWin from '../common/_agent-companion-download-win.md';
+import AgentCompanionDownloadMac from '../common/_agent-companion-download-mac.md';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+No we will deploy a DSK Edge Agent with a DSK Edge Simulated Sensor/Source and link it to our Data Owner Node.
+
+## Deploy DSK Edge Agent & Simulated Sensor
+
+<DockerComposeAutomatedSetup />
+
+## Link & Configure with Agent Companion
+
+After the DSK Edge Agent is deployed and running we need to link it to our Node and configure it.
+
+### Download & Run
+
+<Tabs
+  defaultValue="win"
+  values={[
+    {label: 'Windows', value: 'win'},
+    {label: 'macOS', value: 'mac'},
+  ]}>
+  <TabItem value="win"><AgentCompanionDownloadWin /></TabItem>
+  <TabItem value="mac"><AgentCompanionDownloadMac /></TabItem>
+</Tabs>
+
+More information on [Downloading & Running](../setup/agent_companion.mdx) the Agent Companion.
+
+![AgentCompanion](./img/agent-companion.png)
+
+### Login to DSK Node
+<AgentCompanionLogin />
+
+### Connect & Link
+<AgentCompanionConnect />
+<AgentCompanionLink />
+
+### Configure
+We can now configure our DSK Edge Agent using a twin based configuration.
+* As a simple starting point for our example scenario we can import the *Steel Factory Plant Line* template.
+![AgentCompanion - Configure 1](./img/agent-companion-configure-1.png)
+* The *Steel Factory Plant Line* template provides a full example twin configuration for the DSK Edge Agent and Simulated Sensor/Source which you can adapt to your desire.
+![AgentCompanion - Configure 2](./img/agent-companion-configure-2.png)
+* After we are finished with defining our twin configuration we need to *Upload To Device* and verify it was *Successfully applied*.
+![AgentCompanion - Configure 3](./img/agent-companion-configure-3.png)  
+
+## Verify in DataSpace-Admin
+After our DSK Edge Agent and Simulated Sensor/Source was deployed, linked and configured it will be present on the DSK Node as Agent and auto-generated Dataset.
+
+### Agent
+<AgentCompanionVerifyAgent />
+
+### Dataset {#setup-agent-verify-dataset}
+<AgentCompanionVerifyDataset />
