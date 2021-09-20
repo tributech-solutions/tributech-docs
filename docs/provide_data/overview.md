@@ -3,22 +3,22 @@ title: Overview
 sidebar_position: 1
 ---
 
-# Provide Data
+Data for Tributech DataSpace Kit can be provided in many ways, for which an overview is given here.
 
-The Tributech DataSpace Kit can be integrated on many levels, for which an overview is given here.
+# Create and publish a Dataset
+Datasets are used to share data with other participants in the Dataspace. Follow the [link](create_datasets.md) to find out how to create and publish a shared Dataset.
 
-## DataSpace Kit Node
+# REST
 
-The DSK Node provides a set of REST APIs to access data as well as verify data authenticity and data integrity. Learn more about how to use them in our [node integration guide](./node/overview.md).
+The DSK Node offers a set of REST APIs to provide data. Learn more about how to use them in our [REST API guide](api/rest.md).
 
-## DataSpace Kit Agent
+# IoT Integration
 
-The DSK Agent can be integrated depending on the variant that you are working with:
+IoT devices can provide data with the DSK Edge Agent. This service offers several "Sources" to interface with.
 
-- [DSK Agent Edge](./agent/integration.md)
-- DSK Agent Embedded
-- [DSK Agent Integrated](./node/overview.md)
-
-Read more about integration details for the **DSK Agent Edge** [here](agent/integration.md).
-
-The **DSK Agent Integrated** can be used through the Trust-Api - please read about how to use it at the [node integration guide](./node/overview.md).
+## MQTT Source
+To provide data through an MQTT message bus, follow the [MQTT Source guide](iot/mqtt.md).
+## OPC-UA
+For an OPC-UA conform interface, check out the [OPC-UA Source guide](iot/opc-ua.md)
+## Simulated Source
+To provide generated test data, a [Simulated Source](iot/simulated.md) can be used.
