@@ -5,7 +5,7 @@ sidebar_position: 1
 
 # Quickstart Guide
 
-This guide describes how to quickly get up and running with the Tributech DataSpace Kit (DSK). The easiest way to get started with only a few clicks is in the Azure Cloud. While the Azure Cloud is the quickest and easiest way to get started, other options for deployment, including on premise systems, are also available. Check out our [Setup Guide](../setup/overview.md) for detail information..
+This guide describes how to quickly get up and running with the Tributech DataSpace Kit (DSK). The easiest way to get started with only a few clicks is in the Azure Cloud. While the Azure Cloud is the quickest and easiest way to get started, other options for deployment, including on premise systems, are also available. Check out our [Setup Guide](../setup/overview.md) for details.
 
 ## Demonstrated Use-Case
 
@@ -31,3 +31,4 @@ In the image below you can see the data flow that will be established through th
 - How to [share](./publish-dataset) the dataset containing the values from the simulated sensor
 - How to [setup](./install-consumer-node) another node as data-consumer to simulate a partner company
 - How to [subscribe](./subscribe-dataset) to a shared dataset of the data-owner
+- How to [consume](./consume-data) data from a shared dataset
