@@ -13,7 +13,7 @@ The DataSpace Kit (DSK) provides all the building blocks to create dataspaces wh
 
 ## Create a data ecosystem
 
-As shown in the image above, the DataSpace Kit provides the building blocks for you to create a dataspace. In the following section we provide a high-level description of how it works. 
+As shown in the image above, the DataSpace Kit provides the building blocks for you to create a dataspace. In the following section we provide a high-level description of how it works.
 
 The DSK Hub is the metadata broker for a dataspace and each dataspace maintains its own hub. The DSK Nodes are deployed into a cloud, hybrid, or on-premises platform of each participant (e.g. a company or a department) and represent the connector and middleware required to participate in a dataspace.
 

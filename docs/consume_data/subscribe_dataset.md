@@ -20,6 +20,6 @@ After confirmation of the Dataset publisher the status will change to "Granted" 
 
 ## Dataset content
 
-Clicking on the subscription opens up the details. Click the "Actions" menu and select "Copy Stream ID" to make applications able to consume the data of the selected data stream.  
+Clicking on the subscription opens up the details. Click the "Actions" menu and select "Copy Stream ID" to get the stream's unique ID which can be used in applications to consume the data.  
 This section also allows to "Unsubscribe" from the Dataset.
 ![Subscription details](assets/dataset_subscription_details.png)
