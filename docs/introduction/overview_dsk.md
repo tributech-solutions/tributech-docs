@@ -13,13 +13,13 @@ In this part we provide an overview of the Tributech DataSpace Kit components, a
 
 With these building blocks, organizations can set up dataspaces, consisting of a DSK Hub that acts as metadata broker and DSK Nodes providing data management middleware for data providers and consumers. Data sources can be connected to DSK Nodes through open API interfaces, data pipelines and DSK Agents.
 
-The high-level architecture below shows how the DSK components form a dataspace and communicate with each other.
+The high-level architecture below shows how the DSK components form a dataspace communicate with each other.
 
-![Product Overview](../img/introduction/architecture_overview.png)
+![Product Overview](../img/introduction/architecture.png)
 
 ## DataSpace Hub
 
-The DSK Hub acts as a metadata broker and clearinghouse between data providers and data consumers within a dataspace. Users can publish metadata into public and private data catalogs and agree on data contracts that define what data should be shared with whom and under which conditions. These data contracts define for example: a selection of data streams (e.g., the datapoints temperature and pressure of a machine), the timeframe (e.g., from one month in the past to an open end in the future) and a legal contract for data usage terms which are attached by the data provider.
+The DSK Hub acts as a metadata broker and clearinghouse between data providers and data consumers within a dataspace. Users can publish metadata into public and private data catalogs and agree on data contracts that define what data should be shared with whom and under which conditions. These data contracts define for example: a selection of data streams (e.g. the datapoints temperature and pressure of a machine), the timeframe (e.g. from one month in the past to an open end in the future) and a legal contract for data usage terms which are attached by the data provider.
 
 Note that the Hub does not hold any data itself, thus guaranteeing the data sovereignty of the node owners. We are also continuously working on increasing the decentralization of the system’s metadata and identity management to eliminate the necessity of the hub in the mid-term future, while always keeping an eye on enterprise readiness and usability.
 
@@ -55,7 +55,7 @@ This type of data contains the runtime data of connected data sources that is ow
 
 Each data stream that is processed by the DSK includes a self-description, consisting of a twin describing the data asset’s properties and relations to represent a hierarchy or dependencies. The self-descriptions are based on the open DTDL (Digital Twin Definition Language) standard and managed by DSK users through public and private data catalogs.
 
-### Quality seals
+### Quality Seals
 
 To enable the verification of data integrity and authenticity between a data source and a data consumer across different infrastructures/systems, the DSK provides a blockchain-based trust layer to store verifiable data quality seals, also called proofs. For each (raw) datapoint or set of datapoints (depending on the configuration), a signed SHA 256 root hash is created and stored on-chain within a DSK Node. Each quality seal includes a reference pointing to the raw data that is stored off-chain in the data layer of a DSK Node or an external storage system.
 

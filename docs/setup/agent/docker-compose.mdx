@@ -20,10 +20,10 @@ To manage and handle Docker services of the DSK Edge Agent (e.g. start/stop serv
 
 The following steps describe the tasks required to get the main DSK Edge services (`dsk-agent` and `mosquitto-server`) up and running on a system.
 
-* Prerequisite: Recent Linux based system meeting our [requirements](#requirements).  
-Our [automated setup](#agent-automated-setup) creates e.g. a Ubuntu 20.04 based Linux virtual machine on Azure.
-* [Install Docker](https://docs.docker.com/engine/install/) based on the desired option from the official documentation.  
-    e.g. for Ubuntu using the Official Docker Repository https://docs.docker.com/engine/install/ubuntu/
+* Prerequisite: Recent Linux based system meeting our [**requirements**](#requirements).  
+Our [**automated setup**](#agent-automated-setup) creates e.g. a Ubuntu 20.04 based Linux virtual machine on Azure.
+* [**Install Docker**](https://docs.docker.com/engine/install/) based on the desired option from the official documentation.  
+    e.g. for Ubuntu using the Official Docker Repository **https://docs.docker.com/engine/install/ubuntu/**
     ```bash
     sudo apt-get update
     sudo apt-get install \
@@ -41,18 +41,18 @@ Our [automated setup](#agent-automated-setup) creates e.g. a Ubuntu 20.04 based 
     sudo apt-get update
     sudo apt-get install docker-ce docker-ce-cli containerd.io  
     ```
-* [Install docker-compose](https://docs.docker.com/compose/install/)  
+* [**Install docker-compose**](https://docs.docker.com/compose/install/)  
     We recommend the installation via package manager (e.g. Ubuntu `apt-get`):
     ```bash
     sudo apt-get install docker-compose
     ```
-* (Optional) Allow to [manage Docker as non-root user](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user)
+* (Optional) Allow to [**manage Docker as non-root user**](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user)
 * Login to the private Docker registry to allow retrieval of DSK Edge Docker images. (TODO credentials)
     ```bash
     echo <access-token> | docker login --username <token-name> --password-stdin tributech.azurecr.io
     ```
 * Copy and adapt the <a target="_blank" href={require('!file-loader!../../../deployments/dsk-agent/sample.env').default}>`.env`</a> environment configuration file.  
-See [automated setup](#agent-automated-setup) for detailed parameter description and [Docker doc - The “.env” file](https://docs.docker.com/compose/environment-variables/#the-env-file) for general information about the `.env` file.
+See [**automated setup**](#agent-automated-setup) for detailed parameter description and [**Docker doc - The “.env” file**](https://docs.docker.com/compose/environment-variables/#the-env-file) for general information about the `.env` file.
 <CodeBlock className="language-plain" title=".env">{DskAgentEnv}</CodeBlock>
 
 * Copy the [`docker-compose.yml`](../../../deployments/dsk-agent/docker-compose.yml) file. 
@@ -62,12 +62,12 @@ See [automated setup](#agent-automated-setup) for detailed parameter description
     ```bash
     docker-compose up -d
     ```
-* You can now continue with [connecting to, linking & configuring](../agent_companion.mdx#agent-companion-connect) the DSK Edge Agent.
+* You can now continue with [**connecting to, linking & configuring**](../agent_companion.mdx#agent-companion-connect) the DSK Edge Agent.
 
 ## Docker Compose management commands  {#docker-compose-commands}
 
 In the following we show some of the basic Docker Compose commands for the management of the Docker services of the DSK Edge Agent.  
-Check the [docker-compose CLI](https://docs.docker.com/compose/reference/) and [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/) documentation for a full overview of the commands.
+Check the [**docker-compose CLI**](https://docs.docker.com/compose/reference/) and [**Docker CLI**](https://docs.docker.com/engine/reference/commandline/cli/) documentation for a full overview of the commands.
 
 [![asciicast](https://asciinema.org/a/ySB0YG0BMgrwO9MM124rsaL5w.svg)](https://asciinema.org/a/ySB0YG0BMgrwO9MM124rsaL5w)
 
