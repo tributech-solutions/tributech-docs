@@ -10,13 +10,13 @@ The Dataset has already been created in a previous step and can now be published
 
 ### Add Publication
 
-In the DataSpace Admin App, navigate to "My Datasets" on the left side menu. Then select one of your Datasets (probably the auto-generated Dataset from [step Setup DSK Edge Agent](./setup-agent.mdx#setup-agent-verify-dataset)) and click on "Add Publication" for the selected Dataset
+In the DataSpace Admin App, navigate to "My Datasets" on the left side menu. Then select one of your Datasets (e.g. the auto-generated Dataset from [**our previous Quickstart setup step**](./setup-agent.mdx#setup-agent-verify-dataset)) and click on "Add Publication" for the selected Dataset
 
 ![Dataset Add Publication](./img/dataset-publish-1.png)
 
 ### Select Audience
 
-As a first step you will have to set the Audience.
+As a first step you will have to select the Audience.
 
 Publishing a Dataset means that you make the descriptive metadata visible for other members of your DataSpace Ecosystem, so they can request access to your Datasets and subscribe to them if you grant access. If you want to publish a Dataset you have two different options.
 
