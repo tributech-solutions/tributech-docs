@@ -1,0 +1,19 @@
+version: "3.3"
+
+services:
+  simulated-sensor:
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}simulated-sensor:${TAG:-latest}
+    depends_on:
+      - mosquitto-server
+      - dsk-agent
+    environment:
+      - MqttOptions__MQTTHost=mosquitto-server
+      - Logging__LogLevel__Default=Information
+    networks:
+      - edge-net
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "2m"
+        max-file: "5"
