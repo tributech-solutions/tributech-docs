@@ -10,4 +10,3 @@ For the setup of the consumer node, the same steps as in [**Setup Owner Node**](
 :::caution
 The node name and Email address must be unique within the whole DSK ecosystem! Please use an **individual node name** and **Email address for each new node**!
 :::
-
