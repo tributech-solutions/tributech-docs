@@ -1,10 +1,12 @@
 ---
 title: Setup Consumer Node
-sidebar_position: 7
+sidebar_position: 5
 ---
 
-# Install Customer Node
+# Setup Consumer Node
 
-For the setup of the consumer node, the same steps as in [Install Owner Node](./install-owner-node.md) are required. It is possible to set the nodes up in two different Azure subscriptions if you want to create a more realistic testcase with a partner company.
+For the setup of the consumer node, the same steps as in [**Setup Owner Node**](./install-owner-node.md) are required. It is possible to set the nodes up in two different Azure subscriptions if you want to create a more realistic testcase with a partner company.
 
-Make sure to select a differing, unique node name.
+:::caution
+The node name and Email address must be unique within the whole DSK ecosystem! Please use an **individual node name** and **Email address for each new node**!
+:::

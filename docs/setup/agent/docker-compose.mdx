@@ -1,0 +1,101 @@
+---
+title: Docker Compose Setup
+sidebar_position: 2
+---
+import CodeBlock from '@theme/CodeBlock';
+import DskAgentDockerCompose from '!!raw-loader!../../../deployments/dsk-agent/docker-compose.yml';
+import DskAgentEnv from '!!raw-loader!../../../deployments/dsk-agent/sample.env';
+import DockerComposeAutomatedSetup from './_docker-compose-automated-setup.md';
+
+The simply get started with the DSK Edge Agent services using the [Docker / Docker Compose](./overview.md#docker-runtime) runtime we provide a [fully automated](#agent-automated-setup) option which deploys a Linux virtual machine on Azure with everything pre-installed/configured and the Tributech DSK Edge services up and running.  
+For the [manual setup](#agent-manual-setup) on your device and Docker runtime we provide according instructions and sample files.  
+
+To manage and handle Docker services of the DSK Edge Agent (e.g. start/stop services, check logs of service) we provide some [sample Docker Compose commands](#docker-compose-commands).
+
+## Automated setup {#agent-automated-setup}
+
+<DockerComposeAutomatedSetup />
+
+## Manual setup {#agent-manual-setup}
+
+The following steps describe the tasks required to get the main DSK Edge services (`dsk-agent` and `mosquitto-server`) up and running on a system.
+
+* Prerequisite: Recent Linux based system meeting our [**requirements**](#requirements).  
+Our [**automated setup**](#agent-automated-setup) creates e.g. a Ubuntu 20.04 based Linux virtual machine on Azure.
+* [**Install Docker**](https://docs.docker.com/engine/install/) based on the desired option from the official documentation.  
+    e.g. for Ubuntu using the Official Docker Repository **https://docs.docker.com/engine/install/ubuntu/**
+    ```bash
+    sudo apt-get update
+    sudo apt-get install \
+        apt-transport-https \
+        ca-certificates \
+        curl \
+        gnupg \
+        lsb-release
+
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    echo \
+    "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+    $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+    sudo apt-get update
+    sudo apt-get install docker-ce docker-ce-cli containerd.io  
+    ```
+* [**Install docker-compose**](https://docs.docker.com/compose/install/)  
+    We recommend the installation via package manager (e.g. Ubuntu `apt-get`):
+    ```bash
+    sudo apt-get install docker-compose
+    ```
+* (Optional) Allow to [**manage Docker as non-root user**](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user)
+* Login to the private Docker registry to allow retrieval of DSK Edge Docker images. (TODO credentials)
+    ```bash
+    echo <access-token> | docker login --username <token-name> --password-stdin tributech.azurecr.io
+    ```
+* Copy and adapt the <a target="_blank" href={require('!file-loader!../../../deployments/dsk-agent/sample.env').default}>`.env`</a> environment configuration file.  
+See [**automated setup**](#agent-automated-setup) for detailed parameter description and [**Docker doc - The “.env” file**](https://docs.docker.com/compose/environment-variables/#the-env-file) for general information about the `.env` file.
+<CodeBlock className="language-plain" title=".env">{DskAgentEnv}</CodeBlock>
+
+* Copy the [`docker-compose.yml`](../../../deployments/dsk-agent/docker-compose.yml) file. 
+<CodeBlock className="language-yml" title="docker-compose.yml">{DskAgentDockerCompose}</CodeBlock>
+
+* Startup the DSK Edge services (will automatically retrieve the Docker images).
+    ```bash
+    docker-compose up -d
+    ```
+* You can now continue with [**connecting to, linking & configuring**](../agent_companion.mdx#agent-companion-connect) the DSK Edge Agent.
+
+## Docker Compose management commands  {#docker-compose-commands}
+
+In the following we show some of the basic Docker Compose commands for the management of the Docker services of the DSK Edge Agent.  
+Check the [**docker-compose CLI**](https://docs.docker.com/compose/reference/) and [**Docker CLI**](https://docs.docker.com/engine/reference/commandline/cli/) documentation for a full overview of the commands.
+
+[![asciicast](https://asciinema.org/a/ySB0YG0BMgrwO9MM124rsaL5w.svg)](https://asciinema.org/a/ySB0YG0BMgrwO9MM124rsaL5w)
+
+```bash
+# pull docker images for all services
+docker-compose pull
+
+# create & start all services
+docker-compose up -d
+
+# check service status 
+docker-compose ps
+
+# check logs of specific service (-f for following log output)
+docker-compose logs -f -t --tail=500 dsk-agent
+
+# stop all services
+docker-compose stop
+# stop single service
+docker-compose stop dsk-agent
+# restart single service
+docker-compose restart dsk-agent
+# start all services
+docker-compose start
+# start single service
+docker-compose start dsk-agent
+
+# remove services
+docker-compose down
+```
+Depending on your environment the commands might need to be run as root using `sudo`.

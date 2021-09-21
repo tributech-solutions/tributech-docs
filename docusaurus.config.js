@@ -21,7 +21,7 @@ module.exports = {
       },
       items: [
         {
-          href: '/docs/introduction/overview',
+          href: '/docs/introduction/orientation',
           position: 'left',
           label: 'Introduction',
         },
@@ -36,9 +36,14 @@ module.exports = {
           label: 'Setup',
         },
         {
-          href: '/docs/integration/overview',
+          href: '/docs/provide_data/overview',
           position: 'left',
-          label: 'Integration',
+          label: 'Provide Data',
+        },
+        {
+          href: '/docs/consume_data/overview',
+          position: 'left',
+          label: 'Consume Data',
         },
         {
           href: 'https://github.com/tributech-solutions',
@@ -99,6 +104,7 @@ module.exports = {
     prism: {
       theme: lightCodeTheme,
       darkTheme: darkCodeTheme,
+      additionalLanguages: ['csharp'],
     },
     image: 'img/favicon.png',
     algolia: {
