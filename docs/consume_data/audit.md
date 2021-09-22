@@ -22,9 +22,9 @@ Additional information, like the Root Hash or the Signature, can be viewed by cl
 
 # Automated/bulk verification
 
-To do automated and/or bulk verification, direct access to [the Data-API and the Trust-API](./api.md) is required.  
+To do automated and/or bulk verification, direct access to [**the Data-API and the Trust-API**](./api.md) is required.  
 For simplicity, the following section is centered around a single data stream. Repeat the steps for all the data streams that need to be verified.  
-While the section can be followed manually, we stronly recommend to execute the steps in an application using our ![clients](https://github.com/tributech-solutions/tributech-dsk-api-clients).
+While the section can be followed manually, we stronly recommend to execute the steps in an application using our [**clients**](https://github.com/tributech-solutions/tributech-dsk-api-clients).
 
 ## Get proof locations
 

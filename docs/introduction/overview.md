@@ -1,11 +1,10 @@
 ---
-title: Orientation
+title: Overview
 sidebar_position: 1
 ---
 
-# Orientation
-
-This page provides an overview and orientation of available resources of the Tributech DataSpace Kit.
+# Overview Introduction
+This page provides an overview of the Tributech DataSpace Kit documentation and available resources.
 
 ## For Beginners
 

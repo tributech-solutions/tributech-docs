@@ -3,24 +3,22 @@ title: Overview
 sidebar_position: 1
 ---
 
-# Overview
-
+# Overview Setup
 This section of the documentation describes how to setup the individual components of the DataSpace Kit (DSK).
 
-The following table overview offers a quick understanding of the components which are at the core of the Tributech DataSpace Kit.
-![DataSpace Kit - Components setup variants overview](img/product-setup-variants-overview.jpg)
-_Fig.1: DataSpace Kit - Components setup variants overview_
+The following table offers a quick overview of the components which are at the core of the Tributech DataSpace Kit.
+![Product Overview](../img/introduction/productoverview.png)
 
-If you have never set up the DSK before also check out the [Quick Start Guide](../quickstart/overview.md)
+If it's your first time setting up the DSK we also suggest having a look at our [**Quick Start Guide**](../quickstart/overview.md).
 
 ## DSK Ecoystem
 
-The ecosystem consists of the DataSpace Hub and is managed & operated by Tributech. If you want to own an ecosystem, please reach out to us via our [contact form](https://www.tributech.io/about-us/).
+The ecosystem consists of the DataSpace Hub and is managed & operated by Tributech. If you want to own an ecosystem, please reach out to us via our [**Contact Form**](https://www.tributech.io/about-us/).
 
 ## DSK Node
 
 The DataSpace Node serves as a platform and is most likely the part of the architecture that you'll want to setup first. It can either be managed or self-hosted.
-Please refer to the [DSK Node setup](./node.md) to learn about its setup and the available setup options.
+Please refer to the [**DSK Node setup**](./node.md) to learn about its setup and the available setup options.
 
 ## DSK Agent
 
@@ -33,7 +31,7 @@ There are three variants of the DSK Agent available:
 
 ### DSK Agent Edge {#dsk-agent-edge}
 
-The DSK Agent Edge is the most common Agent variant and is perfect for all software-based use-cases. Learn how to set it up in our [specific setup guide](./setup/agent/overview.md).
+The DSK Agent Edge is the most common Agent variant and is perfect for all software-based use-cases. Learn how to set it up in our [**specific setup guide**](./setup/agent/overview.md).
 
 **When to choose:**<br />
 This option should be preferred if you have access to the controllers of the machines on the shop-floor but not to the sensors directly (e.g. Industrial IoT Gateway).
@@ -55,7 +53,7 @@ This option should be preferred if you have access to your system on a sensor le
 Data is signed as close as possible to the data-source (the closer to the data-source, the better for security). This option offers the highest level of security.
 
 **Acquire:**<br />
-[Contact us](https://www.tributech.io/about-us/) if you need more information or wish to acquire an SSM.
+[**Contact us**](https://www.tributech.io/about-us/) if you need more information or wish to acquire an SSM.
 
 ### DSK Agent Integrated {#dsk-agent-integrated}
 
@@ -68,4 +66,4 @@ This option should be preferred if you are looking to use a software system (for
 Data is signed as soon as it reaches the node.
 
 **Integration:**<br />
-Data can be sent to the integrated agent through the Trust-API - have a look at [API integration](../provide_data/api/rest.md). API Clients for C# can be found [here](https://github.com/tributech-solutions/tributech-dsk-api-clients).
+Data can be sent to the integrated agent through the Trust-API - have a look at [**API integration**](../provide_data/api/rest.md). API Clients for C# can be found [**here**](https://github.com/tributech-solutions/tributech-dsk-api-clients).

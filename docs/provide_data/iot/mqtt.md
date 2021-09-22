@@ -3,18 +3,18 @@ title: MQTT Source
 sidebar_position: 2
 ---
 
-The DSK Edge Agent service supports integration of external data sources using the [MQTT messaging protocol](https://mqtt.org/).
-Your MQTT client needs to connect to our MQTT message broker (`eclipse-mosquitto`) and publish MQTT messages with a specific payload format on one of our [pre-defined MQTT topics](#mqtt-predefined-topics) or using the [custom/configurable MQTT topics](#mqtt-custom-topics). The published message will be processed from our main DSK Edge Agent service (`dsk-agent`) and enriched to achieve data authenticity and integrity support.
+The DSK Edge Agent service supports integration of external data sources using the [**MQTT messaging protocol**](https://mqtt.org/).
+Your MQTT client needs to connect to our MQTT message broker (`eclipse-mosquitto`) and publish MQTT messages with a specific payload format on one of our [**pre-defined MQTT topics**](#mqtt-predefined-topics) or using the [**custom/configurable MQTT topics**](#mqtt-custom-topics). The published message will be processed from our main DSK Edge Agent service (`dsk-agent`) and enriched to achieve data authenticity and integrity support.
 
 Such an MQTT client could be any of your existing edge services or implemented specifically for the use case in your desired programming language and run as additional Docker sidecar container.
 
-We recommend the configuration of the MQTT source based on twins which can be done with our [Agent Companion](../../setup/agent_companion) and is described in the subsequent chapters.
+We recommend the configuration of the MQTT source based on twins which can be done with our [**Agent Companion**](../../setup/agent_companion) and is described in the subsequent chapters.
 
 ## Connect to the MQTT broker
 
-By default the MQTT broker is only available within the [Docker bridge network](https://docs.docker.com/network/bridge/) `edge-net` with the service name `mosquitto-server` on port `1883`.  
-Accordingly you need to either [connect](https://docs.docker.com/network/bridge/#connect-a-container-to-a-user-defined-bridge) your custom MQTT client running as Docker container to the `edge-net`  
-or [publish/expose the port](https://docs.docker.com/config/containers/container-networking/#published-ports) of the MQTT broker on the host with a configuration like the following:
+By default the MQTT broker is only available within the [**Docker bridge network**](https://docs.docker.com/network/bridge/) `edge-net` with the service name `mosquitto-server` on port `1883`.  
+Accordingly you need to either [**connect**](https://docs.docker.com/network/bridge/#connect-a-container-to-a-user-defined-bridge) your custom MQTT client running as Docker container to the `edge-net`  
+or [**publish/expose the port**](https://docs.docker.com/config/containers/container-networking/#published-ports) of the MQTT broker on the host with a configuration like the following:
 
 ```yaml {6-7}
 # MQTT broker/server
@@ -28,9 +28,9 @@ mosquitto-server:
 
 which enable access on `localhost` with port `1883`.
 
-In the default setup we do not use user/password authentication nor SSL/TLS since we are in a closed environment. If you want to refine this setup please talk to your contact person at Tributech or send an email to our [Customer Advisory Team](https://www.tributech.io/about-us/).
+In the default setup we do not use user/password authentication nor SSL/TLS since we are in a closed environment. If you want to refine this setup please talk to your contact person at Tributech or send an email to our [**Customer Advisory Team**](https://www.tributech.io/about-us/).
 
-For testing purposes we can recommend tools like [MQTTX](https://mqttx.app/) or [MQTT Explorer](http://mqtt-explorer.com/).  
+For testing purposes we can recommend tools like [**MQTTX**](https://mqttx.app/) or [**MQTT Explorer**](http://mqtt-explorer.com/).  
 If the port was published to the host as described above we can connect with such tools and post test messages (as used in the subsequent samples).
 ![MQTTX - Connection](./img/mqttx-connection.png)
 Register for the wildcard topic `#` to see all messages.
@@ -46,7 +46,7 @@ ssh tributech@20.86.158.183 -L 5000:localhost:5000 -L 1883:localhost:1883
 
 Otherwise you need to ensure that the port `1883` is accessible on the edge device (firewall rules).
 
-## Custom/configurable MQTT topics {#mqtt-custom-topics}
+## Custom/Configurable MQTT topics {#mqtt-custom-topics}
 
 You can configure a custom MQTT topic for a stream on which the main DSK Edge Agent service will listen and process all MQTT messages published at the MQTT broker.
 
@@ -54,15 +54,15 @@ The mapping of MQTT message to the value for the stream works like the following
 
 - `ValueMetadataId`: All MQTT messages matching the _MQTT custom topic_ will be created as value with _ValueMetadataID_ of the stream.
 - `Timestamp`: Current time of the edge-device when the topic gets read by the DSK Edge Agent.
-- `Values`: The payload in raw-bytes representing the value (see [Data encoding](#data-encoding)).
+- `Values`: The payload in raw-bytes representing the value (see [**Data encoding**](#data-encoding)).
 
 Configure:
 
-- Open the [Agent Companion](../../setup/agent_companion), [login](../../setup/agent_companion#agent-companion-login) to the DSK Node and [connect](../../setup/agent_companion#agent-companion-connect) with the DKS Edge Agent
+- Open the [**Agent Companion**](../../setup/agent_companion), [**login**](../../setup/agent_companion#agent-companion-login) to the DSK Node and [**connect**](../../setup/agent_companion#agent-companion-connect) with the DKS Edge Agent
 - Add MQTT Source
   ![MQTT Source](./img/mqtt-source.png)
 - Add MQTT Stream(s)  
-   _MQTT custom topic_ must follow the [MQTT specification](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718106) and the same topic can not be used for multiple streams.  
+   _MQTT custom topic_ must follow the [**MQTT specification**](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718106) and the same topic can not be used for multiple streams.  
    _Data Encoding_ defines the actual value type (since provided as raw-bytes in the message).
   ![MQTT Source - Custom Topic 1 - 1](./img/mqtt-custom-topic-1-1.png)
   ![MQTT Source - Custom Topic 2 - 1](./img/mqtt-custom-topic-2-1.png)
@@ -86,17 +86,17 @@ For representation as twins in the configuration we use _Generic Source_ and _Ge
 
 TOPIC: `DSK/EdgeAgent/Double/<ValueMetadataId>`
 
-For publishing of floating point number values represented as [double](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/floating-point-numeric-types).
+For publishing of floating point number values represented as [**double**](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/floating-point-numeric-types).
 
 The mapping of MQTT message to the value for the stream works like the following:
 
 - `ValueMetadataId`: Taken from `ValueMetadataId` placeholder inside the topic.
 - `Timestamp`: Current time of the edge-device when the topic gets read by the DSK Edge Agent.
-- `Values`: The payload in raw-bytes of an little-endian-encoded 64-bit [IEEE 754](https://en.wikipedia.org/wiki/Double-precision_floating-point_format) floating point number (see [Data encoding](#data-encoding)).
+- `Values`: The payload in raw-bytes of an little-endian-encoded 64-bit [**IEEE 754**](https://en.wikipedia.org/wiki/Double-precision_floating-point_format) floating point number (see [**Data encoding**](#data-encoding)).
 
 Configure:
 
-- Open the [Agent Companion](../../setup/agent_companion), [login](../../setup/agent_companion#agent-companion-login) to the DSK Node and [connect](../../setup/agent_companion#agent-companion-connect) with the DKS Edge Agent
+- Open the [**Agent Companion**](../../setup/agent_companion), [**login**](../../setup/agent_companion#agent-companion-login) to the DSK Node and [**connect**](../../setup/agent_companion#agent-companion-connect) with the DKS Edge Agent
 - Add Generic Source
   ![MQTT GenericSource](./img/mqtt-generic-source.png)
 - Add Generic Stream(s) and use `ValueMetadataId` that will be used in the topic  
@@ -113,11 +113,11 @@ The mapping of MQTT message to the value for the stream works like the following
 
 - `ValueMetadataId`: Taken from `ValueMetadataId` placeholder inside the topic.
 - `Timestamp`: Current time of the edge-device when the topic gets read by the DSK Edge Agent.
-- `Values`: The payload in raw-bytes of an UTF8-encoded string (see [Data encoding](#data-encoding)).
+- `Values`: The payload in raw-bytes of an UTF8-encoded string (see [**Data encoding**](#data-encoding)).
 
 Configure:
 
-- Open the [Agent Companion](../../setup/agent_companion), [login](../../setup/agent_companion#agent-companion-login) to the DSK Node and [connect](../../setup/agent_companion#agent-companion-connect) with the DKS Edge Agent
+- Open the [**Agent Companion**](../../setup/agent_companion), [**login**](../../setup/agent_companion#agent-companion-login) to the DSK Node and [**connect**](../../setup/agent_companion#agent-companion-connect) with the DKS Edge Agent
 - Add Generic Source
   ![MQTT GenericSource](./img/mqtt-generic-source.png)
 - Add Generic Stream(s) and use `ValueMetadataId` that will be used in the topic  
@@ -144,11 +144,11 @@ The mapping of MQTT message to the value for the stream works like the following
 
 - `ValueMetadataId`: `DataStreamID` from the JSON-object. Currently there is no check that a matching stream exist we however recommend to create a _Generic Stream_ for each published `DataStreamID` for easier management.
 - `Timestamp`: `Timestamp` from the JSON-object.
-- `Values`: `Value` from the JSON-object as Base64-encoded raw-bytes of the actual value (see [Data encoding](#data-encoding)).
+- `Values`: `Value` from the JSON-object as Base64-encoded raw-bytes of the actual value (see [**Data encoding**](#data-encoding)).
 
 Configure:
 
-- Open the [Agent Companion](../../setup/agent_companion), [login](../../setup/agent_companion#agent-companion-login) to the DSK Node and [connect](../../setup/agent_companion#agent-companion-connect) with the DKS Edge Agent
+- Open the [**Agent Companion**](../../setup/agent_companion), [**login**](../../setup/agent_companion#agent-companion-login) to the DSK Node and [**connect**](../../setup/agent_companion#agent-companion-connect) with the DKS Edge Agent
 - Add Generic Source
   ![MQTT GenericSource](./img/mqtt-generic-source.png)
 - Add Generic Stream(s) with `ValueMetadataId` matching the `DataStreamID` in the message
@@ -183,15 +183,15 @@ The mapping of MQTT message to the value for the stream works like the following
 
 - `ValueMetadataId`: Derived automatically in a deterministic manner based on `ValueSourceID` and `SensorID` from the JSON-object. Currently there is no check that a matching stream exist we however recommend to create a _Generic Stream_ for each published `ValueSourceID` and `SensorID` combination for easier management.
 - `Timestamp`: `Timestamp` from the JSON-object.
-- `Values`: `Value` from the JSON-object as Base64-encoded raw-bytes of the actual value (see [Data encoding](#data-encoding)).
+- `Values`: `Value` from the JSON-object as Base64-encoded raw-bytes of the actual value (see [**Data encoding**](#data-encoding)).
 
 Configure:
 
-- Open the [Agent Companion](../../setup/agent_companion), [login](../../setup/agent_companion#agent-companion-login) to the DSK Node and [connect](../../setup/agent_companion#agent-companion-connect) with the DKS Edge Agent
+- Open the [**Agent Companion**](../../setup/agent_companion), [**login**](../../setup/agent_companion#agent-companion-login) to the DSK Node and [**connect**](../../setup/agent_companion#agent-companion-connect) with the DKS Edge Agent
 - Add Generic Source
   ![MQTT GenericSource](./img/mqtt-generic-source.png)
 - Add Generic Stream(s) and use `ValueMetadataId` derived from `ValueSourceID` and `SensorID`  
-  Can be derived using the following script https://dotnetfiddle.net/xp0Zig.
+  Can be derived using the following script **https://dotnetfiddle.net/xp0Zig**.
   ![MQTT Source - Generic Value Source Topic - 1](./img/mqtt-generic-value-source-topic-1.png)
 - Upload To Device
 
@@ -204,7 +204,7 @@ Test and verify:
 
 ## Data encoding {#data-encoding}
 
-For the data encoding and conversion to other formats we use the industry standards as e.g. implemented by the .NET framework (see e.g. [System.BitConverter](https://docs.microsoft.com/en-us/dotnet/api/system.bitconverter?view=net-5.0)).
+For the data encoding and conversion to other formats we use the industry standards as e.g. implemented by the .NET framework (see e.g. [**System.BitConverter**](https://docs.microsoft.com/en-us/dotnet/api/system.bitconverter?view=net-5.0)).
 The following sample program demonstrates conversions for various value types which might be handy.
 
 ```csharp
@@ -268,7 +268,7 @@ public class Program
 }
 ```
 
-The script can be run online at https://dotnetfiddle.net/5ggm0T.
+The script can be run online at **https://dotnetfiddle.net/5ggm0T**.
 
 Output:
 

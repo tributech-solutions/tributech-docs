@@ -3,7 +3,7 @@ title: Grafana
 sidebar_position: 5
 ---
 
-# Consume data via Grafana dashboards
+# Consume Data via Grafana Dashboards
 
 In this guide you will learn how you can consume Datasets via the built in Grafana dashboards of your DataSpace Node.
 
@@ -23,7 +23,7 @@ For authentication, use the same username and password that you use for authenti
 
 ![Navigate to Grafana](assets/navigate-to-grafana.png)
 
-The dashboarding system is built on the open source technology <a href="https://grafana.com/" target="_blank">Grafana</a>. It comes with pre-configured data sources for the in your DataSpace Node integrated Postgre SQL databases.
+The dashboarding system is built on the open source technology [**Grafana**](https://grafana.com/). It comes with pre-configured data sources for the in your DataSpace Node integrated Postgre SQL databases.
 
 The structure of dashboards is based on the same logic as in the interface of your DataSpace Node:
 
