@@ -3,8 +3,8 @@ title: Consume Data
 sidebar_position: 10
 ---
 
-This example shows the usage of the Data-API and its [OpenAPi interface](https://swagger.io/specification/), which can be used to create a client that works with your programming language/framework.  
-We provide generated client software for C#/.NET applications on our [Github Page](https://github.com/tributech-solutions/tributech-dsk-api-clients).
+This example shows the usage of the Data-API and its [**OpenAPI interface**](https://swagger.io/specification/), which can be used to create a client that works with your programming language/framework.  
+We provide generated client software for C#/.NET applications on our [**Github Page**](https://github.com/tributech-solutions/tributech-dsk-api-clients).
 
 ## Where to find stream IDs
 
@@ -23,6 +23,7 @@ On your node dashboard: Access your profile on the top right and head to "Admini
 
 Head to the Data-API specification page.  
 ![image](./img/data_api_tab_small.png)  
+
 Click the "Authorize" button and paste the Data-API client secret.  
 ![image](./img/authorize.png)  
 ![image](./img/authorize_secret.png)
@@ -31,7 +32,9 @@ Click the "Authorize" button and paste the Data-API client secret.
 
 Scroll down and select the "GET/values/double/{valueMetadataId}" endpoint.  
 ![image](./img/data_api_get_double.png)
+
 Click "Try it out" and replace the ValueMetadataId parameter with your stream ID.  
 ![image](./img/data_api_enter_id.png)
+
 In the response message, you should now be able to find the double value.  
 ![image](./img/server_response_success.png)

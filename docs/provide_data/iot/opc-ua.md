@@ -3,10 +3,10 @@ title: OPC-UA Source
 sidebar_position: 3
 ---
 
-The OPC UA Source allows to connect to [OPC Unified Architecture (UA)](https://opcfoundation.org/about/opc-technologies/opc-ua/) based servers for data integration. The DSK OPC UA Source act's as a OPC UA client and forwards the received data for a stream to the main DSK Edge Agent service (`dsk-agent`) via our MQTT broker.  
-If the [DSK OPC UA Source service (`opcua-source`)](../../setup/agent/sources/opc-ua) is deployed along with our DSK Edge Agent services it can be configured based on twins with our [Agent Companion](../../setup/agent_companion) as described in the following:
+The OPC UA Source allows to connect to [**OPC Unified Architecture (UA)**](https://opcfoundation.org/about/opc-technologies/opc-ua/) based servers for data integration. The DSK OPC UA Source act's as a OPC UA client and forwards the received data for a stream to the main DSK Edge Agent service (`dsk-agent`) via our MQTT broker.  
+If the [**DSK OPC UA Source service (`opcua-source`)**](../../setup/agent/sources/opc-ua) is deployed along with our DSK Edge Agent services it can be configured based on twins with our [**Agent Companion**](../../setup/agent_companion) as described in the following:
 
-- Open the [Agent Companion](../../setup/agent_companion), [login](../../setup/agent_companion#agent-companion-login) to the DSK Node and [connect](../../setup/agent_companion#agent-companion-connect) with the DKS Edge Agent
+- Open the [**Agent Companion**](../../setup/agent_companion), [**login**](../../setup/agent_companion#agent-companion-login) to the DSK Node and [**connect**](../../setup/agent_companion#agent-companion-connect) with the DKS Edge Agent
 - Add OPC UA Source and configure _OPC UA Connection string_
   ![OPC UA Source - AgentCompanion - Configure 1](./img/agent-companion-configure-opcua-1.png)
 - Add OPC UA Stream(s) and configure _OPC UA identifier_ (which defines the endpoint to which the stream will be connected)
@@ -17,7 +17,7 @@ If the [DSK OPC UA Source service (`opcua-source`)](../../setup/agent/sources/op
 
 ## OPC UA debugging
 
-The following sample commands demonstrate how you can debug an OPC UA server using a Docker container of the [opcua-commander](https://github.com/node-opcua/opcua-commander) tool.
+The following sample commands demonstrate how you can debug an OPC UA server using a Docker container of the [**opcua-commander**](https://github.com/node-opcua/opcua-commander) tool.
 
 ```bash
 # connect to host network and OPC UA server accessible on localhost port 4840

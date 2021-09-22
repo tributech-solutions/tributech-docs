@@ -3,7 +3,7 @@ title: Overview
 sidebar_position: 1
 ---
 
-# Quickstart Guide
+# Overview Quickstart Guide
 
 This guide describes how to quickly get up and running with the Tributech DataSpace Kit (DSK). The easiest way to get started with only a few clicks is in the Azure Cloud. While the Azure Cloud is the quickest and easiest way to get started, other options for deployment, including on premise systems, are also available. Check out our [**Setup Guide**](../setup/overview.md) for detail information..
 
