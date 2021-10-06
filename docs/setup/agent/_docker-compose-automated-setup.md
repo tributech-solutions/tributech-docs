@@ -11,25 +11,21 @@ Preview the Azure resources that will be created with the "Visualize" button.
   The Size needs to meet our [**Hardware Requirements**](./overview.md#hardware-requirements). We recommend e.g. `Standard_B1ms` or `Standard_DS1_v2`.  
   SSH access allows to connect to the VM for [**management purposes**](./docker-compose.mdx#docker-compose-commands) and to support SSH tunneling/port forwarding used for connections to the DSK Agent from the Agent Companion (see [**Connect to Edge Agent**](../agent_companion.mdx#connect-to-edge-agent)).  
   ![Agent deployment - Provide VM data](./img/agent-docker-deploy-2.png)
-- Provide DSK related configuration:
-
+- Provide DSK related configuration:  
+  To access the client secrets and some other information required in the next steps:
+    <ApiCredentials />
   - _DSK Agent id_: globally unique identifier (UUID) for the Agent
   - _DSK Hub name_: The name of the DSK Hub to which your DSK Node is connected.  
     (e.g. `your-hub` for `your-hub.dataspace-hub.com`)
     :::note
-    For our [**Playground Ecosystem**](https://tributech.io/playground) this is `play.dataspace-hub.com`.
+    For our [**Playground Ecosystem**](https://tributech.io/playground) this is `play` for `play.dataspace-hub.com`.
     :::
   - _DSK Node name_: The name of your DSK Node to which the DSK Agent will be linked.  
     (e.g. `your-node` for `your-node.dataspace-node.com`)
   - _Data-API client secret_: The client secret for the authentication at the Data-API of the DSK Node.  
-    To access the client secrets:
-    <ApiCredentials />
   - _Trust-API client secret_: The client secret for the authentication at the Trust-API of the DSK Node.
-  - _Docker Registry token name_: The name of the token used for authentication at the private Docker Registry hosting the DSK Agent Docker images. Default: `tributech-io-dsk-edge`.
-  - _Docker Registry access token_: The access token for authentication at the private Docker Registry hosting the DSK Agent Docker images.
-    :::info
-    The access token will currently be provided to you as part of the **playground sign-up** email. Head over to [**Tributech.io/Playground**](https://tributech.io/playground) and sign-up if you're interested.
-    :::
+  - _Docker Registry Token (DSK Edge) name_: The name of the token used for authentication at the private Docker Registry hosting the DSK Agent Docker images. Default: `tributech-io-dsk-edge`.
+  - _Docker Registry Token (DSK Edge) secret_: The access token for authentication at the private Docker Registry hosting the DSK Agent Docker images.
   - _Docker Image Tag_: The Docker Image tag defining the DSK Agent version to be deployed.
   - _Additional DSK Edge services_:
     - _None_: Only the main DSK Edge services (DSK Agent and mosquitto MQTT broker) will be deployed.

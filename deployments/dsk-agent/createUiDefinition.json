@@ -174,7 +174,7 @@
           {
             "name": "dockerRegistryTokenName",
             "type": "Microsoft.Common.TextBox",
-            "label": "Docker Registry token name",
+            "label": "Docker Registry Token (DSK Edge) name",
             "defaultValue": "tributech-io-dsk-edge",
             "toolTip": "The name of the token/user used for authentication at the Docker Registry/Azure Container Registry (ACR).",
             "constraints": {
@@ -186,7 +186,7 @@
             "name": "dockerRegistryToken",
             "type": "Microsoft.Common.PasswordBox",
             "label": {
-              "password": "Docker Registry access token",
+              "password": "Docker Registry Token (DSK Edge) secret",
               "confirmPassword": "Confirm"
             },
             "toolTip": "The access token/password used for authentication at the Docker Registry/Azure Container Registry (ACR).",
