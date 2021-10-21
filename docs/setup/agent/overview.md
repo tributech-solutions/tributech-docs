@@ -5,7 +5,7 @@ sidebar_position: 1
 
 # DSK Agent Edge Setup
 
-The DSK Edge Agent setup consists of the main DSK Agent service (`dsk-agent`) and (optional) services like the MQTT broker (`eclipse-mosquitto`, for the communication on the edge) and/or for connecting external data sources e.g. [**OPC UA Source**](./sources/opc-ua) (`opcua-source`), [**Simulated Sensor/Source**](./sources/simulated) (`simulated-sensor`),...  
+The DSK Agent Edge setup consists of the main DSK Agent service (`dsk-agent`) and (optional) services like the MQTT broker (`eclipse-mosquitto`, for the communication on the edge) and/or for connecting external data sources e.g. [**OPC UA Source**](./sources/opc-ua) (`opcua-source`), [**Simulated Sensor/Source**](./sources/simulated) (`simulated-sensor`),...  
 The services are containerized and require a Linux based host system on the edge device with an according container runtime.
 
 ## Requirements {#requirements}
@@ -34,12 +34,12 @@ If you have any questions regarding infrastructure requirements, please talk to 
 
 #### Docker / Docker Compose {#docker-runtime}
 
-The DSK Edge Agent services can be run using [**Docker Engine**](https://docs.docker.com/engine/) as a container runtime. We use [**Docker Compose**](https://docs.docker.com/compose/) for management/orchestration of the Docker services and provide according [**samples**](./docker-compose#agent-manual-setup) and [**automated deployments**](./docker-compose#agent-automated-setup).
+The DSK Agent Edge services can be run using [**Docker Engine**](https://docs.docker.com/engine/) as a container runtime. We use [**Docker Compose**](https://docs.docker.com/compose/) for management/orchestration of the Docker services and provide according [**samples**](./docker-compose#agent-manual-setup) and [**automated deployments**](./docker-compose#agent-automated-setup).
 
 If you want to use any other container runtime (e.g. containerd) please talk to your contact person at Tributech or send an email to our [**Customer Advisory Team**](https://www.tributech.io/about-us/).
 
 #### Azure IoT Edge Runtime {#azure-iot-edge-runtime}
 
-The DSK Edge Agent services can be deployed as [**IoT Edge modules**](https://docs.microsoft.com/en-us/azure/iot-edge/iot-edge-modules) on the [**Azure IoT Edge Runtime**](https://docs.microsoft.com/en-us/azure/iot-edge/about-iot-edge) using [**Moby container engine**](https://docs.microsoft.com/en-us/azure/iot-edge/support?view=iotedge-2020-11#container-engines). For the message based communication within the device and with the cloud we use the infrastructure provided by the Azure IoT Edge Runtime.
+The DSK Agent Edge services can be deployed as [**IoT Edge modules**](https://docs.microsoft.com/en-us/azure/iot-edge/iot-edge-modules) on the [**Azure IoT Edge Runtime**](https://docs.microsoft.com/en-us/azure/iot-edge/about-iot-edge) using [**Moby container engine**](https://docs.microsoft.com/en-us/azure/iot-edge/support?view=iotedge-2020-11#container-engines). For the message based communication within the device and with the cloud we use the infrastructure provided by the Azure IoT Edge Runtime.
 
 For deployment on the Azure IoT Edge Runtime please talk to your contact person at Tributech or send an email to our [**Customer Advisory Team**](https://www.tributech.io/about-us/).

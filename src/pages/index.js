@@ -10,9 +10,23 @@ function HomepageHeader() {
   return (
     <header className={clsx('hero hero--dark', styles.heroBanner)}>
       <div className="container">
+
         <h1 className="hero__title">{siteConfig.title}</h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
+
+
+
+        <img src="/img/favicon.png" width="150" height="150"/>
+        <p></p>
+        <p className={styles.headertext}> Welcome to the official Tributech DataSpace Kit documentation page!</p>
+        <p className={styles.headertext}> If you want to find out more about the DataSpace Kit and the concepts behind it, we suggest starting with our Introduction page. If you are already familiar with our product but want to find out more about the basic setup and how you can join our <Link to="https://tributech.io/playground"><b>Playground Ecosystem</b></Link>, we suggest starting directly with our Quickstart Guide:</p>
         <div className={styles.buttons}>
+          <Link
+            className="button button--secondary button--lg"
+            to="/docs/introduction/overview"
+          >
+            Jump to Introduction
+          </Link>
           <Link
             className="button button--secondary button--lg"
             to="/docs/quickstart/overview"
@@ -20,6 +34,7 @@ function HomepageHeader() {
             Jump to Quickstart
           </Link>
         </div>
+
       </div>
     </header>
   );
@@ -33,10 +48,7 @@ export default function Home() {
       description="Documentation for the Tributech DataSpace Kit."
     >
       <HomepageHeader />
-      <main>
-        {/*<HomepageFeatures />*/}
-        <img className={styles.architectureImg} src="/img/architecture.png" />
-      </main>
-    </Layout>
+
+    </Layout> 
   );
 }

@@ -3,11 +3,11 @@ title: Overview
 sidebar_position: 1
 ---
 
-# Overview Setup
+# Setup Overview
 This section of the documentation describes how to setup the individual components of the DataSpace Kit (DSK).
 
 The following table offers a quick overview of the components which are at the core of the Tributech DataSpace Kit.
-![Product Overview](../img/introduction/productoverview.png)
+![Product Overview](../img/introduction/productoverviewcomp.svg)
 
 If it's your first time setting up the DSK we also suggest having a look at our [**Quick Start Guide**](../quickstart/overview.md).
 
@@ -66,4 +66,7 @@ This option should be preferred if you are looking to use a software system (for
 Data is signed as soon as it reaches the node.
 
 **Integration:**<br />
-Data can be sent to the integrated agent through the Trust-API - have a look at [**API integration**](../provide_data/api/rest.md). API Clients for C# can be found [**here**](https://github.com/tributech-solutions/tributech-dsk-api-clients).
+Data can be sent to the integrated agent through the Trust-API - have a look at [**API integration**](../provide_data/rest.md). API Clients for C# can be found [**here**](https://github.com/tributech-solutions/tributech-dsk-api-clients).
+
+## DSK Agent Companion
+The Tributech Agent Companion is an application for the management of the DSK Agent Edge & Sensor Securty Modules (SSM). Head over to [**Agent Companion Setup**](agent_companion.mdx) to find out more!

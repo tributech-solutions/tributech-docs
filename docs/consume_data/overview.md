@@ -3,7 +3,7 @@ title: Overview
 sidebar_position: 1
 ---
 
-# Overview Consume Data
+# Consume Data Overview
 The Tributech DataSpace Kit offers data consumption on many levels, for which an overview is given here.
 
 ## Subscribe to a Dataset

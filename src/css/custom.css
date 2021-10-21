@@ -30,3 +30,16 @@
 html[data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
+
+.main-wrapper{
+  display:flex;
+  flex-direction: column;
+}
+
+.hero__subtitle{
+  font-size: 40px;
+}
+
+.hero__title{
+  font-size: 60px;
+}

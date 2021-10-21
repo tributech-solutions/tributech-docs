@@ -8,7 +8,7 @@ The Tributech DataSpace Kit provides two REST APIs:
 - Data-API
 - Trust-API
 
-The image below shows you how the APIs are integrated into the dataspace kit.
+The image below shows you how the APIs are integrated into the DataSpace Kit.
 ![Integration via APIs](assets/integration.jpg)
 
 In short, the Data-API is used for values whereas the Trust-API is used for proofs. Proofs are required in order to verify the validity and consistency of data. The Trust-API also offers some endpoints which integrate the Data-API.
@@ -22,12 +22,20 @@ Data-API calls and specifications can be found by clicking the "Data-API" tab on
 The page gives an overview of the available calls and actions.
 ![image](assets/data_api_base.png)
 
+:::info
+Please note that all timestamps need to be provided in microseconds!
+:::
+
 ## Trust-API Specifications
 The Trust-API specifications can also be found on the node dashboard.
 ![image](assets/trust_api_tab.png)
 
 The page gives an overview of the available calls and actions.
 ![image](assets/trust_api_base.png)
+
+:::info
+Please note that all timestamps need to be provided in microseconds!
+:::
 
 ## Clients
 For both APIs, the "OpenAPI" (Swagger) specifications can be found in the top left, which can be used to generate a clients for the APIs.
@@ -67,11 +75,15 @@ Proofs can be fetched through the `/proof` HTTP GET endpoint of the **Trust-API*
 
 A proof can be validated through the `/validate/proof` HTTP POST endpoint of the **Trust-API**.
 
+:::info
+Please note that all timestamps need to be provided in microseconds!
+:::
+
 ---
 
 ### Step-by-Step Example: **Get a Double Value with its ValueMetadataId**
 
-**Note that this requires double values to be provided on the Data-API. If the values originate from an external data provider in the Dataspace, they are available in the [**Dataset subscriptions**](./subscribe_dataset.md). Otherwise check out the [**Provide Data**](../provide_data/overview.md) documentation, to provide the values yourself.**
+**Note** that this requires double values to be provided on the Data-API. If the values originate from an external data provider in the Dataspace, they are available in the [**Dataset subscriptions**](./subscribe_dataset.md). Otherwise check out the [**Provide Data**](../provide_data/overview.md) documentation, to provide the values yourself.
 
 1. On your node dashboard: Access your profile on the top right and head to "Administration->API Keys" to find your Data-API client secret. Copy it.  
    ![image](assets/administration.png)
