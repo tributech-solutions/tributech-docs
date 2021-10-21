@@ -9,6 +9,6 @@ ssh tributech@20.86.158.183 -L 5000:localhost:5000
 
 ![AgentCompanion - Connect 1](./img/agent-companion-connect-1.png)
 
-- After the SSH connection with the tunnel/port forwarding is established we ca connect to the DSK Edge Agent with the Agent-Companion.  
+- After the SSH connection with the tunnel/port forwarding is established we can connect to the DSK Edge Agent with the Agent-Companion.  
   (e.g. `http://localhost:5000`)
   ![AgentCompanion - Connect 2](./img/agent-companion-connect-2.png)

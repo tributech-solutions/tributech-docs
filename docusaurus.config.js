@@ -4,7 +4,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'Tributech DataSpace Kit Documentation',
-  tagline: 'Data exchange reinvented – Secure. Traceable. Trusted.',
+  tagline: 'Technology for trusted DataSpaces.',
   url: 'https://docs.tributech.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -14,10 +14,10 @@ module.exports = {
   projectName: 'tributech-dsk-docs',
   themeConfig: {
     navbar: {
-      title: 'Tributech DataSpace Kit Documentation',
+      title: 'Tributech DSK Documentation',
       logo: {
         alt: 'Tributech Logo',
-        src: 'img/logo.svg',
+        src: 'img/favicon.png',
       },
       items: [
         {

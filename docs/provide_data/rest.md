@@ -1,16 +1,16 @@
 ---
-title: REST
-sidebar_position: 1
+title: API Integration
+sidebar_position: 3
 ---
 
-# REST API
+# API Integration
 
 The Tributech DataSpace Kit provides two REST APIs:
 
 - Data-API
 - Trust-API
 
-The image below shows you how the APIs are integrated into the dataspace kit.
+The image below shows you how the APIs are integrated into the DataSpace Kit.
 ![Integration via APIs](assets/integration.jpg)
 
 In short, the Data-API is used for values whereas the Trust-API is used for proofs. Proofs are required in order to verify the validity and consistency of data. The Trust-API also offers some endpoints which integrate the Data-API.
@@ -24,12 +24,20 @@ Data-API calls and specifications can be found by clicking the "Data-API" tab on
 The page gives an overview of the available calls and actions.
 ![image](assets/data_api_base.png)
 
+:::info
+Please note that all timestamps need to be provided in microseconds!
+:::
+
 ## Trust-API Specifications
 The Trust-API specifications can also be found on the node dashboard.
 ![image](assets/trust_api_tab.png)
 
 The page provides an overview of the available calls and actions.
 ![image](assets/trust_api_base.png)
+
+:::info
+Please note that all timestamps need to be provided in microseconds!
+:::
 
 ## Clients
 For both APIs, the "OpenAPI" (Swagger) specifications can be found in the top left, which can be used to generate a clients for the APIs.
@@ -63,6 +71,10 @@ Proofs can be fetched through the `/proof` HTTP GET endpoint of the **Trust-API*
 
 #### Validate proofs
 A proof can be validated through the `/validate/proof` HTTP POST endpoint of the **Trust-API**.
+
+:::info
+Please note that all timestamps need to be provided in microseconds!
+:::
 
 ---
 

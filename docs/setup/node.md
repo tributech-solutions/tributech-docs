@@ -1,5 +1,5 @@
 ---
-title: Node
+title: DSK Node
 sidebar_position: 2
 ---
 

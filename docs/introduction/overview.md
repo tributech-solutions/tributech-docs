@@ -3,7 +3,7 @@ title: Overview
 sidebar_position: 1
 ---
 
-# Overview Introduction
+# Overview
 This page provides an overview of the Tributech DataSpace Kit documentation and available resources.
 
 ## For Beginners

@@ -17,7 +17,7 @@ Preview the Azure resources that will be created with the "Visualize" button.
   - _DSK Hub name_: The name of the DSK Hub to which your DSK Node is connected.  
     (e.g. `your-hub` for `your-hub.dataspace-hub.com`)
     :::note
-    For our [**Playground Ecosystem**](https://tributech.io/playground) this is `play.dataspace-hub.com`.
+    On our [**Playground Ecosystem**](https://tributech.io/playground) this is `play` for `play.dataspace-hub.com`.
     :::
   - _DSK Node name_: The name of your DSK Node to which the DSK Agent will be linked.  
     (e.g. `your-node` for `your-node.dataspace-node.com`)
