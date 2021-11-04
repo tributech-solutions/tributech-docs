@@ -57,10 +57,10 @@
       }
     },
     "imageTag": {
-      "defaultValue": "1.9.1",
+      "defaultValue": "1.10.0",
       "type": "string",
       "metadata": {
-        "description": "Docker Image Tag (e.g. 1.9.1)"
+        "description": "Docker Image Tag (e.g. 1.10.0)"
       }
     },
     "agentId": {
