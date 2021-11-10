@@ -202,7 +202,7 @@
             "name": "imageTag",
             "type": "Microsoft.Common.TextBox",
             "label": "Docker Image Tag",
-            "defaultValue": "1.10.0",
+            "defaultValue": "1.10.1",
             "toolTip": "The version tag of the DSK Edge service Docker Images.",
             "constraints": {
               "required": true
