@@ -13,3 +13,5 @@ If the [**DSK Simulated Sensor/Source (`simulated-sensor`)**](../../setup/agent/
   Various parameters for the simulated stream can be adapted but important are the _Type_ which defines the actual generated value type and the _Frequency_ which the amount of generated data.
   ![Simulated Sensor/Source 2](./img/simulated-sensor-2.png)
 - Upload To Device
+- (Optional) [Verify configured streams in DataSpace-Admin](../../quickstart/setup-agent.mdx#verify-in-dataspace-admin) at Streams of Agent
+  ![Simulated Sensor/Source 3](./img/simulated-sensor-3.png)
