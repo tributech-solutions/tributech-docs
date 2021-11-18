@@ -103,6 +103,14 @@ Configure:
   ![MQTT GenericSource - Double Topic - 1](./img/mqtt-double-topic-1.png)
 - Upload To Device
 
+Test and verify (sample uses different id's):
+
+- Publish MQTT message for double topic with `ValueMetadataId`
+  ![MQTT Source - Double Topic 2](./img/mqtt-double-topic-2.png)
+- Verify value for published message in DataSpace-Admin at Streams of Agent
+  ![MQTT Source - Double Topic 3](./img/mqtt-double-topic-3.png)
+
+
 ### String topic
 
 TOPIC: `DSK/EdgeAgent/String/<ValueMetadataId>`
@@ -124,6 +132,13 @@ Configure:
   ![MQTT GenericSource - String Topic - 1](./img/mqtt-string-topic-1.png)
 - Upload To Device
 
+Test and verify (sample uses different id's):
+
+- Publish MQTT message for string topic with `ValueMetadataId`
+  ![MQTT Source - String Topic 2](./img/mqtt-string-topic-2.png)
+- Verify value for published message in DataSpace-Admin at Streams of Agent
+  ![MQTT Source - String Topic 3](./img/mqtt-string-topic-3.png)
+
 ### ValueSource topic
 
 TOPIC: `DSK/EdgeAgent/ValueSource`
@@ -136,7 +151,7 @@ The payload provided for the topic needs to be a UTF8-encoded string which repre
 {
   "DataStreamID": "8235326b-6f43-4402-8bdf-bcfbd0999b70", // ValueMetadataId of the stream
   "Timestamp": "2020-01-01T00:00:01+00:00", // Timestamp for the value
-  "Value": "MTIzNDU2" // Base64-encoded raw-bytes of the actual value
+  "Value": "9ihcj8I1RUA=" // Base64-encoded raw-bytes of the actual value
 }
 ```
 
@@ -175,7 +190,7 @@ The payload provided for the topic needs to be a UTF8-encoded string which repre
   "ValueSourceID": "Machine1", // ID of the source
   "SensorID": "OperatingIndicator", // ID of the sensor
   "Timestamp": "2020-01-01T00:00:01+00:00", // Timestamp for the value
-  "Value": "MTIzNDU2" // Base64-encoded raw-bytes of the actual value
+  "Value": "9ihcj8I1RUA=" // Base64-encoded raw-bytes of the actual value
 }
 ```
 
@@ -190,8 +205,8 @@ Configure:
 - Open the [**Agent Companion**](../../setup/agent_companion), [**login**](../../setup/agent_companion#agent-companion-login) to the DSK Node and [**connect**](../../setup/agent_companion#agent-companion-connect) with the DKS Edge Agent
 - Add Generic Source
   ![MQTT GenericSource](./img/mqtt-generic-source.png)
-- Add Generic Stream(s) and use `ValueMetadataId` derived from `ValueSourceID` and `SensorID`  
-  Can be derived using the following script **https://dotnetfiddle.net/xp0Zig**.
+- Add Generic Stream(s) and use `ValueMetadataId` derived from `AgentID`, `ValueSourceID` and `SensorID`  
+  Can be derived using the following script **https://dotnetfiddle.net/5UeG7C**.
   ![MQTT Source - Generic Value Source Topic - 1](./img/mqtt-generic-value-source-topic-1.png)
 - Upload To Device
 
