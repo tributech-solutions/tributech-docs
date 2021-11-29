@@ -1,6 +1,6 @@
 ---
 title: Audit
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # Audit Tool
@@ -14,12 +14,8 @@ The Audit Tool gives an overview of all the available streams. Select a stream i
 In order to start a proof verification process, select a date of interest and click "Start Audit".
 ![Audit stream view](assets/audit_stream_view.png)
 
-The tool will then go through all available proofs for the selected timespan and verify them.
+The tool will then go through all available proofs for the selected timespan, verify them and display the results.
 ![Audit verification process](assets/audit_verification_process.png)
-
-Additional information, like the Root Hash or the Signature, can be viewed by clicking the proof icon and selecting one of its transactions.
-![Audit verification details](assets/audit_verification_details.png)
-
 # Automated/bulk verification
 
 To do automated and/or bulk verification, direct access to [**the Data-API and the Trust-API**](./api.md) is required.  

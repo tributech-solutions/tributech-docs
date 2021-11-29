@@ -11,7 +11,7 @@ The Tributech DataSpace Kit provides two REST APIs:
 - Trust-API
 
 The image below shows you how the APIs are integrated into the DataSpace Kit.
-![Integration via APIs](assets/integration.jpg)
+![Integration via APIs](assets/integration.png)
 
 In short, the Data-API is used for values whereas the Trust-API is used for proofs. Proofs are required in order to verify the validity and consistency of data. The Trust-API also offers some endpoints which integrate the Data-API.
 
