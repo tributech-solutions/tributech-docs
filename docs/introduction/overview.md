@@ -27,11 +27,9 @@ At Tributech, we are contributing to the open-source community and projects in t
 
 If you like what we’re working on, we’d appreciate your support in form of a star on [**GitHub**](https://github.com/tributech-solutions).
 
-## Downloads
-
-Here we have listed publicly available downloads of DataSpace Kit components and tools. For more details, please visit the Setup section in this documentation.
+## Deployment- and Download Links
+Here we have listed publicly available download and deployment links of DataSpace Kit components and tools. For more details, please visit the Setup section in this documentation.
 
 - [**DataSpace Node on Azure Marketplace**](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tributechsolutionsgmbh1582568815297.8aa9010b-3dd5-43e0-a4b6-53e2ea552e4a)
-- [**DataSpace Agent on Azure Marketplace**](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tributechsolutionsgmbh1582568815297.57601ccd-62c3-4842-9f73-3dadd3de5b74)
-- [**Download Agent Companion App Version 1.9.0 for Windows**](https://tributechioapps.blob.core.windows.net/tributech-dsk-agent-companion/dist/packages/Tributech%20Agent%20Companion%201.9.0.exe)
-- [**Download Agent Companion App Version 1.9.0 for MacOS**](https://tributechioapps.blob.core.windows.net/tributech-dsk-agent-companion/dist/packages/Tributech%20Agent%20Companion-1.9.0.dmg)
+- [**Download Agent Companion App Version 1.10.0 for Windows**](https://tributechioapps.blob.core.windows.net/tributech-dsk-agent-companion/dist/packages/Tributech%20Agent%20Companion%201.10.0.exe)
+- [**Download Agent Companion App Version 1.10.0 for MacOS**](https://tributechioapps.blob.core.windows.net/tributech-dsk-agent-companion/dist/packages/Tributech%20Agent%20Companion-1.10.0.dmg)

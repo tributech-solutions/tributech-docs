@@ -13,15 +13,15 @@ import AgentCompanionDownloadMac from '../common/_agent-companion-download-mac.m
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-In this step of our Quicstart Guide we will deploy a DSK Edge Agent with a DSK Edge Simulated Sensor/Source and link it to our Data Owner Node.
+In this step of our Quicstart Guide we will deploy a DSK Agent Edge with a DSK Edge Simulated Sensor/Source and link it to our Data Owner Node.
 
-## Deploy DSK Edge Agent & Simulated Sensor
+## Deploy DSK Agent Edge & Simulated Sensor
 
 <DockerComposeAutomatedSetup />
 
 ## Link & Configure with Agent Companion
 
-After the DSK Edge Agent is deployed and running we need to link it to our Node and configure it.
+After the DSK Agent Edge is deployed and running we need to link it to our Node and configure it.
 
 ### Download & Run
 
@@ -47,16 +47,16 @@ More information on [**Downloading & Running**](../setup/agent_companion.mdx) th
 <AgentCompanionLink />
 
 ### Configure
-We can now configure our DSK Edge Agent using a twin based configuration.
+We can now configure our DSK Agent Edge using a twin based configuration.
 * As a simple starting point for our example scenario we can import the *Steel Factory Plant Line* template.
 ![AgentCompanion - Configure 1](./img/agent-companion-configure-1.png)
-* The *Steel Factory Plant Line* template provides a full example twin configuration for the DSK Edge Agent and Simulated Sensor/Source which you can adapt to your desire.
+* The *Steel Factory Plant Line* template provides a full example twin configuration for the DSK Agent Edge and Simulated Sensor/Source which you can adapt to your desire.
 ![AgentCompanion - Configure 2](./img/agent-companion-configure-2.png)
 * After we are finished with defining our twin configuration we need to *Upload To Device* and verify it was *Successfully applied*.
 ![AgentCompanion - Configure 3](./img/agent-companion-configure-3.png)  
 
 ## Verify in DataSpace-Admin
-After our DSK Edge Agent and Simulated Sensor/Source was deployed, linked and configured, it will be present on the DSK Node as Agent including an auto-generated Dataset.
+After our DSK Agent Edge and Simulated Sensor/Source was deployed, linked and configured, it will be present on the DSK Node as Agent including an auto-generated Dataset.
 
 ### Agent
 <AgentCompanionVerifyAgent />
