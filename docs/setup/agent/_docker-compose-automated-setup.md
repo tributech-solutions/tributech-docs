@@ -12,8 +12,8 @@ Preview the Azure resources that will be created with the "Visualize" button.
   SSH access allows to connect to the VM for [**management purposes**](./docker-compose.mdx#docker-compose-commands) and to support SSH tunneling/port forwarding used for connections to the DSK Agent from the Agent Companion (see [**Connect to Edge Agent**](../agent_companion.mdx#connect-to-edge-agent)).  
   ![Agent deployment - Provide VM data](./img/agent-docker-deploy-2.png)
 - Provide DSK related configuration:  
-  To access the client secrets and some other information required in the next steps:
-    <ApiCredentials />
+  - To access the client secrets and some other information required in the next steps:  
+  <ApiCredentials />
   - _DSK Agent id_: globally unique identifier (UUID) for the Agent
   - _DSK Hub name_: The name of the DSK Hub to which your DSK Node is connected.  
     (e.g. `your-hub` for `your-hub.dataspace-hub.com`)
