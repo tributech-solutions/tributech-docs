@@ -84,16 +84,10 @@
         "description": "The node name (e.g. dev for dev.dataspace-hub.com)"
       }
     },
-    "dataApiSecret": {
+    "lokiPromtailPw": {
       "type": "securestring",
       "metadata": {
-        "description": "Data-API client secret"
-      }
-    },
-    "trustApiSecret": {
-      "type": "securestring",
-      "metadata": {
-        "description": "Trust-API client secret"
+        "description": "Promtail (Loki push API) password"
       }
     },
     "dockerComposeOverrideFileUrl": {
@@ -105,7 +99,7 @@
     }
   },
   "variables": {
-    "dockerComposeFileUrl": "https://raw.githubusercontent.com/tributech-solutions/tributech-dsk-docs/master/deployments/dsk-agent/docker-compose.yml",
+    "dockerComposeFileUrl": "https://raw.githubusercontent.com/tributech-solutions/tributech-dsk-docs/feature/agent-deploy/deployments/dsk-agent/docker-compose.yml",
     "acrUrl": "tributech.azurecr.io",
     "imagePublisher": "Canonical",
     "imageOffer": "0001-com-ubuntu-server-focal",
@@ -274,7 +268,7 @@
             },
             "protectedSettings": {
               "fileUris": "[union(array(variables('dockerComposeFileUrl')), if(empty(parameters('dockerComposeOverrideFileUrl')), createArray(), array(parameters('dockerComposeOverrideFileUrl'))))]",
-              "commandToExecute": "[format('echo \"Waiting for cloud-init completion...\" && cloud-init status -wl && echo ''Cloud-init finished, copying files...'' && printf \"TAG={4}\\nAGENT_ID={5}\\nNODE_NAME={6}\\nHUB_NAME={7}\\nDATA_API_SECRET={8}\\nTRUST_API_SECRET={9}\\n\" > .env && install -m 775 -o {0} .env *.yml /home/{0} && echo ''Files copied, trying to login at Docker Registry...'' && sudo -u {0} bash -c \"cd /home/{0}/ && echo {1} | docker login --username {2} --password-stdin {3} && echo ''Docker Registry login succeeded, trying docker-compose up''&& docker-compose up -d && echo ''docker-compose up finished''\"', parameters('adminUsername'), parameters('dockerRegistryToken'), parameters('dockerRegistryTokenName'), variables('acrUrl'), parameters('imageTag'), parameters('agentId'), parameters('nodeName'), parameters('hubName'), parameters('dataApiSecret'), parameters('trustApiSecret'))]"
+              "commandToExecute": "[format('echo \"Waiting for cloud-init completion...\" && cloud-init status -wl && echo ''Cloud-init finished, copying files...'' && printf \"TAG={4}\\nAGENT_ID={5}\\nAGENT_NAME={9}\\nNODE_NAME={6}\\nHUB_NAME={7}\\nLOKI_PROMTAIL_PW={8}\\n\" > .env && install -m 775 -o {0} .env *.yml /home/{0} && echo ''Files copied, trying to login at Docker Registry...'' && sudo -u {0} bash -c \"cd /home/{0}/ && echo {1} | docker login --username {2} --password-stdin {3} && echo ''Docker Registry login succeeded, trying docker-compose up''&& docker-compose up -d && echo ''docker-compose up finished''\"', parameters('adminUsername'), parameters('dockerRegistryToken'), parameters('dockerRegistryTokenName'), variables('acrUrl'), parameters('imageTag'), parameters('agentId'), parameters('nodeName'), parameters('hubName'), parameters('lokiPromtailPw'), parameters('agentName'))]"
             }
           }
         }
