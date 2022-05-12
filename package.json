@@ -16,9 +16,9 @@
     "format-check": "prettier --check \"**/*.{ts,json,js,md}\" "
   },
   "dependencies": {
-    "@algolia/client-search": "^4.11.0",
-    "@docusaurus/core": "2.0.0-beta.13",
-    "@docusaurus/preset-classic": "2.0.0-beta.13",
+    "@algolia/client-search": "^4.13.0",
+    "@docusaurus/core": "2.0.0-beta.20",
+    "@docusaurus/preset-classic": "2.0.0-beta.20",
     "@mdx-js/react": "^1.6.22",
     "@svgr/webpack": "^5.5.0",
     "@types/react": "^17.0.1",

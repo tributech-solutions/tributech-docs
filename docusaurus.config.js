@@ -108,7 +108,8 @@ module.exports = {
     },
     image: 'img/favicon.png',
     algolia: {
-      apiKey: '038c83f2ea7d91ea50d9e914396ec1b5',
+      apiKey: '1a42b1ebe30454fa429a47c5ed59de94',
+      appId: 'XQE3RIAUIB',
       indexName: 'tributech',
       contextualSearch: false, // false for now as we dont have versioning yet
     },
