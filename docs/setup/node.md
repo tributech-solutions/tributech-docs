@@ -4,6 +4,7 @@ sidebar_position: 2
 ---
 
 This page explains the setup options for a DSK node and its prerequisites.
+
 ## Prerequisites
 
 ### Ecosystem
@@ -42,12 +43,12 @@ If you have any questions regarding infrastructure requirements, please talk to 
 If you want to join a DSK ecosystem, please select one of the following options:
 
 - New Ecosystem: Please contact our [**Customer Advisory Team**](mailto:customer-advisory@tributech.io).
-- Tributech Playground - Please first sign up at [**Tributech.io/Playground**](https://tributech.io/playground), you can follow the steps of our [**Quickstart Guide**](../quickstart/overview.md) once you've received the required credentials.
+- Tributech Playground - Please first sign up at [**Tributech.io/Playground**](https://tributech.io/playground), you can follow the steps of our **TODO Quickstart Guide TODO** once you've received the required credentials.
 - Existing Ecosystem - Please contact the operator of the DSK Ecosystem.
 
 ### Deploy a DSK Node on Azure
 
-A DSK Node can be deployed on Azure using the <a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tributechsolutionsgmbh1582568815297.8aa9010b-3dd5-43e0-a4b6-53e2ea552e4a?tab=Overview" target="_blank">**Azure Marketplace offer**</a>. Take a look at our [**Quickstart Guide**](../quickstart/install-owner-node.md) for more details on how to deploy a DSK Node (showcase for deployment to Tributech Playground).
+A DSK Node can be deployed on Azure using the <a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tributechsolutionsgmbh1582568815297.8aa9010b-3dd5-43e0-a4b6-53e2ea552e4a?tab=Overview" target="_blank">**Azure Marketplace offer**</a>. Take a look at our **TODO Quickstart Guide TODO** for more details on how to deploy a DSK Node (showcase for deployment to Tributech Playground).
 
 ### Deploy DSK Node on-premises or at other cloud providers
 

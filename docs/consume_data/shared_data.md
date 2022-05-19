@@ -1,5 +1,5 @@
 ---
-title: Subscribe to a Dataset
+title: Shared Data
 sidebar_position: 2
 ---
 
