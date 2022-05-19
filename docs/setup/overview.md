@@ -4,6 +4,7 @@ sidebar_position: 1
 ---
 
 # Setup Overview
+
 This section of the documentation describes how to setup the individual components of the DataSpace Kit (DSK).
 
 The following table offers a quick overview of the components which are at the core of the Tributech DataSpace Kit.
@@ -31,7 +32,7 @@ There are three variants of the DSK Agent available:
 
 ### DSK Agent Edge {#dsk-agent-edge}
 
-The DSK Agent Edge is the most common Agent variant and is perfect for all software-based use-cases. Learn how to set it up in our [**specific setup guide**](./setup/agent/overview.md).
+The DSK Agent Edge is the most common Agent variant and is perfect for all software-based use-cases. Learn how to set it up in our [**specific setup guide**](/docs/setup/agent/overview.md).
 
 **When to choose:**<br />
 This option should be preferred if you have access to the controllers of the machines on the shop-floor but not to the sensors directly (e.g. Industrial IoT Gateway).
@@ -69,4 +70,5 @@ Data is signed as soon as it reaches the node.
 Data can be sent to the integrated agent through the Trust-API - have a look at [**API integration**](../provide_data/rest.md). API Clients for C# can be found [**here**](https://github.com/tributech-solutions/tributech-dsk-api-clients).
 
 ## DSK Agent Companion
+
 The Tributech Agent Companion is an application for the management of the DSK Agent Edge & Sensor Securty Modules (SSM). Head over to [**Agent Companion Setup**](agent_companion.mdx) to find out more!
