@@ -7,11 +7,11 @@ import AgentCompanionDownloadMac from '../common/_agent-companion-download-mac.m
 import AgentCompanionLogin from '../common/_agent-companion-login.md';
 import AgentCompanionConnect from '../common/_agent-companion-connect.md';
 import AgentCompanionLink from '../common/_agent-companion-link.md';
-import AgentCompanionConfigure from '../common/_agent-companion-configure.md';
-import AgentCompanionVerifyAgent from '../common/_agent-companion-verify-agent.md';
-import AgentCompanionVerifyDataset from '../common/_agent-companion-verify-dataset.md';
 
-The Tributech Agent Companion is an application for the management of the DSK Agent Edge & Sensor Securty Modules (SSM). It allows to link them to a DSK Node and configure them based on digital twins. It offers a twin builder UI (which can also be used stand-alone). It communicates with the APIs of the DSK Node and DSK Agent Edge / Sensor Securty Module (SSM) and must be connected accordingly.
+The Tributech Agent Companion is an application for the management of the DSK Agent Edge & OEM.
+It allows to link them to a DSK Node and configure them based on digital twins.
+It offers a twin builder UI (which can also be used stand-alone).
+It communicates with the APIs of the DSK Node and DSK Agent Edge / OEM and must be connected accordingly.
 
 ![AgentCompanion](./img/agent-companion.png)
 
@@ -20,23 +20,18 @@ The Tributech Agent Companion is an application for the management of the DSK Ag
 
 ### Windows
 * <AgentCompanionDownloadWin/>
-* Check download progress in your browser ![AgentCompanion - Download&Installation 1](./img/agent-companion-install-1.png)
-* Open your `Downloads` folder
-![AgentCompanion - Download&Installation 2](./img/agent-companion-install-2.png)
-* Identify `Tributech Agent Companion X.X.X` executable and double-click
-![AgentCompanion - Download&Installation 3](./img/agent-companion-install-3.png)
-* Or directly open/run the executable from your browser
-![AgentCompanion - Download&Installation 4](./img/agent-companion-install-4.png)
+* Identify `Tributech Agent Companion X.X.X` executable and double-click ![AgentCompanion - Download&Installation 1](./img/agent-companion-install-1.png)
+
 :::note
-Depending on your system configuration you might see a security warning from e.g. Microsoft Defender on the first run of the app executable.  
+Depending on your system configuration you might see a security warning from e.g. Microsoft Defender on the first run of the app executable.
 This is since our app is currently not signed. We will improve this in one of the future releases. In the meanwhile we recommend that you check the file with your antivirus software and ignore the warning if everything looks good.
-![AgentCompanion - Download&Installation 5](./img/agent-companion-install-5.png)  
-Ignore Microsoft Defender warning and run application anyway.  
-![AgentCompanion - Download&Installation 6](./img/agent-companion-install-6.png)  
+![AgentCompanion - Download&Installation 2](./img/agent-companion-install-2.png)
+Ignore Microsoft Defender warning and run application anyway.
+![AgentCompanion - Download&Installation 3](./img/agent-companion-install-3.png)
 :::
 
 * The Tributech Agent Companion should now be started.
-![AgentCompanion - Download&Installation 7](./img/agent-companion-install-7.png)
+![AgentCompanion - Download&Installation 4](./img/agent-companion-install-4.png)
 
 ### macOS
 * <AgentCompanionDownloadMac />
@@ -50,15 +45,3 @@ Ignore Microsoft Defender warning and run application anyway.
 
 ## Link Agent
 <AgentCompanionLink/>
-
-## Configure Agent
-<AgentCompanionConfigure/>
-
-## Verify in DataSpace-Admin
-We can verify in the Dataspace-Admin that the DSK Agent Edge was linked and configured properly.
-
-### Agent
-<AgentCompanionVerifyAgent />
-
-### Dataset {#setup-agent-verify-dataset}
-<AgentCompanionVerifyDataset />

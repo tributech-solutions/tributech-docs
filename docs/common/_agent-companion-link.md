@@ -3,7 +3,6 @@
   ![AgentCompanion - Link 1](./img/agent-companion-link-1.png)
 - Click on Link/Relink Agent
   ![AgentCompanion - Link 2](./img/agent-companion-link-2.png)
-- The next step after linking is to configure the DSK Edge Agent
+- The next step after linking is to configure the DSK Edge Agent.
   ![AgentCompanion - Link 3](./img/agent-companion-link-3.png)
-- The DSK Edge Agent can now be configured based on twins with our twin builder.
-  ![AgentCompanion - Link 4](./img/agent-companion-link-4.png)
+- Currently we support two different ways to configure the Agent, whereby using the [**Dataspace Admin Agent Configuration**](../setup/agent_configuration.mdx) is the preferred option.
