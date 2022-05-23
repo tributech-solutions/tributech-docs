@@ -10,7 +10,7 @@ This section of the documentation describes how to setup the individual componen
 The following table offers a quick overview of the components which are at the core of the Tributech DataSpace Kit.
 ![Product Overview](../img/introduction/productoverviewcomp.svg)
 
-If it's your first time setting up the DSK we also suggest having a look at our [**Quick Start Guide**](../quickstart/overview.md).
+If it's your first time setting up the DSK we also suggest having a look at our **TODO Quick Start Guide TODO**.
 
 ## DSK Ecoystem
 

@@ -4,11 +4,12 @@ sidebar_position: 1
 ---
 
 # Overview
+
 This page provides an overview of the Tributech DataSpace Kit documentation and available resources.
 
 ## For Beginners
 
-Start with [**Data Ecosystems & Dataspaces**](./data_ecosystems_spaces) and the following pages to get an overview of the DataSpace Kit and the concepts behind it. Once you are familiar with the basics, we recommend following up with our [**Quickstart Guide**](../quickstart/overview.md) to get your first hands-on experience with DataSpace Kit tools and services.
+Start with [**Data Ecosystems & Dataspaces**](./data_ecosystems_spaces) and the following pages to get an overview of the DataSpace Kit and the concepts behind it. Once you are familiar with the basics, we recommend following up with our ** TODO Quickstart Guide** to get your first hands-on experience with DataSpace Kit tools and services.
 
 ## For Data Providers
 
@@ -28,6 +29,7 @@ At Tributech, we are contributing to the open-source community and projects in t
 If you like what we’re working on, we’d appreciate your support in form of a star on [**GitHub**](https://github.com/tributech-solutions).
 
 ## Deployment- and Download Links
+
 Here we have listed publicly available download and deployment links of DataSpace Kit components and tools. For more details, please visit the Setup section in this documentation.
 
 - [**DataSpace Node on Azure Marketplace**](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tributechsolutionsgmbh1582568815297.8aa9010b-3dd5-43e0-a4b6-53e2ea552e4a)

@@ -16,6 +16,7 @@ In short, the Data-API is used for values whereas the Trust-API is used for proo
 ---
 
 ## Data-API Specifications
+
 Data-API calls and specifications can be found by clicking the "Data-API" tab on the node dashboard.
 ![image](assets/data_api_tab.png)
 
@@ -27,6 +28,7 @@ Please note that all timestamps need to be provided in microseconds!
 :::
 
 ## Trust-API Specifications
+
 The Trust-API specifications can also be found on the node dashboard.
 ![image](assets/trust_api_tab.png)
 
@@ -38,6 +40,7 @@ Please note that all timestamps need to be provided in microseconds!
 :::
 
 ## Clients
+
 For both APIs, the "OpenAPI" (Swagger) specifications can be found in the top left, which can be used to generate a clients for the APIs.
 ![image](assets/data_api_swagger.png)
 
@@ -46,6 +49,7 @@ If C# is the programming language of choice, our already prepared clients can be
 ---
 
 ### Use Case Examples
+
 _The following use cases should help to understand when to use which API._
 
 #### Store values
@@ -83,7 +87,7 @@ Please note that all timestamps need to be provided in microseconds!
 
 ### Step-by-Step Example: **Get a Double Value with its ValueMetadataId**
 
-**Note** that this requires double values to be provided on the Data-API. If the values originate from an external data provider in the Dataspace, they are available in the [**Dataset subscriptions**](./subscribe_dataset.md). Otherwise check out the [**Provide Data**](../provide_data/overview.md) documentation, to provide the values yourself.
+**Note** that this requires double values to be provided on the Data-API. If the values originate from an external data provider in the Dataspace, they are available in the [**Dataset subscriptions**](./shared_data.md). Otherwise check out the [**Provide Data**](../provide_data/overview.md) documentation, to provide the values yourself.
 
 1. On your node dashboard: Access your profile on the top right and head to "Administration->API Keys" to find your Data-API client secret. Copy it.  
    ![image](assets/administration.png)

@@ -14,9 +14,8 @@ If the [**DSK OPC UA Source service (`opcua-source`)**](../../setup/agent/source
 - Full example (incl. persistence and publish options for the streams)
   ![OPC UA Source - AgentCompanion - Configure 3](./img/agent-companion-configure-opcua-3.png)
 - Upload To Device
-- (Optional) [Verify configured streams in DataSpace-Admin](../../quickstart/setup-agent.mdx#verify-in-dataspace-admin) at Streams of Agent
+- (Optional) TODO Verify configured streams in DataSpace-Admin TODO at Streams of Agent
   ![OPC UA Source - AgentCompanion - Configure 4](./img/agent-companion-configure-opcua-4.png)
-
 
 ## OPC UA debugging
 

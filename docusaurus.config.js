@@ -4,7 +4,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'Tributech DataSpace Kit Documentation',
-  tagline: 'Technology for trusted DataSpaces.',
+  tagline: 'Technology for trusted DataSpaces',
   url: 'https://docs.tributech.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -24,11 +24,6 @@ module.exports = {
           href: '/docs/introduction/overview',
           position: 'left',
           label: 'Introduction',
-        },
-        {
-          href: '/docs/quickstart/overview',
-          position: 'left',
-          label: 'Quickstart',
         },
         {
           href: '/docs/setup/overview',
@@ -111,7 +106,7 @@ module.exports = {
       apiKey: '1a42b1ebe30454fa429a47c5ed59de94',
       appId: 'XQE3RIAUIB',
       indexName: 'tributech',
-      contextualSearch: false, // false for now as we dont have versioning yet
+      contextualSearch: true,
     },
   },
   presets: [
