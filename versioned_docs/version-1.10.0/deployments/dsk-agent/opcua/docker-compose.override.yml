@@ -1,0 +1,47 @@
+version: "3.3"
+
+services:
+  # DSK OPC-UA Source - Connects to the OPC-UA Server and publishes the values via MQTT to the DSK agent
+  opcua-source:  
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}opcua-source:${TAG:-latest}
+    depends_on:
+      - mosquitto-server
+      - opcua-server
+      - dsk-agent      
+    environment:
+      Logging__LogLevel__Default: Information
+      MqttOptions__MQTTHost: mosquitto-server
+      OPCUASourceOptions__OPCUAServerUrl: opc.tcp://opcua-server:4840/va_tt_demo
+      # use fixed hostname (instead of hostname based on Docker container id) to avoid changing application client certitifcate
+      OPCUASourceOptions__OverrideHostName: localhost
+    networks:
+      - edge-net
+    # samples for mapping folders with certificates (see also https://github.com/OPCFoundation/UA-.NETStandard/blob/master/Docs/Certificates.md#certificate-stores)
+    # e.g. to have permanent application client certitifcate and/or to trust OPC-UA server certificate
+    volumes:
+      - ./volumes/opcua-source/own/private/:/app/certs/OPC Foundation/CertificateStores/MachineDefault/private # ApplicationCertificate (with private keys)
+      - ./volumes/opcua-source/own/certs/:/app/certs/OPC Foundation/CertificateStores/MachineDefault/certs/ # ApplicationCertificate
+      - ./volumes/opcua-source/trusted/certs/:/app/certs/OPC Foundation/CertificateStores/UA Applications/certs/ # TrustedPeerCertificates
+      - ./volumes/opcua-source/issuer/certs/:/app/certs/OPC Foundation/CertificateStores/UA Certificate Authorities/certs/ # TrustedIssuerCertificates
+      - ./volumes/opcua-source/rejected/certs/:/app/certs/OPC Foundation/CertificateStores/RejectedCertificates/certs/ # RejectedCertificateStore
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "2m"
+        max-file: "5"      
+
+  # OPC-UA server/simulated data generator
+  opcua-server:
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}va_tt_srv_1.0:latest
+    networks:
+      - edge-net
+    # Expose ports for development and testing purposes
+    #ports:
+    #  - "4840:4840"
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "2m"
+        max-file: "5"

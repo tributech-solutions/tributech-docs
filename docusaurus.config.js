@@ -119,6 +119,8 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
+          disableVersioning: false,
+          includeCurrentVersion: true,
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
             'https://github.com/tributech-solutions/tributech-dsk-docs/edit/master/',
