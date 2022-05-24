@@ -24,7 +24,7 @@ Read Function has two main functions :
   - ADS Server will notify the client when a value has changed (needs to be configured at server side too)
 
 ## ADS Setup 
-- Open the [**Agent Companion**](../../setup/agent_companion), [**login**](../../setup/agent_companion#agent-companion-login) to the DSK Node and [**connect**](../../setup/agent_companion#agent-companion-connect) with the DKS Edge Agent
+- Open the [**Agent Companion**](../../setup/agent_companion), [**login**](../../setup/agent_companion#agent-companion-login) to the DSK Node and [**connect**](../../setup/agent_companion#agent-companion-connect) with the DSK Edge Agent
 - Add Beckhoff ADS Source to your Agent
   ![ADS Source - Data Space Admin - Initial Setup](./img/ads-source-firstsetup.png)
 - **Configure following values**: 
