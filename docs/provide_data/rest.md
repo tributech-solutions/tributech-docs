@@ -7,8 +7,8 @@ sidebar_position: 3
 
 The Tributech DataSpace Kit provides two REST APIs:
 
-- Data-API
-- Trust-API
+- Data-API (data-api.[node name].dataspace-node.com)
+- Trust-API (trust-api.[node name].dataspace-node.com)
 
 The image below shows you how the APIs are integrated into the DataSpace Kit.
 ![Integration via APIs](assets/integration.png)
@@ -18,8 +18,7 @@ In short, the Data-API is used for values whereas the Trust-API is used for proo
 ---
 
 ## Data-API Specifications
-Data-API calls and specifications can be found by clicking the "Data-API" tab on the node dashboard.
-![image](assets/data_api_tab.png)
+Data-API calls and specifications can be found at data-api.[node name].dataspace-node.com
 
 The page gives an overview of the available calls and actions.
 ![image](assets/data_api_base.png)
@@ -29,8 +28,7 @@ Please note that all timestamps need to be provided in microseconds!
 :::
 
 ## Trust-API Specifications
-The Trust-API specifications can also be found on the node dashboard.
-![image](assets/trust_api_tab.png)
+Trust-API calls and specifications can be found at trust-api.[node name].dataspace-node.com
 
 The page provides an overview of the available calls and actions.
 ![image](assets/trust_api_base.png)
@@ -80,9 +78,9 @@ Please note that all timestamps need to be provided in microseconds!
 
 ### Step-by-Step Example: **Store a Double Value with Proof**
 1. On your node dashboard: Access your profile on the top right and head to "Administration->API Keys" to find your Trust-API client secret. Copy it.  
-   ![image](assets/administration.png)
-2. Head to the Trust-API specification page.  
-   ![image](assets/trust_api_tab_small.png)
+   ![image](../consume_data/assets/administration.png)
+2. Head to the Trust-API specification page (trust-api.[node name].dataspace-node.com).  
+![image](assets/trust_api_swagger_small.png)
 3. Click the "Authorize" button and paste the Trust-API client secret.  
    ![image](assets/authorize.png)  
    ![image](assets/authorize_secret.png)
