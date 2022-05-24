@@ -158,7 +158,7 @@ The payload provided for the topic needs to be a UTF8-encoded string which repre
 The mapping of MQTT message to the value for the stream works like the following:
 
 - `ValueMetadataId`: `DataStreamID` from the JSON-object. Currently there is no check that a matching stream exist we however recommend to create a _Generic Stream_ for each published `DataStreamID` for easier management.
-- `Timestamp`: `Timestamp` from the JSON-object.
+- `Timestamp`: `Timestamp` from the JSON-object. (*Format ISO 8601-1:2019*)
 - `Values`: `Value` from the JSON-object as Base64-encoded raw-bytes of the actual value (see [**Data encoding**](#data-encoding)).
 
 Configure:
@@ -197,7 +197,7 @@ The payload provided for the topic needs to be a UTF8-encoded string which repre
 The mapping of MQTT message to the value for the stream works like the following:
 
 - `ValueMetadataId`: Derived automatically in a deterministic manner based on `ValueSourceID` and `SensorID` from the JSON-object. Currently there is no check that a matching stream exist we however recommend to create a _Generic Stream_ for each published `ValueSourceID` and `SensorID` combination for easier management.
-- `Timestamp`: `Timestamp` from the JSON-object.
+- `Timestamp`: `Timestamp` from the JSON-object. (*Format ISO 8601-1:2019*)
 - `Values`: `Value` from the JSON-object as Base64-encoded raw-bytes of the actual value (see [**Data encoding**](#data-encoding)).
 
 Configure:
