@@ -108,6 +108,16 @@ module.exports = {
       indexName: 'tributech',
       contextualSearch: true,
     },
+    zoom: {
+      selector: '.markdown :not(em) > img',
+      config: {
+        margin: 56,
+        background: {
+          light: 'rgb(255, 255, 255)',
+          dark: 'rgb(50, 50, 50)',
+        },
+      },
+    },
   },
   presets: [
     [
@@ -126,4 +136,5 @@ module.exports = {
       },
     ],
   ],
+  plugins: [require.resolve('docusaurus-plugin-image-zoom')],
 };
