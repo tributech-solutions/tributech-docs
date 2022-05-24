@@ -15,7 +15,7 @@ The following figure provides an overview of the DSK Agent services and the comm
 
 The DSK Agent subscribes to available data streams on the message bus, generates data quality seals, transferers the data streams and quality seals to the DSK Node middleware and maintains a digital twin based self-description that is also used for the configuration.
 
-The core modules of the DSK Agent are available as docker-compose application bundle that includes core services, sinks and a MQTT message broker. In addition to the core application bundle, the Agent supports integrations via data connectors (e.g. OPC-UA) and integrations into IoT runtimes of IoT device management platforms (e.g. Azure IoT Edge).
+The core modules of the DSK Agent are available as docker-compose application bundle that includes core services, sinks and a MQTT message broker. In addition to the core application bundle, the Agent supports integrations via data connectors (e.g. OPC-UA) and integrations into IoT runtimes of IoT device management platforms.
 
 ## Generation of Data Quality Seals 
 

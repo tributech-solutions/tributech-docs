@@ -35,7 +35,7 @@ Data consumers can access and analyze shared data by using the open API interfac
 
 The DSK Agent is an application for edge and embedded IoT devices that can easily be integrated into any IoT platform stack.
 
-The core features of the DSK Agent are the standardized contextualization and data management via digital twins as well as the creation of data quality seals for providing trust, traceability and auditability of data streams. The Agent also includes connectivity to the blockchain-based trust layer to store data quality seals as well as connectivity to the data layer of DSK Nodes or other IoT middleware solutions in-between (e.g. Azure IoT Hub).
+The core features of the DSK Agent are the standardized contextualization and data management via digital twins as well as the creation of data quality seals for providing trust, traceability and auditability of data streams. The Agent also includes connectivity to the blockchain-based trust layer to store data quality seals as well as connectivity to the data layer of DSK Nodes or other IoT middleware solutions in-between.
 
 Data providers can use the DSK Agent to easily connect different green- or brownfield IoT solutions to their DSK Nodes and extend IoT data sources with required contextualization via digital twins and auditability via data quality seals.
 
