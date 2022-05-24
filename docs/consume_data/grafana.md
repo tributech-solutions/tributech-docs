@@ -68,3 +68,43 @@ ORDER BY 1
 ```
 
 Optionally, you can now rename the rows / panels to your liking or just play around with your brand new dashboard!
+
+## Visualize InfluxDB data
+First, similar to SQL queries, the data source (InfluxDB) has to be selected.  
+![Select Data Source](assets/grafana_influxdb_data_source.png)
+
+Afterwards, a query for the data has to be supplied. Check out the examples below or go to the official [influx documentation](https://docs.influxdata.com/influxdb/v2.2/query-data/get-started/) to find out more.
+### Basic query
+```
+from(bucket: "infinite")
+  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)
+  |> filter(fn: (r) =>
+    r._measurement == "53f5d6a2-fae7-4649-a9d2-be130733572a" and
+    r._field == "value"
+)
+```
+
+### Query and rename result column (option 1)
+```
+from(bucket: "infinite")
+  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)
+  |> filter(fn: (r) =>
+    r._measurement == "53f5d6a2-fae7-4649-a9d2-be130733572a" and
+    r._field == "value")
+  |> keep(columns: ["_time", "_value"])
+  |> rename(columns: {_value: "test1"})
+```
+
+### Query and rename result column (option 2)
+```
+from(bucket: "infinite")
+  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)
+  |> filter(fn: (r) =>
+    r._measurement == "53f5d6a2-fae7-4649-a9d2-be130733572a" and
+    r._field == "value")
+  |> map(fn: (r) => ({ test1: r._value, time: r._time }))
+```
+
+### Rename result column with overrides (option 3)
+Another method to rename a column is to click on "Overrides" on the righthand side of the screen and set the name(s) there.
+![Select Data Source](assets/grafana_influxdb_rename.png)
