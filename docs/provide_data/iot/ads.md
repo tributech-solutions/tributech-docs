@@ -26,7 +26,7 @@ Read Function has two Main Functions :
 ## ADS Setup 
 - Open the [**Agent Companion**](../../setup/agent_companion), [**login**](../../setup/agent_companion#agent-companion-login) to the DSK Node and [**connect**](../../setup/agent_companion#agent-companion-connect) with the DKS Edge Agent
 - Add Beckhoff ADS Source to your Agent
-  ![ADS Source - Data Space Admin - Inital Setup](./img/ads-source-firstsetup.png)
+  ![ADS Source - Data Space Admin - Initial Setup](./img/ads-source-firstsetup.png)
 - **Configure following Values**: 
   - Server AMS Net Id
     - AMS Net Id of the PLC ADS Server
@@ -50,7 +50,7 @@ Read Function has two Main Functions :
 
 ## ADS Stream Setup
 - Add ADS Stream to the ADS Source 
-  ![ADS Source - Data Space Admin - Inital Setup](./img/ads-stream-setup.png)
+  ![ADS Source - Data Space Admin - Initial Setup](./img/ads-stream-setup.png)
 
 ### On Change
 - To change an ADS Stream to an OnChange Mode: Toggle the ReadMode to **On Change**
