@@ -3,7 +3,7 @@ version: "3.3"
 services:
   # DSK agent
   dsk-agent:
-    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}dsk-agent:${TAG:-latest}
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}dsk-agent:${AGENT_TAG:-latest}
     depends_on:
       - mosquitto-server
     environment:

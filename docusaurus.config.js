@@ -109,7 +109,7 @@ module.exports = {
       contextualSearch: true,
     },
     zoom: {
-      selector: '.markdown :not(em) > img',
+      selector: '.markdown :not(em, a) > img',
       config: {
         margin: 56,
         background: {

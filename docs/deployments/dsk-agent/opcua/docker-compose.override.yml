@@ -3,7 +3,7 @@ version: "3.3"
 services:
   # DSK OPC-UA Source - Connects to the OPC-UA Server and publishes the values via MQTT to the DSK agent
   opcua-source:
-    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}opcua-source:${TAG:-latest}
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}opcua-source:${SOURCE_TAG:-latest}
     depends_on:
       - mosquitto-server
       - opcua-server

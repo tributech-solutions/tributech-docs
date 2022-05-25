@@ -183,11 +183,11 @@
             "visible": true
           },
           {
-            "name": "imageTag",
+            "name": "agentImageTag",
             "type": "Microsoft.Common.TextBox",
-            "label": "Docker Image Tag",
-            "defaultValue": "beta",
-            "toolTip": "The version tag of the DSK Edge service Docker Images.",
+            "label": "DSK Agent Docker Image Tag",
+            "defaultValue": "2.0.5",
+            "toolTip": "The version tag of the DSK Edge Agent service Docker Image.",
             "constraints": {
               "required": true
             },
@@ -196,7 +196,7 @@
           {
             "name": "dockerComposeOverrideFileUrl",
             "type": "Microsoft.Common.OptionsGroup",
-            "label": "Additional DSK Edge services",
+            "label": "Additional DSK Edge Source services",
             "defaultValue": "None",
             "toolTip": "Select additional DSK Edge services which should be deployed along with the DSK Agent and the MQTT broker (mosquitto).",
             "constraints": {
@@ -207,16 +207,27 @@
                 },
                 {
                   "label": "DSK Edge Simulated Sensor",
-                  "value": "https://raw.githubusercontent.com/tributech-solutions/tributech-dsk-docs/feature/agent-deploy/deployments/dsk-agent/simulated-sensor/docker-compose.override.yml"
+                  "value": "https://raw.githubusercontent.com/tributech-solutions/tributech-dsk-docs/feature/agent-deploy/docs/deployments/dsk-agent/simulated-sensor/docker-compose.override.yml"
                 },
                 {
                   "label": "OPC UA Source and Server/Simulator",
-                  "value": "https://raw.githubusercontent.com/tributech-solutions/tributech-dsk-docs/feature/agent-deploy/deployments/dsk-agent/opcua/docker-compose.override.yml"
+                  "value": "https://raw.githubusercontent.com/tributech-solutions/tributech-dsk-docs/feature/agent-deploy/docs/deployments/dsk-agent/opcua/docker-compose.override.yml"
                 }
               ],
               "required": true
             },
             "visible": true
+          },
+          {
+            "name": "sourceImageTag",
+            "type": "Microsoft.Common.TextBox",
+            "label": "DSK Source Docker Image Tag",
+            "defaultValue": "2.0.5",
+            "toolTip": "The version tag of the additional DSK Source service Docker Image.",
+            "constraints": {
+              "required": true
+            },
+            "visible": "[not(equals(steps('dsk').dockerComposeOverrideFileUrl,''))]"
           }
         ]
       }
@@ -230,7 +241,8 @@
       "allowSsh": "[bool(steps('vm').allowSsh)]",
       "dockerRegistryTokenName": "[steps('dsk').dockerRegistryTokenName]",
       "dockerRegistryToken": "[steps('dsk').dockerRegistryToken]",
-      "imageTag": "[steps('dsk').imageTag]",
+      "agentImageTag": "[steps('dsk').agentImageTag]",
+      "sourceImageTag": "[coalesce(steps('dsk').sourceImageTag, '')]",
       "agentId": "[steps('dsk').agentId]",
       "hubName": "[steps('dsk').hubName]",
       "nodeName": "[steps('dsk').nodeName]",

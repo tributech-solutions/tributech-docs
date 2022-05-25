@@ -2,7 +2,7 @@ version: "3.3"
 
 services:
   simulated-sensor:
-    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}simulated-sensor:${TAG:-latest}
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}simulated-sensor:${SOURCE_TAG:-latest}
     depends_on:
       - mosquitto-server
       - dsk-agent
