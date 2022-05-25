@@ -8,6 +8,7 @@ If the [**DSK OPC UA Source service (`opcua-source`)**](../../setup/agent/source
 
 - Open the [**Agent Companion**](../../setup/agent_companion), [**login**](../../setup/agent_companion#agent-companion-login) to the DSK Node and [**connect**](../../setup/agent_companion#agent-companion-connect) with the DKS Edge Agent
 - Add OPC UA Source and configure _OPC UA Connection string_
+- ![OPC UA Source - AgentCompanion - Setup](./img/agent-companion-configure-opcua-0.png)
   ![OPC UA Source - AgentCompanion - Configure 1](./img/agent-companion-configure-opcua-1.png)
 - Add OPC UA Stream(s) and configure _OPC UA identifier_ (which defines the endpoint to which the stream will be connected)
   ![OPC UA Source - AgentCompanion - Configure 2](./img/agent-companion-configure-opcua-2.png)
