@@ -207,11 +207,11 @@
                 },
                 {
                   "label": "DSK Edge Simulated Sensor",
-                  "value": "https://raw.githubusercontent.com/tributech-solutions/tributech-dsk-docs/feature/agent-deploy/docs/deployments/dsk-agent/simulated-sensor/docker-compose.override.yml"
+                  "value": "https://raw.githubusercontent.com/tributech-solutions/tributech-dsk-docs/master/versioned_docs/version-2.0.X/deployments/dsk-agent/simulated-sensor/docker-compose.override.yml"
                 },
                 {
                   "label": "OPC UA Source and Server/Simulator",
-                  "value": "https://raw.githubusercontent.com/tributech-solutions/tributech-dsk-docs/feature/agent-deploy/docs/deployments/dsk-agent/opcua/docker-compose.override.yml"
+                  "value": "https://raw.githubusercontent.com/tributech-solutions/tributech-dsk-docs/master/versioned_docs/version-2.0.X/deployments/dsk-agent/opcua/docker-compose.override.yml"
                 }
               ],
               "required": true

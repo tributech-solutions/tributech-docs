@@ -106,7 +106,7 @@
     }
   },
   "variables": {
-    "dockerComposeFileUrl": "https://raw.githubusercontent.com/tributech-solutions/tributech-dsk-docs/feature/agent-deploy/docs/deployments/dsk-agent/docker-compose.yml",
+    "dockerComposeFileUrl": "https://raw.githubusercontent.com/tributech-solutions/tributech-dsk-docs/master/versioned_docs/version-2.0.X/deployments/dsk-agent/docker-compose.yml",
     "acrUrl": "tributech.azurecr.io",
     "imagePublisher": "Canonical",
     "imageOffer": "0001-com-ubuntu-server-focal",

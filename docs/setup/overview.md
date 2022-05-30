@@ -30,7 +30,7 @@ There are three variants of the DSK Agent available:
 
 ### DSK Agent Edge {#dsk-agent-edge}
 
-The DSK Agent Edge is our containerized, software-based solution perfect for all devices/environments offering a [container runtime](./agent/overview.md#software-requirements-software-requirements). Learn more in our [**setup guide**](./agent/overview.md).
+The DSK Agent Edge is our containerized, software-based solution perfect for all devices/environments offering a [**container runtime**](./agent/overview.md#software-requirements-software-requirements). Learn more in our [**setup guide**](./agent/overview.md).
 
 **When to choose:**<br />
 This option should be preferred if you have access to the controllers of the machines on the shop-floor but not to the sensors directly (e.g. Industrial IoT Gateway).
@@ -39,14 +39,14 @@ This option should be preferred if you have access to the controllers of the mac
 Data is signed on the shop-floor still close to the data-source (the closer to the data-source, the better for security).
 
 **Integration:**<br />
-You can use your existing connectors, the Agent is integrated at the message bus layer (e.g. [MQTT](../provide_data/iot/mqtt.md), [OPC-UA](../provide_data/iot/opc-ua.md), [Beckhoff ADS](../provide_data/iot/ads.md),...).
+You can use your existing connectors, the Agent is integrated at the message bus layer (e.g. [**MQTT**](../provide_data/iot/mqtt.md), [**OPC-UA**](../provide_data/iot/opc-ua.md), [**Beckhoff ADS**](../provide_data/iot/ads.md),...).
 
 ### DSK Agent Embedded {#dsk-agent-embedded}
 
 The DSK Agent Embedded is our solution designed to read data directly from interfaces/sensors on the hardware level. It uses a dedicated hardware security module for signing the data-streams. 
 The DSK Agent Embedded is available as either a C implementation or as a dedicated hardware module.
 For the hardware module we offer two options:
-* [OEM Module](https://tributech.io/blog/oem-module)  
+* [**OEM Module**](https://tributech.io/blog/oem-module)  
 We offer two variants, the OEM Module itself which can be directly integrated into your hardware design and an Arduino Shield for prototyping.
 The shield can be used with all popular hardware development platforms like Arduino Uno, STM32 Nucelo, Infineon XMC Relax Kit and more.  
 ![OEM Module](./img/OEM_Module.jpg)  
@@ -56,7 +56,7 @@ On the device side, the OEM module provides a UART interface for exchanging conf
 Overview highlighting the role of the OEM module in the overall DSK:
 ![OEM Board](./img/OEM_Architecture.jpg)
 
-* [Sensor Security Module (SSM)](https://tributech.io/blog/sensor-security-module)  
+* [**Sensor Security Module (SSM)**](https://tributech.io/blog/sensor-security-module)  
 The Tributech Sensor Security Module is designed to enable the highest possible customization while minimizing the implementation effort required to integrate new sensors or protocols for embedded systems applications. Combined with the included connectivity and data management solution it can be facilitated for the creation of fully verifiable data streams and reduces the time and effort for companies to connect their sensors and assets to the cloud.
 ![SSM](./img/SSM_shadow_pins.png)
 The following picture provides an overview of the SSM, its core components and main interfaces:  
