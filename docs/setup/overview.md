@@ -45,7 +45,7 @@ You can use your existing connectors, the Agent is integrated at the message bus
 
 The DSK Agent Embedded is our solution designed to read data directly from interfaces/sensors on the hardware level. It uses a dedicated hardware security module for signing the data-streams. 
 The DSK Agent Embedded is available as either a C implementation or as a dedicated hardware module.
-For the hardware module we offer two options:
+
 * [**OEM Module**](https://tributech.io/blog/oem-module)  
 We offer two variants, the OEM Module itself which can be directly integrated into your hardware design and an Arduino Shield for prototyping.
 The shield can be used with all popular hardware development platforms like Arduino Uno, STM32 Nucelo, Infineon XMC Relax Kit and more.  
@@ -56,12 +56,13 @@ On the device side, the OEM module provides a UART interface for exchanging conf
 Overview highlighting the role of the OEM module in the overall DSK:
 ![OEM Board](./img/OEM_Architecture.jpg)
 
+<!---
 * [**Sensor Security Module (SSM)**](https://tributech.io/blog/sensor-security-module)  
 The Tributech Sensor Security Module is designed to enable the highest possible customization while minimizing the implementation effort required to integrate new sensors or protocols for embedded systems applications. Combined with the included connectivity and data management solution it can be facilitated for the creation of fully verifiable data streams and reduces the time and effort for companies to connect their sensors and assets to the cloud.
 ![SSM](./img/SSM_shadow_pins.png)
 The following picture provides an overview of the SSM, its core components and main interfaces:  
 ![SSM interfaces](./img/SSM_interfaces.png)
-
+-->
 **When to choose:**<br />
 This option should be preferred if you have access to your system on a hardware interface/sensor level.
 
