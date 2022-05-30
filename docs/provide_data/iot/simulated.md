@@ -8,10 +8,11 @@ If the [**DSK Simulated Sensor/Source (`simulated-sensor`)**](../../setup/agent/
 
 - Open the [**Agent Companion**](../../setup/agent_companion), [**login**](../../setup/agent_companion#agent-companion-login) to the DSK Node and [**connect**](../../setup/agent_companion#agent-companion-connect) with the DKS Edge Agent
 - Add Simulated Source
+  ![Simulated Sensor/Source 0](./img/simulated-sensor-0.png)
   ![Simulated Sensor/Source 1](./img/simulated-sensor-1.png)
 - Add Simulated Stream(s)  
   Various parameters for the simulated stream can be adapted but important are the _Type_ which defines the actual generated value type and the _Frequency_ which the amount of generated data.
   ![Simulated Sensor/Source 2](./img/simulated-sensor-2.png)
-- Upload To Device
+- Apply Configuration
 - (Optional) TODO Verify configured streams in DataSpace-Admin TODO at Streams of Agent
   ![Simulated Sensor/Source 3](./img/simulated-sensor-3.png)
