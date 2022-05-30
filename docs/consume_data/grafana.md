@@ -21,7 +21,7 @@ This could be in one of two ways:
 You can easily navigate to your node dashboard by clicking the "Grafana" menu entry in the side menu of your DataSpace Admin App.
 For authentication, use the same username and password that you use for authentication when accessing the DataSpace Admin App.
 
-![Navigate to Grafana](assets/navigate-to-grafana.png)
+![Navigate to Grafana](assets/grafana_sidebar.png)
 
 The dashboarding system is built on the open source technology [**Grafana**](https://grafana.com/). It comes with pre-configured data sources for the in your DataSpace Node integrated Postgre SQL databases.
 
