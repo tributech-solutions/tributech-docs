@@ -140,29 +140,13 @@
             "visible": true
           },
           {
-            "name": "dataApiSecret",
+            "name": "lokiPromtailPw",
             "type": "Microsoft.Common.PasswordBox",
             "label": {
-              "password": "Data-API client secret",
+              "password": "Promtail (Loki push API) password",
               "confirmPassword": "Confirm"
             },
-            "toolTip": "The DSK Node Data-API client secret (see Account -> Administration -> API-Keys in DataSpace-Admin).",
-            "constraints": {
-              "required": true
-            },
-            "options": {
-              "hideConfirmation": true
-            },
-            "visible": true
-          },
-          {
-            "name": "trustApiSecret",
-            "type": "Microsoft.Common.PasswordBox",
-            "label": {
-              "password": "Trust-API client secret",
-              "confirmPassword": "Confirm"
-            },
-            "toolTip": "The DSK Node Trust-API client secret (see Account -> Administration -> API-Keys in DataSpace-Admin).",
+            "toolTip": "The DSK Node Promtail (Loki push API) password (see Account -> Administration -> API-Keys in DataSpace-Admin).",
             "constraints": {
               "required": true
             },
@@ -199,11 +183,11 @@
             "visible": true
           },
           {
-            "name": "imageTag",
+            "name": "agentImageTag",
             "type": "Microsoft.Common.TextBox",
-            "label": "Docker Image Tag",
-            "defaultValue": "1.10.1",
-            "toolTip": "The version tag of the DSK Edge service Docker Images.",
+            "label": "DSK Agent Docker Image Tag",
+            "defaultValue": "2.0.5",
+            "toolTip": "The version tag of the DSK Edge Agent service Docker Image.",
             "constraints": {
               "required": true
             },
@@ -212,7 +196,7 @@
           {
             "name": "dockerComposeOverrideFileUrl",
             "type": "Microsoft.Common.OptionsGroup",
-            "label": "Additional DSK Edge services",
+            "label": "Additional DSK Edge Source services",
             "defaultValue": "None",
             "toolTip": "Select additional DSK Edge services which should be deployed along with the DSK Agent and the MQTT broker (mosquitto).",
             "constraints": {
@@ -223,16 +207,27 @@
                 },
                 {
                   "label": "DSK Edge Simulated Sensor",
-                  "value": "https://raw.githubusercontent.com/tributech-solutions/tributech-dsk-docs/master/deployments/dsk-agent/simulated-sensor/docker-compose.override.yml"
+                  "value": "https://raw.githubusercontent.com/tributech-solutions/tributech-dsk-docs/master/versioned_docs/version-2.0.X/deployments/dsk-agent/simulated-sensor/docker-compose.override.yml"
                 },
                 {
                   "label": "OPC UA Source and Server/Simulator",
-                  "value": "https://raw.githubusercontent.com/tributech-solutions/tributech-dsk-docs/master/deployments/dsk-agent/opcua/docker-compose.override.yml"
+                  "value": "https://raw.githubusercontent.com/tributech-solutions/tributech-dsk-docs/master/versioned_docs/version-2.0.X/deployments/dsk-agent/opcua/docker-compose.override.yml"
                 }
               ],
               "required": true
             },
             "visible": true
+          },
+          {
+            "name": "sourceImageTag",
+            "type": "Microsoft.Common.TextBox",
+            "label": "DSK Source Docker Image Tag",
+            "defaultValue": "2.0.5",
+            "toolTip": "The version tag of the additional DSK Source service Docker Image.",
+            "constraints": {
+              "required": true
+            },
+            "visible": "[not(equals(steps('dsk').dockerComposeOverrideFileUrl,''))]"
           }
         ]
       }
@@ -246,12 +241,12 @@
       "allowSsh": "[bool(steps('vm').allowSsh)]",
       "dockerRegistryTokenName": "[steps('dsk').dockerRegistryTokenName]",
       "dockerRegistryToken": "[steps('dsk').dockerRegistryToken]",
-      "imageTag": "[steps('dsk').imageTag]",
+      "agentImageTag": "[steps('dsk').agentImageTag]",
+      "sourceImageTag": "[coalesce(steps('dsk').sourceImageTag, '')]",
       "agentId": "[steps('dsk').agentId]",
       "hubName": "[steps('dsk').hubName]",
       "nodeName": "[steps('dsk').nodeName]",
-      "dataApiSecret": "[steps('dsk').dataApiSecret]",
-      "trustApiSecret": "[steps('dsk').trustApiSecret]",
+      "lokiPromtailPw": "[steps('dsk').lokiPromtailPw]",
       "dockerComposeOverrideFileUrl": "[steps('dsk').dockerComposeOverrideFileUrl]"
     }
   }

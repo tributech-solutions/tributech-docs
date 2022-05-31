@@ -2,8 +2,8 @@ import ApiCredentials from '../../common/\_api-credentials.md';
 
 Use the "Deploy to Azure" button directly below to create a Linux virtual machine on Azure with everything pre-installed/configured and the Tributech DSK Edge services up and running.
 Preview the Azure resources that will be created with the "Visualize" button.  
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Ftributech-solutions%2Ftributech-dsk-docs%2Fmaster%2Fdeployments%2Fdsk-agent%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2Ftributech-solutions%2Ftributech-dsk-docs%2Fmaster%2Fdeployments%2Fdsk-agent%2FcreateUiDefinition.json)
-[![Visualize](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Ftributech-solutions%2Ftributech-dsk-docs%2Fmaster%2Fdeployments%2Fdsk-agent%2Fazuredeploy.json)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Ftributech-solutions%2Ftributech-dsk-docs%2Fmaster%2Fversioned_docs%2Fversion-2.0.X%2Fdeployments%2Fdsk-agent%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2Ftributech-solutions%2Ftributech-dsk-docs%2Fmaster%2Fversioned_docs%2Fversion-2.0.X%2Fdeployments%2Fdsk-agent%2FcreateUiDefinition.json)
+[![Visualize](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Ftributech-solutions%2Ftributech-dsk-docs%2Fmaster%2Fversioned_docs%2Fversion-2.0.X%2Fdeployments%2Fdsk-agent%2Fazuredeploy.json)
 
 - Select desired Azure Subscription/Resource Group/Region and define the name for the Agent related Azure resources (VM, Network security group,...). The Agent name must be unique within your Resource Group.
   ![Agent deployment - Provide basic data](./img/agent-docker-deploy-1.png)
@@ -22,16 +22,16 @@ Preview the Azure resources that will be created with the "Visualize" button.
     :::
   - _DSK Node name_: The name of your DSK Node to which the DSK Agent will be linked.  
     (e.g. `your-node` for `your-node.dataspace-node.com`)
-  - _Data-API client secret_: The client secret for the authentication at the Data-API of the DSK Node.  
-  - _Trust-API client secret_: The client secret for the authentication at the Trust-API of the DSK Node.
-  - _Docker Registry Token (DSK Edge) name_: The name of the token used for authentication at the private Docker Registry hosting the DSK Agent Docker images. Default: `tributech-io-dsk-edge`.
-  - _Docker Registry Token (DSK Edge) secret_: The access token for authentication at the private Docker Registry hosting the DSK Agent Docker images.
-  - _Docker Image Tag_: The Docker Image tag defining the DSK Agent version to be deployed.
-  - _Additional DSK Edge services_:
+  - _Promtail (Loki push API) password_: The client secret for the authentication at Promtail (Loki push API) from "API Keys".
+  - _Docker Registry Token (DSK Edge) name_: The name of the token used for authentication at the private Docker Registry hosting the DSK Agent Docker images from "API Keys". Default: `tributech-io-dsk-edge`.
+  - _Docker Registry Token (DSK Edge) secret_: The access token for authentication at the private Docker Registry hosting the DSK Agent Docker images from "API Keys".
+  - _DSK Agent Docker Image Tag_: The Docker Image tag defining the DSK Agent version to be deployed.
+  - _Additional DSK Edge Source services_:
     - _None_: Only the main DSK Edge services (DSK Agent and mosquitto MQTT broker) will be deployed.
     - _DSK Edge Simulated Sensor_: Additionally deploy the [**DSK Edge Simulated Sensor**](./sources/simulated.mdx) service.
     - _OPC UA Source and Server/Simulator_: Additionally deploy the [**OPC UA Source and Server/Simulator**](./sources/opc-ua.mdx) service.
-
+  - _DSK Source Docker Image Tag_: The Docker Image tag defining the DSK Edge Source version to be deployed.
+  
   ![Agent deployment - Provide DSK data](./img/agent-docker-deploy-3.png)
 
 - Review terms and provided input and create the Azure resources.

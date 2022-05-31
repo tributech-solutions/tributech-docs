@@ -32,7 +32,7 @@ There are three variants of the DSK Agent available:
 
 ### DSK Agent Edge {#dsk-agent-edge}
 
-The DSK Agent Edge is the most common Agent variant and is perfect for all software-based use-cases. Learn how to set it up in our [**specific setup guide**](/docs/setup/agent/overview.md).
+The DSK Agent Edge is the most common Agent variant and is perfect for all software-based use-cases. Learn how to set it up in our [**specific setup guide**](./agent/overview.md).
 
 **When to choose:**<br />
 This option should be preferred if you have access to the controllers of the machines on the shop-floor but not to the sensors directly (e.g. Industrial IoT Gateway).
