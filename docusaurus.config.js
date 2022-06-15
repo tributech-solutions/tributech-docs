@@ -4,7 +4,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'Tributech DataSpace Kit Documentation',
-  tagline: 'Technology for trusted DataSpaces.',
+  tagline: 'Technology for trusted DataSpaces',
   url: 'https://docs.tributech.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -26,11 +26,6 @@ module.exports = {
           label: 'Introduction',
         },
         {
-          href: '/docs/quickstart/overview',
-          position: 'left',
-          label: 'Quickstart',
-        },
-        {
           href: '/docs/setup/overview',
           position: 'left',
           label: 'Setup',
@@ -46,6 +41,16 @@ module.exports = {
           label: 'Consume Data',
         },
         {
+          href: '/docs/verify_data/overview',
+          position: 'left',
+          label: 'Verify Data',
+        },
+        {
+          type: 'docsVersionDropdown',
+          position: 'right',
+          dropdownActiveClassDisabled: true,
+        },
+        {
           href: 'https://github.com/tributech-solutions',
           label: 'GitHub',
           position: 'right',
@@ -55,23 +60,6 @@ module.exports = {
     footer: {
       style: 'dark',
       links: [
-        {
-          title: 'Azure Marketplace',
-          items: [
-            {
-              label: 'DataSpace Agent',
-              href: 'https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tributechsolutionsgmbh1582568815297.57601ccd-62c3-4842-9f73-3dadd3de5b74?tab=Overview',
-            },
-            {
-              label: 'DataSpace Node',
-              href: 'https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tributechsolutionsgmbh1582568815297.8aa9010b-3dd5-43e0-a4b6-53e2ea552e4a?tab=Overview',
-            },
-            {
-              label: 'DataSpace Kit',
-              href: 'https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tributech.tributech_dataspace_kit?tab=Overview',
-            },
-          ],
-        },
         {
           title: 'Community',
           items: [
@@ -108,9 +96,20 @@ module.exports = {
     },
     image: 'img/favicon.png',
     algolia: {
-      apiKey: '038c83f2ea7d91ea50d9e914396ec1b5',
+      apiKey: '1a42b1ebe30454fa429a47c5ed59de94',
+      appId: 'XQE3RIAUIB',
       indexName: 'tributech',
-      contextualSearch: false, // false for now as we dont have versioning yet
+      contextualSearch: true,
+    },
+    zoom: {
+      selector: '.markdown :not(em, a) > img',
+      config: {
+        margin: 56,
+        background: {
+          light: 'rgb(255, 255, 255)',
+          dark: 'rgb(50, 50, 50)',
+        },
+      },
     },
   },
   presets: [
@@ -118,6 +117,8 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
+          includeCurrentVersion: false,
+          lastVersion: '2.0.0',
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
             'https://github.com/tributech-solutions/tributech-dsk-docs/edit/master/',
@@ -128,4 +129,5 @@ module.exports = {
       },
     ],
   ],
+  plugins: [require.resolve('docusaurus-plugin-image-zoom')],
 };

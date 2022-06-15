@@ -12,7 +12,7 @@ Git LFS is not supported with Github Pages: https://github.com/git-lfs/git-lfs/i
 ## Installation
 
 ```console
-yarn install
+yarn
 ```
 
 ## Local Development
