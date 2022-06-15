@@ -46,6 +46,11 @@ module.exports = {
           label: 'Verify Data',
         },
         {
+          type: 'docsVersionDropdown',
+          position: 'right',
+          dropdownActiveClassDisabled: true,
+        },
+        {
           href: 'https://github.com/tributech-solutions',
           label: 'GitHub',
           position: 'right',
@@ -112,8 +117,8 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
-          disableVersioning: false,
-          includeCurrentVersion: true,
+          includeCurrentVersion: false,
+          lastVersion: '2.0.0',
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
             'https://github.com/tributech-solutions/tributech-dsk-docs/edit/master/',
