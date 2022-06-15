@@ -41,6 +41,11 @@ module.exports = {
           label: 'Consume Data',
         },
         {
+          href: '/docs/verify_data/overview',
+          position: 'left',
+          label: 'Verify Data',
+        },
+        {
           href: 'https://github.com/tributech-solutions',
           label: 'GitHub',
           position: 'right',
@@ -50,23 +55,6 @@ module.exports = {
     footer: {
       style: 'dark',
       links: [
-        {
-          title: 'Azure Marketplace',
-          items: [
-            {
-              label: 'DataSpace Agent',
-              href: 'https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tributechsolutionsgmbh1582568815297.57601ccd-62c3-4842-9f73-3dadd3de5b74?tab=Overview',
-            },
-            {
-              label: 'DataSpace Node',
-              href: 'https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tributechsolutionsgmbh1582568815297.8aa9010b-3dd5-43e0-a4b6-53e2ea552e4a?tab=Overview',
-            },
-            {
-              label: 'DataSpace Kit',
-              href: 'https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tributech.tributech_dataspace_kit?tab=Overview',
-            },
-          ],
-        },
         {
           title: 'Community',
           items: [
