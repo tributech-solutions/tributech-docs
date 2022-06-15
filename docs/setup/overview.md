@@ -17,7 +17,7 @@ The ecosystem consists of the DataSpace Hub and is managed & operated by Tribute
 ## DSK Node
 
 The DataSpace Node serves as the central platform and is the part of the system which should be deployed first since it allows you to participate in an ecosystem and connect your [**DSK Agents**](#dsk-agent).
-Please refer to the [**DSK Node setup**](./node.md) to learn more about the available hosting options and their setup.
+Please refer to the [**DSK Node setup**](./node.md) to learn more about the available hosting options.
 
 ## DSK Agent {#dsk-agent}
 
