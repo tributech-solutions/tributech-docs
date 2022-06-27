@@ -1,0 +1,25 @@
+---
+title: MQTT Source
+sidebar_position: 4
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import DskAgentDockerComposeMqtt from '!!raw-loader!../../../deployments/dsk-agent/mqtt/docker-compose.override.yml';
+
+The MQTT Source allows you to publish to a custom MQTT Topic which will be forwarded to a Stream via our Edge Agent. 
+
+## Manual setup
+
+For the manual setup of the DSK MQTT Source (`mqtt-source`) we need the main [**DSK Edge services**](../docker-compose#agent-manual-setup) as a basis.
+
+* Copy the [`docker-compose.override.yml`](../../../deployments/dsk-agent/mqtt/docker-compose.override.yml) file.
+(see also [**Docker doc - Understanding multiple Compose files**](https://docs.docker.com/compose/extends/#understanding-multiple-compose-files))
+<CodeBlock className="language-yml" title="docker-compose.override.yml">{DskAgentDockerComposeMqtt}</CodeBlock>
+
+* Startup all DSK Edge and MQTT service (will automatically retrieve the Docker images).
+    ```bash
+    docker-compose up -d
+    ```
+* Configure the MQTT Source via our DTDL Model and setup your custom Topics
+
+* You can now continue with [**connecting to, linking & configuring**](../../agent_companion.mdx#agent-companion-connect) the DSK Edge Agent and the [**MQTT Source**](../../../provide_data/iot/mqtt.md).
