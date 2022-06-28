@@ -48,7 +48,9 @@ Otherwise you need to ensure that the port `1883` is accessible on the edge devi
 
 ## Custom/Configurable MQTT topics {#mqtt-custom-topics}
 
-You can configure a custom MQTT topic for a stream on which the main DSK Edge Agent service will listen and process all MQTT messages published at the MQTT broker.
+
+You can configure a custom MQTT topic for a stream on which the MQTT Source will listen and forward it to the DSK Edge Agent.  
+[**Setup**](../../setup/agent/sources/mqtt)
 
 The mapping of MQTT message to the value for the stream works like the following:
 
