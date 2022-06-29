@@ -1,7 +1,7 @@
 version: "3.3"
 
 services:
-  ads-source:
+  mqtt-source:
     image: ${DOCKER_REGISTRY-tributech.azurecr.io/}mqtt-source:${SOURCE_TAG:-latest}
     depends_on:
       - mosquitto-server
