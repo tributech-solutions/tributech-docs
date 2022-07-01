@@ -46,6 +46,11 @@ module.exports = {
           label: 'Verify Data',
         },
         {
+          href: '/docs/oem_module/overview',
+          position: 'left',
+          label: 'OEM Module',
+        },
+        {
           type: 'docsVersionDropdown',
           position: 'right',
           dropdownActiveClassDisabled: true,
