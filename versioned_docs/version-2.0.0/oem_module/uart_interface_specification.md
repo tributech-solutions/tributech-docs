@@ -1,6 +1,6 @@
 ---
 title: UART Interface Specification
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 # UART Interface Specification
