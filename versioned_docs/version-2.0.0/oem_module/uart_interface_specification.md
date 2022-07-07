@@ -60,7 +60,7 @@ This error code yields “ONE_OR_MORE_EXTERNAL_UUID_INVALID” which means that 
 - ** “ErrorCode”: 6 **   
 This error code yields “Cycle_TIME_TOO_FAST” which means that The user is sending the “ProvideValue” command to fast. Each stream has a PMIN variable attached to its configuration. This variable is given in seconds. This command depicts the minimum interval in which values are accepted by the OEM. If the value of this variable is set to 10 the OEM will only accept a value for a specific stream every 10 seconds. 
 
-### Get Configuration
+## Get Configuration
 
 This command can be sent to the OEM to get all the available data from the device. The information returned by this command include but is not limited to the device name, the device UUID, the public key, the different sources and streams assigned to the device. 
 
