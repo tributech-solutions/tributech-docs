@@ -25,4 +25,4 @@ IoT devices can provide data with the Tributech Agent Edge. This service offers 
 
 ## Create and publish a Dataset
 
-Datasets are used to selectively share data with other users and connected Tributech Nodes. Click [**here**](dataset/overview.md) to find out how to create and publish a shared Dataset.
+Datasets are used to selectively share data with other users and connected Tributech Nodes. Click [**here**](sharedata/overview.md) to find out how to create and publish a shared Dataset.
