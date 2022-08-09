@@ -5,7 +5,7 @@ sidebar_position: 2
 
 # Stream Explorer
 
-The Stream Explorer can be accessed via our DSA and provides a more detailed view of a selected stream, including an automatically updating visualization of the stored datapoints.
+The Stream Explorer can be accessed via our Node's web portal and provides a more detailed view of a selected stream, including an automatically updating visualization of the stored datapoints.
 
 ## Explore Data
 

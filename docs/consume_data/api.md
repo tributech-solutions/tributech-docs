@@ -1,14 +1,14 @@
 ---
 title: API
-sidebar_position: 4
+sidebar_position: 3
 ---
 
-The Tributech DataSpace Kit provides two REST APIs:
+Tributech provides two REST APIs:
 
 - Data-API (data-api.[node name].dataspace-node.com)
 - Trust-API (trust-api.[node name].dataspace-node.com)
 
-The image below shows you how the APIs are integrated into the DataSpace Kit.
+The image below shows you how the APIs are integrated.
 ![Integration via APIs](assets/integration.png)
 
 In short, the Data-API is used for values whereas the Trust-API is used for proofs. Proofs are required in order to verify the validity and consistency of data. The Trust-API also offers some endpoints which integrate the Data-API.
@@ -52,7 +52,7 @@ _The following use cases should help to understand when to use which API._
 
 #### Store values
 
-**Unless the proofs are created directly on an external device** (e.g. DataSpace Agent Edge), the **Trust-API** should be used to store values and automatically create and persist the respective proofs. The `/value` and `/values` HTTP POST endpoints of the Trust API can be used to do so.
+**Unless the proofs are created directly on an external device** (e.g. Tributech Agent Edge), the **Trust-API** should be used to store values and automatically create and persist the respective proofs. The `/value` and `/values` HTTP POST endpoints of the Trust API can be used to do so.
 
 **If however the proofs are created separately**, then the `/value` and `/values` HTTP POST endpoints of the **Data-API** can be used to only store values - the proofs are then stored manually through the `/proof` and `/proofs` HTTP POST endpoints of the Trust-API.
 
@@ -61,13 +61,13 @@ _The following use cases should help to understand when to use which API._
 The **Data-API** provides various `/values` HTTP GET endpoints to fetch values.
 Values can also be retrieved together with the respective proof through the `/proofvalues` HTTP GET endpoint of the Trust-API.
 
-_Note: The Data-API also handles the syncing of values between DataSpace Nodes (as far as approved through the parties). The status for this syncing process is available through the Status endpoints of the Data-API._
+_Note: The Data-API also handles the syncing of values between Tributech Nodes (as far as approved through the parties). The status for this syncing process is available through the Status endpoints of the Data-API._
 
 #### Store proofs
 
 The **Trust-API** `/proof` and `/proofs` HTTP POST endpoints can be used to store proofs.
 
-_Note: Each proof is stored tamperproof within the Distributed Ledger (Blockchain) across the Tributech DataSpace network. Consequently, each proof is assigned a unique TransactionId - which can be used to fetch the proof from the Ledger. This endpoint to retrieve the proof from the Blockchain is called ProofLocation and can be accessed through the available endpoints in the Data-API._
+_Note: Each proof is stored tamperproof within the Distributed Ledger (Blockchain) across the Tributech network. Consequently, each proof is assigned a unique TransactionId - which can be used to fetch the proof from the Ledger. This endpoint to retrieve the proof from the Blockchain is called ProofLocation and can be accessed through the available endpoints in the Data-API._
 
 #### Get proofs
 
@@ -85,7 +85,7 @@ Please note that all timestamps need to be provided in microseconds!
 
 ### Step-by-Step Example: **Get a Double Value with its ValueMetadataId**
 
-**Note** that this requires double values to be provided on the Data-API. If the values originate from an external data provider in the Dataspace, they are available in the [**Dataset subscriptions**](./shared_data.md). Otherwise check out the [**Provide Data**](../provide_data/overview.md) documentation, to provide the values yourself.
+**Note** that this requires double values to be provided on the Data-API. If the values originate from an external data provider, they are available in the [**Dataset subscriptions**](./shared_data.md). Otherwise check out the [**Provide Data**](../provide_data/overview.md) documentation, to provide the values yourself.
 
 1. On your node dashboard: Access your profile on the top right and head to "Administration->API Keys" to find your Data-API client secret. Copy it.  
    ![image](assets/administration.png)

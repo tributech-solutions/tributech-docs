@@ -3,8 +3,8 @@ title: MQTT Source
 sidebar_position: 2
 ---
 
-The DSK Edge Agent service supports integration of external data sources using the [**MQTT messaging protocol**](https://mqtt.org/).
-Your MQTT client needs to connect to our MQTT message broker (`eclipse-mosquitto`) and publish MQTT messages with a specific payload format on one of our [**pre-defined MQTT topics**](#mqtt-predefined-topics) or using the [**custom/configurable MQTT topics**](#mqtt-custom-topics). The published message will be processed from our main DSK Edge Agent service (`dsk-agent`) and enriched to achieve data authenticity and integrity support.
+The Tributech Edge Agent service supports integration of external data sources using the [**MQTT messaging protocol**](https://mqtt.org/).
+Your MQTT client needs to connect to our MQTT message broker (`eclipse-mosquitto`) and publish MQTT messages with a specific payload format on one of our [**pre-defined MQTT topics**](#mqtt-predefined-topics) or using the [**custom/configurable MQTT topics**](#mqtt-custom-topics). The published message will be processed from our main Edge Agent service and enriched to achieve data authenticity and integrity support.
 
 Such an MQTT client could be any of your existing edge services or implemented specifically for the use case in your desired programming language and run as additional Docker sidecar container.
 
@@ -48,18 +48,19 @@ Otherwise you need to ensure that the port `1883` is accessible on the edge devi
 
 ## Custom/Configurable MQTT topics {#mqtt-custom-topics}
 
-You can configure a custom MQTT topic for a stream on which the MQTT Source will listen and forward it to the DSK Edge Agent.  
+
+You can configure a custom MQTT topic for a stream on which the MQTT Source will listen and forward it to the Tributech Edge Agent.  
 [**Setup**](../../setup/agent/sources/mqtt)
 
 The mapping of MQTT message to the value for the stream works like the following:
 
 - `ValueMetadataId`: All MQTT messages matching the _MQTT custom topic_ will be created as value with _ValueMetadataID_ of the stream.
-- `Timestamp`: Current time of the edge-device when the topic gets read by the DSK Edge Agent.
+- `Timestamp`: Current time of the edge-device when the topic gets read by the Tributech Edge Agent.
 - `Values`: The payload in raw-bytes representing the value (see [**Data encoding**](#data-encoding)).
 
 Configure:
 
-- Open the [**Agent Companion**](../../setup/agent_companion), [**login**](../../setup/agent_companion#agent-companion-login) to the DSK Node and [**connect**](../../setup/agent_companion#agent-companion-connect) with the DKS Edge Agent
+- Open the [**Agent Companion**](../../setup/agent_companion), [**login**](../../setup/agent_companion#agent-companion-login) to the Tributech Node and [**connect**](../../setup/agent_companion#agent-companion-connect) with the DKS Edge Agent
 - Add MQTT Source
   ![MQTT Source](./img/mqtt-source.png)
 - Add MQTT Stream(s)  
@@ -74,13 +75,13 @@ Test and verify:
 - Publish MQTT message for configured topic
   ![MQTT Source - Custom Topic 1 - 2](./img/mqtt-custom-topic-1-2.png)
   ![MQTT Source - Custom Topic 2 - 2](./img/mqtt-custom-topic-2-2.png)
-- Verify value for published message in DataSpace-Admin at Streams of Agent
+- Verify value for published message at Streams of Agent
   ![MQTT Source - Custom Topic 1 - 3](./img/mqtt-custom-topic-1-3.png)
   ![MQTT Source - Custom Topic 2 - 3](./img/mqtt-custom-topic-2-3.png)
 
 ## Predefined MQTT topics {#mqtt-predefined-topics}
 
-The DSK Edge Agent has certain predefined MQTT topics he is listening on. If we publish MQTT messages in the required format on such topics they are automatically processed and converted into values for streams.  
+The Tributech Edge Agent has certain predefined MQTT topics he is listening on. If we publish MQTT messages in the required format on such topics they are automatically processed and converted into values for streams.  
 For representation as twins in the configuration we use _Generic Source_ and _Generic Stream_.
 
 ### Double topic
@@ -92,12 +93,12 @@ For publishing of floating point number values represented as [**double**](https
 The mapping of MQTT message to the value for the stream works like the following:
 
 - `ValueMetadataId`: Taken from `ValueMetadataId` placeholder inside the topic.
-- `Timestamp`: Current time of the edge-device when the topic gets read by the DSK Edge Agent.
+- `Timestamp`: Current time of the edge-device when the topic gets read by the Tributech Edge Agent.
 - `Values`: The payload in raw-bytes of an little-endian-encoded 64-bit [**IEEE 754**](https://en.wikipedia.org/wiki/Double-precision_floating-point_format) floating point number (see [**Data encoding**](#data-encoding)).
 
 Configure:
 
-- Open the [**Agent Companion**](../../setup/agent_companion), [**login**](../../setup/agent_companion#agent-companion-login) to the DSK Node and [**connect**](../../setup/agent_companion#agent-companion-connect) with the DKS Edge Agent
+- Open the [**Agent Companion**](../../setup/agent_companion), [**login**](../../setup/agent_companion#agent-companion-login) to the Tributech Node and [**connect**](../../setup/agent_companion#agent-companion-connect) with the DKS Edge Agent
 - Add Generic Source
   ![MQTT GenericSource](./img/mqtt-generic-source.png)
 - Add Generic Stream(s) and use `ValueMetadataId` that will be used in the topic  
@@ -108,7 +109,7 @@ Test and verify (sample uses different id's):
 
 - Publish MQTT message for double topic with `ValueMetadataId`
   ![MQTT Source - Double Topic 2](./img/mqtt-double-topic-2.png)
-- Verify value for published message in DataSpace-Admin at Streams of Agent
+- Verify value for published message at Streams of Agent
   ![MQTT Source - Double Topic 3](./img/mqtt-double-topic-3.png)
 
 
@@ -121,12 +122,12 @@ For publishing of UTF-8 encoded strings.
 The mapping of MQTT message to the value for the stream works like the following:
 
 - `ValueMetadataId`: Taken from `ValueMetadataId` placeholder inside the topic.
-- `Timestamp`: Current time of the edge-device when the topic gets read by the DSK Edge Agent.
+- `Timestamp`: Current time of the edge-device when the topic gets read by the Tributech Edge Agent.
 - `Values`: The payload in raw-bytes of an UTF8-encoded string (see [**Data encoding**](#data-encoding)).
 
 Configure:
 
-- Open the [**Agent Companion**](../../setup/agent_companion), [**login**](../../setup/agent_companion#agent-companion-login) to the DSK Node and [**connect**](../../setup/agent_companion#agent-companion-connect) with the DKS Edge Agent
+- Open the [**Agent Companion**](../../setup/agent_companion), [**login**](../../setup/agent_companion#agent-companion-login) to the Tributech Node and [**connect**](../../setup/agent_companion#agent-companion-connect) with the DKS Edge Agent
 - Add Generic Source
   ![MQTT GenericSource](./img/mqtt-generic-source.png)
 - Add Generic Stream(s) and use `ValueMetadataId` that will be used in the topic  
@@ -137,7 +138,7 @@ Test and verify (sample uses different id's):
 
 - Publish MQTT message for string topic with `ValueMetadataId`
   ![MQTT Source - String Topic 2](./img/mqtt-string-topic-2.png)
-- Verify value for published message in DataSpace-Admin at Streams of Agent
+- Verify value for published message at Streams of Agent
   ![MQTT Source - String Topic 3](./img/mqtt-string-topic-3.png)
 
 ### ValueSource topic
@@ -164,7 +165,7 @@ The mapping of MQTT message to the value for the stream works like the following
 
 Configure:
 
-- Open the [**Agent Companion**](../../setup/agent_companion), [**login**](../../setup/agent_companion#agent-companion-login) to the DSK Node and [**connect**](../../setup/agent_companion#agent-companion-connect) with the DKS Edge Agent
+- Open the [**Agent Companion**](../../setup/agent_companion), [**login**](../../setup/agent_companion#agent-companion-login) to the Tributech Node and [**connect**](../../setup/agent_companion#agent-companion-connect) with the DKS Edge Agent
 - Add Generic Source
   ![MQTT GenericSource](./img/mqtt-generic-source.png)
 - Add Generic Stream(s) with `ValueMetadataId` matching the `DataStreamID` in the message
@@ -175,7 +176,7 @@ Test and verify:
 
 - Publish MQTT message on topic
   ![MQTT Source - Value Source Topic - 2](./img/mqtt-value-source-topic-2.png)
-- Verify value for published message in DataSpace-Admin at Streams of Agent
+- Verify value for published message at Streams of Agent
   ![MQTT Source - Value Source Topic - 3](./img/mqtt-value-source-topic-3.png)
 
 ### GenericValueSource topic
@@ -203,7 +204,7 @@ The mapping of MQTT message to the value for the stream works like the following
 
 Configure:
 
-- Open the [**Agent Companion**](../../setup/agent_companion), [**login**](../../setup/agent_companion#agent-companion-login) to the DSK Node and [**connect**](../../setup/agent_companion#agent-companion-connect) with the DKS Edge Agent
+- Open the [**Agent Companion**](../../setup/agent_companion), [**login**](../../setup/agent_companion#agent-companion-login) to the Tributech Node and [**connect**](../../setup/agent_companion#agent-companion-connect) with the DKS Edge Agent
 - Add Generic Source
   ![MQTT GenericSource](./img/mqtt-generic-source.png)
 - Add Generic Stream(s) and use `ValueMetadataId` derived from `AgentID`, `ValueSourceID` and `SensorID`  

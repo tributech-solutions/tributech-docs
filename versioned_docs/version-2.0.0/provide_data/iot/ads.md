@@ -6,8 +6,8 @@ sidebar_position: 4
 
 ## Intro
 
-The DSK ADS Source allows to connect to an Beckhoff ADS Server which can be used to receive or write values to it.  
-It acts like an ADS Client in a Docker Setup and enables the forwarding of the Data to an DSK Stream via our DSK Edge Agent Service (`dsk-agent`).  
+The Tributech ADS Source allows to connect to an Beckhoff ADS Server which can be used to receive or write values to it.  
+It acts like an ADS Client in a Docker Setup and enables the forwarding of the Data to a Stream via our Tributech Edge Agent Service.  
 
 All values will be forwarded to an MQTT Broker which is connected to our ADS Source and our Edge Agent. Furthermore the client can give control over the single symbol paths:
 - Which kind of datatype will be received from the symbol
@@ -24,7 +24,7 @@ Read Function has two main functions :
   - ADS Server will notify the client when a value has changed (needs to be configured at server side too)
 
 ## ADS Setup 
-- Open the [**Agent Companion**](../../setup/agent_companion), [**login**](../../setup/agent_companion#agent-companion-login) to the DSK Node and [**connect**](../../setup/agent_companion#agent-companion-connect) with the DSK Edge Agent
+- Open the [**Agent Companion**](../../setup/agent_companion), [**login**](../../setup/agent_companion#agent-companion-login) to the Tributech Node and [**connect**](../../setup/agent_companion#agent-companion-connect) with the Tributech Edge Agent
 - Add Beckhoff ADS Source to your Agent
   ![ADS Source - Data Space Admin - Initial Setup](./img/ads-source-firstsetup.png)
 - **Configure following values**: 
