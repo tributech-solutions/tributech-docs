@@ -10,13 +10,13 @@ The MQTT Source allows you to publish to a custom MQTT Topic which will be forwa
 
 ## Manual setup
 
-For the manual setup of the DSK MQTT Source (`mqtt-source`) we need the main [**DSK Edge services**](../docker-compose#agent-manual-setup) as a basis.
+For the manual setup of the Tributech MQTT Source (`mqtt-source`) we need the main [**DSK Edge services**](../docker-compose#agent-manual-setup) as a basis.
 
 * Copy the [`docker-compose.override.yml`](../../../deployments/dsk-agent/mqtt/docker-compose.override.yml) file.
 (see also [**Docker doc - Understanding multiple Compose files**](https://docs.docker.com/compose/extends/#understanding-multiple-compose-files))
 <CodeBlock className="language-yml" title="docker-compose.override.yml">{DskAgentDockerComposeMqtt}</CodeBlock>
 
-* Startup all DSK Edge and MQTT service (will automatically retrieve the Docker images).
+* Startup all Tributech Edge and MQTT service (will automatically retrieve the Docker images).
     ```bash
     docker-compose up -d
     ```

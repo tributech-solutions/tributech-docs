@@ -1,11 +1,11 @@
 ---
 title: Grafana
-sidebar_position: 6
+sidebar_position: 4
 ---
 
 # Consume Data via Grafana Dashboards
 
-In this guide you will learn how you can consume Datasets via the built in Grafana dashboards of your DataSpace Node.
+In this guide you will learn how you can consume Datasets via the built in Grafana dashboards of your Tributech Node.
 
 ### Prerequisites
 
@@ -18,16 +18,16 @@ This could be in one of two ways:
 
 ### Node Dashboard Basics
 
-You can easily navigate to your node dashboard by clicking the "Grafana" menu entry in the side menu of your DataSpace Admin App.
-For authentication, use the same username and password that you use for authentication when accessing the DataSpace Admin App.
+You can easily navigate to your node dashboard by clicking the "Grafana" menu entry in the side menu of your Tributech Node interface.
+For authentication, use the same username and password that you use for authentication when accessing your Node.
 
 ![Navigate to Grafana](assets/grafana_sidebar.png)
 
-The dashboarding system is built on the open source technology [**Grafana**](https://grafana.com/). It comes with pre-configured data sources for the in your DataSpace Node integrated Postgre SQL databases.
+The dashboarding system is built on the open source technology [**Grafana**](https://grafana.com/). It comes with pre-configured data sources for the in your Tributech Node integrated Postgre SQL databases.
 
-The structure of dashboards is based on the same logic as in the interface of your DataSpace Node:
+The structure of dashboards is based on the same logic as in the interface of your Tributech Node:
 
-- **Dashboards: My Datasets** / Provider DB - contains owned Datasets that are connected to your DataSpace Node.
+- **Dashboards: My Datasets** / Provider DB - contains owned Datasets that are connected to your Tributech Node.
 - **Dashboards: Subscriptions** / Consumer DB - contains subscriptions to Datasets from other members of your Ecosystem.
 
 ## Visualize your data

@@ -6,8 +6,8 @@ sidebar_position: 2
 import CodeBlock from '@theme/CodeBlock';
 import DskAgentDockerComposeAds from '!!raw-loader!../../../deployments/dsk-agent/ads/docker-compose.override.yml';
 
-The DSK ADS Source allows to connect to an Beckhoff ADS Server which can be used to ingest or write data. 
-The ADS Source allows to build a connection as a ADS client and forwards the polled or on change data notifications to our DSK Agent and to the corresponding stream via our MQTT Broker. 
+The Tributech ADS Source allows to connect to an Beckhoff ADS Server which can be used to ingest or write data. 
+The ADS Source allows to build a connection as a ADS client and forwards the polled or on change data notifications to our Tributech Agent and to the corresponding stream via our MQTT Broker. 
 It is also possible to write values to specific symbol in a cyclic manner (see ADS Parameter Twin)
 
 Following Features are supported : 
@@ -18,17 +18,17 @@ Following Features are supported :
 
 ## Manual setup
 
-For the manual setup of the DSK ADS Source (`ads-source`) we need the main [**DSK Edge services**](../docker-compose#agent-manual-setup) as a basis.
+For the manual setup of the Tributech ADS Source (`ads-source`) we need the main [**DSK Edge services**](../docker-compose#agent-manual-setup) as a basis.
 
 * Copy the [`docker-compose.override.yml`](../../../deployments/dsk-agent/opcua/docker-compose.override.yml) file.
 (see also [**Docker doc - Understanding multiple Compose files**](https://docs.docker.com/compose/extends/#understanding-multiple-compose-files))
 <CodeBlock className="language-yml" title="docker-compose.override.yml">{DskAgentDockerComposeAds}</CodeBlock>
 
-* Startup all DSK Edge and ADS service (will automatically retrieve the Docker images).
+* Startup all Tributech Edge and ADS service (will automatically retrieve the Docker images).
     ```bash
     docker-compose up -d
     ```
 * Configure the ADS Source via our DTDL Model and add an entry to the server ADS AMS Router 
 ![ADS Network Diagram](./img/ADS-Network-Diagram.png)
 
-* You can now continue with [**connecting to, linking & configuring**](../../agent_companion.mdx#agent-companion-connect) the DSK Edge Agent and the [**ADS Source**](../../../provide_data/iot/ads.md).
+* You can now continue with [**connecting to, linking & configuring**](../../agent_companion.mdx#agent-companion-connect) the Tributech Edge Agent and the [**ADS Source**](../../../provide_data/iot/ads.md).

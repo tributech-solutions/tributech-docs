@@ -23,7 +23,7 @@ To learn how you can verify a bigger timeframe of a stream please follow the [**
 
 ## Automatically Verify Streams
 
-The DSK also offers an experimental opt-in method that allows to continually verify incoming proofs. Please contact us, if you want this feature to be enabled on your DSK node.
+We also offer an experimental opt-in method that allows to continually verify incoming proofs. Please contact us, if you want this feature to be enabled on your Tributech Node.
 
 ## Verify via API
 

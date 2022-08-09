@@ -3,14 +3,14 @@ title: Publish Dataset
 sidebar_position: 2
 ---
 
-Publishing a Dataset makes a certain timeframe of the data available for selected data consumers in the Dataspace.
+Publishing a Dataset makes a certain timeframe of the data available for selected data consumers.
 In order to publish the Dataset, head once again to the detail section of the dataset that you want to share and hit the "Add Publication" button.
 
 ![Publish 1](./img/dataset_publish_1.png)
-
+ 
 ### Audience
 
-The DSK allows you to choose the target audience with whom you want to share your data.
+You can choose the target audience with whom you want to share your data.
 
 - Public allows everybody in your ecosystem to see the dataset
   ![Publish 2](./img/dataset_publish_2.png)

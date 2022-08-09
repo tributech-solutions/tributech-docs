@@ -34,6 +34,6 @@ If you have any questions regarding infrastructure requirements, please talk to 
 
 #### Docker / Docker Compose {#docker-runtime}
 
-The DSK Agent Edge services can be run using [**Docker Engine**](https://docs.docker.com/engine/) as a container runtime. We use [**Docker Compose**](https://docs.docker.com/compose/) for management/orchestration of the Docker services and provide according [**samples**](./docker-compose#agent-manual-setup) and [**automated deployments**](./docker-compose#agent-automated-setup).
+The Tributech Agent Edge services can be run using [**Docker Engine**](https://docs.docker.com/engine/) as a container runtime. We use [**Docker Compose**](https://docs.docker.com/compose/) for management/orchestration of the Docker services and provide according [**samples**](./docker-compose#agent-manual-setup) and [**automated deployments**](./docker-compose#agent-automated-setup).
 
 If you want to use any other container runtime (e.g. containerd) please talk to your contact person at Tributech or send an email to our [**Customer Advisory Team**](https://www.tributech.io/about-us/).

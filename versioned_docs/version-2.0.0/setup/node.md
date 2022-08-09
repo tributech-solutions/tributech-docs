@@ -1,5 +1,5 @@
 ---
-title: DSK Node
+title: Tributech Node
 sidebar_position: 2
 ---
 

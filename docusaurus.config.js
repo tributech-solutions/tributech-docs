@@ -14,7 +14,7 @@ module.exports = {
   projectName: 'tributech-dsk-docs',
   themeConfig: {
     navbar: {
-      title: 'Tributech DSK Documentation',
+      title: 'Tributech Documentation',
       logo: {
         alt: 'Tributech Logo',
         src: 'img/favicon.png',
@@ -122,8 +122,8 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
-          includeCurrentVersion: false,
-          lastVersion: '2.0.0',
+          disableVersioning: false,
+          includeCurrentVersion: true,
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
             'https://github.com/tributech-solutions/tributech-dsk-docs/edit/master/',

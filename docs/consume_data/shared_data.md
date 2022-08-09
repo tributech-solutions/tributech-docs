@@ -1,13 +1,13 @@
 ---
 title: Shared Data
-sidebar_position: 3
+sidebar_position: 5
 ---
 
-After a Dataset has been [**published**](../provide_data/dataset/publish.md) in a Dataspace, it can be subscribed to by others in order to synchronize and access the available datapoints.
+After a Dataset has been [**published**](../provide_data/sharedata/publish.md), it can be subscribed to by others in order to synchronize and access the available datapoints.
 
 ## Send subscription request
 
-If you want to subscribed to a published dataset, head over to the node dashboard and select "Dataspace Hub" on the sidebar. Select the desired publication and click on "Subscribe".
+If you want to subscribed to a published dataset, head over to the node dashboard and select "Broker" on the sidebar. Select the desired publication and click on "Subscribe".
 ![Subscribe to Dataset](assets/dataset_subscribe.png)
 
 In the next steps, you'll have to select the data streams and the timeframe of interest before confirming the subscription request.

@@ -3,7 +3,7 @@ title: Manual Dataset
 sidebar_position: 2
 ---
 
-Manual Datasets are used to create an unsynced Dataset to manually insert data into e.g. via our [**API integration**](../rest.md).
+Manual Datasets are used to create an unsynced Dataset to manually insert data into, e.g. via our [**API integration**](../rest.md).
 
 ## Create a Dataset
 
