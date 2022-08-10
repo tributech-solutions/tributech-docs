@@ -7,13 +7,6 @@ sidebar_position: 5
 
 This document should help users and manufacturers to implement the system on a chip (SOC) “Tributech OEM module”. The given information is tailored to allow an easy incorporation of the module on manufacturer printed circuit boards. The document includes a recommended footprint, mechanical dimensions, placement and soldering guidelines. For further information or ambiguities please contact us at Tributech.
 
-## Revision history
-
-| Date | Version | Description |
-|---|---|---|
-| August 2022 | 1.0 | First release |
-
-
 ## Safety Information
 
 To be able to work with the Tributech OEM module certain safety precautions must be adhered to throughout all phases of operation. 
