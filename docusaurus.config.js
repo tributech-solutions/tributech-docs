@@ -21,32 +21,27 @@ module.exports = {
       },
       items: [
         {
-          href: '/docs/introduction/overview',
-          position: 'left',
-          label: 'Introduction',
-        },
-        {
-          href: '/docs/setup/overview',
+          href: '/setup/overview',
           position: 'left',
           label: 'Setup',
         },
         {
-          href: '/docs/provide_data/overview',
+          href: '/provide_data/overview',
           position: 'left',
           label: 'Provide Data',
         },
         {
-          href: '/docs/consume_data/overview',
+          href: '/consume_data/overview',
           position: 'left',
           label: 'Consume Data',
         },
         {
-          href: '/docs/verify_data/overview',
+          href: '/verify_data/overview',
           position: 'left',
           label: 'Verify Data',
         },
         {
-          href: '/docs/oem_module/overview',
+          href: '/oem_module/overview',
           position: 'left',
           label: 'OEM Module',
         },
@@ -122,12 +117,14 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
+          routeBasePath: '/',
           disableVersioning: false,
           includeCurrentVersion: true,
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
             'https://github.com/tributech-solutions/tributech-dsk-docs/edit/master/',
         },
+        blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },

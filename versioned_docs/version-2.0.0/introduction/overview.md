@@ -1,4 +1,5 @@
 ---
+slug: /
 title: Overview
 sidebar_position: 1
 ---
@@ -26,7 +27,8 @@ The core features of the Tributech Agent are the standardized contextualization 
 Data providers can use the Tributech Agent to easily connect different green- or brownfield IoT solutions to their Tributech Nodes and extend IoT data sources with required contextualization via digital twins and auditability via data quality seals.
 
 ## Tributech OEM Module
-The Tributech OEM Module for smart and connected products, providing a competitive foundation for your IoT application. It includes connectivity for NB-IoT and LTE-M standard and unique features such as digital-twin-based configuration & data management, high-end hardware security, blockchain-based data verification & audits and built-in data sharing. 
+
+The Tributech OEM Module for smart and connected products, providing a competitive foundation for your IoT application. It includes connectivity for NB-IoT and LTE-M standard and unique features such as digital-twin-based configuration & data management, high-end hardware security, blockchain-based data verification & audits and built-in data sharing.
 
 The Tributech OEM module is packaged as a system-on-module (SoM) to allow an easy integration into the hardware design of embedded devices. Furthermore we offe it in form of an Arduino Shield for easy prototyping.
 
@@ -54,17 +56,17 @@ To enable the verification of data integrity and authenticity between a data sou
 
 Data consumers can use the Trust API or Audit Tool (included in the Node's web portal) to perform a data audit and verify the integrity and authenticity of consumed data points.
 
-
 ## Quick Links
-* Head over to our [**Setup Section**](../setup/overview.md) to get a better understanding of our core components and available deployment options.
 
-* See [**Provide Data**](../provide_data/overview.md) if you want to learn more about the different integration and data management options.
+- Head over to our [**Setup Section**](../setup/overview.md) to get a better understanding of our core components and available deployment options.
 
-* [**Consume Data**](../consume_data/overview.md) provides insights about different options to consume, visualize and audit data.
+- See [**Provide Data**](../provide_data/overview.md) if you want to learn more about the different integration and data management options.
 
-* Check out [**Verify Data**](../verify_data/overview.md) if you want to find out more about our built-in data verification and the available data audit options.
+- [**Consume Data**](../consume_data/overview.md) provides insights about different options to consume, visualize and audit data.
 
-* [**Tributech OEM Module**](../oem_module/overview.md) for embedded IoT devices.
+- Check out [**Verify Data**](../verify_data/overview.md) if you want to find out more about our built-in data verification and the available data audit options.
+
+- [**Tributech OEM Module**](../oem_module/overview.md) for embedded IoT devices.
 
 <!---
 ## Open-Source Projects
@@ -76,4 +78,3 @@ At Tributech, we are contributing to the open-source community and projects in t
 
 If you like what we’re working on, we’d appreciate your support in form of a star on [**GitHub**](https://github.com/tributech-solutions).
 -->
-
