@@ -27,7 +27,7 @@ There are three variants of the Agent available:
 
 ### Tributech Agent Edge {#dsk-agent-edge}
 
-The Agent Edge is our containerized, software-based solution perfect for all devices/environments offering a [**container runtime**](./agent/overview.md#software-requirements-software-requirements). Learn more in our [**setup guide**](./agent/overview.md).
+The Agent Edge is our containerized, software-based solution perfect for all devices/environments offering a [**container runtime**](./agent/requirements.md#software-requirements). Learn more in our [**setup guide**](./agent/overview.md).
 
 **When to choose:**<br />
 This option should be preferred if you have access to the controllers of the machines on the shop-floor but not to the sensors directly (e.g. Industrial IoT Gateway).
