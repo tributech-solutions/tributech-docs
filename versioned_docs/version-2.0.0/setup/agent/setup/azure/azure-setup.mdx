@@ -1,20 +1,38 @@
-import ApiCredentials from '../../common/\_api-credentials.md';
+---
+title: Agent Setup
+sidebar_position: 2
+---
+import CodeBlock from '@theme/CodeBlock';
+import DskAgentDockerCompose from '!!raw-loader!../../../../deployments/dsk-agent/docker-compose.yml';
+import DskAgentEnv from '!!raw-loader!../../../../deployments/dsk-agent/sample.env';
+import ApiCredentials from '../../../../common/\_api-credentials.md';
+
+To simply get started with the Tributech Edge Agent services running on [**Docker / Docker Compose**](./overview.md#docker-runtime) runtime we provide a [**fully automated**](#agent-automated-setup) option which deploys a Linux virtual machine on Azure with everything pre-installed/configured and the Tributech DSK Edge services up and running.
+For the [**manual setup**](#agent-manual-setup) on your device with the Docker runtime we provide according instructions and sample files.
+
+To manage and handle Docker services of the Tributech Edge Agent (e.g. start/stop services, check logs of service) we provide some [**sample Docker Compose commands**](#docker-compose-commands).
+
+## Create Virtual Machine {#agent-automated-setup}
 
 Use the "Deploy to Azure" button directly below to create a Linux virtual machine on Azure with everything pre-installed/configured and the Tributech DSK Edge services up and running.
 Preview the Azure resources that will be created with the "Visualize" button.  
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Ftributech-solutions%2Ftributech-dsk-docs%2Fmaster%2Fversioned_docs%2Fversion-2.0.0%2Fdeployments%2Fdsk-agent%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2Ftributech-solutions%2Ftributech-dsk-docs%2Fmaster%2Fversioned_docs%2Fversion-2.0.0%2Fdeployments%2Fdsk-agent%2FcreateUiDefinition.json)
 [![Visualize](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Ftributech-solutions%2Ftributech-dsk-docs%2Fmaster%2Fversioned_docs%2Fversion-2.0.0%2Fdeployments%2Fdsk-agent%2Fazuredeploy.json)
 
-- Select desired Azure Subscription/Resource Group/Region and define the name for the Agent related Azure resources (VM, Network security group,...). The Agent name must be unique within your Resource Group.
-  ![Agent deployment - Provide basic data](./img/agent-docker-deploy-1.png)
-- Define virtual machine Size and authentication related properties.  
-  The Size needs to meet our [**Hardware Requirements**](./overview.md#hardware-requirements). We recommend e.g. `Standard_B1ms` or `Standard_DS1_v2`.  
-  SSH access allows to connect to the VM for [**management purposes**](./docker-compose.mdx#docker-compose-commands) and to support SSH tunneling/port forwarding used for connections to the DSK Agent from the Agent Companion (see [**Connect to Edge Agent**](../agent_companion.mdx#connect-to-edge-agent)).  
-  ![Agent deployment - Provide VM data](./img/agent-docker-deploy-2.png)
-- Provide DSK related configuration:
 
-  - To access the client secrets and some other information required in the next steps:  
-    <ApiCredentials />
+### Basics Configuration
+Select desired Azure Subscription/Resource Group/Region and define the name for the Agent related Azure resources (VM, Network security group,...). The Agent name must be unique within your Resource Group.
+  ![Agent deployment - Provide basic data](./img/agent-docker-deploy-1.png)
+
+### VM Configuration
+Define virtual machine Size and authentication related properties.  
+  The Size needs to meet our [**Hardware Requirements**](../../overview.md#hardware-requirements). We recommend e.g. `Standard_B1ms` or `Standard_DS1_v2`.  
+  SSH access allows to connect to the VM for [**management purposes**](./docker-compose.mdx#docker-compose-commands) and to support SSH tunneling/port forwarding used for connections to the DSK Agent from the Agent Companion (see [**Connect to Edge Agent**](../agent_companion.mdx#connect-to-edge-agent)).  
+
+  ![Agent deployment - Provide VM data](./img/agent-docker-deploy-2.png)
+
+### DSK Configuration
+  To access the client secrets and some other information required in the next steps we require [Api credentials](../../requirements.mdx#api-keys).
   - _DSK Agent id_: globally unique identifier (UUID) for the Agent
   - _DSK Hub name_: The name of the DSK Hub to which your DSK Node is connected.  
     (e.g. `your-hub` for `your-hub.dataspace-hub.com`)
@@ -35,6 +53,7 @@ Preview the Azure resources that will be created with the "Visualize" button.
 
   ![Agent deployment - Provide DSK data](./img/agent-docker-deploy-3.png)
 
+### Create VM
 - Review terms and provided input and create the Azure resources.
   ![Agent deployment - Review + Create](./img/agent-docker-deploy-4.png)
 - Successful deployment🎉.
@@ -42,3 +61,5 @@ Preview the Azure resources that will be created with the "Visualize" button.
 - Output of the deployment showing sample command to connect to the VM using SSH incl. port forwarding for access to the DSK Agent (e.g. for the Agent Companion).
   ![Agent deployment - Deployment output](./img/agent-docker-deploy-6.png)
 - You can now continue with [**connecting to, linking & configuring**](../agent_companion.mdx#agent-companion-connect) the DSK Edge Agent.
+
+
