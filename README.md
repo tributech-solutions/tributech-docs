@@ -9,6 +9,26 @@ This documentation is written in markdown syntax using [docusaurus](https://docu
 
 Git LFS is not supported with Github Pages: https://github.com/git-lfs/git-lfs/issues/3498
 
+## Requirements 
+Install NodeJS on [Windows](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows) or [WSL](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl), e.g. WSL:
+```
+## Install NodeJS on WSL
+
+# install curl
+$ sudo apt-get install curl
+
+# install nvm
+$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash	
+
+# restart console
+
+# check if nvm is installed
+$ nvm --version
+
+# install Node.js max LTS version < v17 (because of the Webpack crypto.createHash() function)
+$ nvm install 16.19.0
+```
+
 ## Installation
 
 ```console
