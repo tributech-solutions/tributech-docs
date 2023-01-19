@@ -33,7 +33,7 @@ Read Function has two main functions :
   - ADS Port
     - Port of the PLC ADS Server
   - ADS Server IP Address
-    - IP Address of the PLC ADS Server (needed for [**White List**](../../setup/agent/sources/ads#ManualSetup))
+    - IP Address of the PLC ADS Server (needed for [**whitelist**](../../setup/agent/setup/docker-compose/source-setup.mdx#docker-compose-ads-source))
   - Client AMS Net Id
     - AMS Net Id of the ADS Source
   - InProcess Port
