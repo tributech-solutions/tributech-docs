@@ -11,8 +11,8 @@ The edge device must meet the following hardware and software requirements.
 
 | Type | Minimum Requirement      | Recommend Requirement |
 | :--- | :----------------------- | :-------------------- |
-| CPU  | 0 Core (x86-64 / ARM32 ) | 2 Cores               |
-| RAM  | 0 GB Ram                 | 2 GB Ram              |
+| CPU  | 1 Core (x86-64 / ARM32 ) | 2 Cores               |
+| RAM  | 1 GB Ram                 | 2 GB Ram              |
 
 The DSK Agent Edge itself does not actually consume that much RAM these are the requirements for the whole system. Keep in mind that these requirements strongly depend on the overall setup and the actual load of the agent. These are minimum requirements for rather small to medium amounts of data. If high volumes of data have to be processed the requirements are higher.
 
@@ -22,8 +22,8 @@ If you have any questions regarding infrastructure requirements, please talk to 
 
 | Type    | Required                                                                                                         | Preferred                      |
 | :------ | :--------------------------------------------------------------------------------------------------------------- | :----------------------------- |
-| OS      | Any current Linux Distribution                                                                                   | Ubuntu 17.04 LTS or later      |
-| Runtime | Docker Engine (≥19) + Docker-Compose (≥1.26) | Docker Engine + Docker-Compose |
+| OS      | Any current Linux Distribution                                                                                   | Ubuntu 18.04 LTS or later      |
+| Runtime | Docker Engine (≥20) + Docker-Compose (≥1.26) | Docker Engine + Docker-Compose |
 
 ## Runtime
 
