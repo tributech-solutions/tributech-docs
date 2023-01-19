@@ -6,16 +6,16 @@ import CodeBlock from '@theme/CodeBlock';
 import DskAgentDockerCompose from '!!raw-loader!../../../../deployments/dsk-agent/docker-compose.yml';
 import DskAgentEnv from '!!raw-loader!../../../../deployments/dsk-agent/sample.env';
 
-In this section we provide an example configuration of a Tributech Edge Agent services running on [**Docker / Docker Compose**](../../overview.md#docker-runtime) runtime. We also provide a [**fully automated**](../azure/azure-setup.mdx) setup for azure.
+In this section we provide an example configuration of a Tributech Edge Agent services running on [**Docker / Docker Compose**](../../overview.md#docker-runtime) runtime. We also provide a fully automated setup for [**Azure**](../azure/azure-setup.mdx).
 
 To manage and handle Docker services of the Tributech Edge Agent (e.g. start/stop services, check logs of service) we provide some [**sample Docker-Compose commands**](../../requirements.mdx#docker-compose-commands).
 
 ## Prerequisite 
-Recent Linux based system meeting our [**requirements**](#requirements), e.g. our [**automated setup**](#agent-automated-setup) creates an Ubuntu 20.04 based Linux virtual machine on Azure.
-To access the client secrets and some other information required in the next steps we require [**Api credentials**](../../requirements.mdx#api-keys).
+Recent Linux based system meeting our [**requirements**](../../requirements.mdx), e.g. our [**automated setup**](../azure/azure-setup.mdx) creates an Ubuntu 20.04 based Linux virtual machine on Azure.
+To access the client secrets and some other information required in the next steps we require [**Api Keys**](../../requirements.mdx#api-keys).
 
-### Install Docker 
-[**Install Docker**](https://docs.docker.com/engine/install/) based on the desired option from the official documentation.
+### Docker 
+Install Docker based on the desired option from the [**official Docker documentation**](https://docs.docker.com/engine/install/).
     e.g. for Ubuntu using the [**Official Docker Repository**](https://docs.docker.com/engine/install/ubuntu/).
 Optional: Allow to [**manage Docker as non-root user**](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user).
 ```bash
@@ -36,15 +36,13 @@ sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io
 ```
 
-### Install Docker-Compose
+### Docker-Compose
 We recommend the installation of [**docker-compose**](https://docs.docker.com/compose/install/) via package manager (e.g. Ubuntu `apt-get`):
 ```bash
 sudo apt-get install docker-compose
 ```
 
-[![asciicast](https://asciinema.org/a/7rIgnD7Rqafi15Smdj1MVEKXj.svg)](https://asciinema.org/a/7rIgnD7Rqafi15Smdj1MVEKXj)
-
-## Setup the agent {#agent-manual-setup}
+## Setup the Tributech Edge Agent {#agent-manual-setup}
 
 The following steps describe the tasks required to get the main Edge services (`Tributech-agent` and `mosquitto-server`) up and running on a system.
 
@@ -66,7 +64,7 @@ The "LOKI_PROMTAIL_PW" can be retrieved from the Promtail (Loki push API)" passw
 
 ### Configure Docker Compose
 
-Copy the [`docker-compose.yml`](../../deployments/dsk-agent/docker-compose.yml) file into the folder containing the `.env` configuration file.
+Copy the [`docker-compose.yml`](../../../../deployments/dsk-agent/docker-compose.yml) file into the folder containing the `.env` configuration file.
 <CodeBlock className="language-yml" title="docker-compose.yml">{DskAgentDockerCompose}</CodeBlock>
 
 ## Run Edge services
@@ -77,6 +75,6 @@ docker-compose up -d
 
 You can now continue to link and configure the [**Tributech Edge Agent**](../../overview) to a
 [**Tributech Node**](../../../node.md) with the help of the [**Tributech Agent Companion**](../../../agent_companion.mdx).
-In Order to send data to the [**Tributech Node**](../../../node.md) a [**Source**](./source-setup.mdx) must be connected to the to the agent. 
+In Order to send data to the [**Tributech Node**](../../../node.md) a [**Source**](./source-setup.mdx) must be connected to the agent. 
 
 
