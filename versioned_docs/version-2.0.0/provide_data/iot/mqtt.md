@@ -49,8 +49,8 @@ Otherwise you need to ensure that the port `1883` is accessible on the edge devi
 ## Custom/Configurable MQTT topics {#mqtt-custom-topics}
 
 
-You can configure a custom MQTT topic for a stream on which the MQTT Source will listen and forward it to the Tributech Edge Agent.  
-[**Setup**](../../setup/agent/sources/mqtt)
+You can [**configure**](../../setup/agent/setup/docker-compose/source-setup.mdx#docker-compose-mqtt-source) a custom MQTT topic for a stream on which the MQTT Source will listen and forward it to the Tributech Edge Agent.  
+
 
 The mapping of MQTT message to the value for the stream works like the following:
 
