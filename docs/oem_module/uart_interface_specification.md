@@ -30,11 +30,8 @@ With this command it is possible to send data to the OEM. Each data package has 
     "TransactionNr": X,
     "Operation": "ProvideValue",
     "ValuemetadataId": "XXX",
-    "Values": [{
-        
-        "Timestamp": X,
-        "Value": "XXX"
-    }]
+    "Timestamp": X,
+    "Value": "XXX"
 }\r\n
 ```
 
@@ -231,9 +228,9 @@ The following command shows how to send a single value to the OEM via UART. The 
 ```json
 {
     "TransactionNr": 1,
-    "Operation": "ProvideValues",
+    "Operation": "ProvideValue",
     "ValuemetadataId": "10101010-2020-3030-4040-505050505051",
-    "Values": [{
+    "Value": [{
         "Timestamp": 0,
         "Value": "AACEQQ=="
     }]
