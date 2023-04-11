@@ -21,21 +21,18 @@ The OEM mostly uses the default characteristics of a standard UART specification
 
 The OEM supports multiple commands which can be invoked via UART. Most of those commands should not be needed by the user since they need to be used in concert with API functions linked to nodes. The following two are entirely tailored to be used by users or developers. 
 
-## Provide Values
+## Provide Value
 
 With this command it is possible to send data to the OEM. Each data package has to have three distinctive parameters namely: ValueMetadataId, Timestamp, and the value itself. 
 
 ```json
 {
     "TransactionNr": X,
-    "Operation": "ProvideValues",
+    "Operation": "ProvideValue",
     "ValuemetadataId": "XXX",
-    "Values": [{
-        
-        "Timestamp": X,
-        "Value": "XXX"
-    }]
-}
+    "Timestamp": X,
+    "Value": "XXX"
+}\r\n
 ```
 
 ### ValueMetadataId
@@ -52,13 +49,16 @@ The most important specification when providing data to an OEM is the value itse
 
 ### Error codes
 
-The error code of an successful “ProvideValues” command is 0. The following error codes could also occur when one or multiple values are send to the OEM:
+The error code of an successful “ProvideValue” command is 0. The following error codes could also occur when a value is send to the OEM:
 
-- ** “ErrorCode”: 9 **   
-This error code yields “ONE_OR_MORE_EXTERNAL_UUID_INVALID” which means that one of the provided ValueMetadataIds is invalid. The OEM runs a whitelisting algorithm. Any ValueMetadataId which is not present in its configuration will be ignored. If this error occurs the given ValueMetadataIds have to be checked and the configuration of the OEM has to be checked as well. Either the id is not in the OEM system or the given ValueMetadataId has a spelling error or is entirely wrong.
+- ** “ErrorCode”: -5 **   
+This error code yields “CYCLE_TIME_TOO_FAST” which means that The user is sending the “ProvideValue” command to fast. The hard limit for the OEM at least **three seconds** between each "ProvideValue" command.
 
-- ** “ErrorCode”: 6 **   
-This error code yields “Cycle_TIME_TOO_FAST” which means that The user is sending the “ProvideValue” command to fast. Each stream has a PMIN variable attached to its configuration. This variable is given in seconds. This command depicts the minimum interval in which values are accepted by the OEM. If the value of this variable is set to 10 the OEM will only accept a value for a specific stream every 10 seconds. 
+- ** "ErrorCode": -14 **
+The code -14 translates to "ONLY_SINGLE_VALUES_ALLOWED". If the user tries to send more than one value in a "ProvideValue" funciton tihs error is triggered.
+
+- ** "ErrorCode": -15**
+This error code is similar to the "CYCLE_TIME_TOO_FAST" error code. There is also a user defined cycle timecalled pmin which can be set in the cofiguration. This variable is given in seconds. This command depicts the minimum interval in which values are accepted by the OEM. If the value of this variable is set to 10 the OEM will only accept a value for a specific stream every 10 seconds. 
 
 ## Get Configuration
 
@@ -68,7 +68,7 @@ This command can be sent to the OEM to get all the available data from the devic
 {
     "TransactionNr": X,
     "Operation": "GetConfiguration",
-}
+}\r\n
 ```
 
 ### Id
@@ -180,13 +180,39 @@ This variable name is short for step and can be seen as a threshold variable. A 
 
 The “GetConfiguration” Command cannot yield any error codes since it accesses only the stored information which is saved in the persistent memory of the OEM. If the “GetConfiguration” command yields no response there could be multiple reasons. Either there is a fault in the UART communication between the OEM and the device it is mounted on, or there is a hardware malfunction with the OEM itself. 
 
+## GetTime
+
+The "GetTime" command enables the user to get an accurate timestamp in a unix format. With this feature the user can establish an accurate timeframe on their own microcontroller without a connection to a time server. 
+
+```json
+{
+    "TransactionNr": X,
+    "Operation": "GetTime",
+}\r\n
+```
+
+## GetStatus
+
+With the status of the OEM the User can determine when it is possible to send data to the OEM. The "GetStatus" command will give the user one of the following three status:
+
+- 0 = offline
+- 1 = online
+- 2 = connected to Node
+
+```json
+{
+    "TransactionNr": X,
+    "Operation": "GetStatus",
+}\r\n
+```
+
 ## Example Commands
 
-The example command below show typical interactions with the OEM and their successful responses for the commands “ProvideValues” and “GetConfiguration”.
+The example command below show typical interactions with the OEM and their successful responses for the commands “ProvideValue” and “GetConfiguration”.
 
-### Provide Values
+### Provide Value
 
-There are three distinct ways to forward values to the OEM. The user can either commit a single value to a stream or multiple values. Additionally, it is possible to forward multiple values to multiple streams. 
+The only way to send a value to the OEM is to commit a single value to a stream with a valid valuemetadataid. This change from multiple values to a single value occurred in software version 3.2.
 
 #### Single Value
 
@@ -202,13 +228,13 @@ The following command shows how to send a single value to the OEM via UART. The 
 ```json
 {
     "TransactionNr": 1,
-    "Operation": "ProvideValues",
+    "Operation": "ProvideValue",
     "ValuemetadataId": "10101010-2020-3030-4040-505050505051",
-    "Values": [{
+    "Value": [{
         "Timestamp": 0,
         "Value": "AACEQQ=="
     }]
-}
+}\r\n
 ```
 
 </td>
@@ -217,88 +243,6 @@ The following command shows how to send a single value to the OEM via UART. The 
 ```json
 {
     "TransactionNr": 1,
-    "ErrorCode": 0
-}
-```
-
-</td>
-</tr>
-</table>
-
-#### Multiple Values
-
-The following command shows how to send multiple values to a single valuemetadataid to the OEM via UART. The successful response is also shown beneath the command.
-
-<table>
-<tr>
-<td> Command </td> <td> Response </td>
-</tr>
-<tr>
-<td>
-
-```json
-{
-    "TransactionNr": 2,
-    "Operation": "ProvideValues",
-    "ValuemetadataId": "10101010-2020-3030-4040-505050505051",
-    "Values": [{
-        "Timestamp": 0,
-        "Value": "AACEQQ=="
-    }, {
-        "Timestamp": 0,
-        "Value": "AACMQQ=="
-    }]
-}
-```
-
-</td>
-<td>
-
-```json
-{
-    "TransactionNr": 2,
-    "ErrorCode": 0
-}
-```
-
-</td>
-</tr>
-</table>
-
-#### Multiple Values for different Streams
-
-The following command shows how to send multiple values of different valuemetadataids to the OEM via UART. The successful response is also shown beneath the command.
-
-<table>
-<tr>
-<td> Command </td> <td> Response </td>
-</tr>
-<tr>
-<td>
-
-```json
-{
-    "TransactionNr": 3,
-    "Operation": "ProvideValues",
-    "ValuemetadataId": "10101010-2020-3030-4040-505050505051",
-    "Values": [{
-        "Timestamp": 0,
-        "Value": "AACEQQ=="
-    }],
-    "ValuemetadataId": "20202020-3030-4040-5050-606060606062",
-    "Values": [{
-        "Timestamp": 0,
-        "Value": "AACMQQ=="
-    }]
-}
-```
-
-</td>
-<td>
-
-```json
-{
-    "TransactionNr": 3,
     "ErrorCode": 0
 }
 ```
@@ -322,7 +266,7 @@ The following command shows how to acquire the configuration from the OEM via UA
 {
     "TransactionNr": 4,
     "Operation": "GetConfiguration"
-}
+}\r\n
 ```
 
 </td>
@@ -383,9 +327,70 @@ The following command shows how to acquire the configuration from the OEM via UA
 </table>
 
 
+### GetTime
 
+The following command shows how to receive an accurate timestamp form the OEM.
 
+<table>
+<tr>
+<td>  Command </td> <td> Response </td>
+</tr>
+<tr>
+<td>
 
+```json
+{
+    "TransactionNr": 1,
+    "Operation": "GetTime",
+}\r\n
+```
 
+</td>
+<td>
+
+```json
+{
+    "TransactionNr": 1,
+    "ErrorCode": 0,
+    "Timestamp": 1680248129713000
+}
+```
+
+</td>
+</tr>
+</table>
+
+### GetStatus
+
+The following command shows how to receive the connection Status form the OEM.
+
+<table>
+<tr>
+<td>  Command </td> <td> Response </td>
+</tr>
+<tr>
+<td>
+
+```json
+{
+    "TransactionNr": 1,
+    "Operation": "GetStatus",
+}\r\n
+```
+
+</td>
+<td>
+
+```json
+{
+    "TransactionNr": 1,
+    "ErrorCode": 0,
+    "ConnectionStatus": 2
+}
+```
+
+</td>
+</tr>
+</table>
 
 

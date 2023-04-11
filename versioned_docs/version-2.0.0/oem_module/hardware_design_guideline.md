@@ -48,7 +48,10 @@ To be able to work with the Tributech OEM module certain safety precautions must
 | 61-62 | Reserved | I/O |  |  | Do not connect. Reserved for future use. |
 | 63-64 | VDD | I | Main Power Supply | Vmax = 5.5V<br></br>Vmin = 3.0V<br></br>Vnom = 3.3V |  |
 | 65 | GND | I |  |  | Ground |
-| 66-71 | Reserved | I/O |  |  | Do not connect. Reserved for future use. |
+| 66-68 | Reserved | I/O |  |  | Do not connect. Reserved for future use. |
+| 69 | UART_RX | I | UART receive pin of the OEM | The logic level depends on the voltage supplied to VDD_GPIO | UART_RX connect external TX here |  
+| 70 | UART_TX | O | UART transmit pin of the OEM  | The logic level depends on the voltage supplied to VDD_GPIO | UART_TX connect external RX here |
+| 71 | Reserved | I/O | | | Do not connect. Reserved for future use.|
 | 72 | GND | I |  |  | Ground |
 | 73-74 | Reserved | I/O |  |  | Do not connect. Reserved for future use. |
 | 75 | GND | I |  |  | Ground |
