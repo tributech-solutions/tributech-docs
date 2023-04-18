@@ -230,10 +230,8 @@ The following command shows how to send a single value to the OEM via UART. The 
     "TransactionNr": 1,
     "Operation": "ProvideValue",
     "ValuemetadataId": "10101010-2020-3030-4040-505050505051",
-    "Value": [{
-        "Timestamp": 0,
-        "Value": "AACEQQ=="
-    }]
+    "Timestamp": 0,
+    "Value": "AACEQQ=="
 }\r\n
 ```
 
