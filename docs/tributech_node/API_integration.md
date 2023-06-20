@@ -33,13 +33,13 @@ To do some example request just visit the above url and try it out !
 
 Our Node provides webhooks to enable external parties to receive node events in a pushed based manner. The body of the payload differs from event to event but will always be an json format. In order to identify the current Webhook payload you will need to look into the http headers of the given event.
 
-Also we provide an ***HMAC SHA256*** signature within the header to prevent spoofing attacks. The secret of the given hmac will be provided at the creation time of the webhook subscription and will never be exposed at any rest api endpoints. 
+Also we provide an ***HMAC SHA256*** signature within the header to prevent spoofing attacks. The secret of the given HMAC will be provided at the creation time of the webhook subscription and will never be exposed by any rest api endpoints. 
 
 We provide you a .net code where you can validate the signature to verify that it is not tempered . 
 
 ___
 *** NOTE ***  
-Additionally in a case of error delivery we implemented an back-off mechanism which tries to redelivery events which could not be send successfully. In order to provide a stable redelivery we have divided the Webhook Events in two catagories : 
+Additionally in a case of an error delivery we implemented an back-off mechanism which tries to redeliver the events which could not be send successfully. In order to provide a stable redelivery we have divided the Webhook Events in two catagories : 
 
 1. Event QOS = 1 , high frequency events (like data received)
 2. Event QOS = 2, standard frequency events 
@@ -96,6 +96,8 @@ Following Headers are present in the Webhook request:
   
 ### Signature Code Example
 
+This code example can be used to create the exact same signature which is present in the header (without the `sha256=` prefix).
+
 ~~~ csharp
 	public string HashHMAC(string secret, string payload, DateTimeOffset signatureTimestamp) {
 		var encoding = new System.Text.ASCIIEncoding();
@@ -110,7 +112,7 @@ Following Headers are present in the Webhook request:
 
 ## Authorization
 
-Our API Authorization is handled via a Keycloak instance. Where we support following authorization flows : 
+Our API Authorization is handled via a Keycloak instance. We support following authorization flows : 
 
 - [Client Crediential Flow](https://auth0.com/docs/get-started/authentication-and-authorization-flow/client-credentials-flow) (for api access)
 - [Authorization Code Flow with PCKE (sha256)](https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-proof-key-for-code-exchange-pkce) (for browser)

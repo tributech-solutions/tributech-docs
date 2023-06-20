@@ -4,7 +4,7 @@ sidebar_position: 1
 ---
 
 # Tributech Node 
-The Tributech Node is the central layer of our Tributech Platform where every data will be collected, verified from our Tributech Agents. Additionally it will provide functionality to configure and execute commands to the given Tributech Agents.
+The Tributech Node is the central layer of our Tributech Platform where every data will be collected, secured by our Tributech Agents. Additionally it will provide functionality to configure and execute commands to the given Tributech Agents.
 
 It also serves as middleware Layer for external apps which might read the available data to provide customized user experience. 
 
@@ -28,9 +28,9 @@ The Node is build with the ***API-first approach*** in mind so every functionali
 
 - Fetching the data provided by the agents 
 - Trigger the validation of their data 
-- Fetching the Validation results of their data
+- Fetching the validation results of their data
 - Executing commands which will be handled by our agents
-- Configure the given Sources and Agents
+- Configure the given Tributech Agent Sources and Tributech Agents
 - Manage the available DTDL Models within your Node
 
 [Authorization](./API_usage.md) will be further explained in another page. But it follows the [OAuth 2.0](https://oauth.net/2/) specification and will support the [client credential flow](https://auth0.com/docs/get-started/authentication-and-authorization-flow/client-credentials-flow) and the [authorization code flow](https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-proof-key-for-code-exchange-pkce). Currently we don't support any user/group permissions and will only handle authorization against our rest api.   
