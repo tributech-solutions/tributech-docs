@@ -43,19 +43,21 @@ Example EDGE Agent DTDL Instance
 }
 ~~~
 ## Data Streams
-Generally speaking a Data Stream is the metadata of a given source. It contains the information which kind of specific endpoint is used to fetch the values. Also, it provides us with additional information like :
+Generally speaking a Data Stream is the metadata of a given source. The metadata contains the information that is used to describe the characteristics and limitations for values that can be imported by a specific endpoint.
+
+Here are some example metadata information:
 
 - Encoding data type of the endpoint
 - Protocol specific information about the endpoint 
 - User friendly name of the endpoint
 - etc ..
 
-But most importantly it contains an unique identifier which we can be used to fetch the values from the given endpoint etc. 
+But most importantly it contains an unique identifier which we can use to fetch the values from the given endpoint etc. 
 
 The metadata from the data stream is described as DTDL (see above). The id is described in the `$dtId` section of DTDL instance.
 
 
-We provide `HTTP-GET` and `HTTP-POST` endpoints for every datatype we support and we also provide the values as byte array with base 64 encoding. 
+We provide `HTTP-GET` and `HTTP-POST` endpoints for every datatype we support . The byte array endpoint can be used to import or export any kind of base 64 encoded data directly. 
 
 If you are fetching the values you are able to query those with following parameters: 
 
