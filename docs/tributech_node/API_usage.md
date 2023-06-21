@@ -40,15 +40,22 @@ Example EDGE Agent DTDL Instance
       "KeyStorageType": "NONE",
       "ProofKind": "SHA256_RSA2048_PSS",
       "MQTTBroker": ""
-    }
+}
 ~~~
 ## Data Streams
-Generally speaking a Data Stream is the metadata of a given path/symbol path/topic etc from a given source. It contains the information which kind of variable is used to fetch the values and which kind of encoding it has and may contain some protocol specific information. Most importantly it contains an unique identifier which we can use to fetch the values from the given variable / path etc. 
+Generally speaking a Data Stream is the metadata of a given source. It contains the information which kind of specific endpoint is used to fetch the values. Also, it provides us with additional information like :
+
+- Encoding data type of the endpoint
+- Protocol specific information about the endpoint 
+- User friendly name of the endpoint
+- etc ..
+
+But most importantly it contains an unique identifier which we can be used to fetch the values from the given endpoint etc. 
 
 The metadata from the data stream is described as DTDL (see above). The id is described in the `$dtId` section of DTDL instance.
 
 
-We have `HTTP-GET` and `HTTP-POST` endpoints for every datatype we support and we also provide the values as byte array with base 64 encoding. 
+We provide `HTTP-GET` and `HTTP-POST` endpoints for every datatype we support and we also provide the values as byte array with base 64 encoding. 
 
 If you are fetching the values you are able to query those with following parameters: 
 
@@ -93,11 +100,7 @@ We will see two Validation Results because we currently triggered one.
 
 ## Agent Configuration
 
-Our Tributech Agents are able to be configured via our REST endpoint. The configuration is done via a DTDL instance of the given Tributech Agent. So a prerequisite is that a certain amount of knowledge of DTDL Models and Instances preexisting. If there is no knowledge existing we recommend the configuration via our SPA. 
-
-To change the configuration, it is necessary that the whole graph of the configuration is submitted and not only the part which needs to be updated. 
-
-There are two main Endpoints available for this operation: 
+Our Tributech Agents can be configured either via SPA or DTDL. We recommend using the DTDL configuration option only for advanced users that are familiar with this technology. An invalid DTDL Model or Instance may result in an non-responsive Agent. The DTDL Model is required to be fully complete and partial updates are not supported. The node provides the following endpoints for the interacting with the DTDL model:
 
 - `agent/{deviceId}/get-config` to retrieve the current agent configuration which is provided by the agent itself 
 - `agent/{deviceId}/set-config` to submit the new configuration which will be presented to the agent

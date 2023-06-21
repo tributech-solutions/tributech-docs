@@ -23,7 +23,7 @@ The API is structured with following "Topics" :
 - ***Values*** Fetch or Insert Values from or to the Node
 - ***Proofs*** Validate , insert or fetch proofs from the Node
 
-To do some example request just visit the above url and try it out ! 
+To do some example request just visit the above url, authorize your self *(see below)* and try it out ! 
 
 ![Tributech Node - OAS](./img/OAS.png)
 
@@ -39,7 +39,14 @@ We provide you a .net code where you can validate the signature to verify that i
 
 ___
 *** NOTE ***  
-Additionally in a case of an error delivery we implemented an back-off mechanism which tries to redeliver the events which could not be send successfully. In order to provide a stable redelivery we have divided the Webhook Events in two catagories : 
+Additionally in a case of an error delivery we implemented an back-off redelivery mechanism. 
+
+A error delivery may occur in following situations: 
+- Network is not available
+- Endpoint described within the subscription is not reachable
+- Endpoint returns something else then a HTTP 200 (OK) 
+
+In order to provide a stable redelivery we divided the Webhook Events in two catagories : 
 
 1. Event QOS = 1 , high frequency events (like data received)
 2. Event QOS = 2, standard frequency events 
