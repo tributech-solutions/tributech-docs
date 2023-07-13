@@ -3,18 +3,6 @@ title: MQTT Source
 sidebar_position: 1
 ---
 
-The Tributech Agent supports the integration of external data sources using the [**MQTT messaging protocol**](https://mqtt.org/) with the  Tributech MQTT Source. This source 
-
-
-
-Your MQTT client needs to connect to our MQTT message broker (`eclipse-mosquitto`) and publish MQTT messages with a specific payload format on one of our [**pre-defined MQTT topics**](#mqtt-predefined-topics) or using the [**custom/configurable MQTT topics**](#mqtt-custom-topics). The published message will be processed from our main Edge Agent service and enriched to achieve data authenticity and integrity support.
-
-Such an MQTT client could be any of your existing edge services or implemented specifically for the use case in your desired programming language and run as additional Docker sidecar container.
-
-
-
-
-
 import CodeBlock from '@theme/CodeBlock';
 import SourceDockerCompose from '!!raw-loader!../examples/agent-source/mqtt/docker-compose.yml';
 import SourceEnv from '!!raw-loader!../examples/agent-source/mqtt/.env';

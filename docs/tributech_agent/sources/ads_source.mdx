@@ -44,11 +44,11 @@ After setting up the Tributech ADS Source we need to link it to the Tributech No
 
 We can now add by right clicking the Device Edge entry a new Beckhoff TwinCat ADS Source.
 
-![**"Add MQTT Source**](../img/node-source-ads-add.png)
+![**"Add ADS Source**](../img/node-source-ads-add.png)
 
-In order to connect to the ADS Server we need to configure the ADS Server settings. The following table contains the description for each setting for out MockClient (later we will describe how to setup a [MockServer](#mock-server) if you don't have a real ADS Server available):
+In order to connect to the ADS Server we need to configure the ADS Server settings. The following table contains the description for each setting for our MockClient (later we will describe how to setup a [MockServer](#mock-server) if you don't have a real ADS Server available):
 
-![**"Add MQTT Source**](../img/node-source-ads-config.png)
+![**"Config ADS Source**](../img/node-source-ads-config.png)
 
 Meaning of the settings:
 
@@ -64,11 +64,11 @@ Meaning of the settings:
 
 We can save the settings by clicking on the `Save in workspace` button in the buttom right corner and add a new ADS Stream by right clicking on the ADS Source entry:
 
-![**"Add MQTT Source**](../img/node-source-ads-stream-add.png)
+![**"Add ADS Source stream**](../img/node-source-ads-stream-add.png)
 
 The following table contains the description for each setting for the ADS Stream path of type LREAL (double) which will be read every 10sec from the MockServer:
 
-![**"Add MQTT Stream**](../img/node-source-ads-stream-config.png)
+![**"Add ADS Stream config**](../img/node-source-ads-stream-config.png)
 
 We can save the settings by clicking on the `Save in workspace` button in the buttom right corner and continue adding every symbol path we want to read from the ADS Server.
 
@@ -76,7 +76,7 @@ After all symbol paths have been configured, we can apply the configuration to t
 
 We can now see the value of the symbol path in the `Beckhoff TwinCat ADS Stream`:
 
-![**"Add MQTT Stream**](../img/node-source-ads-stream-data.png)
+![**"Add MQTT Stream data**](../img/node-source-ads-stream-data.png)
 
 ## Value Change Options
 The basic handling of Value Change Options (VCO) can be found in [Source Integration](../source_integration.md#value-change-options). This section contains the concrete handling of the ***Step (Delta)*** for the simulated source. The following list contains the description for each supported ***ADSDataType*** where ***X*** represents the value for ***Step (Delta)***:
@@ -94,7 +94,7 @@ The Mock Server is a simple application based on the [Beckhoff.TwinCAT.Ads.Serve
 
 <CodeBlock className="language-yml" title="docker-compose.override.yml">{SoourceDockerComposeMock}</CodeBlock>
 
-The Mock Server needs to access to the same docker network as the Tributech ADS Source, therefore the ip addresses and environment variables need to be adjusted if they are not identical to our provided `docker-compose.yml` file (see [Setup](#setup)). The Mock Server will be started automatically when the Tributech ADS Source is started.
+The Mock Server needs access to the same docker network as the Tributech ADS Source, therefore the ip addresses and environment variables need to be adjusted if they are not identical to our provided `docker-compose.yml` file (see [Setup](#setup)). The Mock Server will be started automatically when the Tributech ADS Source is started.
 
 The following table contains the description for each available symbol path of the Mock Server:
 
