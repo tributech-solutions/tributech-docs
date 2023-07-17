@@ -4,22 +4,22 @@ sidebar_position: 2
 ---
 
 import CodeBlock from '@theme/CodeBlock';
-import SourceEnv from '!!raw-loader!./examples/agent/env';
+import SourceEnv from '!!raw-loader!./examples/agent/.env';
+import SourceDockerCompose from '!!raw-loader!./examples/agent/docker-compose.yml';
 import DockerLogin from '!!raw-loader!./examples/docker/docker-login-cmd';
 
-
-In this QuickStart Guide we assume that the [requirements](#Requirements) are met. For a more the detailed description on how to meet those requirements for the Tributech Agent environment visit [Agent Integration](./agent_integration.md).
-
+In this QuickStart Guide we give a shortened overview on how to setup a Tributech Agent with a [Simulated Source](./sources/simulated_source.mdx) and connect it to a Tributech Node to display the random generated data. 
+For a more detailed description on how to setup the Tributech Agent visit [Agent Integration](./agent_integration.mdx).
 
 ## Requirements
 In Order to link a Tributech Agent to a Tributech node we need the following:
 
 - Access to an existing [Tributech Node](../tributech_node/overview.md)
-- Access to an environment which meets the [Tributech Agent Requirements](./agent_integration.md#requirements)
+- Access to an environment with [Docker Compose](https://docs.docker.com/compose/), which meets the [Tributech Agent Requirements](./agent_integration.mdx#requirements)
 
 ## Docker-Compose Up
-Open a terminal in your environment where you want to run the Tributech Agent and follow the steps below to startup the docker-compose environment.  
-- ***Authenticate docker*** to retrieve the relevant docker images from the private [Tributech Docker Registry](./agent_integration.md#authentication).
+We start by setting up the docker-compose environment for the Tributech Agent and Tributech Simulated Source as follows: 
+- ***Authenticate docker*** to retrieve the relevant docker images from the private [Tributech Docker Registry](./agent_integration.mdx#authentication).
 
     <CodeBlock className="bash" title="terminal">{DockerLogin}</CodeBlock>
 
@@ -27,9 +27,11 @@ Open a terminal in your environment where you want to run the Tributech Agent an
 
     <CodeBlock className="language-plain" title=".env">{SourceEnv}</CodeBlock>
 
-    We will use the AGENT_ID ***00000000-0000-0000-0000-000000000007*** in our example.
+    We will use the `AGENT_ID` `00000000-0000-0000-0000-000000000007` in our example.
 
-- ***Download*** the file [docker-compose.yml](./examples/agent/docker-compose.yml) and save it in the same folder containing the `.env` file.
+- ***Download*** the file `docker-compose.yml` and save it in the same folder containing the `.env` file.
+
+    <CodeBlock className="language-yml" title="docker-compose.yml">{SourceDockerCompose}</CodeBlock>
 
  - ***Startup*** the environment
     
@@ -37,35 +39,35 @@ Open a terminal in your environment where you want to run the Tributech Agent an
         docker-compose up -d
     </CodeBlock>
 
-- ***Validate*** that all containers are running
+- ***Validate*** that all containers are running. The output should return that every container is in the state `Up`
     <CodeBlock className="bash" title="terminal">
         docker-compose ps
     </CodeBlock>
-    The output should return that every container is in the state ***Up***
 
 ## Link Agent
-After starting the Tributech Agent we need to link the Agent to a Tributech Node in order to receive data. In the agent overview we can click ***Link new agent*** to initialize this process.
+After starting the Tributech Agent we need to link the Agent to a Tributech Node in order to receive data. In the agent overview we can click ***LINK NEW AGENT*** to initialize this process.
 
 ![***Agent Linking***](./img/node-agent-linking.png)
 
-Our prepared [docker-compose.yml](./examples/agent/docker-compose.yml) from the previous set exposes the port `5000` of the Agent to interact with the Tributech Node.
+Our prepared [docker-compose.yml](./examples/agent/docker-compose.yml) from the previous step exposes the port `5000` of the Agent to interact with the Tributech Node.
 
 ![***Agent Connect***](img/node-agent-linking-connect.png)
 
-After pressing connect we can see the AGENT_ID ***00000000-0000-0000-0000-000000000007*** we previously defined in the `.env` file of the docker environment. 
+After pressing connect we can see the `AGENT_ID` `00000000-0000-0000-0000-000000000007` we previously defined in the `.env` file. 
 
 ![***Connect link***](img/node-agent-linking-connect-link.png)
 
-Now we can finish the linking process by clicking ***Link/Relink Agent***
+Now we can proceed in the linking process by clicking ***Link/Relink Agent***.
 
 ![***Connect link***](img/node-agent-linking-connect-link-2.png)
 
-After the successly completed linking process we can configure the Agent to support the desired [Tributech Agent Source](source_integration.md).
+After a successfully completed linking process we will add a [Tributech Simulated Source](./sources/simulated_source#configuration).
+If you would prefer another type of source you can now visit the [Tributech Agent Sources](source_integration.md) overview.
 
 ![***Connect link***](img/node-agent-linking-connect-link-configure.png)
 
 ## Source Configuration 
-The previous steps established the communication between an Tributech Agent and a Tributech Node but we also need a [Tributech Source](source_integration.md) to receive data. In the following section we complete our Tributech Agent Quickstart Setup by configuring a simple double stream for the [Tributech Simulated Source](sources/simulated_source.mdx) by selecting our previously linked Tributech Agent (the Agent Name depends on the `.env` file ***AGENT_ID*** value defined in the previous section).
+The previous steps established the communication between an Tributech Agent and a Tributech Node. Next we will setup a [Tributech Source](source_integration.md) to provide data for the Tributech Agent. The Tributech agent will then be used to send the data to the Tributech Node. In the following section we complete our Tributech Agent QuickStart Setup by configuring a simple double stream for the [Tributech Simulated Source](sources/simulated_source.mdx) (the Agent Name depends on the `.env` file `AGENT_ID` value defined in the previous section).
 
 
 ![**"Activate Overview**](./img/node-agents-overview.png)
@@ -76,27 +78,22 @@ Next we need to configure the Agent to receive data for the Tributech Simulated 
 ![**"Configure Agent**](./img/node-agent-configure.png)
 
 
-We have prepared a Simulated Source configuration containing a double data stream, simple import the [TwinConfiguration Template File](examples/agent-source/quick-start.json)
+We have prepared a Simulated Source configuration containing a double data stream, save the following [TwinConfiguration Template File](examples/agent-source/quick-start.json) locally and import it in the Agent Configuration:
 
 ![**"Configure Agent**](./img/node-source-import-from-template.png)
 
 
-After successfully importing the [TwinConfiguration Template File](examples/agent-source/quick-start.json)
-apply the configuration to persist the configuration.
+After successfully importing the `TwinConfiguration Template File` click the `APPLY CONFIGURATION` Button in the top right cornor to persist the changes.
 
 ![**"Apply configuration**](./img/node-source-quickstart-apply-config.png)
 
-We can now select the Simulated Stream of our newly configured ***QuickStart Simulated Source*** Agent
+We can now select the Simulated Stream of our newly configured `QuickStart Simulated Source` Agent
 
 ![**"Select stream**](./img/node-source-quickstart-select-stream.png)
 
-The Stream generates a new data point every second in the range between 1 and 10
+The Stream generates a new data point between 1 and 10 every second.
 
 ![**"QuickStart Stream Data**](./img/node-source-quickstart-stream-graph.png)
-
-This completes the QuickStart. Visit [Source Integration](source_integration.md) for information on how to add other types of Tributech Sources or [Tributech Agent Integration](agent_integration.md) for a more details on how to configure the Tributech Agent.
-
-
 
 ## Verify
 In order to detect [data tampering](https://www.tributech.io/blog/cybersecurity-threat-data-tampering) we provide the possibility to audit each stream proofs individually. We provide the two possibilities to view the audit results:
@@ -109,5 +106,4 @@ In order to detect [data tampering](https://www.tributech.io/blog/cybersecurity-
 
     ![***Audit overview***](img/node-source-audit-overview.png)
 
-
-For more details on how to use the audit process visit the detailed guide for the [Agent Integration](agent_integration.md#verify)
+This completes the QuickStart, for a more detailed guide and information about the audito process visit [Tributech Agent Integration](agent_integration.mdx). For more information on how to add other types of Tributech Sources visit [Source Integration](source_integration.md).

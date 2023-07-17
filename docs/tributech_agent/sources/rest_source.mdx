@@ -8,24 +8,22 @@ import SourceDockerCompose from '!!raw-loader!../examples/agent-source/rest/dock
 import SourceEnv from '!!raw-loader!../examples/agent-source/rest/.env';
 import SoourceDockerComposeMock from '!!raw-loader!../examples/agent-source/rest/docker-compose.override.yml';
 
-The Tributech Agent supports the integration of external data sources using [**REST**](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design#what-is-rest) with the  Tributech REST Source. The REST Source is configured via the Twin Configuration and can is used to send data to the Tributech Agent via [MQTT](https://mqtt.org/). 
- The data can be send to the Tributech Source either via [Swagger](https://swagger.io/specification/) or with our Tributech REST MockClient. The Tributech REST Source MockClient is currently only for testing purposes and works only in combination with the Tributech REST Source. 
+The Tributech Agent supports the integration of external data sources using [REST](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design#what-is-rest) with the  Tributech REST Source. The REST Source is configured via the Twin Configuration and is used to send data to the Tributech Agent via [MQTT](https://mqtt.org/). 
+ The data can be send to the Tributech Source either via [Swagger](https://swagger.io/specification/) or with our [Tributech REST MockClient](#mockclient).
 
  We currently support two types of data format for the REST Source:
  
 - __REST Pre-defined Payload__: Data will be provided in a pre-defined format containing a unique combination of
-  MachineId and SensorId to identify the DataStreamId of the Twin Configuration (see Swagger for details)
+  MachineId and SensorId to identify the DataStreamId of the Twin Configuration (see [Swagger](#rest-endpointswagger) for details)
 - __REST Stream__: Data will be provided with the DataStreamId of the Twin Configuration contained in the data (see
-  Swagger for details)
+  [Swagger](#rest-endpointswagger) for details)
 
-We will show in [Configuration](#Configuration) how to configure the REST Source to accept data for a specific stream and provide the data via Swagger or the REST MockClient.
+We will show in [Configuration](#configuration) how to configure the REST Source to accept data for each specific stream type and provide the examples for [Swagger](#rest-endpointswagger) or the [REST MockClient](#mockclient).
 
-Generally The Source will return a status code of [200 OK](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) if the data was successfully received and queued to be published to the Tributech Agent. However, the status code does not indicate that the data was successfully transfered to the Tributech Agent or Tributech Node. Queueing the data to be published to the Tributech Agent is done asynchronously and the Source apply additional options contained by the Twin configuration, e.g. [ValueChangeOptions](#ValueChangeOptions).
-
-If the __REST Stream__ data was rejected by the REST-Source, ensure that a Source has a valid Twin Configuration and an the corresponding Data identifier is provided in the json payload. 
+The Source will return a status code [200 OK](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) if the data was successfully received and is queued to be published to the Tributech Agent. The status code does not indicate that the data was successfully transfered to the Tributech Agent or Tributech Node. Queueing the data to be published means that the Source received the data and publishes the data after applying options contained by the Twin configuration if defined, e.g. [ValueChangeOptions](#ValueChangeOptions).
 
 ## Setup
-The Tributech REST Source image can be started without any dependencies but will not be functional without a valid Twin Configuration or MessageBroker connect to the Tributech Agent. The TwinConfiguration can be provided via the Tributech Node (recommended) or MessageBroker (see [Source Integration](./source_integration.md#TwinModel)). The REST Source will automatically connect to the Tributech Agent if the Tributech Agent is running and the REST Source is configured with the correct MessageBroker settings.
+The Tributech REST Source image can be started without any dependencies but will not be functional without a valid Twin Configuration or MessageBroker connect to the Tributech Agent. The TwinConfiguration can be provided via the Tributech Node (recommended) or MessageBroker (see [Source Integration](../source_integration#twin-model)). The REST Source will automatically connect to the Tributech Agent if the Tributech Agent is running and correct MessageBroker settings are set.
 
 In the following part we will describe the setup of a Tributech REST Source. 
 
@@ -44,27 +42,28 @@ After setting up the Tributech REST Source we need to link it to the Tributech N
 
 
 ### REST Stream
-At first we add the default REST Stream to the Source. The REST Stream will be used to send data to the REST Source based on an Guid as identifier. The REST Stream will be added by right clicking the REST Source and selecting ***Add Streams***. The following dialog will appear:
+At first we add the REST Stream to our newly created Tributech REST Source. The REST Stream will be used to send data to the Tributech Node based on an unique identifier contained in the json payload. The REST Stream can be added by right clicking the REST Source and selecting ***Add Streams***. The following dialog will appear:
 
 ![**"Add Stream Stream**](../img/node-source-rest-add-stream-stream.png)
 
-After adding the REST Stream we configured the Data Encoding (in `red`) and save the changes by clicking on the `Save in workspace` button in the buttom right corner. The REST Stream is now configured and can be used to send data to the REST Source. The REST Stream will only accept data that contains the DataStreamId of the REST Stream. The DataStreamId can be found on the top of the REST Stream configuration (in `green`):
+After adding the REST Stream we configure the Data Encoding (in `red`) and save the changes by clicking on the `SAVE IN WORKSPACE` button in the buttom right corner. The REST Stream is now configured but can be only be used to send data to the REST Source after submitting the changes to the Tributech Source via `APPLY CONFIGURATION`. The REST Stream will only accept data that contains the DataStreamId of the REST Stream. The DataStreamId can be found on the top of the REST Stream configuration (in `green`):
 
 ![**"Add Stream Stream**](../img/node-source-rest-add-stream-stream-config.png)
 
 
-After we have configured the REST Source we can apply the configuration to the Tributech Agent by clicking on the `Apply Configuration` button in the top right corner.
+After we have configured the REST Source we can apply the configuration to the Tributech Agent by clicking on the `APPLY CONFIGURATION` button in the top right corner.
 
 ### Pre-defined Payload Stream
-In contrast to a generated identifier for the REST Stream we can define a pre-defined payload for the REST Source. The pre-defined payload will be used to send data to the REST Source based on an compound identifier, Source Identifier and Value Identifier will be used to uniquely match data to the DataStreamId. The pre-defined payload will be added by right clicking the REST Source and selecting ***Add Streams***. The following dialog will appear:
+In contrast to a generated identifier of the REST Stream we can now define a two string's used to identify the DataStreamId for the REST Source. The pre-defined payload will be added by right clicking the REST Source and selecting ***Add Streams***. The following dialog will appear:
 
 ![**"Add Pre-defined Payload Stream**](../img/node-source-rest-add-stream-payload.png)
 
-After adding the REST Stream we configured the Data Encoding, one or both of the identifiers (Source/Value) and save the changes by clicking on the `Save in workspace` button in the buttom right corner. 
+After adding the REST Stream we configured the Data Encoding, one or both of the identifiers (Source/Value) and save the changes by clicking on the `SAVE IN WORKSPACE` button in the buttom right corner. 
+The Source Identifier and Value Identifier will be used to uniquely match data to the DataStreamId (not contained in payload). 
 
 ![**"Add Pre-defined Payload Stream**](../img/node-source-rest-add-stream-payload-config.png)
 
-After we have configured the REST Source we can apply the configuration to the Tributech Agent by clicking on the `Apply Configuration` button in the top right corner. The REST Stream is now configured and can be used to send data to the REST Source. The REST Stream will only accept data that contains same combination of `source identifier` and `value identifier`.
+After we have configured the REST Source we can apply the configuration to the Tributech Agent by clicking on the `APPLY CONFIGURATION` button in the top right corner. The REST Stream is now configured and can be used to send data to the REST Source. The REST Stream will only accept data that contains the same combination of `source identifier` and `value identifier`.
 
 ### Value Change Options
 The basic handling of Value Change Options (VCO) can be found in [Source Integration](../source_integration.md). This section contains the concrete handling of the ***Step (Delta)*** for the simulated source. The following list contains the description for each supported ***Stream Data Encoding*** where ***X*** represents the value for ***Step (Delta)***:
@@ -76,29 +75,27 @@ The basic handling of Value Change Options (VCO) can be found in [Source Integra
 
 
 ## Providing Data
-In the following section we want to outline two different ways to provide data to the REST Source. The first way is to use the Swagger UI to send data to the REST Source. The second way is to use the REST MockClient to send data to the REST Source. There are different endpoints available for each type of Stream and type of data (encoding provided values based on  [**.NET Framework BitConverter**](https://docs.microsoft.com/en-us/dotnet/api/system.bitconverter?view=net-5.0)). The following sections will show how to send data to the REST Source for each type of Stream.
+In the following section we want to outline two different ways to provide data to the REST Source. The first way is to use the Swagger UI to send data and the second way is to use the Tributech REST MockClient to send data to the REST Source. The following sections will show how to send data to the REST Source for each type of Stream.
 
 ### REST Endpoint/Swagger
-The REST Source provides a Swagger UI to send data to the REST Source. The Swagger UI can be accessed via the following url: `http://<host>:5080/swagger/index.html`. The Swagger UI can be used to send data to each type of Stream previously defined for the REST Source. 
+The REST Source provides a Swagger UI to send data to the REST Source. The Swagger UI can be accessed via the following url: `http://<host>:5080/swagger/index.html`. There are different endpoints available for each type of Stream and type of data (encoding provided values based on  [**.NET Framework BitConverter**](https://docs.microsoft.com/en-us/dotnet/api/system.bitconverter?view=net-5.0)).
 
 #### REST Stream
-The data for the REST Stream needs to be submitted under the Endpoint Group `Stream` and contain the DataStreamId (previously marked `green` in the [configuration section](#rest-stream)) of the REST Stream. The Swagger UI will only accept data that contains the DataStreamId of the REST Stream. The Swagger UI will reject any data that does not contain the DataStreamId of the REST Stream.
-
+The data for the REST Stream needs to be submitted in the Endpoint Group `Stream` and contain the DataStreamId (previously marked `green` in the [configuration section](#rest-stream)) of the REST Stream. The Swagger UI will only accept data that contains the same DataStreamId in the json payload as defined in the TwinConfiguration for a REST Stream.
 Examples on how to submit data to the REST Source can be found in the Swagger UI under __Stream__ directly, e.g. double stream:
 
 ![**"Stream Double Example**](../img/source-rest-stream-double.png)
 
 
 #### REST Pre-defined Payload
-The data for the Pre-defined Payload Stream needs to be submitted under the Endpoint Group `Pre-defined Payload` and contain the same identifier combination as the TwinConfiguration. Set the previously, in the [configuration section](#pre-defined-payload-stream)), defined `source identifier` value as `MachineId` and `value identifier` as `SensorId` of the json payload. The Swagger UI will reject any data that does not contain the  same identifier combination of the Pre-defined Payload Stream.
-
+The data for the Pre-defined Payload Stream needs to be submitted in the Endpoint Group `Pre-defined Payload` and contain the same identifier combination as the TwinConfiguration (Set the previously, in the [configuration section](#pre-defined-payload-stream), i.e. defined `source identifier` value as `MachineId` and `value identifier` as `SensorId` of the json payload).
 Examples on how to submit data to the REST Source can be found in the Swagger UI under __Pre-defined Payload__ directly, e.g. double stream:
 
 ![**"Stream Double Example**](../img/source-rest-stream-payload-double.png)
 
 
 ### MockClient
-We provide an additional `docker-compose.override.yml` to include a MockClient that can send data to the REST Source based on the environment variable setup. The MockClient is only for testing purposes and should not be used in production. The MockClient is configured via the `docker-compose.override.yml` file and needs to be in the same folder as the `docker-compose.yml` on docker-compose up. The following example shows how to setup the MockClient to send data to the REST Source for a stream double stream, the ***placeholder need to be replaced*** before starting the MockClient (the full `docker-compose.override.yml` can be found in the [here](../examples/agent-source/rest/docker-compose.override.yml)):
+We provide an additional `docker-compose.override.yml` to include a MockClient that can send data directly to the REST Source based on the settings of the environment variables. The MockClient is only for testing purposes and should not be used in production. The MockClient is configured via the `docker-compose.override.yml` file and needs to be in the same folder as the `docker-compose.yml` on docker-compose up. The following example shows how to setup the MockClient to send data to the REST Source for a stream double stream, the ***placeholder need to be replaced*** before starting the MockClient:
 
 <CodeBlock className="language-yml" title="docker-compose.override.yml">{SoourceDockerComposeMock}</CodeBlock>
 

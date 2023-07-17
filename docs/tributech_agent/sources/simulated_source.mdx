@@ -7,10 +7,10 @@ import CodeBlock from '@theme/CodeBlock';
 import SourceDockerCompose from '!!raw-loader!../examples/agent-source/simulated/docker-compose.yml';
 import SourceEnv from '!!raw-loader!../examples/agent-source/simulated/.env';
 
-The Tributech Simulated Source allows us to simulate a data source for testing purposes. After linking an [Tributech Agent](../quickstart.md) we can configure the Agent.
+The Tributech Simulated Source allows us to simulate a data source for testing purposes.
 
 ## Setup
-In the following section we will describe the setup of a Tributech Simulated Source. 
+The Tributech Simulated Source image can be started without any dependencies but will not be functional without a valid Twin Configuration or MessageBroker connect to the Tributech Agent. The TwinConfiguration can be provided via the Tributech Node (recommended) or MessageBroker (see [Source Integration](../source_integration#twin-model)). The Simulated Source will automatically connect to the Tributech Agent if the Tributech Agent is running and the Simulated Source is configured with the correct MessageBroker settings. In the following section we will describe the setup of a Tributech Simulated Source:
 
  - Setup the ***docker environment*** by creating a `.env` file with the following content and replace the placeholder values with your values:
 
