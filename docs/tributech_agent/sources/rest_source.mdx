@@ -66,7 +66,7 @@ After adding the REST Stream we configured the Data Encoding, one or both of the
 
 After we have configured the REST Source we can apply the configuration to the Tributech Agent by clicking on the `Apply Configuration` button in the top right corner. The REST Stream is now configured and can be used to send data to the REST Source. The REST Stream will only accept data that contains same combination of `source identifier` and `value identifier`.
 
-## Value Change Options
+### Value Change Options
 The basic handling of Value Change Options (VCO) can be found in [Source Integration](../source_integration.md). This section contains the concrete handling of the ***Step (Delta)*** for the simulated source. The following list contains the description for each supported ***Stream Data Encoding*** where ***X*** represents the value for ***Step (Delta)***:
 
 - ***Double***, ***Int32***, ***Long***, ***Float***: defines the minimum difference between values to be submitted, the change is always compared to the last successful submitted value, e.g. if ***X***= 3 if the double values 1, 2, 5, 8, 10, 11, 14 are received by the Tributech Source only 1, 5, 8, 11, 14 will be submitted.

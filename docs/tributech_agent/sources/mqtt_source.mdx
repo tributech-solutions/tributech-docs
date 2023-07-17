@@ -62,7 +62,7 @@ After we have configured the MQTT Source we can apply the configuration to the T
 
 This completes the configuration of the MQTT Source and we can now send data to the MQTT Source via the MQTT Explorer or the MQTT MockClient.
 
-## Value Change Options
+### Value Change Options
 The basic handling of Value Change Options (VCO) can be found in [Source Integration](../source_integration.md#value-change-options). This section contains the concrete handling of the ***Step (Delta)*** for the simulated source. The following list contains the description for each supported ***Stream Data Encoding*** where ***X*** represents the value for ***Step (Delta)***:
 
 - ***Double***, ***Int32***, ***Long***, ***Float***: defines the minimum difference between values to be submitted, the change is always compared to the last successful submitted value, e.g. if ***X***= 3 if the double values 1, 2, 5, 8, 10, 11, 14 are received by the Tributech Source only 1, 5, 8, 11, 14 will be submitted.

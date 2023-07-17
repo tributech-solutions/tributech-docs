@@ -25,7 +25,7 @@ It is also possible to handle the configuration via [Twin Models](#twin-model).
 
 ### Custom Sources
 It is possible to implement custom source and handle the data integration yourself by implementing a client that sends a predefined json payload to a predefined MQTT Topic of the Tributech Agent.
-We show all requirements for a successful custom source integration based on the [QuickStart Simulated Source](quickstart.md) in this section.
+We show all requirements for a successful custom source integration based on the [QuickStart Simulated Source](quickstart.mdx) in this section.
 
 - Gain ***access*** to the Tributech Agent  
 First we need access to the same MessageBroker the tributech agent uses. We can expose the port of the message broker outside the docker environment (see [Docker Networking](https://docs.docker.com/compose/networking/)) by changing the service mosquitto-server-simulated (complete update [docker-compose.yml](docker-compose-mqtt-port.yml)):
@@ -64,43 +64,55 @@ An example of valid json data for the Tributech Agent is shown in the following 
       The code fragment shows how the different types are converted into a byte array:
 
       ```csharp
-      public static byte[] GetBytes<T>(T value)
-          {
-              if (value == null)
-              {
-                  return Array.Empty<byte>();
-              }
+        using System;
+        using System.Text;
+                        
+        public class Program
+        {
+            public static void Main()
+            {
+                Console.WriteLine(Convert.ToBase64String(GetBytes(2.3d)));
+            }
+            
+            public static byte[] GetBytes<T>(T value)
+            {
+                if (value == null)
+                {
+                    return Array.Empty<byte>();
+                }
 
-              return value switch
-              {
-                  byte[] tValue => tValue,
-                  byte tValue => new [] { tValue },
-                  short tValue => BitConverter.GetBytes(tValue),
-                  ushort tValue => BitConverter.GetBytes(tValue),
-                  float tValue => BitConverter.GetBytes(tValue),
-                  double tValue => BitConverter.GetBytes(tValue),
-                  uint tValue => BitConverter.GetBytes(tValue),
-                  int tValue => BitConverter.GetBytes(tValue),
-                  long tValue => BitConverter.GetBytes(tValue),
-                  ulong tValue => BitConverter.GetBytes(tValue),
-                  bool tValue => BitConverter.GetBytes(tValue),
-                  string tValue => string.IsNullOrWhiteSpace(tValue)
-                      ? Array.Empty<byte>()
-                      : Encoding.UTF8.GetBytes(tValue),
-                  _ => throw new ArgumentOutOfRangeException(nameof(value), "Type is not supported")
-              };
+                return value switch
+                {
+                    byte[] tValue => tValue,
+                    byte tValue => new [] { tValue },
+                    short tValue => BitConverter.GetBytes(tValue),
+                    ushort tValue => BitConverter.GetBytes(tValue),
+                    float tValue => BitConverter.GetBytes(tValue),
+                    double tValue => BitConverter.GetBytes(tValue),
+                    uint tValue => BitConverter.GetBytes(tValue),
+                    int tValue => BitConverter.GetBytes(tValue),
+                    long tValue => BitConverter.GetBytes(tValue),
+                    ulong tValue => BitConverter.GetBytes(tValue),
+                    bool tValue => BitConverter.GetBytes(tValue),
+                    string tValue => string.IsNullOrWhiteSpace(tValue)
+                        ? Array.Empty<byte>()
+                        : Encoding.UTF8.GetBytes(tValue),
+                    _ => throw new ArgumentOutOfRangeException(nameof(value), "Type is not supported")
+                };
+            }
+        }
       ```
     
 - ***Send data*** 
 By sending this json object to Topic endpoint `edge/{agent-id}/value/ValueSource` you can provide the data to the Tributech Agent directly. The Agent-Id can be found in the right top cornor of an agent:
 
-    ![***AgentId****](img/node-agent-id.png)
+![***AgentId****](img/node-agent-id.png)
 
-    Note you can use tools like [MQTT Explorer](https://mqtt-explorer.com/) to send the data to the Tributech Agent Topic.
+Note you can use tools like [MQTT Explorer](https://mqtt-explorer.com/) to send the data to the Tributech Agent Topic.
 
 ## Twin Model
 
-The configuration of all Tributech Source is based on [Digital Twins](https://azure.microsoft.com/en-us/products/digital-twins). The best way to see how sources are configured is to export existing configuration, e.g. [QuickStart Configuration](quickstart.md):
+The configuration of all Tributech Source is based on [Digital Twins](https://azure.microsoft.com/en-us/products/digital-twins). The best way to see how sources are configured is to export existing configuration, e.g. [QuickStart Configuration](quickstart.mdx):
 
 ![**TwinConfig export**](img/node-source-export-config.png)
 
@@ -122,11 +134,11 @@ Note: The Twin Model can also be set directly for the Tributech Sources by submi
 ## Commands
 
 The Tributech Node is capable of sending commands to some Tributech Sources to control their behavior.
-Commands can be send with one button in the ***COMMANDS*** tab of an specific agent, e.g. [QuickStart Simulated Source](quickstart.md) 
+Commands can be send with one button in the ***COMMANDS*** tab of an specific agent, e.g. [QuickStart Simulated Source](quickstart.mdx) 
 
 ![**Command Overview**](img/node-source-command-overview.png)
 
-With the following payload with trigger an anomaly in the simulated source that changes one generated value to twice the maximum value of the simulateds stream, i.e. 20 based on the [QuickStart Simulated Source](quickstart.md) . The Command Payload is different between source and type of source command. However, for our simulated source example: 
+With the following payload with trigger an anomaly in the simulated source that changes one generated value to twice the maximum value of the simulateds stream, i.e. 20 based on the [QuickStart Simulated Source](quickstart.mdx) . The Command Payload is different between source and type of source command. However, for our simulated source example: 
 
 ![**Command Send**](img/node-source-command-send.png)
 
@@ -141,7 +153,7 @@ We can also inspect the result of the source command by selecting the execution 
 
 ## Value Change Options
 
-All Tributech Sources support ***Value Change Options (VCO)*** that can be used to apply additional logic to Streams if the ***Stream Data Encoding*** is set. If no ***VCO*** can be applied the logic is skipped and the data is submitted to the Tributech Agent without changes. In the following example we assume that a [QuickStart Simulated Source](quickstart.md) is set up an describe the behavior of value change options based on a double stream of a simulated source. 
+All Tributech Sources support ***Value Change Options (VCO)*** that can be used to apply additional logic to Streams if the ***Stream Data Encoding*** is set. If no ***VCO*** can be applied the logic is skipped and the data is submitted to the Tributech Agent without changes. In the following example we assume that a [QuickStart Simulated Source](quickstart.mdx) is set up an describe the behavior of value change options based on a double stream of a simulated source. 
 
 We first need to add the ***VCO*** to the stream by right clicking the ***Simulated Stream***
 

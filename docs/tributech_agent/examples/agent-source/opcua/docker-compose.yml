@@ -49,11 +49,3 @@ networks:
     ipam:
       config:
         - subnet: 172.24.1.0/24
-
-
-
-
-
-
-
-

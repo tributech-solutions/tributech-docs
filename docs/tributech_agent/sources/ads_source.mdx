@@ -78,7 +78,7 @@ We can now see the value of the symbol path in the `Beckhoff TwinCat ADS Stream`
 
 ![**"Add MQTT Stream data**](../img/node-source-ads-stream-data.png)
 
-## Value Change Options
+### Value Change Options
 The basic handling of Value Change Options (VCO) can be found in [Source Integration](../source_integration.md#value-change-options). This section contains the concrete handling of the ***Step (Delta)*** for the simulated source. The following list contains the description for each supported ***ADSDataType*** where ***X*** represents the value for ***Step (Delta)***:
 
 - ***INT***, ***UINT***, ***WORD***, ***SINT***, ***DINT***, ***UDINT***, ***DWORD***, ***REAL***, ***LREAL***: defines the minimum difference between values to be submitted, the change is always compared to the last successful submitted value, e.g. if ***X***= 3 if the values 1, 2, 5, 8, 10, 11, 14 are received by the Tributech Source only 1, 5, 8, 11, 14 will be submitted.

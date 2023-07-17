@@ -42,7 +42,7 @@ After saving all streams in the workspace we can send the configuration to the T
 ![**Save Simulated Source0**](../img/node-source-simulated-apply.png)
 
 
-## Value Change Options (VCO) Handling
+### Value Change Options (VCO) Handling
 The basic handling of VCO can be found in [Source Integration](../source_integration.md). This section contains the concrete handling of the ***Step (Delta)*** for the simulated source. The following list contains the description for each supported ***Stream Data Encoding*** where ***X*** represents the value for ***Step (Delta)***:
 
 - ***Double***, ***Int32***, ***Long***, ***Float***: defines the minimum difference between values to be submitted, the change is always compared to the last successful submitted value, e.g. if ***X***= 3 if the double values 1, 2, 5, 8, 10, 11, 14 are received by the Tributech Source only 1, 5, 8, 11, 14 will be submitted.
