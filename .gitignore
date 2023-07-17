@@ -33,6 +33,3 @@ logs
 .vscode/
 *.sw*
 .vs/
-.yarn
-.yarnrc.yml
-yarn.lock
