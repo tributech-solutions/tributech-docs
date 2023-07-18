@@ -16,7 +16,7 @@ It also serves as a middleware Layer for external apps which might read the avai
 The Agents are connected to our node via an MQTT broker which is secured by TLS to provide a secure communication channel. The protocol provides us the possibility to have a near real time communication to receive data from our agents. Also, it enables us to have a bidirectional communication with our agents which gives us the capability to issue commands, receive data and  Proofs.
 ___
 *** NOTE ***  
-This leads to the requirement that the ***Tributech EDGE Agent*** needs an outgoing port **1883**. Further Information can be found in the [Tributech Agent documentation](../tributech_agent/agent_integration.md). 
+This leads to the requirement that the ***Tributech EDGE Agent*** needs an outgoing port **1883**. Further Information can be found in the [Tributech Agent documentation](../tributech_agent/agent_integration.mdx). 
 ___
 
 ### REST API
