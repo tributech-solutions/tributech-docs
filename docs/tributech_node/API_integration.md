@@ -23,7 +23,7 @@ The API is structured with following "Topics" :
 - ***Values*** Fetch or Insert Values from or to the Node
 - ***Proofs*** Validate , insert or fetch proofs from the Node
 
-To do some example request just visit the above url, authorize your self *(see below)* and try it out ! 
+To do some example request just visit the above url, authorize yourself *(see below)* and try it out ! 
 
 ![Tributech Node - OAS](./img/OAS.png)
 
@@ -46,7 +46,7 @@ A error delivery may occur in following situations:
 - Endpoint described within the subscription is not reachable
 - Endpoint returns something else then a HTTP 200 (OK) 
 
-In order to provide a stable redelivery we divided the Webhook Events in two catagories : 
+In order to provide a stable redelivery we divided the Webhook Events in two categories : 
 
 1. Event QOS = 1 , high frequency events (like data received)
 2. Event QOS = 2, standard frequency events 

@@ -7,19 +7,19 @@ import CodeBlock from '@theme/CodeBlock';
 import SourceDockerCompose from '!!raw-loader!./examples/agent/docker-compose.yml';
 import SourceEnv from '!!raw-loader!./examples/agent/env-quickstart';
 
-In the following section we describe in detail how to setup and link an Tributech Agent with an existing Tributech Node. 
-We will show how to gain access to the Tributech Docker Registry and startup an Tributech Agent with a [Tributech Simulated Source](./sources/simulated_source.mdx). 
+In the following section we describe in detail how to setup and link an Tributech Agent with an existing Tributech Node.
+We will show how to gain access to the Tributech Docker Registry and startup an Tributech Agent with a [Tributech Simulated Source](./sources/simulated_source.mdx).
 
 ## Deployments
 
-First we need to setup an environment for the execution of the Tributech Software components. We will use 
+First we need to setup an environment for the execution of the Tributech Software components. We will use
 [Docker Compose](https://docs.docker.com/compose/) to run a Tributech Agent and Tributech Simulated Source in the Docker Containers. If you want to use any other container runtime (e.g. containerd) please talk to your contact person at Tributech or send an email to our [**Customer Advisory Team**](https://www.tributech.io/about-us/).
 
 ### Requirements
 
 The environment must meet the following hardware and software requirements:
 
-#### Hardware Requirements 
+#### Hardware Requirements
 
 | Type | Minimum Requirement      | Recommend Requirement |
 | :--- | :----------------------- | :-------------------- |
@@ -66,7 +66,7 @@ If you want to enable `non-root users` to execute docker commands visit [Post-in
 
 After completing the installation process for our environment we now need to retrieve the Tributech Docker Images and configure the Docker-Compose environment as follows:
 
-### Authentication 
+### Authentication
 
 In order to gain access to the Tributech Agent docker image we need to provide docker with the credentials to access the private Tributech Docker Registry. The authentication information can be found in the `Secrets` section of the Tributech Node.
 
@@ -85,7 +85,7 @@ We have a `docker-compose.yml` prepared for an quick and easy setup with a [Trib
 
 <CodeBlock className="language-yml" title="docker-compose.yml">{SourceDockerCompose}</CodeBlock>
 
- The docker-compose.yml can be used without any changes. However, we also need to create a `.env` file which contains the configuration details, for our docker-compose environment. The content of the file contains all relavant information about the docker image tags and the AGENT_ID. The `AGENT_ID` is a GUID that can be me freely choosen, for easy recognition we use `00000000-0000-0000-0000-000000000007`. We will use the `AGENT_ID` later on in the linkinig process to validate that we link the correct Tributech Agent with our Tributech Node. In our example the  `.env` file looks as follows:
+ The docker-compose.yml can be used without any changes. However, we also need to create a `.env` file which contains the configuration details, for our docker-compose environment. The content of the file contains all relevant information about the docker image tags and the AGENT_ID. The `AGENT_ID` is a GUID that can be freely chosen, for easy recognition we use `00000000-0000-0000-0000-000000000007`. We will use the `AGENT_ID` later on in the linking process to validate that we link the correct Tributech Agent with our Tributech Node. In our example the  `.env` file looks as follows:
 
 <CodeBlock className="language-plain" title=".env">{SourceEnv}</CodeBlock>
 
@@ -160,7 +160,7 @@ We want to highlight some features to quickly get started with the audit:
     ![Alt text](img/node-source-audit-overview-filter-details.png)
 
 - Retrigger - Validation can be triggered manually and the table view will always display the latest validation result for any proof.
-    
+
     ![***Audit retrigger***](img/node-source-audit-retrigger.png)
 
 - History - By selecting a proof row we can inspect the validation history for each proof.

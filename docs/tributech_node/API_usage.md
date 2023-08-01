@@ -131,7 +131,7 @@ The commands it self various by the capability of the targeted Tributech Agent S
 There are two main endpoints for the execution of remote commands : 
 
 - `/agent/{agentId}/command/{sourceId}` will send an request and block the response till the command is executed and a response is received. It will abort if the command execution takes longer than the provided timeout
-- `/agent/{agentId}/commandtrigger/{sourceId}` will send the request and return a transaction id. This Transaction Id can be used to match the given state updates and command response via webhook events, those events will contain the returned transaction id so you are able to trigger a command in a non blocking manner. 
+- `/agent/{agentId}/commandtrigger/{sourceId}` will send the request and return a transaction id. This Transaction Id can be used to match the given state updates and command response via webhook events, those events will contain the returned transaction id so you are able to trigger a command in a non-blocking manner. 
 
 For the command trigger following webhook events are required to receive the response and state updates from the command : 
 
