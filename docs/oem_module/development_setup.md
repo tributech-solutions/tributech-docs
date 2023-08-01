@@ -20,7 +20,7 @@ Links mentioned in the tutorial video:
 - micro LTE SIM card
 - USB A to micro USB cable or 5V power adapter with micro USB
 - Username and Password for Tributech Web portal access
-- "Arduino pin compatible development board"
+- Arduino pin compatible development board
   - [nRF52840](https://github.com/tributech-solutions/tributech-oem-module-iot-kit-examples/tree/main/nRF52840-DK)
   - [XMC4700 Relax Kit](https://github.com/tributech-solutions/tributech-oem-module-iot-kit-examples/tree/main/IoT-KIT-Infineon-XMC47_RELAX_5V_AD_V1/XMC4700_USB_to_UART)
 
@@ -46,7 +46,7 @@ After the steps above the sample kit is ready to send data.
 
 The verification of the connection and communication can be done in the Tributech web portal. The user has to access url of the node which is linked to their device and complete the login. The address always follows the following format:
 
-  node-name.dataspace-node.com
+  node-name.tributech-node.com
 
 The "node-name" is dependent on the node which is linked to the device. The node-name as well as the login credentials will be provided by Tributech via email. The main page of the web portal shows multiple sections all with their own information, but for the verification the user needs to look at the left-hand side an click on the "Agents" tap.
 
@@ -55,10 +55,10 @@ The "node-name" is dependent on the node which is linked to the device. The node
 This tap lists all agents which are linked to the node. They are listed with the following information:
 
 
-| Name | Type | Status | Key | Storage | Type | Proofkind |
+| Online/Status | Name | Type | Key Storage Type | Proof Kind | Actions |
 | ---- | ---- | ------ | --- | ------- | ---- | --------- |
 
-Name depicts the different names of the agents. Type lists the device type of the respective agents. Status shows if the agents is online or offline. Key Storage Type will show the user where the private keys are stored and ProofKind depicts which key format is used for the proof signatures.
+"Online" shows if the agents is online or offline. Name depicts the different names of the agents. Type lists the device type of the respective agents. Key Storage Type will show the user where the private keys are stored and ProofKind depicts which key format is used for the proof signatures. The Actions tap gives the suer more options to handle the linked device.
 
 Here the user has to select their own device and click on it. The names of the device will be provided by Tributech via email and will be depicted either on the device box or on the device itself. This will lead the user to the "Agent Management" page. An example of the agent management page is shown in the following picture:
 
@@ -99,7 +99,7 @@ After the source is added the name of the source can be changed on the right-han
 
 ![Add stream to source](./assets/TributechPlatformAgentAddStream.png)
 
-The last change which needs to be done is the addition of the "Value change options". Adding these options is shown in the following picture. The "value change options" consist of three values: PMIN, PMAX, ST. The PMIN value depicts the time frame which has to pass until a new value can be provided to the OEM in seconds. This value has to be at least 10 seconds. PMAX depicts the maximum time frame where no value is published by the OEM. If the user has at least supplied the OEM with at least one value the PMAX value will be activated. Afterwards if no value is supplied to the OEM in the PMAX specified time frame the last received value will be published by the OEM automatically. ST(step) is a threshold value. If the new value does not exceed last value + ST then the new value will not be published. 
+The last change which needs to be done is the addition of the "Value change options". Adding these options is shown in the following picture. The "value change options" consist of three values: PMIN, PMAX, ST. The PMIN value depicts the time frame which has to pass until a new value can be provided to the OEM in seconds. This value has to be at least 10 seconds. PMAX depicts the maximum time frame where no value is published by the OEM. If the user has at least supplied the OEM with at least one value the PMAX value will be activated. Afterwards if no value is supplied to the OEM in the PMAX specified time frame the last received value will be published by the OEM automatically. ST(step) is a threshold value. If the new value does not exceed "last value + ST" then the new value will not be published. 
 
 ![Add value change options to a stream](./assets/TributechPlatformAgentAddValueChange.png)
 
