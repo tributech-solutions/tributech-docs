@@ -126,7 +126,7 @@ The configuration of all Tributech Source is based on [Digital Twins](https://az
 We support two different exports:
 
 - ***To File***: Exports the current workspace Twin configuration to a json file.
-- ***To Template File***: Exports the current workspace Twin configuration to a json file and replaces the the unique ***dtId's*** for all elements with placeholder.
+- ***To Template File***: Exports the current workspace Twin configuration to a json file and replaces the unique ***dtId's*** for all elements with placeholder.
 
 We also support three different types of imports:
 

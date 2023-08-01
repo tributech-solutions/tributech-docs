@@ -8,11 +8,11 @@ import SourceDockerCompose from '!!raw-loader!../examples/agent-source/rest/dock
 import SourceEnv from '!!raw-loader!../examples/agent-source/rest/env';
 import SoourceDockerComposeMock from '!!raw-loader!../examples/agent-source/rest/docker-compose.override.yml';
 
-The Tributech Agent supports the integration of external data sources using [REST](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design#what-is-rest) with the  Tributech REST Source. The REST Source is configured via the Twin Configuration and is used to send data to the Tributech Agent via [MQTT](https://mqtt.org/). 
+The Tributech Agent supports the integration of external data sources using [REST](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design#what-is-rest) with the  Tributech REST Source. The REST Source is configured via the Twin Configuration and is used to send data to the Tributech Agent via [MQTT](https://mqtt.org/).
  The data can be send to the Tributech Source either via [Swagger](https://swagger.io/specification/) or with our [Tributech REST MockClient](#mockclient).
 
  We currently support two types of data format for the REST Source:
- 
+
 - __REST Pre-defined Payload__: Data will be provided in a pre-defined format containing a unique combination of
   MachineId and SensorId to identify the DataStreamId of the Twin Configuration (see [Swagger](#rest-endpointswagger) for details)
 - __REST Stream__: Data will be provided with the DataStreamId of the Twin Configuration contained in the data (see
@@ -20,12 +20,12 @@ The Tributech Agent supports the integration of external data sources using [RES
 
 We will show in [Configuration](#configuration) how to configure the REST Source to accept data for each specific stream type and provide the examples for [Swagger](#rest-endpointswagger) or the [REST MockClient](#mockclient).
 
-The Source will return a status code [200 OK](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) if the data was successfully received and is queued to be published to the Tributech Agent. The status code does not indicate that the data was successfully transfered to the Tributech Agent or Tributech Node. Queueing the data to be published means that the Source received the data and publishes the data after applying options contained by the Twin configuration if defined, e.g. [ValueChangeOptions](#ValueChangeOptions).
+The Source will return a status code [200 OK](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) if the data was successfully received and is queued to be published to the Tributech Agent. The status code does not indicate that the data was successfully transferred to the Tributech Agent or Tributech Node. Queueing the data to be published means that the Source received the data and publishes the data after applying options contained by the Twin configuration if defined, e.g. [ValueChangeOptions](#ValueChangeOptions).
 
 ## Setup
 The Tributech REST Source image can be started without any dependencies but will not be functional without a valid Twin Configuration or MessageBroker connect to the Tributech Agent. The TwinConfiguration can be provided via the Tributech Node (recommended) or MessageBroker (see [Source Integration](../source_integration#twin-model)). The REST Source will automatically connect to the Tributech Agent if the Tributech Agent is running and correct MessageBroker settings are set.
 
-In the following part we will describe the setup of a Tributech REST Source. 
+In the following part we will describe the setup of a Tributech REST Source.
 
  - Setup the ***docker environment*** by creating a `.env` file with the following content and replace the placeholder values with your values:
 
@@ -46,7 +46,7 @@ At first we add the REST Stream to our newly created Tributech REST Source. The 
 
 ![**"Add Stream Stream**](../img/node-source-rest-add-stream-stream.png)
 
-After adding the REST Stream we configure the Data Encoding (in `red`) and save the changes by clicking on the `SAVE IN WORKSPACE` button in the buttom right corner. The REST Stream is now configured but can be only be used to send data to the REST Source after submitting the changes to the Tributech Source via `APPLY CONFIGURATION`. The REST Stream will only accept data that contains the DataStreamId of the REST Stream. The DataStreamId can be found on the top of the REST Stream configuration (in `green`):
+After adding the REST Stream we configure the Data Encoding (in `red`) and save the changes by clicking on the `SAVE IN WORKSPACE` button in the bottom right corner. The REST Stream is now configured but can be only be used to send data to the REST Source after submitting the changes to the Tributech Source via `APPLY CONFIGURATION`. The REST Stream will only accept data that contains the DataStreamId of the REST Stream. The DataStreamId can be found on the top of the REST Stream configuration (in `green`):
 
 ![**"Add Stream Stream**](../img/node-source-rest-add-stream-stream-config.png)
 
@@ -58,8 +58,8 @@ In contrast to a generated identifier of the REST Stream we can now define a two
 
 ![**"Add Pre-defined Payload Stream**](../img/node-source-rest-add-stream-payload.png)
 
-After adding the REST Stream we configured the Data Encoding, one or both of the identifiers (Source/Value) and save the changes by clicking on the `SAVE IN WORKSPACE` button in the buttom right corner. 
-The Source Identifier and Value Identifier will be used to uniquely match data to the DataStreamId (not contained in payload). 
+After adding the REST Stream we configured the Data Encoding, one or both of the identifiers (Source/Value) and save the changes by clicking on the `SAVE IN WORKSPACE` button in the bottom right corner.
+The Source Identifier and Value Identifier will be used to uniquely match data to the DataStreamId (not contained in payload).
 
 ![**"Add Pre-defined Payload Stream**](../img/node-source-rest-add-stream-payload-config.png)
 
@@ -69,7 +69,7 @@ After we have configured the REST Source we can apply the configuration to the T
 The basic handling of Value Change Options (VCO) can be found in [Source Integration](../source_integration.md). This section contains the concrete handling of the ***Step (Delta)*** for the simulated source. The following list contains the description for each supported ***Stream Data Encoding*** where ***X*** represents the value for ***Step (Delta)***:
 
 - ***Double***, ***Int32***, ***Long***, ***Float***: defines the minimum difference between values to be submitted, the change is always compared to the last successful submitted value, e.g. if ***X***= 3 if the double values 1, 2, 5, 8, 10, 11, 14 are received by the Tributech Source only 1, 5, 8, 11, 14 will be submitted.
-- ***Byte Array***: will only be submitted if the current and last submitted value are not equal 
+- ***Byte Array***: will only be submitted if the current and last submitted value are not equal
 - ***String UTF 8***: will only be submitted if the current and last submitted value are not equal
 - ***Boolean***: will only be submitted if the current and last submitted value are not equal
 
@@ -100,7 +100,7 @@ We provide an additional `docker-compose.override.yml` to include a MockClient t
 <CodeBlock className="language-yml" title="docker-compose.override.yml">{SoourceDockerComposeMock}</CodeBlock>
 
 #### Modify docker-compose.override.yml
-We can adjust the data generation to our needs by modifying the docker-compose.override.yml file, see [Docker](https://docs.docker.com/compose/) for details on how to setup the environment for docker-compose. 
+We can adjust the data generation to our needs by modifying the docker-compose.override.yml file, see [Docker](https://docs.docker.com/compose/) for details on how to setup the environment for docker-compose.
 
 We can send different datatypes to specified streams and modify the following `environment` variables to change the stream generation behaviour:
 
@@ -119,8 +119,8 @@ We can send different datatypes to specified streams and modify the following `e
 - __Interval__: The interval in which the values are generated (in TimeSpan format, e.g. 00:00:05 for 5 seconds, see [Microsoft](https://learn.microsoft.com/en-us/dotnet/standard/base-types/standard-timespan-format-strings))
 - __MinValue__ (default -1000): The minimum value that can be generated (for bytearrays and string this is the length of the array/string, default 1)
 - __MaxValue__ (default 1000): The max value that can be generated (for bytearrays and string this is the length of the array/string)
- 
-In Order to add more streams the environment 'MockOptions' setting can be adjusted based on the AppSettings.json configuration capabilities, see [Microsoft](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-7.0) for details on how to setup the environment variables. 
+
+In Order to add more streams the environment 'MockOptions' setting can be adjusted based on the AppSettings.json configuration capabilities, see [Microsoft](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-7.0) for details on how to setup the environment variables.
 
 ### Fixed Streams
 
