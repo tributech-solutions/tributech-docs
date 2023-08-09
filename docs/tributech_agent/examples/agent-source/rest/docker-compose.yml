@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
   source-rest:
-    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-source-rest:${SOURCE_TAG:-latest}         
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-source-rest:${SOURCE_TAG:-latest}
     depends_on:
       - mosquitto-server-rest
       - tributech-agent-rest
@@ -10,7 +10,7 @@ services:
       - MqttOptions__MQTTHost=mosquitto-server-rest
       - Logging__LogLevel__Default=Debug
     ports:
-      - "5080:80" 
+      - "5080:80"
     networks:
       - rest-net
     restart: unless-stopped
@@ -28,10 +28,10 @@ services:
       - Logging__LogLevel__Default=Debug
       - Logging__Console__FormatterName=simple
       - MqttOptions__MQTTHost=mosquitto-server-rest
-      # general DSK edge agent configuration  
+      # general DSK edge agent configuration
       - EdgeDeviceOptions__AgentID=${AGENT_ID:?"The variable AGENT_ID needs to be configured in the .env file."}
     networks:
-      - rest-net      
+      - rest-net
     ports:
       - "5000:80" # enable access to agent REST-API (e.g. for configuration with Agent-Companion)
     volumes:
@@ -41,13 +41,13 @@ services:
       driver: "json-file"
       options:
         max-size: "2m"
-        max-file: "5"        
+        max-file: "5"
 
   mosquitto-server-rest:
-    image: eclipse-mosquitto:${MQTT_TAG:-latest}
+    image: eclipse-mosquitto:${MQTT_TAG:-1.6}
     networks:
       - rest-net
-    # ports: 
+    # ports:
     # - '1883:1883' # MQTT
     # - "127.0.0.1:9001:9001" # web-socket
     restart: unless-stopped

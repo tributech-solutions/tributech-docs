@@ -95,7 +95,7 @@ We provide an additional `docker-compose.override.yml` below to include a MockCl
 
 <CodeBlock className="language-yml" title="docker-compose.override.yml">{SoourceDockerComposeMock}</CodeBlock>
 
-After starting the MockClient we can see the data in the Tributech Node. The following example shows the data for the double stream.
+After starting the MockClient we need to apply the configuration again from the Tributech Node to our Tributech MQTT Source. For this we need to go back to the Source configuration window in the Tributech Node and click on the `APPLY CONFIGURATION` button again. Then we can see the data in the Tributech Node. The following example shows the data for the double stream.
 
 ![**MQTT Mock publish**](../img/node-source-mqtt-stream-values-mock.png)
 
