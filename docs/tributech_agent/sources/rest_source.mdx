@@ -99,6 +99,8 @@ We provide an additional `docker-compose.override.yml` to include a MockClient t
 
 <CodeBlock className="language-yml" title="docker-compose.override.yml">{SoourceDockerComposeMock}</CodeBlock>
 
+After starting our MockClient we need to go back to the configuration tap in the Tributech Node and apply the Tributech REST Source configuration again to be able to see the generated data. For this just click on the `APPLY CONFIGURATION` button in the configuration window.
+
 #### Modify docker-compose.override.yml
 We can adjust the data generation to our needs by modifying the docker-compose.override.yml file, see [Docker](https://docs.docker.com/compose/) for details on how to setup the environment for docker-compose.
 

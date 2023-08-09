@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
   source-mqtt:
-    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-source-mqtt:${SOURCE_TAG:-latest}         
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-source-mqtt:${SOURCE_TAG:-latest}
     depends_on:
       - mosquitto-server-mqtt
       - tributech-agent-mqtt
@@ -26,10 +26,10 @@ services:
       - Logging__LogLevel__Default=Debug
       - Logging__Console__FormatterName=simple
       - MqttOptions__MQTTHost=mosquitto-server-mqtt
-      # general DSK edge agent configuration  
+      # general DSK edge agent configuration
       - EdgeDeviceOptions__AgentID=${AGENT_ID:?"The variable AGENT_ID needs to be configured in the .env file."}
     networks:
-      - mqtt-net      
+      - mqtt-net
     ports:
       - "5000:80" # enable access to agent mqtt-API (e.g. for configuration with Agent-Companion)
     volumes:
@@ -39,13 +39,13 @@ services:
       driver: "json-file"
       options:
         max-size: "2m"
-        max-file: "5"        
+        max-file: "5"
 
   mosquitto-server-mqtt:
-    image: eclipse-mosquitto:${MQTT_TAG:-latest}
+    image: eclipse-mosquitto:${MQTT_TAG:-1.6}
     networks:
       - mqtt-net
-    ports: 
+    ports:
      - '1883:1883' # MQTT
     # - "127.0.0.1:9001:9001" # web-socket
     restart: unless-stopped
