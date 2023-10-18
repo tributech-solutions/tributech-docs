@@ -106,10 +106,10 @@ Following Headers are present in the Webhook request:
 This code example can be used to create the exact same signature which is present in the header (without the `sha256=` prefix).
 
 ~~~ csharp
-	public string HashHMAC(string secret, string payload, DateTimeOffset signatureTimestamp) {
+	public string HashHMAC(string secret, string webHookPayloadJson, DateTimeOffset signatureTimestamp) {
 		var encoding = new System.Text.ASCIIEncoding();
 		var messageHash = new HMACSHA256(encoding.GetBytes(secret));
-		var payload = encoding.GetBytes(messageJson)
+		var payload = encoding.GetBytes(webHookPayloadJson)
                               .Concat(encoding.GetBytes(signatureTimestamp.ToString(CultureInfo.InvariantCulture)))
                               .ToArray();
 		var signature = messageHash.ComputeHash(payload);
