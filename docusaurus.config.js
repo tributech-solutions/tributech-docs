@@ -3,7 +3,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  title: 'Tributech DataSpace Kit Documentation',
+  title: 'Tributech Platform Documentation',
   tagline: 'Technology for trusted DataSpaces',
   url: 'https://docs.tributech.io',
   baseUrl: '/',
@@ -21,29 +21,19 @@ module.exports = {
       },
       items: [
         {
-          href: '/setup/overview',
+          href: '/tributech_node/overview',
           position: 'left',
-          label: 'Setup',
+          label: 'Tributech Node',
         },
         {
-          href: '/provide_data/overview',
+          href: '/tributech_agent/overview',
           position: 'left',
-          label: 'Provide Data',
-        },
-        {
-          href: '/consume_data/overview',
-          position: 'left',
-          label: 'Consume Data',
-        },
-        {
-          href: '/verify_data/overview',
-          position: 'left',
-          label: 'Verify Data',
+          label: 'Tributech Agent',
         },
         {
           href: '/oem_module/overview',
           position: 'left',
-          label: 'OEM Module',
+          label: 'Tributech OEM Module',
         },
         {
           type: 'docsVersionDropdown',
@@ -117,9 +107,10 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
+          lastVersion: '3.6.0',
           routeBasePath: '/',
           disableVersioning: false,
-          includeCurrentVersion: true,
+          includeCurrentVersion: false,
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
             'https://github.com/tributech-solutions/tributech-dsk-docs/edit/master/',
