@@ -1,4 +1,4 @@
-version: "3.5"
+version: "3.6"
 
 services:
   official-opcua-server:
@@ -13,6 +13,6 @@ services:
       options:
         max-size: "2m"
         max-file: "5"
-  
+
 volumes:
    official_opcua:

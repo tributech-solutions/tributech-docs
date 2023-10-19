@@ -1,8 +1,8 @@
-# Tributech DataSpace Kit Documentation
+# Tributech Platform Documentation
 
 ## ![Publish docs via GitHub Pages](https://github.com/tributech-solutions/tributech-DSK-docs/workflows/Publish%20docs%20via%20GitHub%20Pages/badge.svg?branch=master)
 
-The Tributech DataSpace Kit documentation and covers the components DataSpace Hub, Node and Agent.
+This repository contains the Tributech Platform documentation.
 This documentation is written in markdown syntax using [docusaurus](https://docusaurus.io/docs/) hosted on Github Pages.
 
 ## Why doesn't this repo use Git LFS?

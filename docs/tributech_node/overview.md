@@ -9,7 +9,7 @@ The Tributech Node is the central layer of our Tributech Platform where every da
 It also serves as a middleware Layer for external apps which might read the available data to provide customized user experience. 
 
 ## Overview 
-![Tributech Node - Overview](./img/NodeOverview.png)
+![Tributech Node - Overview](./img/TributechArchitectureNode.png)
 
 ### Agents
 

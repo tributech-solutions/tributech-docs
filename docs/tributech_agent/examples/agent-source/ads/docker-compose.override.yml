@@ -1,4 +1,4 @@
-version: "3.5"
+version: "3.6"
 
 services:
  mock-server-ads:
@@ -23,6 +23,6 @@ services:
       # - "127.0.0.1:5000:5000" # SwaggerUI
       # - "127.0.0.1:48898:48898" # TCP Router Port
       # - "127.0.0.1:48899:49999/udp" # UDP Router Port
-    networks: 
+    networks:
       ads-net:
          ipv4_address: 172.24.1.6

@@ -23,21 +23,21 @@ The OEM supports multiple commands which can be invoked via UART. Most of those 
 
 ## Provide Value
 
-With this command it is possible to send data to the OEM. Each data package has to have three distinctive parameters namely: ValueMetadataId, Timestamp, and the value itself. 
+With this command it is possible to send data to the OEM. Each data package has to have three distinctive parameters namely: StreamID, Timestamp, and the value itself. 
 
 ```json
 {
     "TransactionNr": X,
     "Operation": "ProvideValue",
-    "ValuemetadataId": "XXX",
+    "StreamID": "XXX",
     "Timestamp": X,
     "Value": "XXX"
 }\r\n
 ```
 
-### ValueMetadataId
+### StreamID
 
-This identification number is presented in the form of an UUID. It links the values and timestamps given after the id to a specific Stream. The ValueMetadataIds can be acquired through the web portal or through the GetConfiguration command.
+This identification number is presented in the form of an UUID. It links the values and timestamps given after the identification number to a specific stream. The StreamIDs can be acquired through the web portal or through the GetConfiguration command.
 
 ### Timestamp
 
@@ -212,7 +212,7 @@ The example command below show typical interactions with the OEM and their succe
 
 ### Provide Value
 
-The only way to send a value to the OEM is to commit a single value to a stream with a valid valuemetadataid. This change from multiple values to a single value occurred in software version 3.2.
+The only way to send a value to the OEM is to commit a single value to a stream with a valid StreamID. This change from multiple values to a single value occurred in software version 3.2.
 
 #### Single Value
 
@@ -229,7 +229,7 @@ The following command shows how to send a single value to the OEM via UART. The 
 {
     "TransactionNr": 1,
     "Operation": "ProvideValue",
-    "ValuemetadataId": "10101010-2020-3030-4040-505050505051",
+    "StreamID": "10101010-2020-3030-4040-505050505051",
     "Timestamp": 0,
     "Value": "AACEQQ=="
 }\r\n

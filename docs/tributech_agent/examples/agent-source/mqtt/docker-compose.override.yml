@@ -1,8 +1,8 @@
-version: "3.5"
+version: "3.6"
 
 services:
   source-mqtt-mock-client:
-    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-source-mqtt-mockclient:${SOURCE_TAG:-latest}         
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-source-mqtt-mockclient:${SOURCE_TAG:-latest}
     depends_on:
       - mosquitto-server-mqtt
       - tributech-agent-mqtt

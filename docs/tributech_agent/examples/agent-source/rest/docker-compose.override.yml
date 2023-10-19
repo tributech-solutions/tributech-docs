@@ -1,8 +1,8 @@
-version: "3.5"
+version: "3.6"
 
 services:
   source-rest-mock-client:
-    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-source-rest-mockclient:${SOURCE_TAG:-latest}         
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-source-rest-mockclient:${SOURCE_TAG:-latest}
     depends_on:
       - mosquitto-server-rest
       - tributech-agent-rest
