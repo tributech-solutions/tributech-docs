@@ -1,0 +1,27 @@
+version: "3.6"
+
+services:
+  source-rest-mock-client:
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-source-rest-mockclient:${SOURCE_TAG:-latest}
+    depends_on:
+      - mosquitto-server-rest
+      - tributech-agent-rest
+      - source-rest
+    environment:
+      - MqttOptions__MQTTHost=mosquitto-server-rest
+      - Logging__LogLevel__Default=Debug
+      - MockOptions__ApiUrl=http://source-rest:80
+      - MockOptions__HttpPostTimeout=00:00:05.000
+
+      # Stream
+      - MockOptions__Streams__0__StreamEncoding=3 # double
+      - MockOptions__Streams__0__StreamId=<stream-id> # <-- replace with stream id
+      - MockOptions__Streams__0__Interval=00:00:01.000
+
+      # Payload Stream
+      - MockOptions__Streams__1__StreamEncoding=3 # double
+      - MockOptions__Streams__1__MachineId=<SourceIdentifier> # <-- replace with source id
+      - MockOptions__Streams__1__SensorId=<ValueIdentifier> # <-- replace with value id
+      - MockOptions__Streams__1__Interval=00:00:01.000
+    networks:
+      - rest-net
