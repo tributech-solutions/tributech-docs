@@ -20,14 +20,20 @@ First we need to setup an environment for the execution of the Tributech Softwar
 The environment must meet the following hardware and software requirements:
 
 #### Hardware Requirements
+The following table shows the recommended minimum hardware requirements for the overall system.
 
 | Type | Minimum Requirement              | Additional Information |
 | :--- | :------------------------------- | :--------------------- |
-| CPU  | 1 Core (x86-64 / ARM32 ) or more | The minimum requirements are recommended for small and medium workloads based on the volume of data processed.* |
-| RAM  | 1 GB                             | The Tributech Agent itself does not consume that much RAM, but depending on the volume of data processed the requirements could rise.** |
-*Small and medium workloads for example mean 1 to 10 streams with a refreshrate of 1 to 10Hz qhich lead to a peak at a 15% cpu load
+| CPU  | 1 Core (x86-64 / ARM32 ) or more | The minimum requirements for small and medium workloads.  |
+| RAM  | 1 GB                             | The minimum requirements for small and medium workloads. |
 
-**Ram consumption for 1 to 10 streams with 1 to 10Hz peaks at around 200MB
+The following table shows an example of a performance test with a typical IoT gateway or low-end servers. The results include the consumed CPU and RAM resources of the Tributech Agent, in addition you also need to consider the resource consumption of your selected source and your own services.
+
+|Value per second|CPU load(1 core 2.2GHz)|RAM|
+| :------------- | :-------------------- |:- |
+| 1              | 0,54%                 | 103,1MB|
+| 10             | 2,45%                 | 112,2MB|
+| 100            | 13,55%                | 129MB|
 
 If you have any questions regarding infrastructure requirements, please talk to your contact person at Tributech or create a support ticket.
 
