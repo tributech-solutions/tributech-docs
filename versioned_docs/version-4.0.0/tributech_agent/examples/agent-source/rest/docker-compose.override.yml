@@ -10,7 +10,7 @@ services:
     environment:
       - MqttOptions__MQTTHost=mosquitto-server-rest
       - Logging__LogLevel__Default=Debug
-      - MockOptions__ApiUrl=http://source-rest:80
+      - MockOptions__ApiUrl=http://source-rest:8080
       - MockOptions__HttpPostTimeout=00:00:05.000
 
       # Stream
