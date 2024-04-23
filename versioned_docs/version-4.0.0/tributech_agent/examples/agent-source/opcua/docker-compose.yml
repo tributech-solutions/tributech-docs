@@ -1,0 +1,51 @@
+version: '3.6'
+
+services:
+  source-opcua:
+    restart: unless-stopped
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-source-opcua:${SOURCE_TAG:-latest}
+    environment:
+      - MqttOptions__MQTTHost=mosquitto-server-opcua
+      - Logging__LogLevel__Default=Debug
+      - Logging__LogLevel__ADSRouter=Error
+    networks:
+      - opcua-net
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "2m"
+        max-file: "5"
+
+  tributech-agent-opcua:
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-agent:${AGENT_TAG:-latest}
+    depends_on:
+      - mosquitto-server-opcua
+    environment:
+      - Logging__LogLevel__Default=Information
+      - MqttOptions__MQTTHost=mosquitto-server-opcua
+      # general DSK edge agent configuration
+      - EdgeDeviceOptions__AgentID=${AGENT_ID:?"The variable AGENT_ID needs to be configured in the .env file."}
+    networks:
+      - opcua-net
+    ports:
+      - "5000:8080" # enable access to agent REST-API (e.g. for configuration with Agent-Companion)
+    volumes:
+      - ./volumes/opcua/agent:/app/data # volume mapping for permanent storage of keys and datatwin file
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "2m"
+        max-file: "5"
+
+  mosquitto-server-opcua:
+    image: eclipse-mosquitto:${MQTT_TAG:-1.6}
+    restart: unless-stopped
+    networks:
+      - opcua-net
+
+networks:
+  opcua-net:
+    ipam:
+      config:
+        - subnet: 172.24.1.0/24

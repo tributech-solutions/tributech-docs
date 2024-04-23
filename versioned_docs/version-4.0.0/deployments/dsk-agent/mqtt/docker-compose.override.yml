@@ -1,0 +1,25 @@
+version: "3.3"
+
+services:
+  mqtt-source:
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}mqtt-source:${SOURCE_TAG:-latest}
+    depends_on:
+      - mosquitto-server
+      - dsk-agent
+    environment:
+      - MqttOptions__MQTTHost=mosquitto-server
+      - Logging__LogLevel__Default=Information
+      # push logs to Loki at server via promtail
+      - TelemetryOptions__LokiUrl=https://promtail-push.${NODE_NAME:?"The variable NODE_NAME needs to be configured in the .env file."}.dataspace-node.com
+      - TelemetryOptions__LokiUser=tributech
+      - TelemetryOptions__LokiPassword=${LOKI_PROMTAIL_PW:?"The variable LOKI_PROMTAIL_PW needs to be configured in the .env file."}
+      - TelemetryOptions__ServiceName=${AGENT_NAME:?"The variable AGENT_NAME needs to be configured in the .env file."}-ads-source
+      - TelemetryOptions__ServiceId=${AGENT_ID:?"The variable AGENT_ID needs to be configured in the .env file."}
+    networks:
+      - edge-net
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "2m"
+        max-file: "5"

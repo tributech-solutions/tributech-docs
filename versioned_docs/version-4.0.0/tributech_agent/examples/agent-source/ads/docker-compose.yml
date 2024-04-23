@@ -1,0 +1,54 @@
+version: '3.6'
+
+services:
+  source-ads:
+    restart: unless-stopped
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-source-ads:${SOURCE_TAG:-latest}
+    environment:
+      - MqttOptions__MQTTHost=mosquitto-server-ads
+      - Logging__LogLevel__Default=Debug
+      - Logging__LogLevel__ADSRouter=Error
+    networks:
+      ads-net:
+        ipv4_address: 172.24.1.5
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "2m"
+        max-file: "5"
+
+  tributech-agent-ads:
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-agent:${AGENT_TAG:-latest}
+    depends_on:
+      - mosquitto-server-ads
+    environment:
+      - Logging__LogLevel__Default=Information
+      - MqttOptions__MQTTHost=mosquitto-server-ads
+      # general DSK edge agent configuration
+      - EdgeDeviceOptions__AgentID=${AGENT_ID:?"The variable AGENT_ID needs to be configured in the .env file."}
+    networks:
+      ads-net:
+        ipv4_address: 172.24.1.7
+    ports:
+      - "5000:8080" # enable access to agent REST-API (e.g. for configuration with Agent-Companion)
+    volumes:
+      - ./volumes/ads/agent:/app/data # volume mapping for permanent storage of keys and datatwin file
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "2m"
+        max-file: "5"
+
+  mosquitto-server-ads:
+    image: eclipse-mosquitto:${MQTT_TAG:-1.6}
+    restart: unless-stopped
+    networks:
+      ads-net:
+         ipv4_address: 172.24.1.3
+
+networks:
+  ads-net:
+    ipam:
+      config:
+        - subnet: 172.24.1.0/24
