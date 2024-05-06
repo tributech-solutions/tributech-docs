@@ -75,6 +75,8 @@ With the [**MQTT Explorer**](http://mqtt-explorer.com/) we can directly send jso
     }
 ```
 
+**It must be mentioned here that the value in the json structure above is a base64 encoded value. Every value that is sent to the Tributech agent must be encoded so that it can be used by the agent. First the value must be converted to a byte array and then the byte array must be base64 encoded.**
+
 We can post the data to the MQTT Source by clicking on the `Publish` button in the top right corner.
 
 ![**Mqtt Explorer publish**](../img/node-source-mqtt-stream-value-publish.png)

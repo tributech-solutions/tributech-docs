@@ -1,0 +1,7 @@
+services:
+  tributech-agent:
+    ...
+    environment:
+      - EnrollmentOptions__Directory=${ENROLLMENT_DIRECTORY:?"The Enrollment Directory must be configured in the .env file."}
+      - EdgeDeviceOptions__NodeUrl=${NODE_URL:?"The Node URL must be configured in the .env file."}
+    ...
