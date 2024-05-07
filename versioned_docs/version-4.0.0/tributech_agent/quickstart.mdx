@@ -45,26 +45,7 @@ We start by setting up the docker-compose environment for the Tributech Agent an
     </CodeBlock>
 
 ## Link Agent
-After starting the Tributech Agent we need to link the Agent to a Tributech Node in order to receive data. In the agent overview we can click ***LINK NEW AGENT*** to initialize this process.
-
-![***Agent Linking***](./img/node-agent-linking.png)
-
-Our prepared [docker-compose.yml](./examples/agent/docker-compose.yml) from the previous step exposes the port `5000` of the Agent to interact with the Tributech Node.
-
-![***Agent Connect***](img/node-agent-linking-connect.png)
-
-After pressing connect we can see the `AGENT_ID` `00000000-0000-0000-0000-000000000007` we previously defined in the `.env` file.
-
-![***Connect link***](img/node-agent-linking-connect-link.png)
-
-Now we can proceed in the linking process by clicking ***Link/Relink Agent***.
-
-![***Connect link***](img/node-agent-linking-connect-link-2.png)
-
-After a successfully completed linking process we will add a [Tributech Simulated Source](./sources/simulated_source#configuration).
-If you would prefer another type of source you can now visit the [Tributech Agent Sources](source_integration.md) overview.
-
-![***Connect link***](img/node-agent-linking-connect-link-configure.png)
+After starting the Tributech Agent we need to grant the Agent access to a Tributech Node in order to receive data. ***TBD_AGENT_MANGEMENT***
 
 ## Source Configuration
 The previous steps established the communication between an Tributech Agent and a Tributech Node. Next we will setup a [Tributech Source](source_integration.md) to provide data for the Tributech Agent. The Tributech agent will then be used to send the data to the Tributech Node. In the following section we complete our Tributech Agent QuickStart Setup by configuring a simple double stream for the [Tributech Simulated Source](sources/simulated_source.mdx) (the Agent Name depends on the `.env` file `AGENT_ID` value defined in the previous section).
