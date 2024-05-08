@@ -51,7 +51,7 @@ for processing data. An example of valid json data for the Tributech Agent is sh
 ```json
     [
         {
-            "DataStreamID":"7d19fe9a-a01f-486d-9140-59ed4255835c",
+            "StreamId":"7d19fe9a-a01f-486d-9140-59ed4255835c",
             "Timestamp":"2023-07-12T08:17:52.790354+00:00",
             "Value":"gV57FU1ScB+n4g=="
         }

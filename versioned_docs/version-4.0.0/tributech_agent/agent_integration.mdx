@@ -106,33 +106,9 @@ docker-compose up -d
 If you encounter problems with starting the containers please consult the official docker documentation [docker login](https://docs.docker.com/engine/reference/commandline/login/) and [docker compose CLI](https://docs.docker.com/compose/reference/).
 
 ## Link Agent
-After successfully starting the docker compose setup, in the previous step, we can now link the agent with the Tributech Node. Without completing the linking process the Tributech Node will not be able to receive any data from the Tributech Agent. In the agent overview we can click `LINK NEW AGENT` to initialize this process.
+After successfully starting the docker compose setup, in the previous step, we can now link the agent with the Tributech Node. Without completing the linking process the Tributech Node will not be able to receive any data from the Tributech Agent. 
 
-![***Agent Linking***](./img/node-agent-linking.png)
-
-Our prepared [docker-compose.yml](./examples/agent/docker-compose.yml) from the previous step exposes the port `5000` of the Agent to interact with the Tributech Node. The port of you environment must be reachable from the Tributech Node. If you are running the Tributech Node on a virtual machine you can use the following command to forward the port to your local machine:
-
-```bash
-ssh <vm-user>@<vm-ip> -L <local-port>:localhost:5000
-# e.g.
-ssh root@100.101.102.103 -L 5000:localhost:5000
-```
-
-After the port forwarding is established we can start the linking process by clicking `Connect`:
-
-![***Agent Connect***](img/node-agent-linking-connect.png)
-
-After pressing connect, we can see the AGENT_ID `00000000-0000-0000-0000-000000000007` we previously defined in our `.env` file for the docker environment. If the AGENT_ID is correct we can click `Link/Relink Agent` to continue the linking process:
-
-![***Linking Connect link***](img/node-agent-linking-connect-link.png)
-
-Now we can finish the linking process by clicking `Link/Relink Agent`:
-
-![***Connect link***](img/node-agent-linking-connect-link-2.png)
-
-After the successfully completed linking process, we can configure our desired [Tributech Agent Source](source_integration.md) for the Agent.
-
-![***Connect link configuration***](img/node-agent-linking-connect-link-configure.png)
+***TBD_AGENT_MANGEMENT***
 
 ## Verify
 In order to detect [data tampering](https://www.tributech.io/blog/cybersecurity-threat-data-tampering) we provide the possibility to audit each stream individually and quickly find failed validations. We can either use graph a to visually find problems or a table to filter proofs with predefined filters. We will describe both options in the following sections.

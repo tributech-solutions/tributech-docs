@@ -33,7 +33,7 @@ Example EDGE Agent DTDL Instance
       "$metadata": {
         "$model": "dtmi:io:tributech:device:edge;1"
       },
-      "MaxMerkleTreeDepth": 14,
+      "MaxMerkleTreeDepth": 5,
       "MaxMerkleTreeAge": 600,
       "Name": "Steel Factory Plant Line #24 test",
       "PublicKey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2vZ+/prceZnTywahSGFH\nEcnGoZjYzzcCGAYVk5wPP3/n4qDj9HwP9dXNlvCE6NRoQwVZJ8JcO4Gjz50939dx\nvi+CCEh6xKL1SY6eh6lzSaATJdpcUwji4XOkv3zClRO32KIcNG2bWawiWQlZLxzMMhWJVlboKAbl/XIXB6XhWn/Fi5T7ViYblI9FjAaBDhHPizegGqDmRM8YGg5HcLJf\nw6To9bj603+/YIBPA4zEuP441RRCIj9WZi9J22gtF2ekFtq/N13GFa4wYfQeKmYQ\nowIDAQAB\n-----END PUBLIC KEY-----",
