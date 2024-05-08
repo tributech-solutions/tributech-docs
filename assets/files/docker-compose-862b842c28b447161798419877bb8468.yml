@@ -1,16 +1,16 @@
 version: "3.6"
 
 services:
-  source-simulated:
-    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-source-simulated:${SOURCE_TAG:-latest}
+  source-mqtt:
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-source-mqtt:${SOURCE_TAG:-latest}
     depends_on:
-      - mosquitto-server-simulated
-      - tributech-agent-simulated
+      - mosquitto-server-mqtt
+      - tributech-agent-mqtt
     environment:
-      - MqttOptions__MQTTHost=mosquitto-server-simulated
+      - MqttOptions__MQTTHost=mosquitto-server-mqtt
       - Logging__LogLevel__Default=Debug
     networks:
-      - simulated-net
+      - mqtt-net
     restart: unless-stopped
     logging:
       driver: "json-file"
@@ -18,21 +18,23 @@ services:
         max-size: "2m"
         max-file: "5"
 
-  tributech-agent-simulated:
+  tributech-agent-mqtt:
     image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-agent:${AGENT_TAG:-latest}
     depends_on:
-      - mosquitto-server-simulated
+      - mosquitto-server-mqtt
     environment:
       - Logging__LogLevel__Default=Debug
       - Logging__Console__FormatterName=simple
-      - MqttOptions__MQTTHost=mosquitto-server-simulated
+      - MqttOptions__MQTTHost=mosquitto-server-mqtt
+      # general DSK edge agent configuration
       - EdgeDeviceOptions__AgentID=${AGENT_ID:?"The variable AGENT_ID needs to be configured in the .env file."}
-    ports:
-      - "5000:8080"
+      - EdgeDeviceOptions__NodeUrl=${NODE_URL:?"The variable NODE_URL needs to be configured in the .env file."}
     networks:
-      - simulated-net
+      - mqtt-net
+    ports:
+      - "5000:8080" # enable access to agent mqtt-API (e.g. for configuration with Agent-Companion)
     volumes:
-      - ./volumes/simulated/agent/:/app/data # volume mapping for permanent storage of keys and datatwin file
+      - ./volumes/mqtt/agent/:/app/data # volume mapping for permanent storage of keys and datatwin file
     restart: unless-stopped
     logging:
       driver: "json-file"
@@ -40,15 +42,15 @@ services:
         max-size: "2m"
         max-file: "5"
 
-  mosquitto-server-simulated:
+  mosquitto-server-mqtt:
     image: eclipse-mosquitto:${MQTT_TAG:-1.6}
     networks:
-      - simulated-net
-    # ports:
-    # - '1883:1883' # MQTT
+      - mqtt-net
+    ports:
+     - '1883:1883' # MQTT
     # - "127.0.0.1:9001:9001" # web-socket
     restart: unless-stopped
 
-networks:
-  simulated-net:
 
+networks:
+  mqtt-net:
