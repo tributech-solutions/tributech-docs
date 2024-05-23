@@ -1,0 +1,20 @@
+name: Tributech CI - main
+
+on:
+  push:
+    branches: [ master ]
+    tags:
+      - '*'
+  pull_request:
+    branches: [ master, feature/*, hotfix/*, fix/* ]
+
+
+jobs:
+
+    publish:
+        name: docs via GitHub Pages
+        uses: tributech-solutions/tributech-github-actions-ci/.github/workflows/deploy-gh-pages.yml@TP-4706-dev-ops-check-leftover-github-action-repositories
+        # with:
+        #     DOCKER_REGISTRY_NAME: 'tributech.azurecr.io'
+        secrets:
+          GH_PAGES_DEPLOY: ${{ secrets.GH_PAGES_DEPLOY }}
