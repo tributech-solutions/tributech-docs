@@ -26,11 +26,12 @@ services:
       - MqttOptions__MQTTHost=mosquitto-server-ads
       # general DSK edge agent configuration
       - EdgeDeviceOptions__AgentID=${AGENT_ID:?"The variable AGENT_ID needs to be configured in the .env file."}
+      - EdgeDeviceOptions__NodeUrl=${NODE_URL:?"The variable NODE_URL needs to be configured in the .env file."}
     networks:
       ads-net:
         ipv4_address: 172.24.1.7
     ports:
-      - "5000:80" # enable access to agent REST-API (e.g. for configuration with Agent-Companion)
+      - "5000:8080" # enable access to agent REST-API (e.g. for configuration with Agent-Companion)
     volumes:
       - ./volumes/ads/agent:/app/data # volume mapping for permanent storage of keys and datatwin file
     restart: unless-stopped
