@@ -14,7 +14,7 @@ jobs:
     publish:
         name: docs via GitHub Pages
         uses: tributech-solutions/tributech-github-actions-ci/.github/workflows/deploy-gh-pages.yml@TP-4706-dev-ops-check-leftover-github-action-repositories
-        # with:
-        #     DOCKER_REGISTRY_NAME: 'tributech.azurecr.io'
+        with:
+          DOTNET_VERSION: '16.x'
         secrets:
           GH_PAGES_DEPLOY: ${{ secrets.GH_PAGES_DEPLOY }}
