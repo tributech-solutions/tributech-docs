@@ -26,7 +26,8 @@ services:
       - Logging__LogLevel__Default=Debug
       - Logging__Console__FormatterName=simple
       - MqttOptions__MQTTHost=mosquitto-server-simulated
-      - EdgeDeviceOptions__AgentID=${AGENT_ID:?"The variable AGENT_ID needs to be configured in the .env file."}
+      - EdgeDeviceOptions__AgentID=${AGENT_ID:?"The variable AGENT_ID_SIMULATED needs to be configured in the .env file."}
+      - EdgeDeviceOptions__NodeUrl=${NODE_URL:?"The variable NODE_URL needs to be configured in the .env file."}
     ports:
       - "5000:8080"
     networks:
