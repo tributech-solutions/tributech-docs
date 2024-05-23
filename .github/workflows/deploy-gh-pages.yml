@@ -13,7 +13,7 @@ jobs:
 
     publish:
         name: docs via GitHub Pages
-        uses: tributech-solutions/tributech-github-actions-ci/.github/workflows/deploy-gh-pages.yml@TP-4706-dev-ops-check-leftover-github-action-repositories
+        uses: tributech-solutions/tributech-github-actions-ci/.github/workflows/deploy-gh-pages.yaml@TP-4706-dev-ops-check-leftover-github-action-repositories
         with:
           DOTNET_VERSION: '16.x'
         secrets:
