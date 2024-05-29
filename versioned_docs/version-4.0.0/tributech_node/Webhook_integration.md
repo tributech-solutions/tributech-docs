@@ -98,7 +98,7 @@ On the right sight we see the Tributech Headers with the following headers (exce
 |-|-|
 |x-tributech-webhook-version |	2.0.0|
 |x-tributech-event |	ProofStoredEvent |
-|x-tributech-signaturetimestamp |	2024-05-28T06:31:37.3121930+00:00 |
+|x-tributech-signaturetimestamp |	2024-05-28T06:31:14.851318+00:00 |
 |x-tributech-signature|	sha256=065CF4E993CF1DF7399B2DF64A147567552EB4BB7DD91ACC73840D5B8411B940|
 
 The Headers contains the Tributech specific Attribute `x-tributech-signature` and `x-tributech-signaturetimestamp` which we will use in the next section to verificy that the Payload was not tempered with. 
