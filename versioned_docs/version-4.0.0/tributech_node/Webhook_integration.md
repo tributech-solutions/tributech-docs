@@ -61,25 +61,79 @@ Webhooks itself are HTTP objects that contain in addition to default HTTP inform
 | x-tributech-timestamp | event timestamp utc |  06/16/2023 05:08:43 +00:00 |
 
 ### Event Types {#event-types}
-When creating a Webhook subscription we can choose different type of events. What Event each Type represents can be taken from the Tooltip.
+When creating a Webhook subscription we can choose different type of events. We have multiple categories of Event Types for the different
+operations withing demeter, e.g. Device, Proof, Stream,.. .
 Its important to note that each of the Event Types defines in the background a property `EventQoS` which will be transmitted with each
 Payload indicating the frequency of the events. This property is used by the redelivery mechanism to know how often a event should be retried to resend
 in case of an error. This value is predefined and cannot change by the user. The Webhook Events are divided into two categories : 
 1. Event QOS = 1 , high frequency events (like data received)
 2. Event QOS = 2, standard frequency events 
 
+
+#### Device Events
+Device Events are triggered by interactions with devices and device status changes,
+this includes enrollments, configuration and source commands.
+
+|Name | Description |
+|--|--|
+|DeviceConnectionEvent|Occurs when a Device has changed its connection status|
+|DeviceStateEvent|Occurs when a Device has changed its own state|
+|GetConfigurationRequestEvent|Occurs when the Get Configuration Command has been requested|
+|GetConfigurationResponseEvent|Occurs when the Get Configuration Command has finished and the response was received|
+|IncomingEnrollmentRequestEvent|Occurs when an Enrollment request was received|
+|SetConfigruationRequestEvent|Occurs when the Set Configuration Command has been requested|
+|SetConfigurationResponseEvent|Occurs when the Set Configuration Command has finished and the response was received|
+|SourceCommandRequestEvent|Occurs when a Source Command is invoked and sent to the Agent|
+|SourceCommandResponseEvent|Occurs when the Source Command has finished and the response was received|
+|SourceCommandStateUpdateEvent|Occurs when a Agent or Agent Source has sent a execution state of the current Command|
+
+#### Proof Events
+Proof Events describe events related to proof handling and status, e.g. received, valid, stored.
+|Name | Description |
+|--|--|
+|ProofConfirmedEvent|Occurs when the Proof is successfully placed on the BlockChain|
+|ProofReceivedEvent|Occurs when a Proof is received from a Device|
+|ProofStoredEvent|Occurs when the Proof is stored into the Persistence Layer and passed into the Block Chain|
+|ProofValidatedEvent|Occurs when the Proof is validated|
+
+#### Stream Events
+Stream Events provide information when stream management operations are executed.
+|Name | Description |
+|--|--|
+|StreamDeletedEvent|Occurs when a Agent or Stream is deleted and will be removed from the Node|
+
+#### Twin Events
+Twin Events provide information when Digital Twin management operations are executed.
+|Name | Description |
+|--|--|
+|TwinInstanceDeletedEvent|Occurs when a Digital Twin Instance was removed from the Node|
+|TwinModelDeletedEvent|Occurs when a Digital Twin Model was removed from the Node|
+
+#### Value Events
+Value Events are triggered when the Tributech Node interacts with Stream Values.
+|Name | Description |
+|--|--|
+|ValueReceivedEvent|Occurs when a Value is received from an Device|
+|ValueStoredEvent|Occurs when a Value is stored into the Persistence Layer|
+
+#### Webhook Events
+Webhook Events are triggered in webhook specific operations and provide information about webhook data.
+
+|Name | Description |
+|--|--|
+|WebHookEvent|Contains all the Information which will be published as Webhook|
+
 ### Error Handling
 In the case of an error during Webhook Event delivery we implemented an back-off redelivery mechanism. 
-Commonly errors occour in the following situations:
+Commonly errors occur in the following situations:
 
 - Network is not available
 - Endpoint described within the subscription is not reachable
 - Endpoint returns something else then a HTTP 200 (OK) 
 
-If an error occours we execute retries based on the formulary  `(Attempt Count + 0,7) ^ 4 + Minimum Retry Interval`.
-The `Attempt Count` is dependend on the `EventQoS` described in the previous section.
-High frequency (`EventQoS` = 2) events will be retried for **four times** and then will be discarded. 
-Standard Frequency (`EventQoS` = 1) events have **ten retries** till they are discarded.
+If an error occurs we execute retries based on the formulary  `(Attempt Count + 0,7) ^ 4 + Minimum Retry Interval`.
+The `Attempt Count` is dependent on the `EventQoS` described in the previous section.
+High frequency (`EventQoS` = 2) events will not be retried and Standard Frequency (`EventQoS` = 1) events have **ten retries** before they are discarded.
  
 ## Verification {#verification}
 In order to verify that the received Webhook Event has not been tempered with we can use either [OpenSSL](https://github.com/openssl/openssl) or [Microsoft C#](https://learn.microsoft.com/en-us/dotnet/csharp/) as show in the following section. We will use in both examples the previously created webhook with the secret `foobar` and a `ProofStoredEvent` sample event. All this examples and descriptions expect that a Tributech Agent with a active Tributech Source is connected to a Tributech Node. If you do not have currently such a setup you need to adjust your Webhook Subscription accordingly (e.g. ) or see our [QuickStarter Guide](../tributech_agent/quickstart.mdx) to meet the preconditions.
