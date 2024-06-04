@@ -12,7 +12,6 @@ on:
 
 jobs:
 
-
   publish:
     name: docs via GitHub Pages
     uses: tributech-solutions/tributech-github-actions-ci/.github/workflows/deploy-gh-pages.yaml@main
