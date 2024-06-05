@@ -4,7 +4,7 @@ sidebar_position: 2
 ---
 
 ## General 
-We provide the possibility within our Tributech Node for external services to receive a wide variety of notifications about internal events via [Webhooks](https://en.wikipedia.org/wiki/Webhook). A webhook is an HTTP-based callback function that enables lightweight, event-driven communication between a Tributech Node and a client. The only requirement for a client is to provide a HTTP POST endpoint that returns Status code 200 if a event was successfully received or any other status code when the event has not been processed successfully. When a client reports a problem with an event Demeter will respond according to our [Error Handling](#error-handling) logic.
+We provide the possibility within our Tributech Node for external services to receive a wide variety of notifications about internal events via [Webhooks](https://en.wikipedia.org/wiki/Webhook). A webhook is an HTTP-based callback function that enables lightweight, event-driven communication between a Tributech Node and a client. The only requirement for a client is to provide a HTTP POST endpoint that returns Status code 200 if an event was successfully received (see [Error Handling](#error-handling) for more details).
 In the following section, we will demonstrate how to setup a Tributech Node to send events to an client and how a user can [verify](#verification) that the received event data has not been tampered with. 
 
 ##  Webhook Subscription Management
@@ -116,13 +116,6 @@ Value Events are triggered when the Tributech Node interacts with Stream Values.
 |--|--|
 |ValueReceivedEvent|Occurs when a Value is received from an Device|
 |ValueStoredEvent|Occurs when a Value is stored into the Persistence Layer|
-
-#### Webhook Events
-Webhook Events are triggered in webhook specific operations and provide information about webhook data.
-
-|Name | Description |
-|--|--|
-|WebHookEvent|Contains all the Information which will be published as Webhook|
 
 ### Error Handling {#error-handling}
 The error handling of webhook events is based on the status code of the HTTP POST responses to the clients HTTP POST 
