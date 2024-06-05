@@ -4,31 +4,29 @@ sidebar_position: 2
 ---
 
 ## General 
-
-We provide within our Tributech Node the possibility for external services to receive a wide variety of notifications of internal events via [Webhooks](https://en.wikipedia.org/wiki/Webhook). A webhook is an HTTP-based callback function that enables lightweight, event-driven communication between a Tributech Node and a client that provides a unique URL endpoint to receive the Events. For example can we create a Client that will be notified when Proofs are stored into the Persistence Layer and passed into the Block Chain with the  `ProofStoredEvent` Event. In order to receive this events a clients unique URL must be defined as Subscription in the Tributech Node Webhook Section.
-In the following secion we will show how to manage a sample webhook for  `ProofStoredEvent` Events and [verify](#verification) that the event data received by the Webhook client has not been tempered with.
+We provide the possibility within our Tributech Node for external services to receive a wide variety of notifications about internal events via [Webhooks](https://en.wikipedia.org/wiki/Webhook). A webhook is an HTTP-based callback function that enables lightweight, event-driven communication between a Tributech Node and a client. The only requirement for a client is to provide a HTTP POST endpoint that returns Status code 200 if a event was successfully received or any other status code when the event has not been processed successfully. When a client reports a problem with an event Demeter will respond according to our [Error Handling](#error-handling) logic.
+In the following section, we will demonstrate how to setup a Tributech Node to send events to an client and how a user can [verify](#verification) that the received event data has not been tampered with. 
 
 ##  Webhook Subscription Management
-
-In Order to use Tributech Node Webhooks we first need to define a Webhook Subscription in the Tributech Node. A Subscription defines which events should be listened to and where it should be send to. The Management of the Webhooks can be found in the Webhook section of a Tributech Node.
+In order to receive information about a Tributech Node [Event](#event-types) we need to create a webhook subscription.
+A webhook subscription defines the clients HTTP POST endpoint, a selection of [Events](#event-types) and a secret to sign the event data.
+In this section we will show how to create and manage a webhook subscription for a specific event in the Tributech Node `Webhook` Section.
 
 ![Tributech Node - Webhooks](./img/Webhook_Overview_Empty.png) 
 
-In the following Section we will go step by step through all lifecycles of a Webhook with some sample data.
-
 ### Create
-We can create a Subscription within the Webhooks section of the Tributech node by simple clicking the `ADD SUBSCRIPTION` button on the right side.
-In the Dialog Box we add our Unique Webhook Client Url (e.g. [Webhook.site](https://webhook.site/), more details in [Verification](#verification)) and choose the desired [Event Types](#event-types). We also need to add a secret which will be used during the [Verification](#verification) example. This secret should be saved by the user because it can not be retrieved or recovered later.
+We can create a Subscription by simple clicking the `ADD SUBSCRIPTION` button on the right side of the Tributech Node `Webhook` Section.
 
 ![Tributech Node - Webhooks Add Subscription](./img/Webhook_AddSubscription.png) 
 
-In this example we subscribe to Events that occurs when the Proof is stored into the Persistence Layer and passed into the Block Chain. We will show how to inspect and verify the received Events in the [Verification](#verification) Section.
+In the following Dialog Box we add our clients HTTP POST endpoint (e.g. [Webhook.site](https://webhook.site/)), choose the desired [Event Types](#event-types) and add a secret for the event information [verification](#verification). Its important to note that the secret can later only be updated and not retrieved.
+In this example we subscribe to the Events `SourceCommandRequestEvent`, `SourceCommandResponseEvent` and `SourceCommandStateUpdateEvent` that occurs when interacting with Source commands that we can trigger within our [Quickstart Example](../tributech_agent/quickstart.mdx) (more information about events can be found [Events](#event-types)).
 
 
 ![Tributech Node - Webhooks Create Wizard](./img/Webhook_CreationWizard.png) 
 
 ### Edit
-If we want to update the settings for a Webhook subscription we can do that via the three dots in the actions column. 
+If we want to update the settings for a Webhook subscription, we can do that via the three dots in the actions column. 
 
 ![Tributech Node - Webhooks Overview Edit](./img/Webhook_Overview_Edit.png) 
 
@@ -46,10 +44,12 @@ If we want to delete a Webhook subscription we can do that via the three dots in
 
 ![Tributech Node - Webhooks Overview Edit](./img/Webhook_Overview_Delete.png) 
 
-## Webhook Events
+ ## Webhook Events
+A Webhook Event is a `json` object that is generated by a Tributech Node containing Event specific information when a certain condition is met.
+This `json object` is send within a HTTP object to a Webhook Subscription previously defined by a User. In this section we will go into detail which events are supported and what information can be retrieved from it.
 
 ### Headers
-Webhooks itself are HTTP objects that contain in addition to default HTTP information Tributech specific attributes which we will discuss in the following section. The following Headers are present in the Webhook request: 
+Webhooks send by the Tributech Node are HTTP objects that contain default HTTP information and some Tributech specific attributes, which we will discuss in the following section. The following Headers are included in the HTTP response and contain Tributech specific information: 
 
 | Attribute | Description | Sample Value |
 |--|--|--|
@@ -61,14 +61,11 @@ Webhooks itself are HTTP objects that contain in addition to default HTTP inform
 | x-tributech-timestamp | event timestamp utc |  06/16/2023 05:08:43 +00:00 |
 
 ### Event Types {#event-types}
-When creating a Webhook subscription we can choose different type of events. We have multiple categories of Event Types for the different
-operations withing demeter, e.g. Device, Proof, Stream,.. .
-Its important to note that each of the Event Types defines in the background a property `EventQoS` which will be transmitted with each
-Payload indicating the frequency of the events. This property is used by the redelivery mechanism to know how often a event should be retried to resend
-in case of an error. This value is predefined and cannot change by the user. The Webhook Events are divided into two categories : 
-1. Event QOS = 1 , high frequency events (like data received)
-2. Event QOS = 2, standard frequency events 
+When creating a Webhook subscription, we can choose what type of events we want to receive. We will describe in the following section the Events based on type of information they are providing, e.g. Device, Proof, Stream,.. . 
 
+Its important to note that each of the Event Types contain a predefined property `EventQoS` which will be contained in each
+webhook event indicating the frequency of the events. This property is used by the redelivery mechanism to know how often a event should be handled in case 
+the HTTP POST client response with an error code (more details in [Error Handling](#error-handling)). 
 
 #### Device Events
 Device Events are triggered by interactions with devices and device status changes,
@@ -81,7 +78,7 @@ this includes enrollments, configuration and source commands.
 |GetConfigurationRequestEvent|Occurs when the Get Configuration Command has been requested|
 |GetConfigurationResponseEvent|Occurs when the Get Configuration Command has finished and the response was received|
 |IncomingEnrollmentRequestEvent|Occurs when an Enrollment request was received|
-|SetConfigruationRequestEvent|Occurs when the Set Configuration Command has been requested|
+|SetConfigurationRequestEvent|Occurs when the Set Configuration Command has been requested|
 |SetConfigurationResponseEvent|Occurs when the Set Configuration Command has finished and the response was received|
 |SourceCommandRequestEvent|Occurs when a Source Command is invoked and sent to the Agent|
 |SourceCommandResponseEvent|Occurs when the Source Command has finished and the response was received|
@@ -89,6 +86,7 @@ this includes enrollments, configuration and source commands.
 
 #### Proof Events
 Proof Events describe events related to proof handling and status, e.g. received, valid, stored.
+
 |Name | Description |
 |--|--|
 |ProofConfirmedEvent|Occurs when the Proof is successfully placed on the BlockChain|
@@ -98,12 +96,14 @@ Proof Events describe events related to proof handling and status, e.g. received
 
 #### Stream Events
 Stream Events provide information when stream management operations are executed.
+
 |Name | Description |
 |--|--|
 |StreamDeletedEvent|Occurs when a Agent or Stream is deleted and will be removed from the Node|
 
 #### Twin Events
 Twin Events provide information when Digital Twin management operations are executed.
+
 |Name | Description |
 |--|--|
 |TwinInstanceDeletedEvent|Occurs when a Digital Twin Instance was removed from the Node|
@@ -111,6 +111,7 @@ Twin Events provide information when Digital Twin management operations are exec
 
 #### Value Events
 Value Events are triggered when the Tributech Node interacts with Stream Values.
+
 |Name | Description |
 |--|--|
 |ValueReceivedEvent|Occurs when a Value is received from an Device|
@@ -123,30 +124,31 @@ Webhook Events are triggered in webhook specific operations and provide informat
 |--|--|
 |WebHookEvent|Contains all the Information which will be published as Webhook|
 
-### Error Handling
-In the case of an error during Webhook Event delivery we implemented an back-off redelivery mechanism. 
-Commonly errors occur in the following situations:
+### Error Handling {#error-handling}
+The error handling of webhook events is based on the status code of the HTTP POST responses to the clients HTTP POST 
+endpoint. Commonly errors occur in the following situations:
 
 - Network is not available
 - Endpoint described within the subscription is not reachable
 - Endpoint returns something else then a HTTP 200 (OK) 
 
-If an error occurs we execute retries based on the formulary  `(Attempt Count + 0,7) ^ 4 + Minimum Retry Interval`.
-The `Attempt Count` is dependent on the `EventQoS` described in the previous section.
-High frequency (`EventQoS` = 2) events will not be retried and Standard Frequency (`EventQoS` = 1) events have **ten retries** before they are discarded.
- 
-## Verification {#verification}
-In order to verify that the received Webhook Event has not been tempered with we can use either [OpenSSL](https://github.com/openssl/openssl) or [Microsoft C#](https://learn.microsoft.com/en-us/dotnet/csharp/) as show in the following section. We will use in both examples the previously created webhook with the secret `foobar` and a `ProofStoredEvent` sample event. All this examples and descriptions expect that a Tributech Agent with a active Tributech Source is connected to a Tributech Node. If you do not have currently such a setup you need to adjust your Webhook Subscription accordingly (e.g. ) or see our [QuickStarter Guide](../tributech_agent/quickstart.mdx) to meet the preconditions.
+In the case of an error during Webhook Event delivery we implemented an back-off redelivery mechanism that calculates retries based on the formula  `(Attempt Count + 0,7) ^ 4 + Minimum Retry Interval`. The `Attempt Count` in this formula is dependent on the `EventQoS` property value (contained in ever webhook event) which is predefined and cannot be changed. 
+A value of `1` indicates that the event is a high frequency event (like data received) and a `2` marks standard frequency events.
+- High frequency events will not be retried 
+- Standard Frequency events have **10 retries** before they are discarded.
 
-We will use in our examples the free Webhook client of [Webhook.site](https://webhook.site/) to view the events send by the Tributech Node. You can replace the uniquely URL `https://webhook.site/#!/view/c445d2cb-bbcb-4db6-b71c-04ca220eea6d` provided in all examples with your unique Url. We will use the website to inspect the received events from the Tributech Node Webhooks. Note that this URL can only receive a limited amount of requests and will be unique to you.
+## Verification {#verification}
+In order to verify that the received Webhook Event has not been tempered with can verify the event using either [OpenSSL](https://github.com/openssl/openssl) or [Microsoft C#](https://learn.microsoft.com/en-us/dotnet/csharp/). We will show in this section how to use both approaches with examples based on the previously created webhook. We will use an arbitrary  secret `foobar` and choose as event `ProofStoredEvent` (see [Event Types](#event-types)) and assume that a Tributech Source is already successfully sending data to a Tributech Node (see [QuickStarter Guide](../tributech_agent/quickstart.mdx)). 
+
+In our examples we use the free Webhook client [Webhook.site](https://webhook.site/) to provide the HTTP POST endpoint for the subscription. We will use the website to inspect the received events `json` payload and HTTP Header attributes. The URL `https://webhook.site/#!/view/c445d2cb-bbcb-4db6-b71c-04ca220eea6d` in our samples needs to be adjusted to your HTTP POST endpoint. Note that [Webhook.site](https://webhook.site/) limits the amount of events you can receive and high frequency events will reach those limits quickly.
 
 ![Tributech Node - Webhooks Overview](./img/Webhook.site.png) 
 
-Make sure that the Webhook Subscription is configured to react to `ProofStoredEvent`. Shortly after starting the Source and activating the Webhook Subscription with one active Stream we should receive our first events:
+Make sure that the Webhook Subscription is configured to listen to `ProofStoredEvent` events. Shortly after starting the Source and activating the Webhook Subscription we should receive our first events from an active Stream:
 
 ![Tributech Node - Webhooks Received Event](./img/Webhook_ProofStoredEvent.png) 
 
-On the right sight we see the Tributech Headers with the following headers (excerpt):
+On [Webhook.site](https://webhook.site/) we see the Tributech Headers with the following headers (excerpt) on the right side:
 
 |Headers||
 |-|-|
@@ -155,9 +157,7 @@ On the right sight we see the Tributech Headers with the following headers (exce
 |x-tributech-signaturetimestamp |	2024-05-28T06:31:14.851318+00:00 |
 |x-tributech-signature|	sha256=065CF4E993CF1DF7399B2DF64A147567552EB4BB7DD91ACC73840D5B8411B940|
 
-The Headers contains the Tributech specific Attribute `x-tributech-signature` and `x-tributech-signaturetimestamp` which we will use in the next section to verificy that the Payload was not tempered with. 
-
-The payload itself contains the `EventQoS` flag for Standard Frequency (`EventQoS` = 1) and some information about the Agent, Stream and the Proof.
+The Headers contains the Tributech specific Attribute `x-tributech-signature` and `x-tributech-signaturetimestamp` which we will use in the next section to verify that the Payload was not tempered with. The payload itself contains the `EventQoS` flag for Standard Frequency (see [Error Handling](#error-handling)) and some information about the Agent, Stream and the Proof. Important to note is that in this example the Root hash of the MerkleTree and the Signature of the RootHash are `BASE64` encoded strings in byte array form.
 
 ~~~~json
 {
@@ -174,7 +174,7 @@ The payload itself contains the `EventQoS` flag for Standard Frequency (`EventQo
 
 ### Openssl 
 
-With the following [OpenSSL](https://github.com/openssl/openssl) command on a unix system we verifiy the previous example values of the `x-tributech-signature` ***HMAC SHA256*** signature:
+With the following [OpenSSL](https://github.com/openssl/openssl) command we verify the previous example values of the `x-tributech-signature` ***HMAC SHA256*** signature on a unix system:
 
 ~~~ bash
 echo -n '<event-json><signature-timestamp>' | openssl dgst -sha256 -hmac "<webhook-secret>"
@@ -195,7 +195,7 @@ We can now compare the output `SHA2-256(stdin)= 065cf4e993cf1df7399b2df64a147567
 
 ###  C# Code
 
-In the following section we use the previous example values to verifiy the ***HMAC SHA256*** signatures by using [MS C#](https://learn.microsoft.com/en-us/dotnet/csharp/)
+In the following section we use the previous example values to verify the ***HMAC SHA256*** signatures by using [MS C#](https://learn.microsoft.com/en-us/dotnet/csharp/)
 which can be pasted into [Fiddle](https://dotnetfiddle.net/) or Locale Development Environment:
 
 ~~~ csharp
