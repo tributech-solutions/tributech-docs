@@ -24,7 +24,7 @@ jobs:
   deploy:
     needs: [ 'vars' ]
     name: GitHub Pages
-    uses: tributech-solutions/tributech-github-actions-ci/.github/workflows/deploy-gh-pages.yaml@deploy-gh-page-blob-storage-testing
+    uses: tributech-solutions/tributech-github-actions-ci/.github/workflows/github-pages-deploy.yaml@deploy-gh-page-blob-storage-testing
     with:
       DOTNET_VERSION: ${{ needs.vars.outputs.dotnet_version }}
     secrets:
