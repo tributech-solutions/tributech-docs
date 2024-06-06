@@ -2,18 +2,30 @@ name: Tributech CI - main
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
+    tags:
+      - '*'
   pull_request:
-    branches: [ master, feature/*, hotfix/*, fix/* ]
+    branches: [ main, feature/*, hotfix/*, fix/* ]
 
 
+env:
+  USED_DOTNET_VERSION: '16.X'
 
 jobs:
 
-    publish:
-        name: docs via GitHub Pages
-        uses: tributech-solutions/tributech-github-actions-ci/.github/workflows/deploy-gh-pages.yaml@deploy-gh-page-blob-storage-testing
-        with:
-          DOTNET_VERSION: '16.x'
-        secrets:
-          GH_PAGES_DEPLOY: ${{ secrets.GH_PAGES_DEPLOY }}
+  vars:
+    runs-on: ubuntu-22.04
+    outputs:
+      dotnet_version: ${{ env.USED_DOTNET_VERSION }}
+    steps:
+      - run: echo "Exposing env vars" 
+
+  deploy:
+    needs: [ 'vars' ]
+    name: GitHub Pages
+    uses: tributech-solutions/tributech-github-actions-ci/.github/workflows/deploy-gh-pages.yaml@deploy-gh-page-blob-storage-testing
+    with:
+      DOTNET_VERSION: ${{ needs.vars.outputs.dotnet_version }}
+    secrets:
+      GH_PAGES_DEPLOY: ${{ secrets.GH_PAGES_DEPLOY }}
