@@ -28,5 +28,5 @@ jobs:
     uses: tributech-solutions/tributech-github-actions-ci/.github/workflows/github-pages-deploy.yaml@deploy-gh-page-blob-storage-testing
     with:
       DOTNET_VERSION: ${{ needs.vars.outputs.dotnet_version }}
-    secrets:
-      GH_PAGES_DEPLOY: ${{ secrets.GH_PAGES_DEPLOY }}
+    # secrets:
+    #   GH_PAGES_DEPLOY: ${{ secrets.GH_PAGES_DEPLOY }}
