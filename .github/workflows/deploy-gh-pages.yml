@@ -21,7 +21,7 @@ jobs:
     steps:
       - run: echo "Exposing env vars" 
 
-  deploy:
+  publish:
     needs: [ 'vars' ]
     name: GitHub Pages
     uses: tributech-solutions/tributech-github-actions-ci/.github/workflows/github-pages-deploy.yaml@deploy-gh-page-blob-storage-testing
