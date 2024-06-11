@@ -10,7 +10,7 @@ services:
       - MqttOptions__MQTTHost=mosquitto-server-rest
       - Logging__LogLevel__Default=Debug
     ports:
-      - "5080:80"
+      - "5080:8080"
     networks:
       - rest-net
     restart: unless-stopped
@@ -33,7 +33,7 @@ services:
     networks:
       - rest-net
     ports:
-      - "5000:80" # enable access to agent REST-API (e.g. for configuration with Agent-Companion)
+      - "5000:8080" # enable access to agent REST-API (e.g. for configuration with Agent-Companion)
     volumes:
       - ./volumes/rest/agent/:/app/data # volume mapping for permanent storage of keys and datatwin file
     restart: unless-stopped

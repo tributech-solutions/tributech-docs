@@ -107,7 +107,7 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
-          lastVersion: '3.6.0',
+          lastVersion: '4.0.0',
           routeBasePath: '/',
           disableVersioning: false,
           includeCurrentVersion: false,
