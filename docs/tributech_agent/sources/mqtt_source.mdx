@@ -75,6 +75,10 @@ With the [**MQTT Explorer**](http://mqtt-explorer.com/) we can directly send jso
     }
 ```
 
+**It must be mentioned here that the value in the above json structure is a base64 encoded value. Every value that is sent to the Tributech agent must be encoded so that it can be used by the agent. First the value must be converted to a byte array and then the byte array must be base64 encoded.**
+
+The timestamp can also be changed to fit all specific time zones, this can be done with the last part in the timestamp, here the time difference can be added, for example: «Timestamp»:«2023-07-13T05:50:07.1003104+02:00». It is important that the timestamp also contains microseconds. These can be zeros, but the microseconds are crucial for the timestamp to be processed by the system.
+
 We can post the data to the MQTT Source by clicking on the `Publish` button in the top right corner.
 
 ![**Mqtt Explorer publish**](../img/node-source-mqtt-stream-value-publish.png)
