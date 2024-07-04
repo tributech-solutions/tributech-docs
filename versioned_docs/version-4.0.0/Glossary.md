@@ -1,7 +1,7 @@
 ---
 sidebar_position: 5
 ---
-
+TODO: better definitions.
 | Term | Definition |
 | ---------- | ---------- |
 | Tributech Agents | The Tribtuech Agent is a IoT device which is able to run a docker environment where the mentioned Tributech Docker images are running. |
