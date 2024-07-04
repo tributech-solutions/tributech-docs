@@ -1,6 +1,6 @@
 ---
 title: API Integration
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 ## Rest API

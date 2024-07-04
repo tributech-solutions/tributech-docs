@@ -1,5 +1,5 @@
 ---
-title: Agent Management
+title: Agent Enrollment
 sidebar_position: 5
 ---
 
@@ -10,6 +10,16 @@ import SourceEnvUrl from '!!raw-loader!./examples/agent-management/env-url';
 
 ## Enrollment Workflow
 Each Tributech Agent must be connected to a Tributech Node to be fully functional. This workflow starts with the Tributech Agent and ends in the Tributech Node UI or in the Tributech API. In the following section we describe how this enrollment workflow works and where the user needs to enter information.
+To be able to understand the enrollment process the should know some of the terminology and the process of the enrollment.
+
+
+The first step of the enrollment process is to generate a CSR (Certificate Signing Request) file using the scripts provided by Tributech. With this file, the user can request an "enrollment certificate" in the Tributech UI enrollment environment. This certificate allows the Tributech agent to automatically connect to the enrollment port of the Tributech node.
+
+
+Before the agent can use the “enrollment certificate”, the user must transfer it to the Tributech agent and set the certificate location and node URL in the agent configuration. The node connection allows the Tributech agent to request the “agent certificate”, which is unique for each agent. With this certificate, the agent constantly sends an activation request that must be accepted by the user in the Tributech UI Enrollment section via the "Activate" agent function. This will allow theagent to connect to the Tribteuch Node with the specified agent certificate. Since each "agent certificate" is unique to each agent it is also possible to block specific agents.
+
+
+The "agent certificate" also has an expiry date. When approximately 3/4 of the lifetime of the "Agent Certificate" is reached, the agent triggers an automatic request for a new "Agent Certificate" with a new expiry date. For example, if the agent was offline and the "agent certificate" has expired, the process falls back to the "registration certificate" and the user must reactivate the agent in the registration environment.
 
 ### Generate Agent Certificate
 The first step in connecting an agent to a Tributech node is to set the node URL in the Docker configuration. This can be achieved by adding or changing the environment variable “**EdgeDeviceOptions__NodeUrl**”. The second step is to generate a certificate that needs to be implemented in the agent to be able to connect to the Tributech node.
@@ -55,24 +65,5 @@ The list can be sorted and filtered by the user, but by default all non-activate
 ## Agent management functions
 In addition to the enrollment process, several agent management functions have been implemented in the Tributech UI and API. The next sections show how to lock and unlock an agent and how to delete an agent and what these functions do in the background.
 
-### Agent Blocking & Unblocking
-When a Tributech agent is blocked, all sources, streams and their data remain in the database, but the agent can no longer connect to the Tributech node. The agent can be unblocked at any time, creating a fully functional agent whose data is still stored. This function can also be used if an agent has been compromised and needs to be cut off from the node.
 
-#### Block & Unblock Agent
-Blocking in the Tributech UI can be done in the Enrollment section. For this feature locate the agent got to it's action column. The burger menu of each agent should  hold the "Block" action. When clicking on this action the following window will be shown:
-
-![Block a Tribtuech Agent via UI](./img/node-agent-management-block-agent.png)
-
-The user is also able to write a short "Block reason" before blocking the agent which can help other users to distinguish why an agent was blocked in the first place, but the "block reason" is optional.
-
-Unblocking an agent runs along the same lines of blocking the agent. The "Unblock" option is only shown if the agetn is in the "Blocked" State. The option can be also found in the action menu similar to the "Block" action.
-
-### Agent Deleting
-Deleting an agent in the Tributech environment not only deletes the agent entry, but also cleans the database of all its sources, streams and data points, but it is still possible to connect the agent to the node after a clean. When an agent is deleted with this feature it is not possible to get the deleted data back. This featuer is used when the data of a Tributech agent is not needed anymore and the agent is needed for another project.
-
-#### Delete Agent
-
-To delete an agent in the user interface, the user must go to the enrollment section of the Tributech user interface and search for the desired Tributech agent. There is a “Delete” option in the agent's burger menu. This action calls up the modal for deleting the agent. In this modal, the user must enter the agent ID to ensure that the correct agent is deleted. Once the agent ID has been entered, the “Delete” button is activated and the user can delete the agent from the node and the database.
-
-![Delete a Tributech Agent via UI](./img/node-agent-management-ui-delete.png)
 
