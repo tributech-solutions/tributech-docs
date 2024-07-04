@@ -1,3 +1,2 @@
-AGENT_TAG=3.6.0
 AGENT_ID=<Unique-Agent-GUID>
-SOURCE_TAG=3.6.0
+NODE_URL=<URL-to-your-Node>

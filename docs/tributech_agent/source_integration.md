@@ -17,7 +17,7 @@ For a detailed guide on how to use the different sources visit:
 | Simulated Sensor | The [**Simulated Source Guide**](./sources/simulated_source.mdx) integrates data provided by test sources generating random data.        |
 | REST  | The [**REST Source Guide**](./sources/rest_source.mdx) integrates data provided via [HTTP APIs](https://swagger.io/specification/).        |
 
-In order to add sources to an linked Tributech Agent we need to select the `CONFIGURE` button every agent contains:
+In order to add sources to a Tributech Agent we need to select the `CONFIGURE` button every agent contains:
 
 ![**"Configure Agent**](./img/node-agent-configure.png)
 

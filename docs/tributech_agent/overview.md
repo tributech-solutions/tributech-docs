@@ -11,7 +11,11 @@ The Tributech Agents are responsible for securing the data collected by Tributec
 
 ## QuickStart
 
-The Tributech [QuickStart guide](./quickstart.mdx) entails a short tutorial how to setup a Tributech Agent with a [Simulated Source](./sources/simulated_source.mdx) in a [Docker Compose](https://docs.docker.com/compose/) environment. It also covers how a user establish a link between the Tributech Agent and the Tributech Node. After the Source configuration it guides the user through their very first verification of their gathered and notarized data points. 
+The Tributech [QuickStart guide](./quickstart.mdx) entails a short tutorial how to setup a Tributech Agent with a [Simulated Source](./sources/simulated_source.mdx) in a [Docker Compose](https://docs.docker.com/compose/) environment. It also covers what a user has to do to activate the Tributech Agent in the Tributech Playground Node. After the Source configuration it guides the user through their very first verification of their gathered and notarized data points. 
+
+## Agent Enrollment 
+
+The Tributech [Agent Enrollment](./agent_enrollment.mdx) teaches the user how to create all the files to be able to enroll a custom agent to a specific Node. Furthermore the user will learn where those files need to be saved and how to configure the docker compose files to be able to use said files. The last step covers how to activate the agent in the Tribtuech UI environment. 
 
 ## Supported Sources
 
@@ -24,3 +28,7 @@ The supported Tributech Sources give the user a wide variety of endpoints with w
 | Beckhoff ADS | The [**ADS Source Guide**](./sources/ads_source.mdx) integrates data provided by an Beckhoff ADS PLC Server.    |
 | Simulated Sensor | The [**Simulated Source Guide**](./sources/simulated_source.mdx) integrates data provided by test sources generating random data.        |
 | REST  | The [**REST Source Guide**](./sources/rest_source.mdx) integrates data provided via [HTTP APIs](https://swagger.io/specification/).        |
+
+## Agent Deployment
+
+Our Agent is a Docker service with a broker and a source. As mentioned the Agent is a docker service and can be combined with any Docker orchestration service like [Docker Compose](https://docs.docker.com/compose/) or IoT device management platforms like [Azure IoT Edge Runtime](https://learn.microsoft.com/en-us/azure/iot-edge/iot-edge-runtime?view=iotedge-1.4). The general Integration of our Agent is described in the section [Agent Integration](agent_integration.mdx/).

@@ -18,7 +18,7 @@ services:
         max-file: "5"
 
   tributech-agent-ads:
-    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-agent:${AGENT_TAG:-latest}
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-agent-play:${AGENT_TAG:-latest}
     depends_on:
       - mosquitto-server-ads
     environment:

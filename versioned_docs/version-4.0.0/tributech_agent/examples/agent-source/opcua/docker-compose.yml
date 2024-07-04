@@ -17,7 +17,7 @@ services:
         max-file: "5"
 
   tributech-agent-opcua:
-    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-agent:${AGENT_TAG:-latest}
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-agent-play:${AGENT_TAG:-latest}
     depends_on:
       - mosquitto-server-opcua
     environment:
