@@ -4,6 +4,11 @@ sidebar_position: 3
 ---
 
 # Development Setup
+
+:::caution
+This Tributech OEM module documentation is deprecated and only works with Tributech DSK version 3.6, which is no longer actively maintained.
+:::
+
 :::info
 Prefer video over text? Watch our **[IoT Starter Kit Tutorial](https://5705912.fs1.hubspotusercontent-na1.net/hubfs/5705912/Tributech_Academy01.mp4)** covering the whole setup process for the Tributech OEM Module with the Infineon XMC board online.
 
@@ -12,6 +17,7 @@ Links mentioned in the tutorial video:
 - [Segger JLink Driver](https://www.segger.com/downloads/jlink/)
 - [Tributech Github repository](https://github.com/tributech-solutions/tributech-oem-module-iot-kit-examples)
 :::
+
 ## Prerequisites
 
 
