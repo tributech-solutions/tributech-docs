@@ -3,46 +3,102 @@ title: Agent Management
 sidebar_position: 2
 ---
 
-The following section details the management functions for agents which are connected to a Tributech node. Agent amangement fucntions are:
+In this section we show the available management function provided by a Tributech Node user interface to manage a Tributech Agents access:
 
-<ul>
-  <li>Activate Agents</li>
-  <li>Deny Agents</li>
-  <li>Block Agents</li>
-  <li>Unblock Agents</li>
-  <li>Delete Agents</li>
-</ul>
+- ***Activate*** - Permit an Agent to connect to the Tributech Node and communicate with it
+- ***Deny*** - Connection to the Tributech Node is denied
+- ***Block*** - No further communication with the Tributech Node is allowed for this Tributech Agent
+- ***Unblock*** - A blocked Tributech Agent is allowed to restart the enrollment process
+- ***Delete*** - Delete all associated data with a Tributech Agent
 
-With these functions, users can control their agents via the Tributech user interface.
+This options are available in the ***Enrollment*** Section of the Tributech Node
 
-### Agent Activating & Denying
+![Enrollment Overview](./img/node-agent-management-overview.png)
 
-Activating an agent is the first step that a user must take with a new agent in the Tributech user interface in order to be able to work with an agent in the Tributech node. On the other hand, the user can also deny an agent if, for example, there are security concerns about an agent trying to connect to the node, which automatically rejects all connection attempts by the agent.
+If your Tributech Agent is not listed here then please revisit the [QuickStart](../tributech_agent/quickstart.mdx)
+or [Agent Enrollment](../tributech_agent/agent_enrollment.mdx).
 
-#### Activate & Deny Agent
+## New Agents
 
-An agent can only be "activated" or "denied" if it is in the "Pending" status. All agents that are in the "Pending" status are displayed at the top of the agent list in the enrollment environment, where the user can also perform these two functions. After the agent has been activated, the normal operating states are "online" or "offline" and the user can work with the agent. If the agent is denied, it switches to the "denied" status. From this state, it is only possible to delete an agent to reconnect it to the Tributech node and accept it, otherwise the agent is simply excluded from the connection to the Tributech node.
+After starting a Tributech Agent (see [QuickStart](../tributech_agent/quickstart.mdx)) a communication to the Tributech Node is not allowed per default. We can see in the ***Enrollment*** Overview all Agents that want to connect to a Tributech Node
+with the State ***Pending***. We can either allow the communication with ***Activate*** or stop all future communication with ***Deny***.
+
+### Activate Agent
+If we have decided to activate an Tributech Agent it will be displayed with status ***online***/***offline*** depending on
+the connection state between the Tributech Node and Tributech Agent. 
 
 ![Tributech UI Agent Activation](./img/node-agent-management-agent-activation.png)
 
-### Agent Blocking & Unblocking
-When a Tributech agent is blocked, all sources, streams and their data remain in the database, but the agent can no longer connect to the Tributech node. Another word for blocking would be archiving an agent, as all streamed data is still stored on the Tributech node, but the agent is decommissioned. The agent can be unblocked at any time, creating a fully functional agent whose data is still stored. This function can also be used if an agent has been compromised and needs to be cut off from the node.
+Once a Tributech Agents is in the state ***online*** 
+it can be configured in the ***Agents*** Overview by selecting the entry or via the action context menu.
 
-#### Block & Unblock Agent
-Blocking in the Tributech UI can be done in the Enrollment section. For this feature locate the agent got to it's action column. The burger menu of each agent should  hold the "Block" action. When clicking on this action the following window will be shown:
+![Tributech UI Agent Overview](./img/node-agent-management-agent-overview.png)
+
+### Denied Agent
+If we have decided to deny an Tributech Agent enrollment it will be displayed with status ***denied***.
+Tributech Agents with the state ***denied*** can only be deleted via the action menu.
+
+![Enrollment Delete Denied Agent](./img/node-agent-management-delete-denied-agent.png)
+
+It is important to note that a denied Tributech Agent will start an new enrollment process after beeing deleted.
+The communication is no longer blocked after the deletion and its possible to ***Activate*** or ***Deny*** this agent again.
+
+## Activated Agents
+
+### Blocking Agents
+After granting an Tributech Agent access to a Tributech Node we can revoke this access of an active Tributech Agent at any time by ***blocking*** further communication. This option is available in the Agents Overview
+
+![Block a Tribtuech Agent via Agents Overview](./img/node-agent-management-block-agent-overview.png)
+
+or in the Enrollment Section:
+
+![Block a Tribtuech Agent via Agents Overview](./img/node-agent-management-block-enrollment-overview.png)
+
+During the blocking process we can add a `Block Reason` for future reference why this Tributech Agent is no longer allowed to communicate with the Tributech Node. This field is optional but we recommend to fill it out to help other users to understand why a  agents was blocked.
 
 ![Block a Tribtuech Agent via UI](./img/node-agent-management-block-agent.png)
 
-The user is also able to write a short "Block reason" before blocking the agent which can help other users to distinguish why an agent was blocked in the first place, but the "block reason" is optional.
+By blocking an Tributech Agent we ensure that no new data can be send but old data is still accessable for inspect. Another word for blocking would be archiving an agent, as all streamed data is still stored on the Tributech node but the agent is decommissioned.
+The agent can be unblocked at any time, creating a fully functional agent whose data is still stored. 
 
-Unblocking an agent runs along the same lines of blocking the agent. The "Unblock" option is only shown if the agetn is in the "Blocked" State. The option can be also found in the action menu similar to the "Block" action.
+### Unblocking Agents
+Unblocking is only available for blocked Tributech Agents and restores an Tributech Agent to an `activated` state. 
+The option can be also found in the action menu similar to the `Block` action.
 
-### Agent Deleting
-Deleting an agent in the Tributech environment not only deletes the agent entry, but also cleans the database of all sources, data streams and data points. This process cannot be undone, so all unsaved data is lost. After a successful deletion of the agent, it is still possible to connect the agent to the node after a clean-up. If an agent is deleted with this function, it is not possible to restore the deleted data. This function is used when the data of a Tributech agent is no longer required and the agent is needed for another project.
+![Unblock a Tribtuech Agent via UI](./img/node-agent-management-unblock-sample.png)
 
-#### Delete Agent
+After unblocking an Tributech Agent overview shows the current state as ***Await Request*** this means the Tributech Agent has not requested a new connection. 
 
-To delete an agent in the user interface, the user must go to the enrollment section of the Tributech user interface and search for the desired Tributech agent. There is a “Delete” option in the agent's burger menu. This action calls up the modal for deleting the agent. In this modal, the user must enter the agent ID to ensure that the correct agent is deleted. Once the agent ID has been entered, the “Delete” button is activated and the user can delete the agent from the node and the database.
+![Unblock Wait a Tribtuech Agent via UI](./img/node-agent-management-unblock-sample-await.png)
+
+After waiting some time or restarting the Agent it will switch into status ***online***/***offline*** again.
+After comming online again it can communicate and be managed the same way as any other `activated` Tributech Agent.
+
+
+![Unblock Wait a Tribtuech Agent via UI](./img/node-agent-management-unblock-sample-online.png)
+
+## Deleting an Agent
+For Tributech Agents which are no longer needed required exists the option to be deleted. 
+
+:warning: **Deleting an Tributech Agent removes all associated configurations, data and cannot be undone**!
+
+Deleting an agent in the Tributech environment not only deletes the agent entry, but also cleans the database of all configurations and data points. ***This process cannot be undone*** and once deteleted data cannot be recovered. 
+
+The options to delete an Tribtuech Agent can be found in the Agents Overview
+
+![Delete a Tributech Agent via Agents](./img/node-agent-management-delete-from-agents.png)
+
+
+or in the Enrollment Section:
+
+
+![Delete a Tributech Agent via Enrollments](./img/node-agent-management-delete-from-enrollment.png)
+
+
+To confirm the deletion the Tributech Agent Id Guid needs to entered or copied into.
 
 ![Delete a Tributech Agent via UI](./img/node-agent-management-ui-delete.png)
 
+After a successful deletion a Tributech Agent can restart the enrollment process again. The previous state of 
+Tributech Agent does not matter because all associated data has been deleted, i.e. a `Denied` or `Blocked` Agent
+and be `Activate` or `Denied` once again.
