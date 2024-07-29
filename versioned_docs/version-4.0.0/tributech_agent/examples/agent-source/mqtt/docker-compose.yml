@@ -4,10 +4,10 @@ services:
   source-mqtt:
     image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-source-mqtt:${SOURCE_TAG:-latest}
     depends_on:
-      - mosquitto-server-mqtt
-      - tributech-agent-mqtt
+      - mosquitto-server
+      - tributech-agent
     environment:
-      - MqttOptions__MQTTHost=mosquitto-server-mqtt
+      - MqttOptions__MQTTHost=mosquitto-server
       - Logging__LogLevel__Default=Debug
     networks:
       - mqtt-net
@@ -18,17 +18,18 @@ services:
         max-size: "2m"
         max-file: "5"
 
-  tributech-agent-mqtt:
-    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-agent-play:${AGENT_TAG:-latest}
+  tributech-agent:
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-agent:${AGENT_TAG:-latest}
     depends_on:
-      - mosquitto-server-mqtt
+      - mosquitto-server
     environment:
       - Logging__LogLevel__Default=Debug
       - Logging__Console__FormatterName=simple
-      - MqttOptions__MQTTHost=mosquitto-server-mqtt
-      # general DSK edge agent configuration
-      - EdgeDeviceOptions__AgentID=${AGENT_ID:?"The variable AGENT_ID needs to be configured in the .env file."}
-      - EdgeDeviceOptions__NodeUrl=${NODE_URL:?"The variable NODE_URL needs to be configured in the .env file."}
+      - MqttOptions__MQTTHost=mosquitto-server
+      - EdgeDeviceOptions__AgentID=${AGENT_ID:?"The Tributech Agent requires a GUID"}
+      - EdgeDeviceOptions__NodeUrl=${NODE_URL:?"The Tributech Node Url is required"}
+      - EnrollmentOptions__EnrollmentCertBase64=${ENROLLMENT_CERT_BASE64:?"The base64 encoded Enrollment Cert is required"}
+      - EnrollmentOptions__EnrollmentKeyBase64=${ENROLLMENT_KEY_BASE64:?"The base64 encoded Enrollment Key is required"}
     networks:
       - mqtt-net
     ports:
@@ -42,7 +43,7 @@ services:
         max-size: "2m"
         max-file: "5"
 
-  mosquitto-server-mqtt:
+  mosquitto-server:
     image: eclipse-mosquitto:${MQTT_TAG:-1.6}
     networks:
       - mqtt-net

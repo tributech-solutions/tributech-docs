@@ -5,7 +5,7 @@ services:
     image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-source-simulated:${SOURCE_TAG:-latest}
     depends_on:
       - mosquitto-server-simulated
-      - tributech-agent-simulated
+      - tributech-agent
     environment:
       - MqttOptions__MQTTHost=mosquitto-server-simulated
       - Logging__LogLevel__Default=Debug
@@ -18,7 +18,7 @@ services:
         max-size: "2m"
         max-file: "5"
 
-  tributech-agent-simulated:
+  tributech-agent:
     image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-agent-play:${AGENT_TAG:-latest}
     depends_on:
       - mosquitto-server-simulated
@@ -26,8 +26,8 @@ services:
       - Logging__LogLevel__Default=Debug
       - Logging__Console__FormatterName=simple
       - MqttOptions__MQTTHost=mosquitto-server-simulated
-      - EdgeDeviceOptions__AgentID=${AGENT_ID:?"The variable AGENT_ID_SIMULATED needs to be configured in the .env file."}
-      - EdgeDeviceOptions__NodeUrl=${NODE_URL:?"The variable NODE_URL needs to be configured in the .env file."}
+      - EdgeDeviceOptions__AgentID=${AGENT_ID:?"The Tributech Agent requires a GUID"}
+      - EdgeDeviceOptions__NodeUrl=${NODE_URL:?"The Tributech Node Url is required"}
     ports:
       - "5000:8080"
     networks:

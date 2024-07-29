@@ -28,7 +28,8 @@ The following table shows the recommended minimum hardware requirements for the 
 | RAM  | 1 GB                             | The minimum requirements for small and medium workloads. |
 | Storage | 221 MB | A typical setup requires around 500MB consisting of the Tributech Agent = 221 MB, the Tributech Source = 227 MB and the Mosquitto broker = 11,6 MB. |
 
-The following table shows an example of a performance test with a typical IoT gateway or low-end servers. The results include the consumed CPU and RAM resources of the Tributech Agent, in addition you also need to consider the resource consumption of your selected source and your own services.
+The following table shows an example of a test Tributech Agent with a simulated source.
+Please consider that the consumption may vary dependended on used source.
 
 |Value per second|CPU load(1 core 2.2GHz)|RAM|
 | :------------- | :-------------------- |:- |
@@ -53,7 +54,7 @@ If you have any questions regarding infrastructure requirements, please talk to 
 | :------ | :----------- | :--------------------- |
 | Communication protocol | MQTTS | Communication protocol used between Tributech Agent and Node. MQTTS is the secure version of the MQTT protocol using TLS. |
 | Port | 1883 | Communication port used between Tributech Agent and Node. |
-| Endpoint URL | <name\>.tributech-node.com | MQTT endpoint on server (platform) side. |
+| Endpoint URL | __name__.tributech-node.com | MQTT endpoint on server (platform) side. |
 | Firewall rules | allow outbound traffic for endpoint URL for port 1883 and also for the port 443 | Tributech Agent needs to be allowed to communicate with the platform, typically required for restricted enterprise networks. |
 
 ### Docker-Compose Setup

@@ -5,8 +5,8 @@ sidebar_position: 1
 
 import CodeBlock from '@theme/CodeBlock';
 import SourceDockerCompose from '!!raw-loader!../examples/agent-source/mqtt/docker-compose.yml';
-import SourceEnv from '!!raw-loader!../examples/agent-source/mqtt/env';
 import SoourceDockerComposeMock from '!!raw-loader!../examples/agent-source/mqtt/docker-compose.override.yml';
+import EnvSample from '!!raw-loader!../examples/agent-management/agent-service-sample-values.yml';
 
 The Tributech Agent supports the integration of external data sources using the [**MQTT messaging protocol**](https://mqtt.org/) with the  Tributech MQTT Source. The MQTT Source itself is configured via the Twin Configuration and will be described in the following sections.
 
@@ -15,13 +15,11 @@ The Tributech MQTT Source image can be started without any dependencies but will
 
 In the following part we will describe the setup of a Tributech MQTT Source.
 
- - Setup the ***docker environment*** by creating a `.env` file with the following content and replace the placeholder values with your values:
-
-<CodeBlock className="language-plain" title=".env">{SourceEnv}</CodeBlock>
-
-- Setup the ***docker-compose.yml*** file by creating a `docker-compose.yml` file with the following content in the same folder as the  `.env` file:
-
+- Setup the ***docker-compose.yml*** file by creating a `docker-compose.yml` file with the following content (adjustments required):
 <CodeBlock className="language-yml" title="docker-compose.yml">{SourceDockerCompose}</CodeBlock>
+
+Adjust the setting for the [Tribtech Agent](../overview.md) to your environment, sample value:
+<CodeBlock className="language-plain" title="env specific settings">{EnvSample}</CodeBlock>
 
 ## Configuration
 After setting up the Tributech MQTT Source we need to activate it in the Tributech Node (see [QuickStart](../quickstart.mdx#link-agent)) and configure the TwinConfiguration.

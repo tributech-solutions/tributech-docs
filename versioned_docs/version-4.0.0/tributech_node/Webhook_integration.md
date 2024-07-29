@@ -1,11 +1,13 @@
 ---
 title: Webhooks Integration
-sidebar_position: 2
+sidebar_position: 4
 ---
 
 ## General 
 We provide the possibility within our Tributech Node for external services to receive a wide variety of notifications about internal events via [Webhooks](https://en.wikipedia.org/wiki/Webhook). A webhook is an HTTP-based callback function that enables lightweight, event-driven communication between a Tributech Node and a client. The only requirement for a client is to provide a HTTP POST endpoint that returns Status code 200 if an event was successfully received (see [Error Handling](#error-handling) for more details).
 In the following section, we will demonstrate how to setup a Tributech Node to send events to an client and how a user can [verify](#verification) that the received event data has not been tampered with. 
+
+![Tributech Node - Webhooks Focus](./img/DemeterArchitectureOverviewWebhookFocus.png) 
 
 ##  Webhook Subscription Management
 In order to receive information about a Tributech Node [Event](#event-types) we need to create a webhook subscription.

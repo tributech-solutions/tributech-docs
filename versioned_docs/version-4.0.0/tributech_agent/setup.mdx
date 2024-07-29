@@ -1,0 +1,160 @@
+---
+title: Setup
+sidebar_position: 4
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import SourceDockerCompose from '!!raw-loader!./examples/agent/docker-compose-agent-integration.yml';
+import DockerComposeEnviromentExample from '!!raw-loader!./examples/agent-management/docker-compose-env-example.yml';
+import DockerComposeVolumesExample from '!!raw-loader!./examples/agent-management/docker-compose-volumes-example.yml';
+import EnvSample from '!!raw-loader!./examples/agent-management/agent-service-sample-values.yml';
+
+In the following section we describe how to setup and activate a Tributech Agent with an existing [Tributech Node](../tributech_node/overview.md).
+We assume that all [Requirements](requirements.mdx) are met and a running [Tributech Node](../tributech_node/overview.md) is accessable. The goal is to create a basic setup with a [Simulated Tributech Source](./sources/simulated_source.mdx) that will generate random data and send it to the [Tributech Agent](overview.md) via MQTT. The [Tributech Agent](overview.md) will create proofs for the received values which can later be inspected by [Tributech Node](../tributech_node/overview.md).
+
+![**Configure Agent**](./img/EdgeDeviceOverviewFocusAgent.png)
+
+
+:warning: [Requirements](requirements.mdx) must be satisfied
+
+:warning: [Tribteuch Node](../tributech_node/overview.md) must be running and accessable
+
+We will use in our examples [**Docker Engine**](https://docs.docker.com/engine/) and [**Docker Compose**](https://docs.docker.com/compose/) to show to startup a edge device with all required services. 
+
+## General Process Overview
+In this section we want to show an Tributech Agent is setup up and can be used to securely transfer 
+customer data from an edge device to the [Tributech Node](../tributech_node/overview.md) for inspection
+and verification. The [Tributech Node](../tributech_node/overview.md) is the common management point for
+all Tributech Agents connected to the Node. How a Tributech Agent operates and which Tributech Sources
+will be able to submit data is defined in [Digital Twin Configuration of an Agent](management.mdx).
+This management of Agent is required after completing successfully the Agent [Enrollment](#authentication-certificates-enrollment)
+Process. 
+
+![Tributech Architecture - Overview](./img/TributechArchitectureAgent.png)
+
+The communication between [Tributech Sources](source_integration.md) and the Tributech Agent will take place on the same
+edge device via a local Message Broker connection. This channel is used on the one hand to send configurations and commands from Tribtech Agent to the Tributech Source and on the other hand to send data streams from the Tributech Source to the Agent.
+
+## Authentication Certificates (Enrollment)
+
+Before starting a Tributech Agent we need to get a Certificate signed by the [Tributech Node](../tributech_node/overview.md)
+that is used during the initial authentication process to indicate that a Tribtech Agent is allowed to establish a MQTTS connection to the [Tributech Node](../tributech_node/overview.md). The certificate handling and initial establishing of a connection to the [Tributech Node](../tributech_node/overview.md) is called `Enrollment` and more information can be found in [agent management](../tributech_node/agent_management.mdx).
+
+![**"Configure Agent**](./img/EdgeDeviceOverviewFocusAgentToNode.png)
+
+In order to create the certificate we visit the `Enrollment` section in the Tributech Node UI and select
+`+ Add Enrollment`.
+
+![Tributech Add Enrollment](./img/node-agent-management-add-enrollment.png)
+
+
+This action leads to the following window, which contains all the information the user needs to create the certificate.
+
+![Tributech Certificate Generation UI](./img/node-agent-management-certificate-generation.png)
+
+Download the script for the operating system of your choice [Linux](https://github.com/tributech-solutions/tributech-enrollment/blob/main/Linux/generate-csr.sh)/[Windows](https://github.com/tributech-solutions/tributech-enrollment/blob/main/Windows/generate-csr.ps1) and execute the script in a empty folder named `enrollment`. Its important to note that the operating system does not
+need to be identical to the Edge Device operating system this Certificate Signing Request and certificates be
+created once and reused for multiple Tributech Agents. After successful execution of the script upload the `enrollment.csr` 
+in the Tributech Node UI Upload Dialog and submit it by clicking `GENERATE CERTIFICATE`. A `enrollment.crt` file is returned
+after the successful generation and should be saved in the same folder next to the script. If this problems or questions 
+occurred during this process please consult the [README](https://github.com/tributech-solutions/tributech-enrollment/blob/main/README.md) for more details.
+
+With the certificates present in a local folder, we call `enrollment`, we can now provide the certificates in two different ways to the Tributech Agent either via `environment variables` or via [docker volumes](https://docs.docker.com/storage/volumes/) which we will show later in detail during the Tributech Agent startup.
+
+
+
+:warning: ***enrollment.key*** file in the referenced folder must contain the `enrollment key` in the format:
+```
+-----BEGIN PRIVATE KEY-----
+MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDB910tiUPf3jp3
+...
+JoTeVZlyPgWSr6ckDiYrXZCINfeupxIpUNa2dOTssJ7frddsOc65TjYaEGtQFhN9
+UuhRTNXXB3LPeUekmFqAFw==
+-----END PRIVATE KEY-----
+```
+
+:warning: ***enrollment.crt*** file in the referenced folder must contain the `enrollment certificate` in the format:
+
+```
+-----BEGIN CERTIFICATE-----
+MIIEhDCCAmygAwIBAgIVAMJHgTEKo6BAjM2x17MzqEoBAAAAMA0GCSqGSIb3DQEB
+...
+rTGtd7jookqEziPG7j9oN6Q4jQZI/fGeTDpz5JvEPriFWg4niwdZZVTVi4Axk0wT
+Xb7SLA93BKc=
+-----END CERTIFICATE-----
+```
+
+
+### Docker volumes
+Docker Volumes are the preferred mechanism for persisting data generated by and used by Docker containers.
+To make local certificates folders available to a docker container we need to add the mount to our `tributech-agent` service.
+The folder for the certificates can be adjusted as needed (`./enrollment`) only the `:/app/enrollment` needs to
+stay the same. 
+
+<CodeBlock className="language-yml" title="docker-compose.yml section">{DockerComposeVolumesExample}</CodeBlock>
+
+
+### Environment Variables
+The second way to add enrollment certificates to a Tribteuch Agent is to use [environment variables](https://docs.docker.com/compose/environment-variables/set-environment-variables/). The content of the certificate files needs to be converterted into a base64 encoded string without whitespaces, i.e. detailed information on how to convert a file into a base64 representation can be found here for [Windows](https://github.com/tributech-solutions/tributech-enrollment/tree/main/Windows) and [Unix](https://github.com/tributech-solutions/tributech-enrollment/tree/main/Linux). We then add the base64 encoded content of the `enrollment.crt` (Certificate) as `EnrollmentOptions__EnrollmentCertBase64` value and the `EnrollmentOptions__EnrollmentKeyBase64` contains base64 encoded `enrollment.key` content.
+
+<CodeBlock className="language-yml" title="docker-compose.yml section">{DockerComposeEnviromentExample}</CodeBlock>
+
+## Starting a Tributech Agent
+After we have prepared the Tributech Agent certificates for the enrollment we can now startup whole environment.
+We will use in our example the certifcates reference via environment variables. If docker volumes are preferred
+the `tributech-agent-simulated` in the comming examples need to be adjust like described in the previous section.
+
+:warning: We will use in our examples for the setup documentation different Container Images and configurations compared to the [Quickstart](quickstart.mdx). Please use a new empty folder for the files to prevent any configuration mix.
+
+We have a `docker-compose.yml` prepared for an quick and easy setup containing a MQTT Message Broker, an Tribteuch Agent and a [Tributech Simulated Source](sources/simulated_source.mdx). Note that the local MQTT Message Broker is required for the communication between the Tribteuch Agent and a [Tributech Simulated Source](sources/simulated_source.mdx) on the Edge Device
+and will **not** be used for interactions with the [Tributech Node](../tributech_node/overview.md).
+
+<CodeBlock className="language-yml" title="docker-compose.yml">{SourceDockerCompose}</CodeBlock>
+
+The docker compose provides a completed setup however, some setting need to be adjusted to the environment its executed in:
+
+- `EdgeDeviceOptions__AgentID` is a **GUID** that can be freely chosen but **must be unique for each agent** connecting to the same [Tributech Node](../tributech_node/overview.md)
+- `EdgeDeviceOptions__NodeUrl` is the absolute URL to the [Tributech Node](../tributech_node/overview.md) the agent should connect to
+- `EnrollmentOptions__EnrollmentCertBase64` and `EnrollmentOptions__EnrollmentKeyBase64` are base64 encoded certifcates required to authenticate with a [Tributech Node](../tributech_node/overview.md) (see [Enrollment](agent_enrollment.mdx)) 
+
+Sample values:
+
+<CodeBlock className="language-plain" title="env specific settings">{EnvSample}</CodeBlock>
+
+
+We can now ***Startup*** the environment by running the following command (or `docker-compose` for older versions):
+<CodeBlock className="bash" title="terminal">
+docker compose up -d
+</CodeBlock>
+
+***Validate*** that all containers are running. The output should return that every container is in the state `Up`
+<CodeBlock className="bash" title="terminal">
+    docker compose ps
+</CodeBlock>
+
+If you encounter problems with starting the containers please consult the official [docker documentation](https://docs.docker.com/compose/reference/) and revisit the [requirements](requirements.mdx).
+
+If all container are up and running we can inspect the Tribteuch Agent and check if its in the expect state by checking the logs for a recurring message `Enrollment is not finished yet and needs to be confirmed by a user on the Node`.
+
+<CodeBlock className="bash" title="terminal">
+docker compose logs -f tributech-agent-simulated
+</CodeBlock>
+
+This message means that we now have a running Tributech Agent which requires permission from the [Tributech Node](../tributech_node/overview.md) to establish a connection. Our current setup is started with the default values for the Tribteuch Agent and Tribteuch Source and requires to be configured by the [Tributech Node](../tributech_node/overview.md) in order to send sample data.
+
+## Activate Agent
+
+After the docker containers have been startet successfully the Agent will connect to the specified environment automatically. The user has to check if the Agent is present in the `enrollment section`. To access the enrollment the user just has to click on `Enrollment` in the left management panel of the Tributech UI. 
+
+![***Activate Tributech Agent***](./img/agent-bond-enrollment.png)
+
+ The Agent with our specific `Agent ID` should be in ne of the top most entries of the list and should be in the `Pending` state. 
+ If to many agents are listed we can search for the Agent with the `AGENT_ID` we defined docker compose file (value for `EdgeDeviceOptions__AgentID` in our example `00000000-0000-0000-0000-000000000007`). By clicking on the ***Activate*** button we grant our agent the permission to connect and be management by this [Tributech Node](../tributech_node/overview.md). For more information on agent management in the [Tributech Node](../tributech_node/overview.md) visit [agent management](../tributech_node/agent_management.mdx).
+
+![***Activate Tributech Agent***](./img/node-agent-management-agent-activation.png)
+
+After the successfully activating the agent state will switch from `Pending` to `Online` which indicates that the Tributech Agent is now ready to be configuration. In the current state the Tributech Agent has an connection to the [Tributech Node](../tributech_node/overview.md) established but does not have any configuration. This means he does not know of any [Tributech Sources](source_integration.md) on the same Edge Device.
+
+![***Online Tributech Agent***](./img/agent-bond-activated.png)
+
+To complete the configuration of a Tribtech Agent visit the [configuration section](operation.mdx#configure-agent).

@@ -6,6 +6,8 @@ sidebar_position: 3
 ## Rest API
 Our REST API provides the interfaces as [OAS V3](https://swagger.io/specification/v3/) which can be used to generate REST API clients for multiple languages. 
 
+![Tributech Node - API Integraton Focus](./img/DemeterArchitectureOverviewAPIIntegration.png) 
+
 The api is generally reachable via the url `<your-node-url>/demeter/api/`  there you can find the json document and a swagger doc website with an general overview of the rest api endpoints. 
 
 The API is structured with following "Topics" :

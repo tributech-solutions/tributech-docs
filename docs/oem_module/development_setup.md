@@ -17,7 +17,6 @@ Links mentioned in the tutorial video:
 - [Segger JLink Driver](https://www.segger.com/downloads/jlink/)
 - [Tributech Github repository](https://github.com/tributech-solutions/tributech-oem-module-iot-kit-examples)
 :::
-
 ## Prerequisites
 
 

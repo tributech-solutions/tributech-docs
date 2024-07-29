@@ -1,0 +1,130 @@
+<mxfile host="Electron" modified="2024-07-29T13:53:06.690Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.6.4 Chrome/124.0.6367.207 Electron/30.0.6 Safari/537.36" etag="unxXEir42Z2BN6Un010S" version="24.6.4" type="device">
+  <diagram name="Page-1" id="STCRA5AkPAw-dsx0DW-E">
+    <mxGraphModel dx="1098" dy="897" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="pRmXCaufJ92v3LcMKul4-6" value="Edge Device" style="whiteSpace=wrap;html=1;verticalAlign=bottom;labelPosition=center;verticalLabelPosition=top;align=center;" vertex="1" parent="1">
+          <mxGeometry x="225" y="624" width="130" height="206.54" as="geometry" />
+        </mxCell>
+        <mxCell id="pRmXCaufJ92v3LcMKul4-15" value="" style="whiteSpace=wrap;html=1;strokeColor=#00BBEC;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="244.75" y="643" width="92.5" height="88" as="geometry" />
+        </mxCell>
+        <mxCell id="JV24va2_vtx07EKMmSr4-17" value="Edge Device" style="whiteSpace=wrap;html=1;verticalAlign=bottom;labelPosition=center;verticalLabelPosition=top;align=center;" parent="1" vertex="1">
+          <mxGeometry x="215" y="240.00000000000006" width="130" height="206.54" as="geometry" />
+        </mxCell>
+        <mxCell id="tQKYMpwozObcIl5q12Uf-1" value="" style="whiteSpace=wrap;html=1;strokeColor=#00BBEC;strokeWidth=3;" parent="1" vertex="1">
+          <mxGeometry x="238" y="253" width="92.5" height="88" as="geometry" />
+        </mxCell>
+        <mxCell id="JV24va2_vtx07EKMmSr4-2" value="Tributech Platform" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;verticalAlign=top;" parent="1" vertex="1">
+          <mxGeometry x="382.20000000000005" y="180" width="252.8" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="JV24va2_vtx07EKMmSr4-4" value="Tributech UI" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/app_services/App_Service_Domains.svg;labelPosition=center;verticalLabelPosition=top;verticalAlign=bottom;" parent="1" vertex="1">
+          <mxGeometry x="671" y="218.54" width="65" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="JV24va2_vtx07EKMmSr4-6" value="Storage" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/iot/Time_Series_Data_Sets.svg;labelPosition=center;verticalLabelPosition=top;verticalAlign=bottom;" parent="1" vertex="1">
+          <mxGeometry x="493.4" y="341" width="51.2" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="JV24va2_vtx07EKMmSr4-11" value="Tributech Node" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/containers/Kubernetes_Services.svg;labelPosition=center;verticalLabelPosition=top;verticalAlign=bottom;" parent="1" vertex="1">
+          <mxGeometry x="485" y="265" width="68" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JV24va2_vtx07EKMmSr4-16" value="Custom Application" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/iot/IoT_Central_Applications.svg;labelPosition=center;verticalLabelPosition=top;verticalAlign=bottom;" parent="1" vertex="1">
+          <mxGeometry x="676" y="334.54" width="60" height="69" as="geometry" />
+        </mxCell>
+        <mxCell id="JV24va2_vtx07EKMmSr4-3" value="Tributech Agent" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Docker.svg;labelPosition=center;verticalLabelPosition=top;verticalAlign=bottom;" parent="1" vertex="1">
+          <mxGeometry x="256" y="285.53999999999996" width="50" height="41" as="geometry" />
+        </mxCell>
+        <mxCell id="JV24va2_vtx07EKMmSr4-10" value="Tributech Source" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Docker.svg;labelPosition=center;verticalLabelPosition=top;verticalAlign=bottom;" parent="1" vertex="1">
+          <mxGeometry x="255.9999999999999" y="388.99999999999994" width="50" height="41" as="geometry" />
+        </mxCell>
+        <mxCell id="JV24va2_vtx07EKMmSr4-19" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="JV24va2_vtx07EKMmSr4-11" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="591" y="510" as="sourcePoint" />
+            <mxPoint x="671" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JV24va2_vtx07EKMmSr4-20" value="" style="endArrow=classic;html=1;rounded=0;exitX=1.015;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="JV24va2_vtx07EKMmSr4-11" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="495" y="297" as="sourcePoint" />
+            <mxPoint x="671" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JV24va2_vtx07EKMmSr4-22" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0.96;entryY=0.255;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="JV24va2_vtx07EKMmSr4-11" target="JV24va2_vtx07EKMmSr4-3" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="151" y="270" as="sourcePoint" />
+            <mxPoint x="-9" y="300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JV24va2_vtx07EKMmSr4-24" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=-0.049;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="JV24va2_vtx07EKMmSr4-10" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="161" y="520" as="sourcePoint" />
+            <mxPoint x="281" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JV24va2_vtx07EKMmSr4-25" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.955;exitY=0.463;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="150.97399999999993" y="410.0239999999999" as="sourcePoint" />
+            <mxPoint x="251" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="XRpzpW0mkASHfJie3qSX-1" value="Customer Data" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/iot/Industrial_IoT.svg;labelPosition=center;verticalLabelPosition=top;verticalAlign=bottom;" parent="1" vertex="1">
+          <mxGeometry x="90" y="382" width="62.8" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="pRmXCaufJ92v3LcMKul4-1" value="&lt;b&gt;Public Network&lt;/b&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;verticalAlign=top;fillColor=none;glass=0;fillStyle=zigzag-line;strokeColor=#6c8ebf;strokeWidth=5;" vertex="1" parent="1">
+          <mxGeometry x="464" y="550" width="324" height="324" as="geometry" />
+        </mxCell>
+        <mxCell id="pRmXCaufJ92v3LcMKul4-2" value="&lt;b&gt;Internal Network&lt;/b&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;verticalAlign=top;fillColor=none;glass=0;fillStyle=zigzag-line;strokeColor=#82b366;strokeWidth=5;" vertex="1" parent="1">
+          <mxGeometry x="69" y="553" width="324" height="324" as="geometry" />
+        </mxCell>
+        <mxCell id="pRmXCaufJ92v3LcMKul4-3" value="Tributech UI" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/app_services/App_Service_Domains.svg;labelPosition=center;verticalLabelPosition=top;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry x="681" y="602.54" width="65" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="pRmXCaufJ92v3LcMKul4-4" value="Tributech Node" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/containers/Kubernetes_Services.svg;labelPosition=center;verticalLabelPosition=top;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry x="495" y="649" width="68" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pRmXCaufJ92v3LcMKul4-5" value="Custom Application" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/iot/IoT_Central_Applications.svg;labelPosition=center;verticalLabelPosition=top;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry x="686" y="718.54" width="60" height="69" as="geometry" />
+        </mxCell>
+        <mxCell id="pRmXCaufJ92v3LcMKul4-7" value="Tributech Agent" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Docker.svg;labelPosition=center;verticalLabelPosition=top;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry x="266" y="669.54" width="50" height="41" as="geometry" />
+        </mxCell>
+        <mxCell id="pRmXCaufJ92v3LcMKul4-8" value="Tributech Source" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Docker.svg;labelPosition=center;verticalLabelPosition=top;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry x="265.9999999999999" y="773" width="50" height="41" as="geometry" />
+        </mxCell>
+        <mxCell id="pRmXCaufJ92v3LcMKul4-9" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="pRmXCaufJ92v3LcMKul4-4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="601" y="894" as="sourcePoint" />
+            <mxPoint x="681" y="654" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pRmXCaufJ92v3LcMKul4-10" value="" style="endArrow=classic;html=1;rounded=0;exitX=1.015;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="pRmXCaufJ92v3LcMKul4-4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="505" y="681" as="sourcePoint" />
+            <mxPoint x="681" y="734" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pRmXCaufJ92v3LcMKul4-11" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="484" y="680" as="sourcePoint" />
+            <mxPoint x="334" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pRmXCaufJ92v3LcMKul4-12" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=-0.049;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="pRmXCaufJ92v3LcMKul4-8">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="171" y="904" as="sourcePoint" />
+            <mxPoint x="291" y="724" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pRmXCaufJ92v3LcMKul4-13" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.955;exitY=0.463;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="160.97399999999993" y="794.0239999999999" as="sourcePoint" />
+            <mxPoint x="261" y="794" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pRmXCaufJ92v3LcMKul4-14" value="Customer Data" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/iot/Industrial_IoT.svg;labelPosition=center;verticalLabelPosition=top;verticalAlign=bottom;" vertex="1" parent="1">
+          <mxGeometry x="100" y="766" width="62.8" height="68" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

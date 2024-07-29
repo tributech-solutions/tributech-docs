@@ -6,9 +6,12 @@ sidebar_position: 1
 # Tributech Node 
 The Tributech Node is the central layer of our Tributech Platform where every data will be collected, secured by our Tributech Agents. Additionally, it will provide functionality to configure and execute commands to the given Tributech Agents.
 
+![Tributech Node - Overview](./img/DemeterArchitectureOverviewFocusNode.png)
+
 It also serves as a middleware Layer for external apps which might read the available data to provide customized user experience. 
 
 ## Overview 
+
 ![Tributech Node - Overview](./img/TributechArchitectureNode.png)
 
 ### Agents

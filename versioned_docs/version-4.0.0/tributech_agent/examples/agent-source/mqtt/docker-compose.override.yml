@@ -4,11 +4,11 @@ services:
   source-mqtt-mock-client:
     image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-source-mqtt-mockclient:${SOURCE_TAG:-latest}
     depends_on:
-      - mosquitto-server-mqtt
-      - tributech-agent-mqtt
+      - mosquitto-server
+      - tributech-agent
       - source-mqtt
     environment:
-      - MqttOptions__MQTTHost=mosquitto-server-mqtt
+      - MqttOptions__MQTTHost=mosquitto-server
       - Logging__LogLevel__Default=Debug
 
       # Configurable Topic Stream

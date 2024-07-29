@@ -7,6 +7,8 @@ sidebar_position: 4
 This page should show some of the most used endpoints from our node. 
 We will do all requests via our swagger doc website you can use your own http client or any third party application to do the rest request against our node. 
 
+![Tributech Node - API User Focus](./img/DemeterArchitectureOverviewAPIUsage.png) 
+
 
 For this section we will use an example DTDL instance with a Tributech EDGE Agent with an OPC UA source.
 

@@ -2,15 +2,16 @@ services:
   tributech-agent:
     image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-agent:${AGENT_TAG:-latest}
     depends_on:
-      - mosquitto-server-simulated
+      - mosquitto-server
     environment:
-      - MqttOptions__MQTTHost=mosquitto-server-simulated
-      - EdgeDeviceOptions__NodeUrl=${NODE_URL:?"The Node URL must be configured in the .env file."}
+      - MqttOptions__MQTTHost=mosquitto-server
+      - EdgeDeviceOptions__AgentID=${AGENT_ID:?"The Tributech Agent requires a GUID"}
+      - EdgeDeviceOptions__NodeUrl=${NODE_URL:?"The Tributech Node Url is required"}
     volumes:
       - ./bin/data:/app/data #default directory for keys and datatwin file
-      - ./enrollment:/app/enrollment
+      - ./enrollment:/app/enrollment # local enrollment folder mounted to /app/enrollment
     restart: unless-stopped
 
-  mosquitto-server-simulated:
+  mosquitto-server:
     image: eclipse-mosquitto:${MQTT_TAG:-1.6}
     restart: unless-stopped
