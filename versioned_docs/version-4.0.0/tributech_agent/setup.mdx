@@ -38,7 +38,7 @@ edge device via a local Message Broker connection. This channel is used on the o
 ## Authentication Certificates (Enrollment)
 
 Before starting a Tributech Agent we need to get a Certificate signed by the [Tributech Node](../tributech_node/overview.md)
-that is used during the initial authentication process to indicate that a Tribtech Agent is allowed to establish a MQTTS connection to the [Tributech Node](../tributech_node/overview.md). The certificate handling and initial establishing of a connection to the [Tributech Node](../tributech_node/overview.md) is called `Enrollment` and more information can be found in [agent management](../tributech_node/agent_management.mdx).
+that is used during the initial authentication process to indicate that a Tribtech Agent is allowed to establish a MQTTS connection to the [Tributech Node](../tributech_node/overview.md). The certificate handling and initial establishing of a connection to the [Tributech Node](../tributech_node/overview.md) is called `Enrollment` and more information can be found in [agent management](../tributech_node/agent/access_control.mdx).
 
 ![**"Configure Agent**](./img/EdgeDeviceOverviewFocusAgentToNode.png)
 
@@ -149,7 +149,7 @@ After the docker containers have been startet successfully the Agent will connec
 ![***Activate Tributech Agent***](./img/agent-bond-enrollment.png)
 
  The Agent with our specific `Agent ID` should be in ne of the top most entries of the list and should be in the `Pending` state. 
- If to many agents are listed we can search for the Agent with the `AGENT_ID` we defined docker compose file (value for `EdgeDeviceOptions__AgentID` in our example `00000000-0000-0000-0000-000000000007`). By clicking on the ***Activate*** button we grant our agent the permission to connect and be management by this [Tributech Node](../tributech_node/overview.md). For more information on agent management in the [Tributech Node](../tributech_node/overview.md) visit [agent management](../tributech_node/agent_management.mdx).
+ If to many agents are listed we can search for the Agent with the `AGENT_ID` we defined docker compose file (value for `EdgeDeviceOptions__AgentID` in our example `00000000-0000-0000-0000-000000000007`). By clicking on the ***Activate*** button we grant our agent the permission to connect and be management by this [Tributech Node](../tributech_node/overview.md). For more information on agent management in the [Tributech Node](../tributech_node/overview.md) visit [agent management](../tributech_node/agent/access_control.mdx).
 
 ![***Activate Tributech Agent***](./img/node-agent-management-agent-activation.png)
 
