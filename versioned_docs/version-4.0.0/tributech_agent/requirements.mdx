@@ -59,8 +59,8 @@ This communication will take place via a public accessable network.
 
 |Port|Protocol|From|To|direction|Information|
 | :------ | :----------- | :----------- |  :----------- |:----------- | :--------------------- |
-|443|HTTPS|Tributech Agent/Source| Azure Container Registry | Inbound | Access to the private Azure Container Registry containing [Tributech Docker Images](agent_integration.mdx)|
-|1883|MQTTS|Tributech Agent|Tributech Node|both|Communication protocol used between Tributech Agent and Node. MQTTS is the secure version of the MQTT protocol using TLS.|
+|443|HTTPS|Tributech Agent/Source| Azure Container Registry | Outbound | Access to the private Azure Container Registry containing [Tributech Docker Images](agent_integration.mdx)|
+|1883|MQTTS|Tributech Agent|Tributech Node|Outbound|Communication protocol used between Tributech Agent and Node. MQTTS is the secure version of the MQTT protocol using TLS.|
 
 #### Tributech Agent Source Requirements
 For the Tributech Agent Source we require dependend on the source different ports. Its important to note
