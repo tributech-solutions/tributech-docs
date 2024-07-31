@@ -6,12 +6,12 @@ sidebar_position: 1
 
 Welcome to our official documentation page!
 
-The Tributech Platform is a solution for a secure data integration from any sources that enhances data security without compromising interoperability. It’s used to secure data against tampering and hijacking, making it trustworthy for any connected product, device, or service. The Tributech platform is available as a SaaS or PaaS solution and offers integration options for IT systems, OT infrastructure and IoT gateways or devices. The following diagram provides an overview of the platform's architecture.
+The Tributech Platform is a solution for a secure data integration, from any sources, that enhances data security without compromising interoperability. It’s used to secure data against tampering and hijacking, making it trustworthy for any connected product, device, or service. The Tributech platform is available as a SaaS or PaaS solution and offers integration options for IT systems, OT infrastructure and IoT gateways or devices. The following diagram provides an overview of the platform's architecture.
 
 ![Tributech Architecture - Overview](./img/introduction/DemeterArchitectureOverview.png)
 
 The platform includes components like [Tributech Sources](tributech_agent/source_integration.md) and [Tributech Agent](tributech_agent/overview.md) which are used to collect the Customer Data and securly transmit it from an Edge Device to our [Tributech Node](tributech_node/overview.md). The [Tributech Node](tributech_node/overview.md) persist collected data reliable and ensure data integrity, authenticity throughout its lifecycle. Collected data can be
-inspected anytime and reviewed with our provided Tributech Web UI or accessed by an authenticated Customer Application via [REST](tributech_node/API_usage.md) or [Webhooks](tributech_node/Webhook_integration.md).
+inspected at anytime and reviewed with our provided Tributech Web UI. We also provide the possibility to access our [Tributech Node](tributech_node/overview.md) data and functonality for authenticated Customer Application via [REST](tributech_node/api/API_usage.md) or get notified of predefined events via [Webhooks](tributech_node/Webhook_integration.md).
 
 
 ## Platform Features
@@ -30,7 +30,7 @@ The following list provides an overview of the most important platform features.
 ## Quick Links
 
 -	To learn how to integrate IT/OT/IoT data sources via the Tributech Agent, visit the [overview](./tributech_agent/overview.md) page or start directly with our [quick start guide](./tributech_agent/quickstart.mdx).
--	To learn more about the platform REST and webhook event interface visit the [API integration](./tributech_node/API_integration.md) page.
--	Visit the [API usage](./tributech_node/API_usage.md) page for the most common use case examples.
+-	Visit API [Usage](./tributech_node/api/API_usage.md)/[Integration](./tributech_node/api/API_integration.md) for more information on what our [Tributech Node](tributech_node/overview.md) REST interface provides for the most common use cases.
+-	Visit the [Webhooks](./tributech_node/Webhook_integration.md) to learn more about [Tributech Node](tributech_node/overview.md) Events
 -	Visit the OEM Module (deprecated) [overview](./oem_module/overview.md) page to learn more about the integration into embedded IoT devices.
 

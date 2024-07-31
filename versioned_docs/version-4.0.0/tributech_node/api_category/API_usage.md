@@ -1,6 +1,6 @@
 ---
-title: API Usage
-sidebar_position: 4
+title: Usage
+sidebar_position: 1
 ---
 # API usage overview
 

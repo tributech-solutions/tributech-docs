@@ -4,11 +4,15 @@ sidebar_position: 1
 ---
 
 # Tributech Node 
-The Tributech Node is the central layer of our Tributech Platform where every data will be collected, secured by our Tributech Agents. Additionally, it will provide functionality to configure and execute commands to the given Tributech Agents.
+The Tributech Node is the central layer of our Tributech Platform where every data will be collected, secured by our Tributech Agents. 
 
-![Tributech Node - Overview](./img/DemeterArchitectureOverviewFocusNode.png)
+ ![Tributech Node - Overview](./img/DemeterArchitectureOverviewFocusNode.png)
 
-It also serves as a middleware Layer for external apps which might read the available data to provide customized user experience. 
+A Tributech Node can also be used for the following scenarios (excerpt):
+- Provide external application access to read the available data to provide customized user experience, see [API Integration](../tributech_node/api_category/API_integration.md)
+- Agent [access permissions](../tributech_node/agent/access_control.mdx), [configuration](../tributech_node/agent/management.mdx) or sending [commands](../tributech_agent/source_integration.md#commands) for an agent
+- [Verify Data](../tributech_node/agent/verification.mdx)
+- [Manage Webhooks](../tributech_node/Webhook_integration.md#webhook-subscription-management)
 
 ## Overview 
 
@@ -16,15 +20,11 @@ It also serves as a middleware Layer for external apps which might read the avai
 
 ### Agents
 
-The Agents are connected to our node via an MQTT broker which is secured by TLS to provide a secure communication channel. The protocol provides us the possibility to have a near real time communication to receive data from our agents. Also, it enables us to have a bidirectional communication with our agents which gives us the capability to issue commands, receive data and  Proofs.
-___
-*** NOTE ***  
-This leads to the requirement that the ***Tributech EDGE Agent*** needs an outgoing port **1883**. Further Information can be found in the [Tributech Agent documentation](../tributech_agent/agent_integration.mdx). 
-___
+The Agents are connected to our node via an MQTT broker which is secured by TLS to provide a secure communication channel. The protocol provides us the possibility to have a near real time communication to receive data from our agents. This enables us to have a bidirectional communication with our agents which gives us the capability to change the [configuration](../tributech_node/agent/management.mdx) or issue [commands](../tributech_agent/source_integration.md#commands).
 
 ### REST API
 
-The Node is built with the ***API-first approach*** in mind so every functionality is available via our REST API. This also enables external parties to act with our functionality like:
+The Tributech Node is built with the ***API-first approach*** in mind. So every functionality is available via our REST API which enables external parties to execute operations like:
 
 - Fetching the data provided by the agents 
 - Trigger the validation of their data 
@@ -33,14 +33,14 @@ The Node is built with the ***API-first approach*** in mind so every functionali
 - Configure the given Tributech Agent Sources and Tributech Agents
 - Manage the available DTDL Models within your Node
 
-[Authorization](./API_usage.md) will be further explained in another page. But it follows the [OAuth 2.0](https://oauth.net/2/) specification and will support the [client credential flow](https://auth0.com/docs/get-started/authentication-and-authorization-flow/client-credentials-flow) and the [authorization code flow](https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-proof-key-for-code-exchange-pkce). Currently we don't support any user/group permissions and will only handle authorization against our REST API.   
+[Authorization](./api_category/API_usage.md) will be further explained in another page. But it follows the [OAuth 2.0](https://oauth.net/2/) specification and will support the [client credential flow](https://auth0.com/docs/get-started/authentication-and-authorization-flow/client-credentials-flow) and the [authorization code flow](https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-proof-key-for-code-exchange-pkce). Currently we don't support any user/group permissions and will only handle authorization against our REST API.   
 
 ### Webhooks
 We also provide a push-based notification system via Webhooks. External actors are able to subscribe to given events and add an url where the events should be sent to. Additionally we attach an HMAC signature to our events within the HTTP Headers to prevent spoofing attacks. 
 
 The list of events and subscription can be handled within our rest api. This enables external parties to implement a push-based system within their application to decrease the reaction time to certain events in our node. 
 
-***For further Information visit the [API Integration Page](./API_integration.md)***
+***For further Information visit the [API Integration Page](./api_category/API_integration.md)***
 
 
 ### DTDL
