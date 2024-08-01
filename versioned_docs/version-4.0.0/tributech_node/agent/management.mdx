@@ -7,90 +7,90 @@ import CodeBlock from '@theme/CodeBlock';
 import SourceDockerCompose from '!!raw-loader!./management/docker-compose-agent-integration.yml';
 import DockerComposeVolumesExample from '!!raw-loader!./management/docker-compose-volumes-example.yml';
 
-In the following section we describe how configurate and navigate the Tributech Agent via the Tributech Node UI.
-This requires an successful [Setup](setup.mdx) and a completed [activation](../tributech_node/agent_management.mdx) with a corresponding [Tributech Node](../tributech_node/overview.md).
+In the following section we describe how configure and navigate the Tributech Agent via the Tributech Node UI.
+This requires an successful [Setup](../../tributech_agent/setup.mdx) (or [QuickStart](../../tributech_agent/quickstart.mdx)) and a completed [activation](../agent/access_control.mdx#activate-agent) with a [Tributech Node](../tributech_node/overview.md).
 
 ## Searching for an Agent
 
-The first step is to find the correct Tributech Agent in the agents section. We get to the agents section either
-via the initial login or navigating the sidebar to the agents icon.
+The first step is to find the correct Tributech Agent in the *Agent Section*.
 
 ![***Online Tributech Agent***](./img/agent-section.png)
 
-In this overview we can either filter agents with the `Agents ID` (from the [Setup](setup.mdx)) or with partial name.
+In this overview we can either filter agents with the `Agents ID` (from the [Setup](../../tributech_agent/setup.mdx) ) or with a (partial) name.
 
 ![***Online Tributech Agent***](./img/agent-overview.png)
 
-Its also possible to filter agent for state or type values:
+Its also possible to filter agent via states or types:
 
 ![***Online Tributech Agent***](./img/agent-overview-filter-type-state.png)
 
 ![***Online Tributech Agent***](./img/agent-property-filter-values.png)
 
 ## Searching for a Stream
+In Order to inspect data and proofs received from a [Tributech Agent](../../tributech_agent/overview.md) we need to find the correct stream. Streams can be found in the Tributech Agent details view and filtered by name or id.
 
-
+- Show filter:
 ![***Online Tributech Agent***](./img/agent-details-show-filter.png)
+- Filter by (partial) name
 ![***Online Tributech Agent***](./img/agent-details-stream-filter-name.png)
+- Filter by StreamId
 ![***Online Tributech Agent***](./img/agent-details-stream-filter-id.png)
 
 ## Get the Agent Id
-Agents can be referenced either by name or Id. An Agent Id is a GUID (Globally Unique Identifier) that is assigned to a Tributech Agent on startup (see [Setup](setup.mdx#environment-configuration)) and will never change. When interacting with the [Tributech Node API](../tributech_node/API_usage.md) its required for many operations to specify which Tributech Agent will be interacting with.
-The Agent Id can also be used in [agents section](#searching-for-an-agent) to find a specific agent or in the [Tributech Node Agent Management](../tributech_node/agent_management.mdx). Therefore, we want to show where to find the Agent Id in the Tributech UI without the need to access the Edge Device:
+Agents can be referenced either by name or Id, e.g. [searching for an agent](#searching-for-an-agent). An Agent Id is a GUID (Globally Unique Identifier) that is assigned to a Tributech Agent on startup (see [Setup](../../tributech_agent/setup.mdx) (or [QuickStart](../../tributech_agent/quickstart.mdx))) and will never change. When interacting with the [Tributech Node API](../api_category/API_usage.md) its required for many operations to specify which Tributech Agent we will be interacting with and the selection is done via the Agent Id. In the following enumeration we want to show where to find the Agent Id in the Tributech UI:
 
-- In the agent section
+- In the *Agent Section*
 ![***Online Tributech Agent overview get id***](./img/agents-overview-getid.png)
 
-- In the agent details (can be access by clicking the agent entry in the agent section overview table)
+- In the *Agent details* (can be access by clicking the agent table entry in the *Agent Section*)
 ![***Online Tributech Agent details get id***](./img/agents-details-getid.png)
 
 ## Get a Stream Id
-Collected data is always bound to a data stream. A data stream is a unique collection of information which has can be identified by a GUID (Globally Unique Identifier). With the StreamId values and proofs can be accessed via the [Tributech Node API](../tributech_node/API_usage.md) and [Webhook Events](../tributech_node/Webhook_integration.md) interprated. Streams contain multiple properties like name, type, unit ... but only the StreamId is used to access a specific stream.
-To find the StreamId for a specific stream we need to access the agent details (can be access by clicking the agent entry in the agent section overview table) where we find all streams associated with an Triubtech Agent.
+Collected data is always bound to a data stream which is a collection of information that can be identified by the unique StreamId, i.e. a GUID (Globally Unique Identifier). The StreamId can be used to access values and proofs via the [Tributech Node API](../tributech_node/api_category/API_usage.md) and map data from [Webhook Events](../tributech_node/Webhook_integration.md). 
+We can access the StreamId either via 
 
-- In the agent details (can be access by clicking the agent entry in the agent section overview table)
+agent details (can be access by clicking the agent entry in the *Agent section*) actions:
 ![***Online Tributech Agent details get stream id***](./img/agent-details-get-stream-id.png)
 
-- In the stream details (can be access by selecting a stream in the agent details overview)
+or by inspecting a specific stream
 ![***Online Tributech Agent details get stream id***](./img/agent-stream-get-stream-id.png)
 
 ## Configuring an Agent
-After finding an activated the Tributech Agent (see [Setup](setup.mdx)) we can configure the settings of an Tributech Agent
-by changes its Twin settings. A Twin can be used to change properties of the Triubtech Agent include naming, merkle deepth etc or managing relationships and settings of [Triubtech Sources](source_integration.md). The starting point for all this operations is the 
-`Twin Workspace` and we show in this section how to adjust Tributech Agent settings. The details on how to configure specific Sources can be found in the corresponding [Triubtech Sources](source_integration.md) overview. To get to the `Twin Workspace` we can either by:
-
-- selecting `Configure Agent` in the `actions context menu`.
+After activating an the Tributech Agent (see [Access Control](./access_control.mdx#activate-agent)) we can configure the settings of an Tributech Agent
+by changes the Digital Twin. Those settings include properties of the Triubtech Agent like naming, merkle deepth etc or managing relationships and associated [Triubtech Sources](../../tributech_agent/source_integration.md) and Source settings. The starting point for all this operations is the 
+`Twin Workspace` and we show in this section how to make changes to the Digital Twin. Details on how to configure specific Sources can be found in the corresponding [Triubtech Sources](../../tributech_agent/source_integration.md) overview. 
+We can access the `Twin Workspace` either via selecting `Configure Agent` in the `actions context menu`.
     ![***Online Tributech Agent***](./img/agent-bond-agents-overview.png)
 
-- Simply click the entry in the `Agents` section followed by `CONFIGURE` in the Agent details
+or by simply click the entry in the `Agents` section followed by `CONFIGURE` in the Agent details
 
-    ![***Online Tributech Agent***](./img/agent-details-configure.png)
+![***Online Tributech Agent***](./img/agent-details-configure.png)
 
-In the configuration we see on top of the entries for the `dtmi:io:tributech:device:edge;1` a entry with `dtId`. This field will always contain the `Agent ID` (the same from agents overview context menu).
+In the `Twin Workspace` we see on the right side as first fixed setting of the `Edge`(`dtmi:io:tributech:device:edge;1`) entry the [Agent Id](#get-the-agent-id) indicated by `dtId`. This field is an example for Meta data field which can not be adjusted by the Twin Workspace.
 
 ![***Tributech Agent Id***](./img/agent-bond-config-agent-id.png)
 
-We can give this Tribteuch Agent a new name which will be displayed in the Agent Overview and will make finding this agent easier because its easier to remember than a GUID. 
+However, we can give this Tribteuch Agent a new name which will be displayed in the Agent Overview and will make finding this agent easier. 
 
 ![***Tributech Agent Config Name***](./img/agent-bond-config-name.png)
 
 :warning: The changes only takes effect when click `SAVE IN WORKSPACE` followed by `APPLY CONFIGURATION`.
 
 ## Adding data to an Agent
-We have currently named our Tributech Agent but will not receive and data because we require a [Tribtech Source](source_integration.md) to send data. We can add our [Simulated Tributech Source](sources/simulated_source.mdx) which we set up in our `docker-compose.yml` file by right clicking the `dtmi:io:tributech:device:edge;1` entry on the left side of the Twin Workspace.
+After the initial connect of an Tribtech Agent only one entry exists in the left side of the `Twin Workspace` and is named per default `Edge`(`dtmi:io:tributech:device:edge;1`). This entry represents the Tribtech Agent and should not be deleted but we can add a data ingress to this agent by adding [Triubtech Sources](../../tributech_agent/source_integration.md). We show in the following steps how to add a [Simulated Tributech Source](sources/simulated_source.mdx) which we set up in our [QuickStart](../../tributech_agent/quickstart.mdx) and [Setup](../../tributech_agent/setup.mdx) `docker-compose.yml` sample file. By right clicking the `dtmi:io:tributech:device:edge;1` entry on the left side of the Twin Workspace we get a list of all available [Triubtech Sources](../../tributech_agent/source_integration.md) and select  [Simulated Tributech Source](../../tributech_agent/sources/simulated_source.mdx):
 
 ![***Online Tributech Agent***](./img/agent-bond-add-simulated.png)
 
-We now made the Tributech Agent aware of a connection between itself and a [Simulated Tributech Source](sources/simulated_source.mdx). Now we need to setup the properties of the [Simulated Tributech Source](sources/simulated_source.mdx) in order to generate data.
+We now made the Tributech Agent aware of a connection between itself and a [Simulated Tributech Source](../../tributech_agent/sources/simulated_source.mdx). This enables us to manage the configuration of the Triubtech Source and receive data from it. 
 
 ![***Edge Device focus Source***](./img/EdgeDeviceOverviewFocusSimulatedSource.png)
 
-To add a configuration a samle data stream to the [Simulated Tributech Source](sources/simulated_source.mdx) we add a 
-a new `Simulated Stream` to the Simulated Source by rigth clicking the `dtmi:io:tributech:stream:simulated;1` entry
+To receive data from the newly added [Simulated Tributech Source](../../tributech_agent/sources/simulated_source.mdx)
+we need to add a `Simulated Stream` to it by right clicking the `dtmi:io:tributech:stream:simulated;1` entry and selecting the corresponding entry.
 
 ![***Online Tributech Agent***](./img/agent-bond-add-stream.png)
 
-A simulated stream means a continues flow of data that will be produced randomly by the [Simulated Tributech Source](sources/simulated_source.mdx) with a specific type of data (double, long, integer,..). We adjust the default template properties:
+A simulated stream is a continues flow of data that will be produced randomly by the [Simulated Tributech Source](sources/simulated_source.mdx) with a specific type of data (double, long, integer,..). We adjust the default template properties as followed:
 
 - **Name**: `Simulated Double Stream` is used to identify the stream in the Agent Details overview
 - **Data Encoding**: `Double` used in the display of values in the Tributech Node UI
@@ -107,18 +107,8 @@ After successfully executing `APPLY CONFIGURATION` we can now go back to the `Ag
 
 ![***Tributech Agent Simulated Double Stream***](./img/agent-bond-config-to-agent-details.png)
 
-The newly created `Simulated Double Stream` is now available. For more information on how to add different sources visit [Triubtech Source Integration](source_integration.md) or configure a [Simulated Triubtech Source](source_integration.md) visit the corresponding sites.
+The newly created `Simulated Double Stream` is now available. For more information on how to add different sources visit [Triubtech Source Integration](../../tributech_agent/source_integration.md) or configure a [Simulated Triubtech Source](../../tributech_agent/sources/simulated_source.mdx) visit the corresponding sites.
 
-By selecting the `Simulated Double Stream` we can directly go into a review of the received data.
+By selecting the `Simulated Double Stream` we can directly go into the [stream verification](../agent/verification.mdx) of the received data.
 
 ![***Tributech Agent Simulated Double Stream***](./img/agent-bond-details-view-one-stream.png)
-
-By hovering over the data points we see the concret values and if the `Validation` was successful or not.
-We can choose to view all audit result for the current time frame either by enabling the swith to `Display Audit Result` or in a separate table view by choosing the top most button `AUDIT RESULTS`.
-
-![***Tributech Agent Simulated Double Stream***](./img/agent-bond-double-stream-values.png)
-
-This concludes the basic setup guide, for more information regarding Tributech Sources visit [Source Integration](source_integration.md) or 
-
-![***Tributech Agent Simulated Double Stream***](./img/agent-bond-double-stream-audit.png)
-

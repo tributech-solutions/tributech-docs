@@ -9,7 +9,7 @@ import DockerLogin from '!!raw-loader!./examples/docker/docker-login-cmd';
 import EnvSample from '!!raw-loader!./examples/agent-management/agent-service-sample-values.yml';
 
 In this QuickStart Guide we give a shortened overview on how to setup a Tributech Agent with a [Simulated Source](./sources/simulated_source.mdx) and connect it to a Tributech Node to display the random generated data.
-For a more detailed description on how to setup the Tributech Agent visit [Agent Integration](./agent_integration.mdx).
+For a more detailed description on how to setup the Tributech Agent visit [Setup](./setup.mdx).
 
 ![**"Configure Agent**](./img/EdgeDeviceOverviewFocusAgent.png)
 
@@ -17,13 +17,13 @@ For a more detailed description on how to setup the Tributech Agent visit [Agent
 In Order to link a Tributech Agent to a Tributech node we need the following:
 
 - Access to an existing [Tributech Node](../tributech_node/overview.md)
-- Access to an environment with [Docker Compose](https://docs.docker.com/compose/), which meets the [Tributech Agent Requirements](./agent_integration.mdx#requirements)
+- Access to an environment with [Docker Compose](https://docs.docker.com/compose/), which meets the [Tributech Agent Requirements](requirements.mdx)
 
 :warning: We will use in our examples for the quickstart different Container Images and configurations compared to the [Setup](setup.mdx) documentation. Please use a new empty folder for the files to prevent any configuration mix.
 
 ## Docker-Compose Up
 We start by setting up the docker-compose environment for the Tributech Agent and Tributech Simulated Source as follows:
-- ***Authenticate docker*** to retrieve the relevant docker images from the private [Tributech Docker Registry](./agent_integration.mdx#authentication).
+- ***Authenticate docker*** to retrieve the relevant docker images from the private [Tributech Docker Registry](./requirements.mdx#docker-login).
 
     <CodeBlock className="bash" title="terminal">{DockerLogin}</CodeBlock>   
 
@@ -93,4 +93,4 @@ In order to detect [data tampering](https://www.tributech.io/blog/cybersecurity-
 
     ![***Audit overview***](img/node-source-audit-overview.png)
 
-This completes the QuickStart, for a more detailed guide and information about the audito process visit [Tributech Agent Integration](agent_integration.mdx). For more information on how to add other types of Tributech Sources visit [Source Integration](source_integration.md).
+This completes the QuickStart, for a more detailed guide and information about the audit process visit [Stream Verification](../tributech_node/agent/verification.mdx). For more information on how to add other types of Tributech Sources visit [Source Integration](source_integration.md).

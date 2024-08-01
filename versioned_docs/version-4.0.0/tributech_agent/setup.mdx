@@ -26,7 +26,7 @@ In this section we want to show an Tributech Agent is setup up and can be used t
 customer data from an edge device to the [Tributech Node](../tributech_node/overview.md) for inspection
 and verification. The [Tributech Node](../tributech_node/overview.md) is the common management point for
 all Tributech Agents connected to the Node. How a Tributech Agent operates and which Tributech Sources
-will be able to submit data is defined in [Digital Twin Configuration of an Agent](management.mdx).
+will be able to submit data is defined in [Digital Twin Configuration](../tributech_node/agent/management.mdx#configuring-an-agent)  of an Agent.
 This management of Agent is required after completing successfully the Agent [Enrollment](#authentication-certificates-enrollment)
 Process. 
 
@@ -115,7 +115,7 @@ The docker compose provides a completed setup however, some setting need to be a
 
 - `EdgeDeviceOptions__AgentID` is a **GUID** that can be freely chosen but **must be unique for each agent** connecting to the same [Tributech Node](../tributech_node/overview.md)
 - `EdgeDeviceOptions__NodeUrl` is the absolute URL to the [Tributech Node](../tributech_node/overview.md) the agent should connect to
-- `EnrollmentOptions__EnrollmentCertBase64` and `EnrollmentOptions__EnrollmentKeyBase64` are base64 encoded certifcates required to authenticate with a [Tributech Node](../tributech_node/overview.md) (see [Enrollment](agent_enrollment.mdx)) 
+- `EnrollmentOptions__EnrollmentCertBase64` and `EnrollmentOptions__EnrollmentKeyBase64` are base64 encoded certifcates required to authenticate with a [Tributech Node](../tributech_node/overview.md) (see [Enrollment](../tributech_node/agent/access_control.mdx)) 
 
 Sample values:
 
@@ -157,4 +157,4 @@ After the successfully activating the agent state will switch from `Pending` to 
 
 ![***Online Tributech Agent***](./img/agent-bond-activated.png)
 
-To complete the configuration of a Tribtech Agent visit the [configuration section](operation.mdx#configure-agent).
+To complete the configuration of a Tribtech Agent visit the [configuration section](../tributech_node/agent/management.mdx#configuring-an-agent).
