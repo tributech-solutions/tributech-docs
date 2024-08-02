@@ -8,7 +8,7 @@ import SourceDockerCompose from '!!raw-loader!./management/docker-compose-agent-
 import DockerComposeVolumesExample from '!!raw-loader!./management/docker-compose-volumes-example.yml';
 
 In the following section we describe how configure and navigate the Tributech Agent via the Tributech Node UI.
-This requires an successful [Setup](../../tributech_agent/setup.mdx) (or [QuickStart](../../tributech_agent/quickstart.mdx)) and a completed [activation](../agent/access_control.mdx#activate-agent) with a [Tributech Node](../tributech_node/overview.md).
+This requires an successful [Setup](../../tributech_agent/setup.mdx) (or [QuickStart](../../tributech_agent/quickstart.mdx)) and a completed [activation](../agent/access_control.mdx#activate-agent) with a [Tributech Node](../overview.md).
 
 ## Searching for an Agent
 
@@ -46,7 +46,7 @@ Agents can be referenced either by name or Id, e.g. [searching for an agent](#se
 ![***Online Tributech Agent details get id***](./img/agents-details-getid.png)
 
 ## Get a Stream Id
-Collected data is always bound to a data stream which is a collection of information that can be identified by the unique StreamId, i.e. a GUID (Globally Unique Identifier). The StreamId can be used to access values and proofs via the [Tributech Node API](../tributech_node/api_category/API_usage.md) and map data from [Webhook Events](../tributech_node/Webhook_integration.md). 
+Collected data is always bound to a data stream which is a collection of information that can be identified by the unique StreamId, i.e. a GUID (Globally Unique Identifier). The StreamId can be used to access values and proofs via the [Tributech Node API](../api_category/API_usage.md) and map data from [Webhook Events](../Webhook_integration.md). 
 We can access the StreamId either via 
 
 agent details (can be access by clicking the agent entry in the *Agent section*) actions:
@@ -77,7 +77,7 @@ However, we can give this Tribteuch Agent a new name which will be displayed in 
 :warning: The changes only takes effect when click `SAVE IN WORKSPACE` followed by `APPLY CONFIGURATION`.
 
 ## Adding data to an Agent
-After the initial connect of an Tribtech Agent only one entry exists in the left side of the `Twin Workspace` and is named per default `Edge`(`dtmi:io:tributech:device:edge;1`). This entry represents the Tribtech Agent and should not be deleted but we can add a data ingress to this agent by adding [Triubtech Sources](../../tributech_agent/source_integration.md). We show in the following steps how to add a [Simulated Tributech Source](sources/simulated_source.mdx) which we set up in our [QuickStart](../../tributech_agent/quickstart.mdx) and [Setup](../../tributech_agent/setup.mdx) `docker-compose.yml` sample file. By right clicking the `dtmi:io:tributech:device:edge;1` entry on the left side of the Twin Workspace we get a list of all available [Triubtech Sources](../../tributech_agent/source_integration.md) and select  [Simulated Tributech Source](../../tributech_agent/sources/simulated_source.mdx):
+After the initial connect of an Tribtech Agent only one entry exists in the left side of the `Twin Workspace` and is named per default `Edge`(`dtmi:io:tributech:device:edge;1`). This entry represents the Tribtech Agent and should not be deleted but we can add a data ingress to this agent by adding [Triubtech Sources](../../tributech_agent/source_integration.md). We show in the following steps how to add a [Simulated Tributech Source](../../tributech_agent/sources/simulated_source.mdx) which we set up in our [QuickStart](../../tributech_agent/quickstart.mdx) and [Setup](../../tributech_agent/setup.mdx) `docker-compose.yml` sample file. By right clicking the `dtmi:io:tributech:device:edge;1` entry on the left side of the Twin Workspace we get a list of all available [Triubtech Sources](../../tributech_agent/source_integration.md) and select  [Simulated Tributech Source](../../tributech_agent/sources/simulated_source.mdx):
 
 ![***Online Tributech Agent***](./img/agent-bond-add-simulated.png)
 
@@ -90,7 +90,7 @@ we need to add a `Simulated Stream` to it by right clicking the `dtmi:io:tribute
 
 ![***Online Tributech Agent***](./img/agent-bond-add-stream.png)
 
-A simulated stream is a continues flow of data that will be produced randomly by the [Simulated Tributech Source](sources/simulated_source.mdx) with a specific type of data (double, long, integer,..). We adjust the default template properties as followed:
+A simulated stream is a continues flow of data that will be produced randomly by the [Simulated Tributech Source](../../tributech_agent/sources/simulated_source.mdx) with a specific type of data (double, long, integer,..). We adjust the default template properties as followed:
 
 - **Name**: `Simulated Double Stream` is used to identify the stream in the Agent Details overview
 - **Data Encoding**: `Double` used in the display of values in the Tributech Node UI
