@@ -5,21 +5,13 @@ sidebar_position: 1
 
 # Tributech Agent
 
-The Tributech Agents are responsible for securing the data collected by Tributech Sources (officially supported protocols) or custom sources implemented based on our specification. Agents also provide a secure bidirectional communication channel between the Tributech Node platform and Tributech Agent which enables not only the secure gathering of data points and proofs, but also the issuing of commands back to the connected environment. 
 
-![Tributech Architecture - Overview](./img/TributechArchitectureAgent.png)
+The Tributech Agent is responsible for securing the data collected by Tributech Sources and sending the collected data to a [Tributech Node](../tributech_node/overview.md) where it can be inspected and verified via the Tributech UI.
+Agents also provide a secure bidirectional communication channel between the Tributech Node platform and Tributech Agent which enables not only the secure gathering of data points and proofs, but also the issuing of commands back to the connected [Tributech Sources](source_integration.md). 
 
-## QuickStart
+![Tributech Architecture - Overview](./img/DemeterArchitectureOverviewFocusAgent.png)
 
-The Tributech [QuickStart guide](./quickstart.mdx) entails a short tutorial how to setup a Tributech Agent with a [Simulated Source](./sources/simulated_source.mdx) in a [Docker Compose](https://docs.docker.com/compose/) environment. It also covers what a user has to do to activate the Tributech Agent in the Tributech Playground Node. After the Source configuration it guides the user through their very first verification of their gathered and notarized data points. 
-
-## Agent Enrollment 
-
-The Tributech [Agent Enrollment](./agent_enrollment.mdx) teaches the user how to create all the files to be able to enroll a custom agent to a specific Node. Furthermore the user will learn where those files need to be saved and how to configure the docker compose files to be able to use said files. The last step covers how to activate the agent in the Tribtuech UI environment. 
-
-## Supported Sources
-
-The supported Tributech Sources give the user a wide variety of endpoints with which the customers are able to connect their data sources to a Tributech Node. The following table shows the available Source Types and their corresponding setup guides. If those Sources don’t meet your requirements there is also the possibility to implement [Custom Source](./source_integration.md) and handle the data integration by yourself.
+We provide differnt types of [Tributech Sources](source_integration.md) for the most commonly used communication protocols.
 
 | Source    | Guide                                                                                          |
 | --------- | ---------------------------------------------------------------------------------------------  |
@@ -29,6 +21,21 @@ The supported Tributech Sources give the user a wide variety of endpoints with w
 | Simulated Sensor | The [**Simulated Source Guide**](./sources/simulated_source.mdx) integrates data provided by test sources generating random data.        |
 | REST  | The [**REST Source Guide**](./sources/rest_source.mdx) integrates data provided via [HTTP APIs](https://swagger.io/specification/).        |
 
-## Agent Deployment
+If those Sources don’t meet your requirements there is also the possibility to implement [Custom Source](./source_integration.md) and handle the data integration by yourself.
+
+## Requirements
+In Order to test our Tributech Platform we provide a private azure container registry access to our Tributech Agent and [Sources](source_integration.md). In [Requirements](requirements.mdx) we define hard- and software requirements and show how to
+gain access to the Tributech container images.
+
+## Quickstart
+
+The Tributech [Quickstart guide](./quickstart.mdx) contains a short tutorial on how to setup and configure a Tributech Agent with a [Simulated Source](./sources/simulated_source.mdx) in a [Docker Compose](https://docs.docker.com/compose/) environment. 
+This guide will show the user with a simple example how randomly generated data on an edge device can be
+gathered, notarized and verified in the [Tributech Node](../tributech_node/overview.md) UI.
+
+## Setup
+An Tributech Agent is the link inbetween the customer data and the persistence in a [Tributech Node](../tributech_node/overview.md).
+In the [Setup guide](setup.mdx) we will show the different ways to configure a Tributech Agent. This includes authentication and connection with a [Tributech Node](../tributech_node/overview.md) as well as a process based description of what the purpose of the Tributech Agent is. 
 
 Our Agent is a Docker service with a broker and a source. As mentioned the Agent is a docker service and can be combined with any Docker orchestration service like [Docker Compose](https://docs.docker.com/compose/) or IoT device management platforms like [Azure IoT Edge Runtime](https://learn.microsoft.com/en-us/azure/iot-edge/iot-edge-runtime?view=iotedge-1.4). The general Integration of our Agent is described in the section [Agent Integration](agent_integration.mdx/).
+

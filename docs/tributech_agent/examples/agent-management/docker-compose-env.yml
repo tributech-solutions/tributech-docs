@@ -1,5 +1,0 @@
-services:
-  tributech-agent:
-    environment:      
-      - EnrollmentOptions__EnrollmentCertBase64=LS0tLS1CR...VEUgS0VZLS0tLS5X
-      - EnrollmentOptions__EnrollmentKeyBase64=LS0tLS1CRU...VEUgS0VZLS0tLS0K

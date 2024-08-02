@@ -1,5 +1,0 @@
-services:
-  tributech-agent:
-    # Add volume
-    volumes:
-      - ./enrollment:/app/enrollment
