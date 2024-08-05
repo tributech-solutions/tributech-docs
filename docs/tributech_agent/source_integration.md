@@ -1,6 +1,6 @@
 ---
 title: Source Integration
-sidebar_position: 6
+sidebar_position: 4
 ---
 
 ## Source Definition
@@ -17,8 +17,11 @@ For a detailed guide on how to use the different sources visit:
 | Simulated Sensor | The [**Simulated Source Guide**](./sources/simulated_source.mdx) integrates data provided by test sources generating random data.        |
 | REST  | The [**REST Source Guide**](./sources/rest_source.mdx) integrates data provided via [HTTP APIs](https://swagger.io/specification/).        |
 
-In order to add sources to a Tributech Agent we need to go to the [Agent configuration](../tributech_node/agent/agent_configuration.mdx#configuring-an-agent)
-or import existing Twin Models, which we will describe in a later section (see [Twin Models](#twin-model)).
+In order to add sources to an linked Tributech Agent we need to select the `CONFIGURE` button every agent contains:
+
+![**"Configure Agent**](./img/node-agent-configure.png)
+
+There is an another way for advanced users to configure an Tributech Agent, which we will describe in a later section (see [Twin Models](#twin-model)).
 
 ### Custom Sources
 

@@ -1,0 +1,3 @@
+AGENT_TAG=3.6.1
+AGENT_ID=<Unique-Agent-GUID>
+SOURCE_TAG=3.6.0

@@ -12,7 +12,7 @@
           },
           "PublicKey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAp8LvwjNO6qnGf+EFX2/2\nPGIw5Ba6C6SVquTb4zmqgiRKsoL8Jcg5WuerlzvpyTW1oBJlYzDxaN0BPeF7fYT0\ntYbKhrF59nVddflFmkiiuiPAk8Jz49Heb10mv6W/PzXbH5GqGD2XjH0pjMk8MGIR\nouT9Vf6eF1FG8OeIL1ohPbkRLpfZqQ4dLzoNIBPZhDq41jE3XmtyvT+tyQpGWIXv\nwBd2Ks0G02ZTb7Gcx9pwPSfYd+xIE8BbHOHNIReKOaRemBf3BMoedSLR18DXUFwx\nn9FgGnt+RdESdfuoU8dBJxZ3hhEl9PlwrIfxmC3HG+gXckQn9lSVydaNeHEya3y6\n/QIDAQAB\n-----END PUBLIC KEY-----",
           "MaxMerkleTreeAge": 600,
-          "MaxMerkleTreeDepth": 5,
+          "MaxMerkleTreeDepth": 16,
           "ProofKind": "SHA256_RSA2048_PSS",
           "KeyStorageType": "NONE",
           "MQTTBroker": "",

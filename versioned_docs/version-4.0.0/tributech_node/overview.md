@@ -8,6 +8,9 @@ The Tributech Node is the central layer of our Tributech Platform where every da
 
  ![Tributech Node - Overview](./img/DemeterArchitectureOverviewFocusNode.png)
 
+:::info The diagram illustrates our default setup, for more infos visit [Deployment](#deployment)
+:::
+
 A Tributech Node can also be used for the following scenarios (excerpt):
 - Provide external application access to read the available data to provide customized user experience, see [API Integration](../tributech_node/api_category/API_integration.md)
 - Agent [management](../tributech_node/agent/agent_management.mdx), [configuration](../tributech_node/agent/agent_configuration.mdx) or sending [commands](../tributech_agent/source_integration.md#commands) for an agent

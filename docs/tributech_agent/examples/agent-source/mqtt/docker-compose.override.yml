@@ -4,24 +4,15 @@ services:
   source-mqtt-mock-client:
     image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-source-mqtt-mockclient:${SOURCE_TAG:-latest}
     depends_on:
-      - mosquitto-server
-      - tributech-agent
+      - mosquitto-server-mqtt
+      - tributech-agent-mqtt
       - source-mqtt
     environment:
-      - MqttOptions__MQTTHost=mosquitto-server
+      - MqttOptions__MQTTHost=mosquitto-server-mqtt
       - Logging__LogLevel__Default=Debug
-
-      # Configurable Topic Stream
       - MockOptions__Streams__0__Topic=test/bar
       - MockOptions__Streams__0__StreamEncoding=3 # double
       - MockOptions__Streams__0__Interval=00:00:05.000
-
-      # Predfined Payload Stream
-      - MockOptions__Streams__1__MachineId=my-machine-id
-      - MockOptions__Streams__1__SensorId=my-sensor-id
-      - MockOptions__Streams__1__StreamEncoding=3 # double
-      - MockOptions__Streams__1__Interval=00:00:05.000
-
     networks:
       - mqtt-net
     restart: unless-stopped

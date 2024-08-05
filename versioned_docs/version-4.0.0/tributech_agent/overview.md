@@ -11,6 +11,9 @@ Agents also provide a secure bidirectional communication channel between the Tri
 
 ![Tributech Architecture - Overview](./img/DemeterArchitectureOverviewFocusAgent.png)
 
+:::info The diagram illustrates our default setup, for more infos visit [Deployment](../tributech_node/overview.md#deployment)
+:::
+
 We provide differnt types of [Tributech Sources](source_integration.md) for the most commonly used communication protocols.
 
 | Source    | Guide                                                                                          |

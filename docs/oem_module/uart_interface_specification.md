@@ -5,10 +5,6 @@ sidebar_position: 4
 
 # UART Interface Specification
 
-:::caution
-This Tributech OEM module documentation is deprecated and only works with Tributech DSK version 3.6, which is no longer actively maintained.
-:::
-
 ## Prerequisites
 
 The OEM mostly uses the default characteristics of a standard UART specification. The final specifications can be seen in the table below.

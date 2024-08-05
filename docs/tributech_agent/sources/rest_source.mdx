@@ -5,8 +5,8 @@ sidebar_position: 5
 
 import CodeBlock from '@theme/CodeBlock';
 import SourceDockerCompose from '!!raw-loader!../examples/agent-source/rest/docker-compose.yml';
+import SourceEnv from '!!raw-loader!../examples/agent-source/rest/env';
 import SoourceDockerComposeMock from '!!raw-loader!../examples/agent-source/rest/docker-compose.override.yml';
-import EnvSample from '!!raw-loader!../examples/agent-management/agent-service-sample-values.yml';
 
 The Tributech Agent supports the integration of external data sources using [REST](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design#what-is-rest) with the  Tributech REST Source. The REST Source is configured via the Twin Configuration and is used to send data to the Tributech Agent via [MQTT](https://mqtt.org/).
  The data can be send to the Tributech Source either via [Swagger](https://swagger.io/specification/) or with our [Tributech REST MockClient](#mockclient).
@@ -20,23 +20,23 @@ The Tributech Agent supports the integration of external data sources using [RES
 
 We will show in [Configuration](#configuration) how to configure the REST Source to accept data for each specific stream type and provide the examples for [Swagger](#rest-endpointswagger) or the [REST MockClient](#mockclient).
 
-The Source will return a status code [200 OK](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) if the data was successfully received and is queued to be published to the Tributech Agent. The status code does not indicate that the data was successfully transferred to the Tributech Agent or Tributech Node. Queueing the data to be published means that the Source received the data and publishes the data after applying options contained by the Twin configuration if defined, e.g. [ValueChangeOptions](#value-change-options).
+The Source will return a status code [200 OK](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) if the data was successfully received and is queued to be published to the Tributech Agent. The status code does not indicate that the data was successfully transferred to the Tributech Agent or Tributech Node. Queueing the data to be published means that the Source received the data and publishes the data after applying options contained by the Twin configuration if defined, e.g. [ValueChangeOptions](#ValueChangeOptions).
 
 ## Setup
 The Tributech REST Source image can be started without any dependencies but will not be functional without a valid Twin Configuration or MessageBroker connect to the Tributech Agent. The TwinConfiguration can be provided via the Tributech Node (recommended) or MessageBroker (see [Source Integration](../source_integration#twin-model)). The REST Source will automatically connect to the Tributech Agent if the Tributech Agent is running and correct MessageBroker settings are set.
 
 In the following part we will describe the setup of a Tributech REST Source.
 
-- Setup the ***docker-compose.yml*** file by creating a `docker-compose.yml` file with the following content (adjustments required):
+ - Setup the ***docker environment*** by creating a `.env` file with the following content and replace the placeholder values with your values:
+
+<CodeBlock className="language-plain" title=".env">{SourceEnv}</CodeBlock>
+
+- Setup the ***docker-compose.yml*** file by creating a `docker-compose.yml` file with the following content in the same folder as the  `.env` file:
+
 <CodeBlock className="language-yml" title="docker-compose.yml">{SourceDockerCompose}</CodeBlock>
 
-Adjust the setting for the [Tribtech Agent](../overview.md) to your environment, sample value:
-<CodeBlock className="language-plain" title="env specific settings">{EnvSample}</CodeBlock>
-
-
-
 ## Configuration
-After setting up the Tributech REST Source we need to activate it in the Tributech Node (see [Agent Management](../../tributech_node/agent/agent_management.mdx#activate-agent)) and configure the TwinConfiguration. For both Streams we need first to create a new Source in the Tributech Node and then add the Streams to the Source. The following sections will show how to create a new Source and add the Streams to the Source. One Source can include multiple Streams of both types.
+After setting up the Tributech REST Source we need to link it to the Tributech Node (see [QuickStart](../quickstart.mdx#link-agent)) and configure the TwinConfiguration. For both Streams we need first to create a new Source in the Tributech Node and then add the Streams to the Source. The following sections will show how to create a new Source and add the Streams to the Source. One Source can include multiple Streams of both types.
 
 ![**"Add REST Stream**](../img/node-source-rest-add.png)
 
@@ -135,7 +135,7 @@ The following example shows minimal configuration for a Fixed Stream for the res
 ````yaml
     environment:
       ...
-      - MockOptions__ApiUrl=http://rest-source:8080
+      - MockOptions__ApiUrl=http://rest-source:80
       - MockOptions__Streams__0__StreamEncoding=3 # double
       - MockOptions__Streams__0__StreamId=cf464c2a-929f-4ed2-8917-30a4ee2edaaa
 ````
@@ -155,7 +155,7 @@ The following example shows minimal configuration for a Fixed Stream for the res
 ````yaml
     environment:
       ...
-      - MockOptions__ApiUrl=http://rest-source:8080
+      - MockOptions__ApiUrl=http://rest-source:80
       - MockOptions__Streams__0__StreamEncoding=3 # double
       - MockOptions__Streams__0__MachineId=double
       - MockOptions__Streams__0__SensorId=xxo

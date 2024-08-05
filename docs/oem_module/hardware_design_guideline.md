@@ -5,10 +5,6 @@ sidebar_position: 5
 
 # Hardware Design Guideline
 
-:::caution
-This Tributech OEM module documentation is deprecated and only works with Tributech DSK version 3.6, which is no longer actively maintained.
-:::
-
 This document should help users and manufacturers to implement the system on a chip (SOC) “Tributech OEM module”. The given information is tailored to allow an easy incorporation of the module on manufacturer printed circuit boards. The document includes a recommended footprint, mechanical dimensions, placement and soldering guidelines. For further information or ambiguities please contact us at Tributech.
 
 ## Safety Information
