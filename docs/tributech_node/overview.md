@@ -10,7 +10,7 @@ The Tributech Node is the central layer of our Tributech Platform where every da
 
 A Tributech Node can also be used for the following scenarios (excerpt):
 - Provide external application access to read the available data to provide customized user experience, see [API Integration](../tributech_node/api_category/API_integration.md)
-- Agent [access permissions](../tributech_node/agent/access_control.mdx), [configuration](../tributech_node/agent/management.mdx) or sending [commands](../tributech_agent/source_integration.md#commands) for an agent
+- Agent [access permissions](../tributech_node/agent/access_control.mdx), [configuration](../tributech_node/agent/agent_configuration.mdx) or sending [commands](../tributech_agent/source_integration.md#commands) for an agent
 - [Verify Data](../tributech_node/agent/verification.mdx)
 - [Manage Webhooks](../tributech_node/Webhook_integration.md#webhook-subscription-management)
 
@@ -22,7 +22,7 @@ and the configuration, data flow.
 
 ### Tributech Agents
 
-The [Tributech Agents](../tributech_agent/overview.md) are connected to our node via an MQTT broker which is secured by TLS to provide a secure communication channel. The protocol provides us the possibility to have a near real time bidirectional communication with our agents and apply [configuration](../tributech_node/agent/management.mdx) or issue [commands](../tributech_agent/source_integration.md#commands) fast.
+The [Tributech Agents](../tributech_agent/overview.md) are connected to our node via an MQTT broker which is secured by TLS to provide a secure communication channel. The protocol provides us the possibility to have a near real time bidirectional communication with our agents and apply [configuration](../tributech_node/agent/agent_configuration.mdx) or issue [commands](../tributech_agent/source_integration.md#commands) fast.
 
 ### REST API
 
@@ -47,7 +47,7 @@ The [API](./api_category/API_usage.md) also allows the customer to subscribe and
 This enables external parties to implement a push-based system, within their application, to react to certain events in our node. 
 
 ### DTDL Configuration
-To configure our Tributech Agents we currently use the [Digital Twins Definition Language Version 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/DTDL.v2.md) which is an open standard to describe real world applications or things. This enables us the have a semantic description and configuration of our agents (e.g. [configure Agent](./agent/management.mdx#configuring-an-agent)).  
+To configure our Tributech Agents we currently use the [Digital Twins Definition Language Version 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/DTDL.v2.md) which is an open standard to describe real world applications or things. This enables us the have a semantic description and configuration of our agents (e.g. [configure Agent](./agent/agent_configuration.mdx#configuring-an-agent)).  
 
 There is also the possibility that customers may upload their own customized models *(via our [REST API](./api_category/API_usage.md))* to create a context between the ingested data and their application to unlock analytics or machine learning capabilities.  
 
