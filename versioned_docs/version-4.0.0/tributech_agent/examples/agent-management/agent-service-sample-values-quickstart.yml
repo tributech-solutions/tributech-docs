@@ -1,0 +1,6 @@
+tributech-agent:
+    ...
+    environment:
+      ...
+      - EdgeDeviceOptions__AgentID=00000000-0000-0000-0000-000000000007
+      - EdgeDeviceOptions__NodeUrl=https://my-environment.tributech-node.com
