@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunktributech_docs=self.webpackChunktributech_docs||[]).push([[7285],{97285:function(c,e,s){s.r(e)}}]);
