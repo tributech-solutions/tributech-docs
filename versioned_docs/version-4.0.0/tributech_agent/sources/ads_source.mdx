@@ -5,8 +5,8 @@ sidebar_position: 2
 
 import CodeBlock from '@theme/CodeBlock';
 import SourceDockerCompose from '!!raw-loader!../examples/agent-source/ads/docker-compose.yml';
-import SourceEnv from '!!raw-loader!../examples/agent-source/ads/env';
 import SoourceDockerComposeMock from '!!raw-loader!../examples/agent-source/ads/docker-compose.override.yml';
+import EnvSample from '!!raw-loader!../examples/agent-management/agent-service-sample-values.yml';
 
 
 The Tributech ADS Source allows to connect to an [Beckhoff ADS Server](https://infosys.beckhoff.com/english.php?content=../content/1033/cx8190_hw/5091854987.html) and receive or write values to the ADS Server.
@@ -28,17 +28,15 @@ The Tributech ADS Source image can be started without any dependencies but will 
 
 In the following part we will describe the setup of a Tributech ADS Source.
 
- - Setup the ***docker environment*** by creating a `.env` file with the following content and replace the placeholder values with your values:
-
-<CodeBlock className="language-plain" title=".env">{SourceEnv}</CodeBlock>
-
-- Setup the ***docker-compose.yml*** file by creating a `docker-compose.yml` file with the following content in the same folder as the  `.env` file:
-
+- Setup the ***docker-compose.yml*** file by creating a `docker-compose.yml` file with the following content (adjustments required):
 <CodeBlock className="language-yml" title="docker-compose.yml">{SourceDockerCompose}</CodeBlock>
+
+Adjust the setting for the [Tribtech Agent](../overview.md) to your environment, sample value:
+<CodeBlock className="language-plain" title="env specific settings">{EnvSample}</CodeBlock>
 
 ## Configuration
 
-After setting up the Tributech ADS Source we need to link it to the Tributech Node (see [QuickStart](../quickstart.mdx#link-agent)) and configure the TwinConfiguration.
+After setting up the Tributech ADS Source we need to activate it in the Tributech Node (see [Agent Management](../../tributech_node/agent/agent_management.mdx#activate-agent)) and configure the TwinConfiguration.
 
 ![**"Configure Agent**](../img/node-agent-configure.png)
 

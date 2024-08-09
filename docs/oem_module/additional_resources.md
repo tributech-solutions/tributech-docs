@@ -9,14 +9,8 @@ Technical resources and documentation references:
 
 - [OEM-Module IoT Starter Kit Example on Github](https://github.com/tributech-solutions/tributech-oem-module-iot-kit-examples)
 
-<!-- 
-- [Consume data via stream explorer](../consume_data/streamexplorer.md)
-- [Consume data via APIs](../consume_data/api.md)
-- [Verify collected data](../verify_data/overview.md)
-
 Blog posts about the OEM module, technologies and core concepts:
 
 - [OEM Module](https://www.tributech.io/blog/oem-module)
 - [Connectivity](https://www.tributech.io/blog/LTE-M-and-NB-IoT-connectivity)
 - [Data Notary](https://www.tributech.io/blog/data-notary)
--->

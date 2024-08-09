@@ -5,8 +5,8 @@ sidebar_position: 1
 
 import CodeBlock from '@theme/CodeBlock';
 import SourceDockerCompose from '!!raw-loader!../examples/agent-source/mqtt/docker-compose.yml';
-import SourceEnv from '!!raw-loader!../examples/agent-source/mqtt/env';
 import SoourceDockerComposeMock from '!!raw-loader!../examples/agent-source/mqtt/docker-compose.override.yml';
+import EnvSample from '!!raw-loader!../examples/agent-management/agent-service-sample-values.yml';
 
 The Tributech Agent supports the integration of external data sources using the [**MQTT messaging protocol**](https://mqtt.org/) with the  Tributech MQTT Source. The MQTT Source itself is configured via the Twin Configuration and will be described in the following sections.
 
@@ -15,16 +15,14 @@ The Tributech MQTT Source image can be started without any dependencies but will
 
 In the following part we will describe the setup of a Tributech MQTT Source.
 
- - Setup the ***docker environment*** by creating a `.env` file with the following content and replace the placeholder values with your values:
-
-<CodeBlock className="language-plain" title=".env">{SourceEnv}</CodeBlock>
-
-- Setup the ***docker-compose.yml*** file by creating a `docker-compose.yml` file with the following content in the same folder as the  `.env` file:
-
+- Setup the ***docker-compose.yml*** file by creating a `docker-compose.yml` file with the following content (adjustments required):
 <CodeBlock className="language-yml" title="docker-compose.yml">{SourceDockerCompose}</CodeBlock>
 
+Adjust the setting for the [Tribtech Agent](../overview.md) to your environment, sample value:
+<CodeBlock className="language-plain" title="env specific settings">{EnvSample}</CodeBlock>
+
 ## Configuration
-After setting up the Tributech MQTT Source we need to link it to the Tributech Node (see [QuickStart](../quickstart.mdx#link-agent)) and configure the TwinConfiguration.
+After setting up the Tributech MQTT Source we need to activate it in the Tributech Node (see [Agent Management](../../tributech_node/agent/agent_management.mdx#activate-agent)) and configure the TwinConfiguration.
 
 ![**"Configure Agent**](../img/node-agent-configure.png)
 
@@ -83,7 +81,7 @@ The basic handling of Value Change Options (VCO) can be found in [Source Integra
 In the following section we want to outline two different ways to provide data to the MQTT Source. The first way is to use the [**MQTT Explorer**](http://mqtt-explorer.com/) to send data to the MQTT Source. The second way is to use the MQTT MockClient to send data to the MQTT Source. In our example we can access the MQTT MessageBroker on port 1833 (need to match your `mosquitto-server-mqtt` service in the [`docker-compose.yml`](../examples/agent-source/mqtt/docker-compose.yml)).
 
 ### MQTT Explorer
-With the [**MQTT Explorer**](http://mqtt-explorer.com/) we can directly send json payload to a specific topic. The MQTT Explorer can connect to the MessageBroker on port 1833 (need to match your `mosquitto-server-mqtt` service in the `docker-compose.yml`). 
+With the [**MQTT Explorer**](http://mqtt-explorer.com/) we can directly send json payload to a specific topic. The MQTT Explorer can connect to the MessageBroker on port 1833 (need to match your `mosquitto-server-mqtt` service in the `docker-compose.yml`).
 
 The MQTT Source will now receive the data, process it and send it to the Tributech Agent. The Tributech Agent will forward the data to the Tributech Node where with can inspect the values. We can follow this data flow on the left hand side of the MQTT Explorer by observing which topics receive data, i.e. `edge/{agent-id}/value/ValueSource` is our Tributech Agent.
 The data can be viewed in the Tributech Node by clicking on the `MQTT Stream`.
@@ -97,7 +95,7 @@ The value and timestamp (in UTC) are displayed and match our submitted data.
 ![**Mqtt Explorer publish**](../img/node-source-mqtt-stream-value-bytearray.png)
 
 #### Sending Configurable Topic Stream Example
-The example will submit the following payload data to the MQTT Source previously configured in [Setup](#Setup) :
+The example will submit the following payload data to the MQTT Source previously configured in [Setup](#setup) :
 
 ```json
     {
@@ -106,12 +104,16 @@ The example will submit the following payload data to the MQTT Source previously
     }
 ```
 
+**It must be mentioned here that the value in the above json structure is a base64 encoded value. Every value that is sent to the Tributech agent must be encoded so that it can be used by the agent. First the value must be converted to a byte array and then the byte array must be base64 encoded.**
+
+The timestamp can also be changed to fit all specific time zones, this can be done with the last part in the timestamp, here the time difference can be added, for example: «Timestamp»:«2023-07-13T05:50:07.1003104+02:00». It is important that the timestamp also contains microseconds. These can be zeros, but the microseconds are crucial for the timestamp to be processed by the system.
+
 We can post the data to the MQTT Source by clicking on the `Publish` button in the top right corner.
 
 ![**Mqtt Explorer publish**](../img/node-source-mqtt-stream-value-publish-topic.png)
 
 #### Sending Pre-defined Payload Stream Example
-The example will submit the following payload data to the MQTT Source previously configured in [Setup](#Setup) :
+The example will submit the following payload data to the MQTT Source previously configured in [Setup](#setup) :
 
 ```json
     {
@@ -126,13 +128,13 @@ The example will submit the following payload data to the MQTT Source previously
 ![**Mqtt Explorer publish**](../img/node-source-mqtt-stream-value-publish-payload.png)
 
 ### MockClient
-We provide an additional `docker-compose.override.yml` below to include a MockClient. This setup can be used to send data to the MQTT Source without external tools. The MockClient is only for testing purposes and should not be used in production. In order to start the the MockClient with the Tributech MQTT Source copy the `docker-compose.override.yml` file in the same folder as the `docker-compose.yml` before using the `docker-compose up` command. 
+We provide an additional `docker-compose.override.yml` below to include a MockClient. This setup can be used to send data to the MQTT Source without external tools. The MockClient is only for testing purposes and should not be used in production. In order to start the the MockClient with the Tributech MQTT Source copy the `docker-compose.override.yml` file in the same folder as the `docker-compose.yml` before using the `docker-compose up` command.
 
 The following configuration shows how to setup the MockClient and send data to the MQTT Source for double stream. This example can be extended by adding new entries with an increasing index for the `MockOptions__Streams__{index}__StreamEncoding` environment variables. The following example shows how to add a Configurable Topic and Pre-defined Payload Stream the a MockClient:
 
 <CodeBlock className="language-yml" title="docker-compose.override.yml">{SoourceDockerComposeMock}</CodeBlock>
 
-After starting the MockClient we can see the data in the Tributech Node Stream we set up before in the configure section. 
+After starting the MockClient we can see the data in the Tributech Node Stream we set up before in the configure section.
 
 ![**MQTT Mock publish**](../img/node-source-mqtt-stream-values-mock.png)
 
