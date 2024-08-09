@@ -94,10 +94,6 @@ and use the information provided in the `Docker Registry Token` to authenticate.
 :warning: ***Access to a running Tributech Node Instance is required***
 
 
-In order to gain access to the Tributech Agent docker image we need to provide docker with the credentials to access the private Tributech Docker Registry. The authentication information can be found in the `Secrets` section of the Tributech Node.
+In order to gain access to the Tributech Agent docker image we need to provide docker with the credentials to access the private Tributech Docker Registry (see [docker login](https://docs.docker.com/engine/reference/commandline/login/)). The authentication information can be found in the `Secrets` section of the Tributech Node.
 
 ![**"Tributech Node Secrets area**](./img/secrets-docker-registry.png)
-
-in our example we use a docker environment with docker compose container orchestration.
-In this case the following command provides docker with the required permissions to access the private Tributech Container Images,
-for more information on docker authentication visit [docker login](https://docs.docker.com/engine/reference/commandline/login/).
