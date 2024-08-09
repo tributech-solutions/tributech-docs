@@ -1,9 +1,9 @@
 ---
-title: Access Control
+title: Agent Management
 sidebar_position: 1
 ---
 
-In this section we show the available management function, provided by a Tributech Node UI, to manage [Tributech Agents](../../tributech_agent/overview.md).
+In this section we show the available management functions, provided by the Tributech Node UI, to manage [Tributech Agents](../../tributech_agent/overview.md).
 All of this examples assume that the [Tributech Node](../overview.md) is available and a [Tribtech Agent](../../tributech_agent/setup.mdx) has established a connection to it.
 
 :arrow_right: All those operations can also be executed via the [Tributech Node REST API](../api_category/API_usage.md)
@@ -19,7 +19,7 @@ In this state the User has two Quick Actions available in the Tributech UI:
 
 ![Enrollment Overview](../img/node-agent-management-overview.png)
 
-For already activated [Tributech Agents](../../tributech_agent/overview.md) we provide the following operations, via the `Actions` context menu:
+For an already activated [Tributech Agents](../../tributech_agent/overview.md) we provide the following operations, via the `Actions` context menu:
 
 - ***Block*** - No further communication with the Tributech Node is allowed for this Tributech Agent
 - ***Unblock*** - A blocked Tributech Agent is allowed to restart the enrollment process
@@ -32,7 +32,7 @@ In the following section we will give a short overview how the states relate to 
 
 ## New Agents
 
-After starting a Tributech Agent (see [QuickStart](../../tributech_agent/quickstart.mdx)/[Setup](../../tributech_agent/setup.mdx)) the communication to the Tributech Node is per default not allowed. Only after activating an Tributech Agent the full communication is permitted. We can see in the ***Enrollment*** Overview all Agents that requires activation with the State ***Pending***. If we ***Deny*** the request then the agent cannot be configured and will not be able send, receive any data. 
+After starting a Tributech Agent (see [QuickStart](../../tributech_agent/quickstart.mdx)/[Setup](../../tributech_agent/setup.mdx)) the communication to the Tributech Node is per default not allowed. Only after activating a Tributech Agent the full communication is permitted. In the ***Enrollment*** Overview we can see all Agents that requires activation with the State ***Pending***. If we ***Deny*** the request then the agent cannot be configured and will not be able send, receive any data. 
 
 ### Activate Agent
 When we decide to activate an Tributech Agent it will be displayed with status ***online***/***offline*** depending on
@@ -46,7 +46,7 @@ it can be configured in the ***Agents*** Overview by selecting the entry or via 
 ![Tributech UI Agent Overview](../img/node-agent-management-agent-overview.png)
 
 ### Denied Agent
-If we have decided to deny an Tributech Agent enrollment it will be displayed with status ***denied***.
+If we have decided to deny a Tributech Agent enrollment it will be displayed with status ***denied***.
 Tributech Agents with the state ***denied*** can only be deleted via the action menu.
 
 ![Enrollment Delete Denied Agent](../img/node-agent-management-delete-denied-agent.png)
@@ -57,7 +57,7 @@ The communication is no longer blocked after the deletion and its possible to **
 ## Activated Agents
 
 ### Blocking Agents
-After granting an Tributech Agent access to a Tributech Node we can revoke this access of an active Tributech Agent at any time by ***blocking*** further communication. This option is available in the Agents Overview
+After granting a Tributech Agent access to a Tributech Node we can revoke this access of an active Tributech Agent at any time by ***blocking*** further communication. This option is available in the Agents Overview
 
 ![Block a Tribtuech Agent via Agents Overview](../img/node-agent-management-block-agent-overview.png)
 
