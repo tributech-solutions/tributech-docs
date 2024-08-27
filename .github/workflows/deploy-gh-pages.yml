@@ -1,44 +1,32 @@
-name: Publish docs via GitHub Pages
+name: Tributech CI - main
 
 on:
-  pull_request:
-    branches:
-      - master
   push:
-    branches:
-      - master
+    branches: [ master ]
+    tags:
+      - '*'
+  pull_request:
+    branches: [ master, feature/*, hotfix/*, fix/* ]
+
+
+env:
+  USED_DOTNET_VERSION: '16.X'
 
 jobs:
-  checks:
-    if: github.event_name != 'push'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '16.x'
-      - name: Test Build
-        run: |
-          yarn install --frozen-lockfile
-          npm run build
 
-  gh-release:
-    if: github.event_name != 'pull_request'
-    runs-on: ubuntu-latest
+  vars:
+    runs-on: ubuntu-22.04
+    outputs:
+      dotnet_version: ${{ env.USED_DOTNET_VERSION }}
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '16.x'
-      - uses: webfactory/ssh-agent@v0.5.0
-        with:
-          ssh-private-key: ${{ secrets.GH_PAGES_DEPLOY }}
-      - name: Release to GitHub Pages
-        env:
-          USE_SSH: true
-          GIT_USER: git
-        run: |
-          git config --global user.email "doc@tributech.io"
-          git config --global user.name "Documentation"
-          yarn install --frozen-lockfile
-          npm run deploy
+      - run: echo "Exposing env vars" 
+
+
+  publish:
+    needs: [ 'vars' ]
+    name: GitHub Pages
+    uses: tributech-solutions/tributech-github-actions-ci/.github/workflows/github-pages-deploy.yaml@deploy-gh-page-blob-storage-testing
+    with:
+      DOTNET_VERSION: ${{ needs.vars.outputs.dotnet_version }}
+    # secrets:
+    #   GH_PAGES_DEPLOY: ${{ secrets.GH_PAGES_DEPLOY }}
