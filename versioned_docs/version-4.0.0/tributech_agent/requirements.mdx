@@ -6,16 +6,16 @@ sidebar_position: 2
 import CodeBlock from '@theme/CodeBlock';
 import SourceDockerCompose from '!!raw-loader!./examples/agent/docker-compose-agent-integration.yml';
 
-In the following section we describe the hard- and software requirements to run a [Tributech Agent](overview.md) and a [Tributech Source](source_integration.md) on a edge device. An edge device serves as an endpoint on the network, bridging the gap between the [Tributech Node](../tributech_node/overview.md) and the real world (here representated as Customer Data). 
+In the following section we describe the hard- and software requirements to run a [Tributech Agent](overview.md) and a [Tributech Source](source_integration.md) on a edge device. An edge device serves as an endpoint on the network, bridging the gap between the [Tributech Node](../tributech_node/overview.md) and the real world (here representated as Customer Data).
 
 ![Tributech Edge Device - Overview](./img/EdgeDeviceOverview.png)
 
 
-We will show how to gain access to the private Tributech Docker Images and what requirements need to be satisfied to 
+We will show how to gain access to the private Tributech Docker Images and what requirements need to be satisfied to
 send Customer Data to a running [Tributech Node](../tributech_node/overview.md).
 
 :warning: ***Access to a running Tributech Node Instance is required***
- 
+
  If you have any questions regarding infrastructure requirements, please talk to your contact person at Tributech or create a support ticket.
 
 ## Edge Device Requirements
@@ -51,7 +51,7 @@ Dependended on the frequency of data processing the requirements will increase a
 | File System | any suppoerted docker file system  | The user/instance which runs the docker containers must have read and write permission for the volume where the docker containers are situated.  |
 
 #### Network requirements
-In the following Table we provide an overview of the required port for the communication between 
+In the following Table we provide an overview of the required port for the communication between
 Tributech Node (public network) to the Tributech Agent (private network) (see [Overview](../introduction.md)).
 This communication will take place via a public accessable network.
 
@@ -59,7 +59,7 @@ This communication will take place via a public accessable network.
 
 |Port|Protocol|From|To|direction|Information|
 | :------ | :----------- | :----------- |  :----------- |:----------- | :--------------------- |
-|443|HTTPS|Tributech Agent/Source| Azure Container Registry | Outbound | Access to the private Azure Container Registry containing [Tributech Docker Images](#docker-login)|
+|443|HTTPS|Tributech Agent/Source| Azure Container Registry | Outbound | Access to the private Azure Container Registry containing [Tributech Docker Images](#docker-login) and also used in in the [Agent Enrollment](./setup#authentication-certificates-enrollment)) process.|
 |1883|MQTTS|Tributech Agent|Tributech Node|Outbound|Communication protocol used between Tributech Agent and Node. MQTTS is the secure version of the MQTT protocol using TLS.|
 
 #### Tributech Agent Source Requirements
@@ -79,7 +79,7 @@ that those ports need only be exposed in a private network between the customer 
 |851|ADS|Customer|Tributech Source|Outbound|[Tributech ADS Source](./sources/ads_source.mdx)|
 
 #### Container environment
-In our examples we use the [**Docker Engine**](https://docs.docker.com/engine/) and [**Docker Compose**](https://docs.docker.com/compose/) for the management/orchestration of the Docker services on an Ubuntu x86 system, for other systems visit the [official docker documentation](https://docs.docker.com/engine/install). 
+In our examples we use the [**Docker Engine**](https://docs.docker.com/engine/) and [**Docker Compose**](https://docs.docker.com/compose/) for the management/orchestration of the Docker services on an Ubuntu x86 system, for other systems visit the [official docker documentation](https://docs.docker.com/engine/install).
 
 The [Tributech Agent](overview.md) and [Tributech Sources](source_integration.md) support the following architectures
 - ARM 32/64

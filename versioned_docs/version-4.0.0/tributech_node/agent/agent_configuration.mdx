@@ -46,8 +46,8 @@ Agents can be referenced either by name or Id, e.g. [searching for an agent](#se
 ![***Online Tributech Agent details get id***](./img/agents-details-getid.png)
 
 ## Get a Stream Id
-Collected data is always bound to a data stream which is a collection of information that can be identified by the unique StreamId, i.e. a GUID (Globally Unique Identifier). The StreamId can be used to access values and proofs via the [Tributech Node API](../api_category/API_usage.md) and map data from [Webhook Events](../Webhook_integration.md). 
-We can access the StreamId either via 
+Collected data is always bound to a data stream which is a collection of information that can be identified by the unique StreamId, i.e. a GUID (Globally Unique Identifier). The StreamId can be used to access values and proofs via the [Tributech Node API](../api_category/API_usage.md) and map data from [Webhook Events](../Webhook_integration.md).
+We can access the StreamId either via
 
 agent details (can be access by clicking the agent entry in the *Agent section*) actions:
 ![***Online Tributech Agent details get stream id***](./img/agent-details-get-stream-id.png)
@@ -57,8 +57,8 @@ or by inspecting a specific stream
 
 ## Configuring an Agent
 After activating an the Tributech Agent (see [Agent Management](./agent_management.mdx#activate-agent)) we can configure the settings of an Tributech Agent
-by changes the Digital Twin. Those settings include properties of the Triubtech Agent like naming, merkle deepth etc or managing relationships and associated [Triubtech Sources](../../tributech_agent/source_integration.md) and Source settings. The starting point for all this operations is the 
-`Twin Workspace` and we show in this section how to make changes to the Digital Twin. Details on how to configure specific Sources can be found in the corresponding [Triubtech Sources](../../tributech_agent/source_integration.md) overview. 
+by changes the Digital Twin. Those settings include properties of the Triubtech Agent like naming, merkle deepth etc or managing relationships and associated [Triubtech Sources](../../tributech_agent/source_integration.md) and Source settings. The starting point for all this operations is the
+`Twin Workspace` and we show in this section how to make changes to the Digital Twin. Details on how to configure specific Sources can be found in the corresponding [Triubtech Sources](../../tributech_agent/source_integration.md) overview.
 We can access the `Twin Workspace` either via selecting `Configure Agent` in the `actions context menu`.
     ![***Online Tributech Agent***](./img/agent-bond-agents-overview.png)
 
@@ -70,18 +70,20 @@ In the `Twin Workspace` we see on the right side as first fixed setting of the `
 
 ![***Tributech Agent Id***](./img/agent-bond-config-agent-id.png)
 
-However, we can give this Tribteuch Agent a new name which will be displayed in the Agent Overview and will make finding this agent easier. 
+However, we can give this Tribteuch Agent a new name which will be displayed in the Agent Overview and will make finding this agent easier.
 
 ![***Tributech Agent Config Name***](./img/agent-bond-config-name.png)
 
 :warning: The changes only takes effect when click `SAVE IN WORKSPACE` followed by `APPLY CONFIGURATION`.
+
+![***Tribuech Agent Config Save Workspace***](./img/agent-bond-config-save-workspace.png)
 
 ## Adding data to an Agent
 After the initial connect of an Tribtech Agent only one entry exists in the left side of the `Twin Workspace` and is named per default `Edge`(`dtmi:io:tributech:device:edge;1`). This entry represents the Tribtech Agent and should not be deleted but we can add a data ingress to this agent by adding [Triubtech Sources](../../tributech_agent/source_integration.md). We show in the following steps how to add a [Simulated Tributech Source](../../tributech_agent/sources/simulated_source.mdx) which we set up in our [QuickStart](../../tributech_agent/quickstart.mdx) and [Setup](../../tributech_agent/setup.mdx) `docker-compose.yml` sample file. By right clicking the `dtmi:io:tributech:device:edge;1` entry on the left side of the Twin Workspace we get a list of all available [Triubtech Sources](../../tributech_agent/source_integration.md) and select  [Simulated Tributech Source](../../tributech_agent/sources/simulated_source.mdx):
 
 ![***Online Tributech Agent***](./img/agent-bond-add-simulated.png)
 
-We now made the Tributech Agent aware of a connection between itself and a [Simulated Tributech Source](../../tributech_agent/sources/simulated_source.mdx). This enables us to manage the configuration of the Triubtech Source and receive data from it. 
+We now made the Tributech Agent aware of a connection between itself and a [Simulated Tributech Source](../../tributech_agent/sources/simulated_source.mdx). This enables us to manage the configuration of the Triubtech Source and receive data from it.
 
 ![***Edge Device focus Source***](./img/EdgeDeviceOverviewFocusSimulatedSource.png)
 
