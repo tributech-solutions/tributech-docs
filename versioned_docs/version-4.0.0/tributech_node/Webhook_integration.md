@@ -58,9 +58,9 @@ Webhooks send by the Tributech Node are HTTP objects that contain default HTTP i
 | x-tributech-correlationid |  A trace id to track the data through our node | 00000000-0000-0000-0000-000000000000 |
 | x-tributech-eventid |  unique identifier through the node (guid) to identify the event |  49acaa7b-fa72-4863-ab4b-7933fedeb59a |
 | x-tributech-event | event name to identify the type of event | ValueReceivedEvent |
-| x-tributech-signaturetimestamp | creation timestamp utc of the signature | 06/16/2023 05:08:46 +00:00 |
+| x-tributech-signaturetimestamp | creation timestamp utc of the signature (timestamp format: [ISO 8601](https://de.wikipedia.org/wiki/ISO_8601)) | 06/16/2023 05:08:46 +00:00 |
 | x-tributech-signature | signature of the webhook event |  sha256=0316443119ED851EE18AA6176E8281E6A28<br />D02A52EAF5DC85D45A6149173F412 |
-| x-tributech-timestamp | event timestamp utc |  06/16/2023 05:08:43 +00:00 |
+| x-tributech-timestamp | event timestamp utc (timestamp format: [ISO 8601](https://de.wikipedia.org/wiki/ISO_8601)) |  06/16/2023 05:08:43 +00:00 |
 
 ### Event Types {#event-types}
 When creating a Webhook subscription, we can choose what type of events we want to receive. We will describe in the following section the Events based on type of information they are providing, e.g. Device, Proof, Stream,.. . 
