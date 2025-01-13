@@ -39,20 +39,6 @@ We have two possible choice
 - **MQTT Configurable Topic Stream**: A stream with a custom topic that supports wildcards for the MQTT Topic, e.g. `test/#` or `test/+/TEMP`
 - **MQTT Pre-defined Payload**: A stream with a predefined payload keypair that will be used as an identifier and be sent to a common MQTT Topic
 
-### Configurable MessageBroker (Optional)
-In this section we configure an additional MessageBroker connection which is different from the `source-mqtt` from the `docker-compose.yml`.
-This MessageBroker should does not make the `source-mqtt` obsolete but provides the possibility to use a different MessageBroker for the MQTT Source data ingress.
-Per default the MQTT Source is configured to use the same the MessageBroker `source-mqtt` service on port 1833 like the Tributech Agent (need to match your `mosquitto-server-mqtt` service in the `docker-compose.yml`) to receive data.
-This holds true if the `MQTT Host` and `MQTT Port` is set in the MQTT Source configuration.
-The following example shows how to setup the MessageBroker for the MQTT Source with a different host and port.
-
-![*Additional MQTT Broker Configuration*](../img/node-source-mqtt-additional-broker.png)
-
-We can save the settings by clicking on the `SAVE IN WORKSPACE` button in the bottom and apply the changes by clicking `APPLY CONFIGURATION`.
-If the MQTT Source is not able to connect to the MessageBroker the MQTT Source will not be able to receive any data.
-However, the MQTT Source will `fallback` to the default MessageBroker settings (aka the MessageBroker from the `docker-compose.yml`) if the `MQTT Host` is empty or the `MQTT Port` is set to 0.
-
-
 ### Configurable Topic Stream
 
 In this section we configure a Stream that is linked to a freely customizable MQTT Topic. The following example shows how to setup a stream for a double value with the display name MQTT Stream and the MQTT Topic `xxo`. For custom topics, two wildcards are supported:
@@ -89,6 +75,17 @@ The basic handling of Value Change Options (VCO) can be found in [Source Integra
 - ***String UTF 8***: will only be submitted if the current and last submitted value are not equal
 - ***Boolean***: will only be submitted if the current and last submitted value are not equal
 
+### Configurable MessageBroker (Optional)
+In this section we show how an additional MessageBroker can be configured to collect data from a different MessageBroker than the one defined in the `docker-compose.yml` (i.e. `source-mqtt`). This configuration is optional and does not replace the initial `source-mqtt` connection. Its only needed if the MQTT Source should be configured to use a different MessageBroker for data collection. Configuration updates and publishing values to the Tributech Node will still be done via the `source-mqtt` service.
+
+The following example shows how to setup the MessageBroker for the MQTT Source with a different host and port:
+
+![*Additional MQTT Broker Configuration*](../img/node-source-mqtt-additional-broker.png)
+
+
+We can save the settings by clicking on the `SAVE IN WORKSPACE` button in the bottom and apply the changes by clicking `APPLY CONFIGURATION`.
+If the MQTT Source is not able to connect to the MessageBroker the MQTT Source will not be able to receive any data.
+However, the MQTT Source will `fallback` to the default MessageBroker settings (aka the MessageBroker from the `docker-compose.yml`) if the `MQTT Host` is empty or the `MQTT Port` is set to 0.
 
 ## Providing Data
 In the following section we want to outline two different ways to provide data to the MQTT Source. The first way is to use the [**MQTT Explorer**](http://mqtt-explorer.com/) to send data to the MQTT Source. The second way is to use the MQTT MockClient to send data to the MQTT Source. In our example we can access the MQTT MessageBroker on port 1833 (need to match your `mosquitto-server-mqtt` service in the [`docker-compose.yml`](../examples/agent-source/mqtt/docker-compose.yml)).
