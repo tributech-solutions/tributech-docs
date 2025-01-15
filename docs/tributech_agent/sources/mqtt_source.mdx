@@ -47,7 +47,9 @@ In this section we configure a Stream that is linked to a freely customizable MQ
 
 - A `+` character represents a single level of the hierarchy and is used between delimiters. For example, `test/+/TEMP` will match `test/1/TEMP` and `test/2/TEMP`.
 
-We can save the settings by clicking on the `SAVE IN WORKSPACE` button in the bottom.
+
+The following example shows an example for the wildcard `#`. After changes to the `MQTT custom topic` we need to 
+save the settings by clicking on the `SAVE IN WORKSPACE` button in the bottom.
 
 ![**"Add MQTT Configurable Topic Stream**](../img/node-source-mqtt-config-topic-stream.png)
 
@@ -60,7 +62,7 @@ This completes the configuration of the MQTT Source and we can now send data to 
 
 ### Pre-defined Payload Stream
 
-In this section we configure a Stream that is linked to a predefined payload keypair. The difference to the Topic Stream is that this Stream will not be linked to a custom MQTT Topic but to a common MQTT Topic. The following example shows how to setup a stream for a double value with the keypair `my-source-id` and `my-source-id` as stream identifier. The MQTT Topic is set per default to `edge/+/value/GenericValueSource`. For payload streams, two identifier are supported and need to be unique for each stream. The following keypairs are:
+In this section we configure a Stream that is linked to a predefined payload keypair. The difference to the Topic Stream is that this Stream will not be linked to a custom MQTT Topic but to a common MQTT Topic. The following example shows how to setup a stream for a double value with the keypair `my-machine-id` and `my-sensor-id` as stream identifier. The MQTT Topic is set per default to `edge/+/value/GenericValueSource`. For payload streams, two identifier are supported and need to be unique for each stream. The following keypairs are:
 
 ![**"Add MQTT Payload Stream**](../img/node-source-mqtt-config-payload-stream.png)
 
@@ -88,21 +90,17 @@ If the MQTT Source is not able to connect to the MessageBroker the MQTT Source w
 However, the MQTT Source will `fallback` to the default MessageBroker settings (aka the MessageBroker from the `docker-compose.yml`) if the `MQTT Host` is empty or the `MQTT Port` is set to 0.
 
 ## Providing Data
-In the following section we want to outline two different ways to provide data to the MQTT Source. The first way is to use the [**MQTT Explorer**](http://mqtt-explorer.com/) to send data to the MQTT Source. The second way is to use the MQTT MockClient to send data to the MQTT Source. In our example we can access the MQTT MessageBroker on port 1833 (need to match your `mosquitto-server-mqtt` service in the [`docker-compose.yml`](../examples/agent-source/mqtt/docker-compose.yml)).
+In the following section we want to outline two different ways to provide data to the MQTT Source. The first way is to use the [**MQTT Explorer**](http://mqtt-explorer.com/) to send data to the MQTT Source. The second way is to use the MQTT MockClient to send data to the MQTT Source. In our example we can access the MQTT MessageBroker on port 1883 (need to match your `mosquitto-server-mqtt` service in the [`docker-compose.yml`](../examples/agent-source/mqtt/docker-compose.yml)).
 
 ### MQTT Explorer
-With the [**MQTT Explorer**](http://mqtt-explorer.com/) we can directly send json payload to a specific topic. The MQTT Explorer can connect to the MessageBroker on port 1833 (need to match your `mosquitto-server-mqtt` service in the `docker-compose.yml`).
-
-The MQTT Source will now receive the data, process it and send it to the Tributech Agent. The Tributech Agent will forward the data to the Tributech Node where with can inspect the values. We can follow this data flow on the left hand side of the MQTT Explorer by observing which topics receive data, i.e. `edge/{agent-id}/value/GenericValueSource` is our Tributech Agent.
-The data can be viewed in the Tributech Node by clicking on the `MQTT Stream`.
-
-Per default we will show directly the `Stream Data Encoding` datatype tab with the timestamp and value.
+The [**MQTT Explorer**](http://mqtt-explorer.com/) supports the interact and monitoring of a MQTT MessageBroker via a simple UI.
+We can use the [**MQTT Explorer**](http://mqtt-explorer.com/) to connect to the `mosquitto-server-mqtt` service in the `docker-compose.yml`
+on port 1883 and manually submit data to MQTT Source via the MessageBroker.
+The MQTT Source will send received data after process via the Tribtech Agent to the Tributech Node.
+The data of the previously defined Streams can be viewed in the Tributech Node by clicking on the corresponding `MQTT Stream`.
 ![**Mqtt Explorer publish**](../img/node-source-mqtt-stream-value-double.png)
 
- We can switch to the `Byte Array` tab to see the data we have submitted.
-The value and timestamp (in UTC) are displayed and match our submitted data.
-
-![**Mqtt Explorer publish**](../img/node-source-mqtt-stream-value-bytearray.png)
+Per default we will show the data directly in the `Stream Data Encoding` defined datatype tab.
 
 #### Sending Configurable Topic Stream Example
 The example will submit the following payload data to the MQTT Source previously configured in [Setup](#setup) :
@@ -114,7 +112,7 @@ The example will submit the following payload data to the MQTT Source previously
     }
 ```
 
-**It must be mentioned here that the value in the above json structure is a base64 encoded value. Every value that is sent to the Tributech agent must be encoded so that it can be used by the agent. First the value must be converted to a byte array and then the byte array must be base64 encoded.**
+**Note that double or float values support only a `.` as a decimal separator**
 
 The timestamp can also be changed to fit all specific time zones, this can be done with the last part in the timestamp, here the time difference can be added, for example: «Timestamp»:«2023-07-13T05:50:07.1003104+02:00». It is important that the timestamp also contains microseconds. These can be zeros, but the microseconds are crucial for the timestamp to be processed by the system.
 
