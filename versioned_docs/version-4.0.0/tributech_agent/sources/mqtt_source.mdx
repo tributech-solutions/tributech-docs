@@ -24,21 +24,20 @@ Adjust the setting for the [Tribtech Agent](../overview.md) to your environment,
 ## Configuration
 After setting up the Tributech MQTT Source we need to activate it in the Tributech Node (see [Agent Management](../../tributech_node/agent/agent_management.mdx#activate-agent)) and configure the TwinConfiguration.
 
-![**"Configure Agent**](../img/node-agent-configure.png)
+![**Configure Agent**](../img/node-agent-configure.png)
 
 We can now add by right clicking the Device Edge entry a new MQTT Source.
 
-![**"Add MQTT Source**](../img/node-source-mqtt-add.png)
+![**Add MQTT Source**](../img/node-source-mqtt-add.png)
 
 After right clicking on the MQTT Source entry we can add a new MQTT Stream.
 
 
-![**"Add MQTT Stream**](../img/node-source-mqtt-add-streams.png)
+![**Add MQTT Stream**](../img/node-source-mqtt-add-streams.png)
 
 We have two possible choice
 - **MQTT Configurable Topic Stream**: A stream with a custom topic that supports wildcards for the MQTT Topic, e.g. `test/#` or `test/+/TEMP`
 - **MQTT Pre-defined Payload**: A stream with a predefined payload keypair that will be used as an identifier and be sent to a common MQTT Topic
-
 
 ### Configurable Topic Stream
 
@@ -48,7 +47,9 @@ In this section we configure a Stream that is linked to a freely customizable MQ
 
 - A `+` character represents a single level of the hierarchy and is used between delimiters. For example, `test/+/TEMP` will match `test/1/TEMP` and `test/2/TEMP`.
 
-We can save the settings by clicking on the `SAVE IN WORKSPACE` button in the bottom.
+
+The following example shows an example for the wildcard `#`. After changes to the `MQTT custom topic` we need to 
+save the settings by clicking on the `SAVE IN WORKSPACE` button in the bottom.
 
 ![**"Add MQTT Configurable Topic Stream**](../img/node-source-mqtt-config-topic-stream.png)
 
@@ -61,7 +62,7 @@ This completes the configuration of the MQTT Source and we can now send data to 
 
 ### Pre-defined Payload Stream
 
-In this section we configure a Stream that is linked to a predefined payload keypair. The difference to the Topic Stream is that this Stream will not be linked to a custom MQTT Topic but to a common MQTT Topic. The following example shows how to setup a stream for a double value with the keypair `my-source-id` and `my-source-id` as stream identifier. The MQTT Topic is set per default to `edge/+/value/GenericValueSource`. For payload streams, two identifier are supported and need to be unique for each stream. The following keypairs are:
+In this section we configure a Stream that is linked to a predefined payload keypair. The difference to the Topic Stream is that this Stream will not be linked to a custom MQTT Topic but to a common MQTT Topic. The following example shows how to setup a stream for a double value with the keypair `my-machine-id` and `my-sensor-id` as stream identifier. The MQTT Topic is set per default to `edge/+/value/GenericValueSource`. For payload streams, two identifier are supported and need to be unique for each stream. The following keypairs are:
 
 ![**"Add MQTT Payload Stream**](../img/node-source-mqtt-config-payload-stream.png)
 
@@ -76,23 +77,33 @@ The basic handling of Value Change Options (VCO) can be found in [Source Integra
 - ***String UTF 8***: will only be submitted if the current and last submitted value are not equal
 - ***Boolean***: will only be submitted if the current and last submitted value are not equal
 
+### Configurable MessageBroker (Optional)
+In this section we show how an additional MessageBroker can be configured to collect data from a different MessageBroker than the one defined in the `docker-compose.yml` (i.e. `source-mqtt`). This configuration is optional and does not replace the initial `source-mqtt` connection. Its only needed if the MQTT Source should be configured to use a different MessageBroker for data collection. Configuration updates and publishing values to the Tributech Node will still be done via the `source-mqtt` service.
+
+The following example shows how to setup the MessageBroker for the MQTT Source with a different host and port:
+
+![*Additional MQTT Broker Configuration*](../img/node-source-mqtt-additional-broker.png)
+
+
+We can save the settings by clicking on the `SAVE IN WORKSPACE` button in the bottom and apply the changes by clicking `APPLY CONFIGURATION`.
+If the MQTT Source is not able to connect to the MessageBroker the MQTT Source will not be able to receive any data.
+However, the MQTT Source will `fallback` to the default MessageBroker settings (aka the MessageBroker from the `docker-compose.yml`) if the `MQTT Host` is empty or the `MQTT Port` is set to 0.
 
 ## Providing Data
-In the following section we want to outline two different ways to provide data to the MQTT Source. The first way is to use the [**MQTT Explorer**](http://mqtt-explorer.com/) to send data to the MQTT Source. The second way is to use the MQTT MockClient to send data to the MQTT Source. In our example we can access the MQTT MessageBroker on port 1833 (need to match your `mosquitto-server-mqtt` service in the [`docker-compose.yml`](../examples/agent-source/mqtt/docker-compose.yml)).
+In the following section we want to outline two different ways to provide data to the MQTT Source. The first way is to use the [**MQTT Explorer**](http://mqtt-explorer.com/) to send data to the MQTT Source. The second way is to use the MQTT MockClient to send data to the MQTT Source. In our example we can access the MQTT MessageBroker on port 1883 (need to match your `mosquitto-server-mqtt` service in the [`docker-compose.yml`](../examples/agent-source/mqtt/docker-compose.yml)).
 
 ### MQTT Explorer
-With the [**MQTT Explorer**](http://mqtt-explorer.com/) we can directly send json payload to a specific topic. The MQTT Explorer can connect to the MessageBroker on port 1833 (need to match your `mosquitto-server-mqtt` service in the `docker-compose.yml`).
+The [**MQTT Explorer**](http://mqtt-explorer.com/) supports the interact and monitoring of a MQTT MessageBroker via a simple UI.
+We can use the [**MQTT Explorer**](http://mqtt-explorer.com/) to connect to the `mosquitto-server-mqtt` service in the `docker-compose.yml`
+on port 1883 and manually submit data to MQTT Source via the MessageBroker.
+The MQTT Source will send received data after process via the Tribtech Agent to the Tributech Node.
 
-The MQTT Source will now receive the data, process it and send it to the Tributech Agent. The Tributech Agent will forward the data to the Tributech Node where with can inspect the values. We can follow this data flow on the left hand side of the MQTT Explorer by observing which topics receive data, i.e. `edge/{agent-id}/value/ValueSource` is our Tributech Agent.
-The data can be viewed in the Tributech Node by clicking on the `MQTT Stream`.
 
-Per default we will show directly the `Stream Data Encoding` datatype tab with the timestamp and value.
+The data of the previously defined Streams can be viewed in the Tributech Node by clicking on the corresponding `MQTT Stream`.
+Per default we will show the data directly in the `Stream Data Encoding` defined datatype tab.
+
 ![**Mqtt Explorer publish**](../img/node-source-mqtt-stream-value-double.png)
 
- We can switch to the `Byte Array` tab to see the data we have submitted.
-The value and timestamp (in UTC) are displayed and match our submitted data.
-
-![**Mqtt Explorer publish**](../img/node-source-mqtt-stream-value-bytearray.png)
 
 #### Sending Configurable Topic Stream Example
 The example will submit the following payload data to the MQTT Source previously configured in [Setup](#setup) :
@@ -100,11 +111,11 @@ The example will submit the following payload data to the MQTT Source previously
 ```json
     {
         "Timestamp":"2023-07-13T05:50:07.1003104+00:00",
-        "Value":"530zo/N+jsA="
+        "Value":432
     }
 ```
 
-**It must be mentioned here that the value in the above json structure is a base64 encoded value. Every value that is sent to the Tributech agent must be encoded so that it can be used by the agent. First the value must be converted to a byte array and then the byte array must be base64 encoded.**
+**Note that double or float values support only a `.` as a decimal separator**
 
 The timestamp can also be changed to fit all specific time zones, this can be done with the last part in the timestamp, here the time difference can be added, for example: «Timestamp»:«2023-07-13T05:50:07.1003104+02:00». It is important that the timestamp also contains microseconds. These can be zeros, but the microseconds are crucial for the timestamp to be processed by the system.
 
@@ -120,7 +131,7 @@ The example will submit the following payload data to the MQTT Source previously
         "MachineID": "my-machine-id",
         "SensorID": "my-sensor-id",
         "Timestamp":"2023-07-13T05:50:07.1003104+00:00",
-        "Value":"530zo/N+jsA="
+        "Value": 147
     }
 ```
 
@@ -141,7 +152,7 @@ After starting the MockClient we can see the data in the Tributech Node Stream w
 #### Modify docker-compose.override.yml
 We can adjust the data generation to our needs by modifying the `docker-compose.override.yml` file, see [Docker](https://docs.docker.com/compose/) for details on how to setup the environment for docker-compose.
 
-Dependend on which type of stream we want to send we can adjust the following environment variables either we need to set the `MockOptions__Streams__{index}__Topic` for the Configurable Topic Stream or `MockOptions__Streams__{index}__MachineID` and `MockOptions__Streams__{index}__SensorID` for the Pre-defined Payload Stream. The following example shows how to add a second stream to the MockClient:
+Dependent on which type of stream we want to send we can adjust the following environment variables either we need to set the `MockOptions__Streams__{index}__Topic` for the Configurable Topic Stream or `MockOptions__Streams__{index}__MachineID` and `MockOptions__Streams__{index}__SensorID` for the Pre-defined Payload Stream. The following example shows how to add a second stream to the MockClient:
 
 ```yaml
     ...
@@ -149,59 +160,31 @@ Dependend on which type of stream we want to send we can adjust the following en
       ...
       # Stream 1
       - MockOptions__Streams__0__Topic=xxo/foo
-      - MockOptions__Streams__0__StreamEncoding=3 # double
+      - MockOptions__Streams__0__StreamEncoding=DOUBLE
 
       # Stream 2
+      - MockOptions__Streams__1__Topic=edge/00000000-0000-0000-0000-000000000007/value/GenericValueSource
       - MockOptions__Streams__1__MachineID=my-machine-id
       - MockOptions__Streams__1__SensorID=my-sensor-id
-      - MockOptions__Streams__1__StreamEncoding=3 # double
+      - MockOptions__Streams__1__StreamEncoding=DOUBLE
       ...
 ```
+
+In Order to add more streams the environment `MockOptions` setting can be adjusted based on the AppSettings.json configuration capabilities, see [Microsoft](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-7.0) for details on how to setup the environment variables.
 
 We have some common settings for both streams that need to be set in the `environment` variables to change the stream generation behaviour:
 
-- __StreamEncoding__: Sets the datatype which will be generated based on a numeric value:
+- __StreamEncoding__: Sets the datatype which will be generated based on a numeric value (see [Built-in Types](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/built-in-types?redirectedfrom=MSDN) for details):
 
-  | Value | Datatype |
-  |----------|----------|
-  | 1        | byte-array     |
-  | 2        | float     |
-  | 3        | double     |
-  | 4        | int     |
-  | 5        | long     |
-  | 6        | string_utf8     |
-  | 8        | boolean     |
+  | Value | .Net type | Description|
+  |----------|----------|----------|
+  | BYTEARRAY        | System.Byte[] | Array of 8-bit unsigned integer |
+  | FLOAT        | System.Single |  Single-precision floating-point number |
+  | DOUBLE        | System.Double | Double-precision floating-point number |
+  | INT32        | System.Int32 | 32-bit signed integer |
+  | INT64        | System.Int64 | 64-bit signed integer |
+  | STRING_UTF8        | System.String | UTF-8 encoded string |
+  | STRING_BASE64        | System.String | UTF-8 encoded string which will be converted to a Base64 encoded string |
+  | BOOL        | System.Boolean | Boolean value |
 
-- __Interval__: The interval (default 10sec) in which the values are generated in TimeSpan format, e.g. 00:00:05 for 5 seconds, see [Microsoft](https://learn.microsoft.com/en-us/dotnet/standard/base-types/standard-timespan-format-strings) for details on TimeSpan format
-- __MinValue__ (default 5): The minimum value that can be generated (for bytearrays and string this is the length of the array/string, default 1)
-- __MaxValue__ (default 25): The max value that can be generated (for bytearrays and string this is the length of the array/string)
-
-In Order to add more streams the environment `MockOptions` setting can be adjusted based on the AppSettings.json configuration capabilities, see [Microsoft](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-7.0) for details on how to setup the environment variables. The following setup shows how to add a second stream float stream to the MockClient:
-
-```yaml
-    ...
-    environment:
-      ...
-      # Stream 1
-      - MockOptions__Streams__0__Topic=xxo/foo
-      - MockOptions__Streams__0__StreamEncoding=3 # double
-
-      # Stream 2
-      - MockOptions__Streams__0__Topic=xxo/foo
-      - MockOptions__Streams__0__StreamEncoding=2 # float
-      ...
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- __Interval__: The interval (default 10sec) in which the values are generated in TimeSpan format, e.g. 00:00:05 for 5 seconds, see [Microsoft](https://learn.microsoft.com/en-us/dotnet/standard/base-types/standard-timespan-format-strings) for details on TimeSpan format. The interval cannot be shorter than 1 second.
