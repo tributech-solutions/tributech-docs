@@ -1,8 +1,8 @@
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const {themes} = require('prism-react-renderer');
+const lightTheme = themes.github;
+const darkTheme = themes.dracula;
 
-/** @type {import('@docusaurus/types').DocusaurusConfig} */
-module.exports = {
+export default {
   title: 'Tributech Platform Documentation',
   tagline: 'Technology for trusted DataSpaces',
   url: 'https://docs.tributech.io',
@@ -80,9 +80,9 @@ module.exports = {
       copyright: `Copyright © 2018 - ${new Date().getFullYear()} Tributech Solutions GmbH`,
     },
     prism: {
-      theme: lightCodeTheme,
-      darkTheme: darkCodeTheme,
-      additionalLanguages: ['csharp'],
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      additionalLanguages: ['csharp', 'bash', 'json'],
     },
     image: 'img/favicon.png',
     algolia: {
