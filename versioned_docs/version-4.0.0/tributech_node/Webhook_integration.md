@@ -167,7 +167,7 @@ The Headers contains the Tributech specific Attribute `x-tributech-signature` an
 }
 ~~~~
 
-### Openssl 
+### Openssl
 
 With the following [OpenSSL](https://github.com/openssl/openssl) command we verify the previous example values of the `x-tributech-signature` ***HMAC SHA256*** signature on a unix system:
 
@@ -198,23 +198,23 @@ using System;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Globalization;
-					
+
 public class Program
 {
-	public static void Main()
-	{
-		Console.WriteLine(HashHMAC("foobar",@"{""TransactionId"":null,""StreamId"":""15caf997-2f2f-43c2-b5e9-6a3ac00b1edb"",""MerkleTreeDepth"":5,""LastTimestamp"":""2024-05-28T06:31:14.851318+00:00"",""RootHash"":[199,51,64,165,193,234,157,113,156,124,186,212,182,137,146,243,6,114,177,215,234,61,38,199,138,227,179,195,27,237,88,198],""Signature"":[61,212,2,199,55,23,184,147,251,18,36,229,59,39,152,32,196,18,189,170,34,162,147,255,69,59,56,31,63,221,41,226,20,128,238,106,148,148,192,217,48,16,67,197,217,118,56,232,167,63,229,27,247,105,208,79,185,193,254,26,17,200,186,154,192,117,153,60,81,232,196,251,28,128,151,44,32,2,41,188,252,224,241,46,172,77,247,81,61,247,32,220,166,141,107,150,149,230,206,5,114,182,111,202,245,217,172,90,178,75,143,113,43,225,34,4,127,85,167,116,150,114,35,47,124,66,196,194,58,114,12,73,253,13,68,181,11,151,152,212,171,189,146,5,187,71,111,212,88,228,246,246,14,33,88,114,151,17,71,23,231,152,56,219,108,220,60,226,241,53,77,104,153,98,200,127,77,153,160,138,245,76,204,171,68,52,236,169,8,238,46,18,58,231,196,104,77,34,190,14,85,41,220,39,180,117,22,77,18,20,229,55,25,170,22,151,157,254,9,199,52,205,71,51,67,135,229,143,248,27,45,19,141,72,72,43,215,87,85,243,93,186,53,202,186,96,120,202,188,215,125,80,115,120,143,97],""AgentId"":""a324b439-c03b-4e0f-a63e-8067c4423b7b"",""EventQoS"":1}", DateTimeOffset.Parse("2024-05-28T06:31:37.3121930+00:00") ));
-	}
-	
-	public static string HashHMAC(string secret, string webHookPayloadJson, DateTimeOffset signatureTimestamp) {
-		var encoding = new System.Text.ASCIIEncoding();
-		var messageHash = new HMACSHA256(encoding.GetBytes(secret));
-		var payload = encoding.GetBytes(webHookPayloadJson)
-                              .Concat(encoding.GetBytes(signatureTimestamp.ToString(CultureInfo.InvariantCulture)))
-                              .ToArray();
-		var signature = messageHash.ComputeHash(payload);
-		return BitConverter.ToString(signature).Replace("-", "");
-	}
+  public static void Main()
+  {
+    Console.WriteLine(HashHMAC("foobar",@"{""TransactionId"":null,""StreamId"":""15caf997-2f2f-43c2-b5e9-6a3ac00b1edb"",""MerkleTreeDepth"":5,""LastTimestamp"":""2024-05-28T06:31:14.851318+00:00"",""RootHash"":[199,51,64,165,193,234,157,113,156,124,186,212,182,137,146,243,6,114,177,215,234,61,38,199,138,227,179,195,27,237,88,198],""Signature"":[61,212,2,199,55,23,184,147,251,18,36,229,59,39,152,32,196,18,189,170,34,162,147,255,69,59,56,31,63,221,41,226,20,128,238,106,148,148,192,217,48,16,67,197,217,118,56,232,167,63,229,27,247,105,208,79,185,193,254,26,17,200,186,154,192,117,153,60,81,232,196,251,28,128,151,44,32,2,41,188,252,224,241,46,172,77,247,81,61,247,32,220,166,141,107,150,149,230,206,5,114,182,111,202,245,217,172,90,178,75,143,113,43,225,34,4,127,85,167,116,150,114,35,47,124,66,196,194,58,114,12,73,253,13,68,181,11,151,152,212,171,189,146,5,187,71,111,212,88,228,246,246,14,33,88,114,151,17,71,23,231,152,56,219,108,220,60,226,241,53,77,104,153,98,200,127,77,153,160,138,245,76,204,171,68,52,236,169,8,238,46,18,58,231,196,104,77,34,190,14,85,41,220,39,180,117,22,77,18,20,229,55,25,170,22,151,157,254,9,199,52,205,71,51,67,135,229,143,248,27,45,19,141,72,72,43,215,87,85,243,93,186,53,202,186,96,120,202,188,215,125,80,115,120,143,97],""AgentId"":""a324b439-c03b-4e0f-a63e-8067c4423b7b"",""EventQoS"":1}", DateTimeOffset.Parse("2024-05-28T06:31:37.3121930+00:00") ));
+  }
+  
+  public static string HashHMAC(string secret, string webHookPayloadJson, DateTimeOffset signatureTimestamp) {
+    var encoding = new System.Text.ASCIIEncoding();
+    var messageHash = new HMACSHA256(encoding.GetBytes(secret));
+    var payload = encoding.GetBytes(webHookPayloadJson)
+                          .Concat(encoding.GetBytes(signatureTimestamp.ToString(CultureInfo.InvariantCulture)))
+                          .ToArray();
+    var signature = messageHash.ComputeHash(payload);
+    return BitConverter.ToString(signature).Replace("-", "");
+  }
 }
 ~~~
 

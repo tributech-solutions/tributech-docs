@@ -149,17 +149,17 @@ Example Code to create the Request Body for the Command Trigger :
 using System;
 using System.Text;
 using System.Text.Json;
-					
+
 public class Program
 {
-	public static void Main()
-	{
-		var commandPayload = new { NewBooleanValue = true};
-		
-		var requestCommandBody = Convert.ToBase64String(JsonSerializer.SerializeToUtf8Bytes(commandPayload));
-		
-		var requestBody = new { CommandName = "ExampleBoolCommand", CommandBody = requestCommandBody, Timeout = TimeSpan.FromSeconds(30)};
-		Console.WriteLine(JsonSerializer.Serialize(requestBody));
-	}
+  public static void Main()
+  {
+    var commandPayload = new { NewBooleanValue = true};
+    
+    var requestCommandBody = Convert.ToBase64String(JsonSerializer.SerializeToUtf8Bytes(commandPayload));
+    
+    var requestBody = new { CommandName = "ExampleBoolCommand", CommandBody = requestCommandBody, Timeout = TimeSpan.FromSeconds(30)};
+    Console.WriteLine(JsonSerializer.Serialize(requestBody));
+  }
 }
 ~~~
