@@ -30,8 +30,8 @@ The Tributech platform is available as a SaaS or PaaS solution and offers integr
 
 ## Quick Links
 
--	To learn how to integrate IT/OT/IoT data sources via the Tributech Agent, visit the [overview](./tributech_agent/overview.md) page or start directly with our [quick start guide](./tributech_agent/quickstart.mdx).
--	To learn more about the platform REST and webhook event interface visit the [API integration](./tributech_node/API_integration.md) page.
--	Visit the [API usage](./tributech_node/API_usage.md) page for the most common use case examples.
--	Visit the OEM Module [overview](./oem_module/overview.md) page to learn more about the integration into embedded IoT devices.
+- To learn how to integrate IT/OT/IoT data sources via the Tributech Agent, visit the [overview](./tributech_agent/overview.md) page or start directly with our [quick start guide](./tributech_agent/quickstart.mdx).
+- To learn more about the platform REST and webhook event interface visit the [API integration](./tributech_node/API_integration.md) page.
+- Visit the [API usage](./tributech_node/API_usage.md) page for the most common use case examples.
+- Visit the OEM Module [overview](./oem_module/overview.md) page to learn more about the integration into embedded IoT devices.
 

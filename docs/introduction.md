@@ -13,8 +13,8 @@ Tributech's platform provides a solution for secure data integration from any so
 
 The following list provides an overview of the most important platform features.
 
-| Feature    | Description                                                                                   |
-| --------- | ---------------------------------------------------------------------------------------------  |
+| Feature | Description |
+| ------- | ----------- |
 | Data integrity protection      | Securing your data integrity by creating cryptographic proofs at that allow you to verify data integrity and authenticity between source and destination.  |
 | Data tampering detection    | Detection of any poisoned / tampered data caused by cybersecurity incidents or system failures through automated data verification processes. The verification results and tamper alerts can be integrated into your SIEM/SOAR via API or via webhooks.         |
 | Data integration | The platform provides comperhensive set of data integration options ranging from IoT, OT to IT, enabling the secure data integration for any data source. In addition to the platform's open interfaces, industry protocols like e.g. MQTT, OPC-UA, ADS or UART are supported.     |
@@ -30,8 +30,8 @@ The Tributech platform is available as a SaaS or PaaS solution and offers integr
 
 ## Quick Links
 
--	To learn how to integrate IT/OT/IoT data sources via the Tributech Agent, visit the [overview](./tributech_agent/overview.md) page or start directly with our [quick start guide](./tributech_agent/quickstart.mdx).
--	To learn more about the platform REST and webhook event interface visit the [API integration](./tributech_node/API_integration.md) page.
--	Visit the [API usage](./tributech_node/API_usage.md) page for the most common use case examples.
--	Visit the OEM Module [overview](./oem_module/overview.md) page to learn more about the integration into embedded IoT devices.
+- To learn how to integrate IT/OT/IoT data sources via the Tributech Agent, visit the [overview](./tributech_agent/overview.md) page or start directly with our [quick start guide](./tributech_agent/quickstart.mdx).
+- To learn more about the platform REST and webhook event interface visit the [API integration](./tributech_node/API_integration.md) page.
+- Visit the [API usage](./tributech_node/API_usage.md) page for the most common use case examples.
+- Visit the OEM Module [overview](./oem_module/overview.md) page to learn more about the integration into embedded IoT devices.
 
