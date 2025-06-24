@@ -8,21 +8,58 @@
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #01b0cc;
-  --ifm-color-primary-dark: #00c7e6;
-  --ifm-color-primary-darker: #00bcda;
-  --ifm-color-primary-darkest: #009bb3;
-  --ifm-color-primary-light: #1be0ff;
-  --ifm-color-primary-lighter: #27e1ff;
-  --ifm-color-primary-lightest: #4ee7ff;
+
+  --ifm-color-primary-dark: #01b0cc;
+  --ifm-color-primary-darker: #018499;
+  --ifm-color-primary-darkest: #005866;
+  --ifm-color-primary-light: #67eaff;
+  --ifm-color-primary-lighter: #99f1ff;
+  --ifm-color-primary-lightest: #ccf8ff;
+
   --ifm-code-font-size: 95%;
 
-  --ifm-footer-background-color: #304761;
-  /*--ifm-dark-value: #304761;*/
+  --ifm-color-gray-100: #edeff1;
+  --ifm-color-gray-200: #e2e6e8;
+  --ifm-color-gray-300: #b5bfc4;
+  --ifm-color-gray-400: #8c9da4;
+  --ifm-color-gray-500: #6e8189;
+  --ifm-color-gray-600: #586871;
+  --ifm-color-gray-700: #48555c;
+  --ifm-color-gray-800: #3e484e;
+  --ifm-color-gray-900: #373f43;
+
+  --ifm-color-muted-100: #e9eef5;
+  --ifm-color-muted-200: #cfdae8;
+  --ifm-color-muted-300: #a5bcd4;
+  --ifm-color-muted-400: #7499bc;
+  --ifm-color-muted-500: #527ca5;
+  --ifm-color-muted-600: #406389;
+  --ifm-color-muted-700: #345070;
+  --ifm-color-muted-800: #304761;
+  --ifm-color-muted-900: #2b3b4f;
+
+  --ifm-color-content: var(--ifm-color-muted-900);
+  --ifm-color-content-secondary: var(--ifm-color-gray-800);
+  --ifm-menu-color: var(--ifm-color-muted-800);
+
+  --ifm-menu-link-sublist-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24"><path fill="rgb(48, 71, 97)" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg>');
 }
 
 /* Overriding root Infima variable for dark mode */
-[data-theme="dark"] {
+html[data-theme="dark"] {
   --ifm-color-primary: #01dcff;
+  --ifm-menu-color: var(--ifm-color-gray-100);
+
+  .footer--dark {
+    --ifm-footer-background-color: var(--ifm-color-gray-900);
+  }
+}
+
+/* Overriding root Infima variable for light mode */
+html[data-theme="light"] {
+  .footer--dark {
+    --ifm-footer-background-color: var(--ifm-color-muted-900);
+  }
 }
 
 .docusaurus-highlight-code-line {
@@ -34,4 +71,8 @@
 
 html[data-theme="dark"] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
+}
+
+.footer__col {
+  max-width: 20rem;
 }
