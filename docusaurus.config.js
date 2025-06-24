@@ -85,12 +85,13 @@ export default {
       additionalLanguages: ['csharp', 'bash', 'json'],
     },
     image: 'img/favicon.png',
-    algolia: {
-      apiKey: '1a42b1ebe30454fa429a47c5ed59de94',
-      appId: 'XQE3RIAUIB',
-      indexName: 'tributech',
-      contextualSearch: true,
-    },
+    algolia: false,
+    // {
+    //   apiKey: '1a42b1ebe30454fa429a47c5ed59de94',
+    //   appId: 'XQE3RIAUIB',
+    //   indexName: 'tributech',
+    //   contextualSearch: true,
+    // },
     zoom: {
       selector: '.markdown :not(em, a) > img',
       config: {
