@@ -16,7 +16,7 @@
     "format-check": "prettier --check \"**/*.{ts,json,js}\" "
   },
   "dependencies": {
-    "@algolia/client-search": "^4.13.0",
+    "@algolia/client-search": "^5.29.0",
     "@docusaurus/core": "^3.8.1",
     "@docusaurus/preset-classic": "^3.8.1",
     "@mdx-js/react": "^3.0.0",
