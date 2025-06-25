@@ -25,9 +25,9 @@ $ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
 # check if nvm is installed
 $ nvm --version
 
-# install Node.js max LTS version < v17 (because of the Webpack crypto.createHash() function)
-$ nvm install 16.19.0
-```
+# install Node.js max LTS version < v18 (because of the Webpack crypto.createHash() function)
+$ nvm install 23.0.0
+```nvm install
 
 ## Installation
 
