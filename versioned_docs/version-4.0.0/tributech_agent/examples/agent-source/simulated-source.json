@@ -1,61 +1,61 @@
 {
-    "digitalTwinsFileInfo": {
-      "fileVersion": "1.0.0"
-    },
-    "digitalTwinsGraph": {
-      "digitalTwins": [
-        {
-          "$dtId": "$$root_uuid$$",
-          "$etag": "1f61c81c-c238-ba6e-c9b7-baea7b2b6dac",
-          "$metadata": {
-            "$model": "dtmi:io:tributech:device:edge;1"
-          },
-          "PublicKey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAp8LvwjNO6qnGf+EFX2/2\nPGIw5Ba6C6SVquTb4zmqgiRKsoL8Jcg5WuerlzvpyTW1oBJlYzDxaN0BPeF7fYT0\ntYbKhrF59nVddflFmkiiuiPAk8Jz49Heb10mv6W/PzXbH5GqGD2XjH0pjMk8MGIR\nouT9Vf6eF1FG8OeIL1ohPbkRLpfZqQ4dLzoNIBPZhDq41jE3XmtyvT+tyQpGWIXv\nwBd2Ks0G02ZTb7Gcx9pwPSfYd+xIE8BbHOHNIReKOaRemBf3BMoedSLR18DXUFwx\nn9FgGnt+RdESdfuoU8dBJxZ3hhEl9PlwrIfxmC3HG+gXckQn9lSVydaNeHEya3y6\n/QIDAQAB\n-----END PUBLIC KEY-----",
-          "MaxMerkleTreeAge": 600,
-          "MaxMerkleTreeDepth": 5,
-          "ProofKind": "SHA256_RSA2048_PSS",
-          "KeyStorageType": "NONE",
-          "MQTTBroker": "",
-          "Name": "Edge"
+  "digitalTwinsFileInfo": {
+    "fileVersion": "1.0.0"
+  },
+  "digitalTwinsGraph": {
+    "digitalTwins": [
+      {
+        "$dtId": "$$root_uuid$$",
+        "$etag": "1f61c81c-c238-ba6e-c9b7-baea7b2b6dac",
+        "$metadata": {
+          "$model": "dtmi:io:tributech:device:edge;1"
         },
-        {
-          "$dtId": "$$uuid1$$",
-          "$etag": "W/\"fb6d3bde-0b40-4e9d-bba1-b9c9cb42019e\"",
-          "$metadata": {
-            "$model": "dtmi:io:tributech:source:simulated;1"
-          },
-          "Name": "Simulated Source"
+        "PublicKey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAp8LvwjNO6qnGf+EFX2/2\nPGIw5Ba6C6SVquTb4zmqgiRKsoL8Jcg5WuerlzvpyTW1oBJlYzDxaN0BPeF7fYT0\ntYbKhrF59nVddflFmkiiuiPAk8Jz49Heb10mv6W/PzXbH5GqGD2XjH0pjMk8MGIR\nouT9Vf6eF1FG8OeIL1ohPbkRLpfZqQ4dLzoNIBPZhDq41jE3XmtyvT+tyQpGWIXv\nwBd2Ks0G02ZTb7Gcx9pwPSfYd+xIE8BbHOHNIReKOaRemBf3BMoedSLR18DXUFwx\nn9FgGnt+RdESdfuoU8dBJxZ3hhEl9PlwrIfxmC3HG+gXckQn9lSVydaNeHEya3y6\n/QIDAQAB\n-----END PUBLIC KEY-----",
+        "MaxMerkleTreeAge": 600,
+        "MaxMerkleTreeDepth": 5,
+        "ProofKind": "SHA256_RSA2048_PSS",
+        "KeyStorageType": "NONE",
+        "MQTTBroker": "",
+        "Name": "Edge"
+      },
+      {
+        "$dtId": "$$uuid1$$",
+        "$etag": "W/\"fb6d3bde-0b40-4e9d-bba1-b9c9cb42019e\"",
+        "$metadata": {
+          "$model": "dtmi:io:tributech:source:simulated;1"
         },
-        {
-          "$dtId": "$$uuid2$$",
-          "$etag": "W/\"c13a699b-1280-448c-8280-4f1044028c96\"",
-          "$metadata": {
-            "$model": "dtmi:io:tributech:stream:simulated;1"
-          },
-          "Name": "Simulated Stream",
-          "Unit": "",
-          "Type": "Double",
-          "MinValue": 1,
-          "MaxValue": 10,
-          "Frequency": 0
-        }
-      ],
-      "relationships": [
-        {
-          "$etag": "d3ad950e-314c-2e4d-ecf0-133318f3db03",
-          "$relationshipId": "e6c4e150-a8d2-8704-4533-78c98c0ce5a3",
-          "$relationshipName": "Sources",
-          "$targetId": "$$uuid1$$",
-          "$sourceId": "$$root_uuid$$"
+        "Name": "Simulated Source"
+      },
+      {
+        "$dtId": "$$uuid2$$",
+        "$etag": "W/\"c13a699b-1280-448c-8280-4f1044028c96\"",
+        "$metadata": {
+          "$model": "dtmi:io:tributech:stream:simulated;1"
         },
-        {
-          "$etag": "af25e043-030a-f952-767a-b105f60a51b0",
-          "$relationshipId": "63ea7d7d-853c-cb58-1664-4102fc666fc5",
-          "$relationshipName": "Streams",
-          "$targetId": "$$uuid2$$",
-          "$sourceId": "$$uuid1$$"
-        }
-      ]
-    },
-    "digitalTwinsModels": []
-  }
+        "Name": "Simulated Stream",
+        "Unit": "",
+        "Type": "Double",
+        "MinValue": 1,
+        "MaxValue": 10,
+        "Frequency": 0
+      }
+    ],
+    "relationships": [
+      {
+        "$etag": "d3ad950e-314c-2e4d-ecf0-133318f3db03",
+        "$relationshipId": "e6c4e150-a8d2-8704-4533-78c98c0ce5a3",
+        "$relationshipName": "Sources",
+        "$targetId": "$$uuid1$$",
+        "$sourceId": "$$root_uuid$$"
+      },
+      {
+        "$etag": "af25e043-030a-f952-767a-b105f60a51b0",
+        "$relationshipId": "63ea7d7d-853c-cb58-1664-4102fc666fc5",
+        "$relationshipName": "Streams",
+        "$targetId": "$$uuid2$$",
+        "$sourceId": "$$uuid1$$"
+      }
+    ]
+  },
+  "digitalTwinsModels": []
+}

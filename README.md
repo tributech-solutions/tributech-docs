@@ -18,7 +18,7 @@ Install NodeJS on [Windows](https://learn.microsoft.com/en-us/windows/dev-enviro
 $ sudo apt-get install curl
 
 # install nvm
-$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash	
+$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
 
 # restart console
 

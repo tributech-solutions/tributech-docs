@@ -79,7 +79,7 @@ Following Headers are present in the Webhook request:
 | x-tributech-signaturetimestamp | 06/16/2023 05:08:46 +00:00 |
 | x-tributech-signature | sha256=0316443119ED851EE18AA6176E8281E6A28D02A52EAF5DC85D45A6149173F412 |
 | x-tributech-timestamp | 06/16/2023 05:08:43 +00:00 |
-	
+
 
 #### Payload Example
 
@@ -106,15 +106,15 @@ Following Headers are present in the Webhook request:
 This code example can be used to create the exact same signature which is present in the header (without the `sha256=` prefix).
 
 ~~~ csharp
-	public string HashHMAC(string secret, string webHookPayloadJson, DateTimeOffset signatureTimestamp) {
-		var encoding = new System.Text.ASCIIEncoding();
-		var messageHash = new HMACSHA256(encoding.GetBytes(secret));
-		var payload = encoding.GetBytes(webHookPayloadJson)
-                              .Concat(encoding.GetBytes(signatureTimestamp.ToString(CultureInfo.InvariantCulture)))
-                              .ToArray();
-		var signature = messageHash.ComputeHash(payload);
-		return BitConverter.ToString(signature).Replace("-", "");
-	}
+  public string HashHMAC(string secret, string webHookPayloadJson, DateTimeOffset signatureTimestamp) {
+    var encoding = new System.Text.ASCIIEncoding();
+    var messageHash = new HMACSHA256(encoding.GetBytes(secret));
+    var payload = encoding.GetBytes(webHookPayloadJson)
+                          .Concat(encoding.GetBytes(signatureTimestamp.ToString(CultureInfo.InvariantCulture)))
+                          .ToArray();
+    var signature = messageHash.ComputeHash(payload);
+    return BitConverter.ToString(signature).Replace("-", "");
+  }
 ~~~
 
 ## Authorization

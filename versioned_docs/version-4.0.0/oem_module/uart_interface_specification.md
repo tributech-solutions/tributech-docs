@@ -155,10 +155,10 @@ The unit of a stream is also arbitrary and can be chosen by the user. In a norma
 
 The encoding sets the data type of the stream value. The different data types which can be chosen are:
 
--	Float
--	Double
--	Int32
--	Int64
+- Float
+- Double
+- Int32
+- Int64
 
 #### MerkleTreeDepth
 
