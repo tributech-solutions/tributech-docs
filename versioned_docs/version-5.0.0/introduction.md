@@ -32,5 +32,4 @@ The following list provides an overview of the most important platform features.
 - To learn how to integrate IT/OT/IoT data sources via the Tributech Agent, visit the [overview](./tributech_agent/overview.md) page or start directly with our [quick start guide](./tributech_agent/quickstart.mdx).
 - Visit API [Usage](./tributech_node/api_category/API_usage.md)/[Integration](./tributech_node/api_category/API_integration.md) for more information on what our [Tributech Node](tributech_node/overview.md) REST interface provides for the most common use cases.
 - Visit the [Webhooks](./tributech_node/Webhook_integration.md) to learn more about [Tributech Node](tributech_node/overview.md) Events
-- Visit the OEM Module (deprecated) [overview](./oem_module/overview.md) page to learn more about the integration into embedded IoT devices.
 
