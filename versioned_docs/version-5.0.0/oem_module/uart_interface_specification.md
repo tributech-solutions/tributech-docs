@@ -1,0 +1,398 @@
+---
+title: UART Interface Specification
+sidebar_position: 4
+---
+
+# UART Interface Specification
+
+:::caution
+This Tributech OEM module documentation is deprecated and only works with Tributech DSK version 3.6, which is no longer actively maintained.
+:::
+
+## Prerequisites
+
+The OEM mostly uses the default characteristics of a standard UART specification. The final specifications can be seen in the table below.
+
+| Specifications | Value |
+| ---- | ---- |
+| Baud-rate | 115200 |
+| Data bits | 8 |
+| Stop bits | 1 |
+| Parity | none |
+| Voltage level | +3,3V |
+
+## Interface specifications
+
+The OEM supports multiple commands which can be invoked via UART. Most of those commands should not be needed by the user since they need to be used in concert with API functions linked to nodes. The following two are entirely tailored to be used by users or developers. 
+
+## Provide Value
+
+With this command it is possible to send data to the OEM. Each data package has to have three distinctive parameters namely: StreamID, Timestamp, and the value itself. 
+
+```json
+{
+    "TransactionNr": X,
+    "Operation": "ProvideValue",
+    "StreamID": "XXX",
+    "Timestamp": X,
+    "Value": "XXX"
+}\r\n
+```
+
+### StreamID
+
+This identification number is presented in the form of an UUID. It links the values and timestamps given after the identification number to a specific stream. The StreamIDs can be acquired through the web portal or through the GetConfiguration command.
+
+### Timestamp
+
+The simplest version to send a valid timestamp to the OEM is to set the timestamp value to 0. This will yield that the OEM insets the timestamp when the value was received on the device. If the user is in need of a more accurate timestamp it also can be set in the provide values command. The timestamp is set in milliseconds since the unix epoch( Jan 01 1970 00:00:00 ). For example the value 1654074780000 represents the timestamp “Jun 01 2022 09:13:00”.
+
+### Value
+
+The most important specification when providing data to an OEM is the value itself. Each value which is inserted into the provide data structure has to be encoded in Base64. Here the user has to be careful because the values have to be encoded in their original value type. If the user encodes for example a float value the float value has to be handed to the base64 encoding function. For example the floating value 16.5 encoded in Base64 yields “AACEQQ==”. 
+
+### Error codes
+
+The error code of an successful “ProvideValue” command is 0. The following error codes could also occur when a value is send to the OEM:
+
+- ** “ErrorCode”: -5 **   
+This error code yields “CYCLE_TIME_TOO_FAST” which means that The user is sending the “ProvideValue” command to fast. The hard limit for the OEM at least **three seconds** between each "ProvideValue" command.
+
+- ** "ErrorCode": -14 **
+The code -14 translates to "ONLY_SINGLE_VALUES_ALLOWED". If the user tries to send more than one value in a "ProvideValue" funciton tihs error is triggered.
+
+- ** "ErrorCode": -15**
+This error code is similar to the "CYCLE_TIME_TOO_FAST" error code. There is also a user defined cycle timecalled pmin which can be set in the cofiguration. This variable is given in seconds. This command depicts the minimum interval in which values are accepted by the OEM. If the value of this variable is set to 10 the OEM will only accept a value for a specific stream every 10 seconds. 
+
+## Get Configuration
+
+This command can be sent to the OEM to get all the available data from the device. The information returned by this command include but is not limited to the device name, the device UUID, the public key, the different sources and streams assigned to the device. 
+
+```json
+{
+    "TransactionNr": X,
+    "Operation": "GetConfiguration",
+}\r\n
+```
+
+### Id
+
+The device id depicts the id of this specific device, this parameter cannot be changed and will always stay the same. It is derived from a variable in in the nRF9160 which can only be edited by the manufacturer.
+
+### Name
+
+The Name of the device is arbitrary. It can be changed by the user at will via the web portal. In a normal use case the name of the OEM would be bound to its use case or to the company who owns it. 
+
+### SwVersion
+
+This variable shows the current software version which is present on the OEM. It is not accessible for the user and will only change via a firmware update. 
+
+### HwVersion
+
+This variable depicts the current hardware version of the system. It cannot be changed and should be the same number which is also depicted on the OEM. If this is not the case the software currently used is not written specifically for this hardware version this could lead to problems. 
+
+### Public Key
+
+This variable holds the current public key present on the OEM. It cannot be accessed or changed by the user. This key is only changed in the linking or relinking process and is also present on the node. This key is needed to be able to validate the proofs signatures generated by the OEM. If this key is somehow compromised or corrupted the device has to be relinked the node.
+
+### MqttBroker
+
+The MQTT broker should depict a URL. This URL is the endpoint for the data streams sent by the OEM. It is also set automatically in the linking process.
+
+### ConnectivityTechnology
+
+The OEM has to options which are available for its connection to the cloud which is LTE CAT-M and NB-IoT. Thus this variable can have one of the following three states:
+
+- ** AUTO **  
+In the automatic mode the OEM will run through its normal connection algorithm and try which of the two connection schemes yields a successful connection. 
+
+- ** CATM **  
+In this mode only the LTE CAT-M is used to try to establish a connection. If the inserted SIM card does not support the chosen wireless technology not connection can be established. 
+
+- ** NBIOT **  
+In this mode only the NB-IoT is used to try to establish a connection. If the inserted SIM card does not support the chosen wireless technology not connection can be established. 
+
+### APN
+
+APN is short for Access Point Name. In the current software version this variable is left blank, since it is not used. The APN is automatically ascertained via the modem and the SIM card, but in some special occasions this variable could be vital to be able to establish a connection. 
+
+### DeviceType
+
+Defines the device type, in the current software version 1.1 it is set to “OEM” by default. 
+This variable will be used to describe for future hardware functions supported by the OEM.    
+
+### Sources
+
+#### Id
+
+The identification of a source is given in the format of an UUID. This identification is not arbitrary. Each Id is unique, but it is calculated with the source Id and the device id. With this it is possible to compact the correlations between the different ids into their scheme.
+
+#### Name
+
+The name of each source can be chosen by the user. It normally gives an overview about the streams which are held in the source configuration.
+
+#### SourceType
+
+The source type defines which streams can be added to the source and which configurations can be made in the source. At this moment the OEM only supports the embedded source type, if another source is chosen by the user it will not be saved on the OEM.
+
+### Streams
+
+The OEM can only hold embedded streams. Each of these streams is bound to a source and holds the same base variables. These variables are configuration options which can change how and when the OEM accepts or publishes values to the node. 
+
+#### Id
+
+The identification of a stream is given in the format of an UUID. This identification is not arbitrary. Each Id is unique, but it is calculated with the source Id and the device id. With this it is possible to compact the correlations between the different ids into their scheme.
+
+#### Name
+
+The name of a given stream is arbitrary and can be chosen by the user. Normally the name depicts the value of the stream which is saved there, like temperature or pressure.
+
+#### Unit
+
+The unit of a stream is also arbitrary and can be chosen by the user. In a normal use case this variable depicts the physical quantity of the stream value like: m, kPa, °C, …
+
+#### Encoding
+
+The encoding sets the data type of the stream value. The different data types which can be chosen are:
+
+- Float
+- Double
+- Int32
+- Int64
+
+#### MerkleTreeDepth
+
+The merkle tree depth determines how many values are needed to complete one root hash. For example if a merkle tree depth of 4 is chosen a total of 16 values are needed to complete the merkle tree.
+
+#### MerkleTreeTimeout
+
+The merkle tree timeout is given in seconds and defines a threshold for the merkle tree calculation time. ** At the moment it is not used by the OEM and still has to be implemented. **
+
+#### PMIN
+
+The PMIN value sets the minimal interval in which the OEM is permitted to accept values for each stream. If a value is sent to the OEM while the PMIN interval is not cleared the transferred value will be discarded. Additionally the OEM will transmit a response with the corresponding error code. The value is given in seconds.
+
+#### PMAX
+
+This value defines the maximum cycle time in between transferred values. It is also given in seconds. If not value is transferred to the OEM within this time limit the last received value will be published again by the OEM. 
+
+#### ST
+
+This variable name is short for step and can be seen as a threshold variable. A new stream value will only be accepted if the stream value exceeds the last receive value plus the step value. 
+
+#### Error Codes
+
+The “GetConfiguration” Command cannot yield any error codes since it accesses only the stored information which is saved in the persistent memory of the OEM. If the “GetConfiguration” command yields no response there could be multiple reasons. Either there is a fault in the UART communication between the OEM and the device it is mounted on, or there is a hardware malfunction with the OEM itself. 
+
+## GetTime
+
+The "GetTime" command enables the user to get an accurate timestamp in a unix format. With this feature the user can establish an accurate timeframe on their own microcontroller without a connection to a time server. 
+
+```json
+{
+    "TransactionNr": X,
+    "Operation": "GetTime",
+}\r\n
+```
+
+## GetStatus
+
+With the status of the OEM the User can determine when it is possible to send data to the OEM. The "GetStatus" command will give the user one of the following three status:
+
+- 0 = offline
+- 1 = online
+- 2 = connected to Node
+
+```json
+{
+    "TransactionNr": X,
+    "Operation": "GetStatus",
+}\r\n
+```
+
+## Example Commands
+
+The example command below show typical interactions with the OEM and their successful responses for the commands “ProvideValue” and “GetConfiguration”.
+
+### Provide Value
+
+The only way to send a value to the OEM is to commit a single value to a stream with a valid StreamID. This change from multiple values to a single value occurred in software version 3.2.
+
+#### Single Value
+
+The following command shows how to send a single value to the OEM via UART. The successful response is also shown beneath the command.
+
+<table>
+<tr>
+<td>  Command </td> <td> Response </td>
+</tr>
+<tr>
+<td>
+
+```json
+{
+    "TransactionNr": 1,
+    "Operation": "ProvideValue",
+    "StreamID": "10101010-2020-3030-4040-505050505051",
+    "Timestamp": 0,
+    "Value": "AACEQQ=="
+}\r\n
+```
+
+</td>
+<td>
+
+```json
+{
+    "TransactionNr": 1,
+    "ErrorCode": 0
+}
+```
+
+</td>
+</tr>
+</table>
+
+### Get Configuration
+
+The following command shows how to acquire the configuration from the OEM via UART. An example configuration is given as an response. 
+
+<table>
+<tr>
+<td> Command </td> <td> Response </td>
+</tr>
+<tr>
+<td>
+
+```json
+{
+    "TransactionNr": 4,
+    "Operation": "GetConfiguration"
+}\r\n
+```
+
+</td>
+<td>
+
+```json
+{
+    "TransactionNr": 4,
+    "ErrorCode": 0,
+    "Id": "088900c1-8008-7108-0100-000000000110",
+    "Name": "OEM-Arduino-Demo",
+    "SwVersion": "1.0",
+    "HwVersion": "1.1",
+    "PublicKey": "-----BEGIN RSA PUBLIC KEY-----
+    \nMIIBCgKCAQEAprJYNcu1cM8gKNPS8tRqr9ZPxg0NLH4rU2QWF20wci5qJ1WiGwLv\n1+lj8NVs/s6Ug
+    92ipG/Zud9Nc471bDFonFnPc9QYiGAr34bJ2Av5NF1RZl6woIAk\nzpAlf7/MafLaL36sc8awPbnvUsFGV
+    metoo08BkyWDnYMY1eyvTEyv5cEuH0thi0O\nBJFpApAM9wA2XxCe2V/FKsa2/R6/KK91ARla5ZVoD4I
+    0I9nWbskzsrTPfoMUBNJy\nW4T73xFYzU7uZREoHuw4+hnpfBuPqw3Q9aVnOsLEg05nrL6mK4iZSg9SF
+    JjnsR6D\nrO+RG3h+rdwA1Mmt/hF6aJp8G5kvVt3XnQIDAQAB\n
+    -----END RSA PUBLIC KEY-----",
+    "MQTTBroker": "dev-node-a.dataspace-node.com",
+    "ConnectivityTechnology": "Auto",
+    "APN": "",
+    "DeviceType": "OEM",
+    "Sources": [{
+        "Id": "088900c1-8008-7108-0100-000000000009",
+        "Name": "Sensor",
+        "SourceType": "dtmi:io:tributech:source:emb;1",
+        "Streams": [{
+                "Id": "088900c1-8008-7108-0100-000000000010",
+                "Name": "Sensor value 1",
+                "Unit": "ppm",
+                "Encoding": "Float",
+                "MerkleTreeDepth": 4,
+                "MerkleTreeTimeout": 250,
+                "PMIN": 10,
+                "PMAX": 60,
+                "ST": 13
+            },
+            {
+                "Id": "088900c1-8008-7108-0100-000000000011",
+                "Name": "Sensor value 2",
+                "Unit": "ppm",
+                "Encoding": "Double",
+                "MerkleTreeDepth": 4,
+                "MerkleTreeTimeout": 250,
+                "PMIN": 10,
+                "PMAX": 60,
+                "ST": 13
+            }
+        ]
+    }]
+}
+```
+
+</td>
+</tr>
+</table>
+
+
+### GetTime
+
+The following command shows how to receive an accurate timestamp form the OEM.
+
+<table>
+<tr>
+<td>  Command </td> <td> Response </td>
+</tr>
+<tr>
+<td>
+
+```json
+{
+    "TransactionNr": 1,
+    "Operation": "GetTime",
+}\r\n
+```
+
+</td>
+<td>
+
+```json
+{
+    "TransactionNr": 1,
+    "ErrorCode": 0,
+    "Timestamp": 1680248129713000
+}
+```
+
+</td>
+</tr>
+</table>
+
+### GetStatus
+
+The following command shows how to receive the connection Status form the OEM.
+
+<table>
+<tr>
+<td>  Command </td> <td> Response </td>
+</tr>
+<tr>
+<td>
+
+```json
+{
+    "TransactionNr": 1,
+    "Operation": "GetStatus",
+}\r\n
+```
+
+</td>
+<td>
+
+```json
+{
+    "TransactionNr": 1,
+    "ErrorCode": 0,
+    "ConnectionStatus": 2
+}
+```
+
+</td>
+</tr>
+</table>
+
+
