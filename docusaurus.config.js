@@ -85,14 +85,12 @@ export default {
       additionalLanguages: ['csharp', 'bash', 'json'],
     },
     image: 'img/favicon.png',
-    algolia: false, // algolia search is hidden until we have a working index
-    // Uncomment the following lines to enable Algolia search
-    // algolia: {
-    //   apiKey: '1a42b1ebe30454fa429a47c5ed59de94',
-    //   appId: 'XQE3RIAUIB',
-    //   indexName: 'tributech',
-    //   contextualSearch: true,
-    // },
+    algolia: {
+      appId: 'XQE3RIAUIB',
+      apiKey: 'f8560b4e17dc77240726a958cea68039',
+      indexName: 'tributech',
+      contextualSearch: true,
+    },
     zoom: {
       selector: '.markdown :not(em, a) > img',
       config: {
