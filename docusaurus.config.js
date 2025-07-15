@@ -31,11 +31,6 @@ export default {
           label: 'Tributech Agent',
         },
         {
-          href: '/oem_module/overview',
-          position: 'left',
-          label: 'Tributech OEM Module',
-        },
-        {
           type: 'docsVersionDropdown',
           position: 'right',
           dropdownActiveClassDisabled: true,
@@ -107,7 +102,7 @@ export default {
       '@docusaurus/preset-classic',
       {
         docs: {
-          lastVersion: '4.0.0',
+          lastVersion: '5.0.0',
           routeBasePath: '/',
           disableVersioning: false,
           includeCurrentVersion: false,

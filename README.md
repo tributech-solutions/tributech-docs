@@ -25,9 +25,9 @@ $ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
 # check if nvm is installed
 $ nvm --version
 
-# install Node.js max LTS version < v17 (because of the Webpack crypto.createHash() function)
-$ nvm install 16.19.0
-```
+# install Node.js max LTS version < v18 (because of the Webpack crypto.createHash() function)
+$ nvm install 23.0.0
+```nvm install
 
 ## Installation
 
@@ -69,4 +69,37 @@ To update a specific version of the documentation just edit the files in the cor
 
 ### Releasing a new version
 
-To release a new version you need to run `yarn run docusaurus docs:version [X.X.X]`.
+By default, Docusaurus uses a `/docs` folder to store the "latest version" of the documentation, which appears in the version dropdown menu.
+However, in this setup, only numbered versions should be visible in the dropdown, so the `/docs` folder has been deleted.
+
+To release a new version with Docusaurus using the command `yarn run docusaurus docs:version [X.X.X]`, follow these steps:
+
+1. Copy the latest version from versioned_docs into a newly created `/docs` folder at the root of the repository.
+2. Run the versioning command mentioned above to create the new version.
+3. After releasing the new version, you can delete the `/docs` folder again.
+4. Make any necessary changes for the new release in the corresponding folder inside `/versioned_docs`.
+
+## Add new Navbar items
+
+Previously, the navbar was configured globally in `docusaurus.config.js`. Now, since different versions (e.g., v5.0.0 vs. earlier versions) require different navbar items, the navbar has been customized using a swizzled theme component.
+
+- **Global navbar items** (shared across all versions) should still be added to `docusaurus.config.js` under `themeConfig.navbar.items`.
+- **Version-specific or custom navbar items** should be added directly in the React component at `src/theme/Navbar/Content/index.js`.
+
+To add a custom navbar item for a specific version:
+
+1. Open `src/theme/Navbar/Content/index.js`.
+2. Use the `activeVersion` variable to conditionally render your custom `<Link>` or navbar item for the desired version.
+3. Example:
+   ```jsx
+   {activeVersion?.name === '5.0.0' && (
+     <Link className="navbar__item navbar__link" to="/tributech_c_sdk/overview">
+       Tributech C-SDK
+     </Link>
+   )}
+   ```
+4. For items that should appear in multiple versions, adjust the condition accordingly.
+
+**Note:**
+Global items remain in the config; version-specific items are handled in the **swizzled** component.
+
