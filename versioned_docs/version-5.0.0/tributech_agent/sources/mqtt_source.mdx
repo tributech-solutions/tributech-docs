@@ -18,7 +18,7 @@ In the following part we will describe the setup of a Tributech MQTT Source.
 - Setup the ***docker-compose.yml*** file by creating a `docker-compose.yml` file with the following content (adjustments required):
 <CodeBlock className="language-yml" title="docker-compose.yml">{SourceDockerCompose}</CodeBlock>
 
-Adjust the setting for the [Tribtech Agent](../overview.md) to your environment, sample value:
+Adjust the setting for the [Tributech Agent](../overview.md) to your environment, sample value:
 <CodeBlock className="language-plain" title="env specific settings">{EnvSample}</CodeBlock>
 
 ## Configuration
@@ -96,7 +96,7 @@ In the following section we want to outline two different ways to provide data t
 The [**MQTT Explorer**](http://mqtt-explorer.com/) supports the interact and monitoring of a MQTT MessageBroker via a simple UI.
 We can use the [**MQTT Explorer**](http://mqtt-explorer.com/) to connect to the `mosquitto-server-mqtt` service in the `docker-compose.yml`
 on port 1883 and manually submit data to MQTT Source via the MessageBroker.
-The MQTT Source will send received data after process via the Tribtech Agent to the Tributech Node.
+The MQTT Source will send received data after process via the Tributech Agent to the Tributech Node.
 
 
 The data of the previously defined Streams can be viewed in the Tributech Node by clicking on the corresponding `MQTT Stream`.
@@ -139,7 +139,7 @@ The example will submit the following payload data to the MQTT Source previously
 ![**Mqtt Explorer publish**](../img/node-source-mqtt-stream-value-publish-payload.png)
 
 ### MockClient
-We provide an additional `docker-compose.override.yml` below to include a MockClient. This setup can be used to send data to the MQTT Source without external tools. The MockClient is only for testing purposes and should not be used in production. In order to start the the MockClient with the Tributech MQTT Source copy the `docker-compose.override.yml` file in the same folder as the `docker-compose.yml` before using the `docker-compose up` command.
+We provide an additional `docker-compose.override.yml` below to include a MockClient. This setup can be used to send data to the MQTT Source without external tools. The MockClient is only for testing purposes and should not be used in production. In order to start the MockClient with the Tributech MQTT Source copy the `docker-compose.override.yml` file in the same folder as the `docker-compose.yml` before using the `docker-compose up` command.
 
 The following configuration shows how to setup the MockClient and send data to the MQTT Source for double stream. This example can be extended by adding new entries with an increasing index for the `MockOptions__Streams__{index}__StreamEncoding` environment variables. The following example shows how to add a Configurable Topic and Pre-defined Payload Stream the a MockClient:
 

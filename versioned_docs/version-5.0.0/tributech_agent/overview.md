@@ -14,7 +14,7 @@ Agents also provide a secure bidirectional communication channel between the Tri
 :::info The diagram illustrates our default setup, for more infos visit [Deployment](../tributech_node/overview.md#deployment)
 :::
 
-We provide differnt types of [Tributech Sources](source_integration.md) for the most commonly used communication protocols.
+We provide different types of [Tributech Sources](source_integration.md) for the most commonly used communication protocols.
 
 | Source    | Guide                                                                                          |
 | --------- | ---------------------------------------------------------------------------------------------  |
@@ -37,7 +37,7 @@ This guide will show the user with a simple example how randomly generated data 
 gathered, notarized and verified in the [Tributech Node](../tributech_node/overview.md) UI.
 
 ## Setup
-An Tributech Agent is the link inbetween the customer data and the persistence storage in a [Tributech Node](../tributech_node/overview.md).
+A Tributech Agent is the link in between the customer data and the persistence storage in a [Tributech Node](../tributech_node/overview.md).
 In the [Setup guide](setup.mdx) we will show the different ways to configure a Tributech Agent. This includes authentication and connection with a [Tributech Node](../tributech_node/overview.md) as well as a process based description of what the purpose of the Tributech Agent is. 
 
 Our Agent is a Docker service with a broker and a source. As mentioned the Agent is a docker service and can be combined with any Docker orchestration service like [Docker Compose](https://docs.docker.com/compose/) or IoT device management platforms like [Azure IoT Edge Runtime](https://learn.microsoft.com/en-us/azure/iot-edge/iot-edge-runtime?view=iotedge-1.4). The general Integration of our Agent is described in the section [Setup](./setup.mdx).

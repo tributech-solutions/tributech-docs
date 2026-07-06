@@ -75,7 +75,7 @@ Here is an example query against our double endpoint with the given example mode
 
 ## Proof Verification
 
-All data collected by our Tributech Agents will be secured by a Proof which is also generated on the Agent. On the Tributech Node we can check if the given Proof and their associated values are not tempered or changed in anyway.  The first validation will be done when the Proof was received by the Node, every other validation needs to be triggered via our REST API. 
+All data collected by our Tributech Agents will be secured by a Proof which is also generated on the Agent. On the Tributech Node we can check if the given Proof and their associated values are not tampered or changed in anyway.  The first validation will be done when the Proof was received by the Node, every other validation needs to be triggered via our REST API. 
 
 For this example we will also use the example DTDL (see above) and their respective `Stream Identifier`. 
 
