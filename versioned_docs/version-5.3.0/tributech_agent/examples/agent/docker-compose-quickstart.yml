@@ -1,0 +1,55 @@
+version: "3.6"
+
+services:
+  source-simulated:
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-source-simulated:${SOURCE_TAG:-latest}
+    depends_on:
+      - mosquitto-server-simulated
+      - tributech-agent
+    environment:
+      - MqttOptions__MQTTHost=mosquitto-server-simulated
+      - Logging__LogLevel__Default=Debug
+    networks:
+      - simulated-net
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "2m"
+        max-file: "5"
+
+  tributech-agent:
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-agent-play:${AGENT_TAG:-latest}
+    depends_on:
+      - mosquitto-server-simulated
+    environment:
+      - Logging__LogLevel__Default=Debug
+      - Logging__Console__FormatterName=simple
+      - MqttOptions__MQTTHost=mosquitto-server-simulated
+      - EdgeDeviceOptions__AgentID=${AGENT_ID:?"The Tributech Agent requires a GUID"}
+      - EdgeDeviceOptions__NodeUrl=${NODE_URL:?"The Tributech Node Url is required"}
+    ports:
+      - "5000:8080"
+    networks:
+      - simulated-net
+    volumes:
+      - ./volumes/simulated/agent/:/app/data # volume mapping for permanent storage of keys and datatwin file
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "2m"
+        max-file: "5"
+
+  mosquitto-server-simulated:
+    image: eclipse-mosquitto:${MQTT_TAG:-1.6}
+    networks:
+      - simulated-net
+    # ports:
+    # - '1883:1883' # MQTT
+    # - "127.0.0.1:9001:9001" # web-socket
+    restart: unless-stopped
+
+networks:
+  simulated-net:
+
