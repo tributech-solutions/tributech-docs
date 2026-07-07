@@ -29,7 +29,7 @@ services:
       - EdgeDeviceOptions__AgentID=${AGENT_ID:?"The Tributech Agent requires a GUID"}
       - EdgeDeviceOptions__NodeUrl=${NODE_URL:?"The Tributech Node Url is required"}
     ports:
-      - "5000:8080"
+      - "5001:8080"
     networks:
       - simulated-net
     volumes:

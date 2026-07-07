@@ -32,7 +32,7 @@ services:
       - EnrollmentOptions__EnrollmentCertBase64=${ENROLLMENT_CERT_BASE64:?"The base64 encoded Enrollment Cert is required"}
       - EnrollmentOptions__EnrollmentKeyBase64=${ENROLLMENT_KEY_BASE64:?"The base64 encoded Enrollment Key is required"}
     ports:
-      - "5000:8080"
+      - "5001:8080"
     networks:
       - simulated-net
     volumes:
