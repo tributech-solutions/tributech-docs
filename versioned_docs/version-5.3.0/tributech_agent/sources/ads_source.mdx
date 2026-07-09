@@ -5,7 +5,6 @@ sidebar_position: 2
 
 import CodeBlock from '@theme/CodeBlock';
 import SourceDockerCompose from '!!raw-loader!../examples/agent-source/ads/docker-compose.yml';
-import SoourceDockerComposeMock from '!!raw-loader!../examples/agent-source/ads/docker-compose.override.yml';
 import EnvSample from '!!raw-loader!../examples/agent-management/agent-service-sample-values.yml';
 
 
@@ -28,7 +27,7 @@ The Tributech ADS Source image can be started without any dependencies but will 
 
 In the following part we will describe the setup of a Tributech ADS Source.
 
-- Setup the ***docker-compose.yml*** file by creating a `docker-compose.yml` file with the following content (adjustments required):
+- Create a `docker-compose.yml` file with the following content (adjustments required):
 <CodeBlock className="language-yml" title="docker-compose.yml">{SourceDockerCompose}</CodeBlock>
 
 Adjust the setting for the [Tributech Agent](../overview.md) to your environment, sample value:
@@ -44,7 +43,7 @@ We can now add by right clicking the Device Edge entry a new Beckhoff TwinCat AD
 
 ![**"Add ADS Source**](../img/node-source-ads-add.png)
 
-In order to connect to the ADS Server we need to configure the ADS Server settings. The following table contains the description for each setting for our MockClient. The table contents can also be found here: [MockServer](#mock-server).
+In order to connect to the ADS Server we need to configure the ADS Server settings. The following table contains the description for each setting:
 
 ![**"Config ADS Source**](../img/node-source-ads-config.png)
 
@@ -64,7 +63,7 @@ We can save the settings by clicking on the `SAVE IN WORKSPACE` button in the bo
 
 ![**"Add ADS Source stream**](../img/node-source-ads-stream-add.png)
 
-The following screenshot contains the information for each setting for the ADS Stream path for a type LREAL (double), that will be read every 10sec from the MockServer:
+The following screenshot contains the information for each setting for the ADS Stream path for a type LREAL (double), that will be read every 10sec from the ADS Server:
 
 ![**"Add ADS Stream config**](../img/node-source-ads-stream-config.png)
 
@@ -73,7 +72,7 @@ We can save the settings by clicking on the `SAVE IN WORKSPACE` button in the bo
 After all symbol paths have been configured, we can apply the configuration to the Tributech Agent by clicking on the `APPLY CONFIGURATION` button in the top right corner.
 
 `
-Without the MockServer Setup or a real ADS Server we will not receive any data on the Tributech Node.
+Without a running ADS Server we will not receive any data on the Tributech Node.
 `
 
 We can now see the value of the symbol path in the `Beckhoff TwinCat ADS Stream`:
@@ -89,16 +88,9 @@ The basic handling of Value Change Options (VCO) can be found in [Source Integra
 - ***STRING***: will only be submitted if the current and last submitted value are not equal
 
 ## Providing Data
-If a Beckhoff ADS Server is used as a source, no specific settings are required, only the settings described in [Configuration](#configuration). If no Beckhoff ADS Server is available the Tributech ADS Source can use a Tributech ADS Mock to provide data to the Tributech ADS Source.
+If a Beckhoff ADS Server is used as a source, no specific settings are required — only the settings described in [Configuration](#configuration).
 
-### Mock Server
-The Mock Server is an application based on the [Beckhoff.TwinCAT.Ads.Server](https://www.nuget.org/packages/Beckhoff.TwinCAT.Ads) to generate a ADS Server with a symbol paths. The Mock Server can be started by downloading the `docker-compose.override.yml` file into the same folder as the Tributech ADS source.
-
-<CodeBlock className="language-yml" title="docker-compose.override.yml">{SoourceDockerComposeMock}</CodeBlock>
-
-The Mock Server needs access to the same docker network as the Tributech ADS Source, therefore the IP addresses and environment variables need to be adjusted if they are not identical to our provided `docker-compose.yml` file (see [Setup](#setup)). After starting the Mock Server the configuration has to be pushed to the ADS Source again. To accomplish this go back to the Tributech ADS Source configuration window in the Tributech Node and click again on the `APPLY CONFIGURATION` button again. The ADS Source will now generate data points.
-
-The following table contains the description for each available symbol path of the Mock Server:
+The following table lists example symbol paths and their data types, illustrating how symbol paths can be configured for an ADS Stream:
 
 | Path | TypeName |
 | --- | --- |
