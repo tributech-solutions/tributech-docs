@@ -1,5 +1,5 @@
 ---
-title: Webhooks Integration
+title: Webhooks
 sidebar_position: 4
 ---
 
