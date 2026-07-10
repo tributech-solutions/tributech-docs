@@ -49,6 +49,11 @@ The list of events types can be found [here](Webhook_integration.md#event-types)
 The [API](./api_category/API_usage.md) also allows the customer to subscribe and manage webhooks.
 This enables external parties to implement a push-based system, within their application, to react to certain events in our node. 
 
+### MCP (Beta)
+We also provide a [Model Context Protocol (MCP)](MCP_integration.md) server so AI assistants and MCP-capable tools can interact with the Tributech Node through a standardized interface, e.g. to list agents or read stream data and proofs in natural language. Access is authorized via OAuth 2.0, the same as the REST API.
+
+:warning: The MCP Server is currently an opt-in Beta feature and has to be enabled for your Tributech Node by the Tributech team.
+
 ### DTDL Configuration
 To configure our Tributech Agents we currently use the [Digital Twins Definition Language Version 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/DTDL.v2.md) which is an open standard to describe real world applications or things. This enables us the have a semantic description and configuration of our agents (e.g. [configure Agent](./agent/agent_configuration.mdx#configuring-an-agent)).  
 
