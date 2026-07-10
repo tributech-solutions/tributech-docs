@@ -1,0 +1,94 @@
+---
+title: Health Checks
+sidebar_position: 4
+---
+
+Health Checks are a lightweight monitoring mechanism that lets a [Tributech Agent](../../tributech_agent/overview.md) and its connected [Tributech Sources](../../tributech_agent/source_integration.md) report their current operational state to the Tributech Node in near real time.
+
+:::info
+Health Checks are currently only accessible via the [REST API](../api_category/API_integration.md) — there is no dedicated view in the Tributech Node UI yet.
+:::
+
+:::caution
+Health Checks require **Tributech Agent version 5.4.0 or later**, and the Digital Twin models of both the **agent (device) and its sources** must be **version 3 or higher** (`;3+`). Older model versions do not include the health-check telemetry. See [Digital Twin Versions](./agent_configuration.mdx#digital-twin-versions-upgrade--downgrade) for how to upgrade.
+:::
+
+## What a Health Check is
+
+A Health Check is a **periodic, push-based status message** sent by an Agent or a Source that reports whether the component is operating correctly — and, if not, why. Each message contains a structured health status, a timestamp and technology-specific diagnostic indicators, and it is **cryptographically signed** by the sending device, exactly like a Tributech Stream.
+
+In short, a Health Check answers: *“Is this Agent or Source operating correctly right now — and if not, why?”*
+
+Unlike relying on missing data to infer a problem, Health Checks **actively report** health conditions, which enables early detection of degraded states — such as a lost Agent-to-Node connection, a broken Agent-to-source-broker (or source-broker-to-Agent) connection, faulty source streams or dead-letter-queue (DLQ) backpressure — and faster troubleshooting.
+
+## Agent and Source Health Checks
+
+Agents and Sources have **independent** Health Checks:
+
+- **Agent Health Checks** monitor the Agent's connectivity and internal reliability — e.g. the Agent-to-Node connection, the Agent-to-source-broker connection, MQTT client health, enrollment certificate availability, dead-letter-queue (DLQ) pressure and stalled streams.
+- **Source Health Checks** monitor the Source's own connectivity and its streams — e.g. the source-broker connection back to the Agent and faults in the Source's streams — plus protocol-specific conditions (OPC-UA server state, ADS/PLC readiness, MQTT subscriptions, REST post-failure ratios).
+
+A Source does not talk to the backend directly: it sends its Health Check to the Agent, and the **Agent signs and forwards** it to the Node, which relays it to the Demeter backend for signature validation and storage.
+
+> 🖼️ **Diagram placeholder — Health Check messaging flow:** Source → Agent (signs) → Tributech Node → Demeter backend (validates signature & stores); plus the Agent's own Health Check following the same path. Include the offline buffering step.
+
+## Message structure
+
+Health Checks are transmitted as structured JSON. The example below shows a typical **Agent** Health Check message:
+
+```json
+{
+  "$dtId": "45478977-e8d4-4a6e-bad2-293d62f55271",
+  "healthState": 1,
+  "healthMessage": "Agent is healthy.",
+  "healthTimestamp": "2026-02-05T12:16:13.08515+00:00",
+  "$telemetryMetadata": {
+    "$model": "dtmi:io:tributech:healthmessage:edge;1"
+  },
+  "ageLimitHitStreams": [],
+  "dlqQueuePercentage": 0,
+  "expectedHealthFrequency": "PT30S",
+  "isNodeMqttClientHealthy": true,
+  "isConnectedToCloudBroker": true,
+  "isConnectedToSourceBroker": true,
+  "isSourceMqttClientHealthy": true,
+  "enrollmentCertificatesExist": true
+}
+```
+
+The core fields are present in every Health Check message:
+
+| Field | Description |
+| --- | --- |
+| `$dtId` | Digital Twin identifier of the Agent or Source |
+| `$telemetryMetadata.$model` | Digital Twin model used to interpret the message |
+| `healthTimestamp` | Time the health data was collected (UTC) |
+| `expectedHealthFrequency` | Configured reporting interval |
+| `healthState` | Machine-readable health status (see below) |
+| `healthMessage` | Human-readable status description |
+
+The remaining fields are diagnostic indicators that differ between the Agent and each Source type.
+
+**`healthState` values:**
+
+| Value | Meaning |
+| --- | --- |
+| `0` | Unknown |
+| `1` | Ok |
+| `2` | Degraded |
+| `-1` | Unhealthy |
+| `-2` | Critical |
+
+## Configuration
+
+Health Checks are enabled through the Digital Twin configuration via the `ExpectedHealthFrequency` property (an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations), e.g. `PT30S`) — on a Digital Twin model version that supports it (see the requirements above).
+
+If the interval is missing, empty or invalid, the Agent falls back to a **30-minute** reporting interval. This keeps Health Checks running, but at a much lower resolution — for most environments an interval between **30 seconds and 2 minutes** is a good balance between responsiveness and overhead.
+
+If connectivity to the Node or backend is temporarily unavailable, Health Checks continue to be generated and are stored in a size-limited local buffer (oldest entries are overwritten first) and transmitted once communication is restored.
+
+## Accessing Health Checks
+
+Health Check results are retrieved through the [Tributech Node REST API](../api_category/API_integration.md). Both the stored health payloads and the result of their signature validation are available there.
+
+> 📷 **Screenshot placeholder — REST API:** the Health Check endpoint(s) in the Swagger UI (and/or an example response), once available.
