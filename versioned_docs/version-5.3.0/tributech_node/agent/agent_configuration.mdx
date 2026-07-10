@@ -57,12 +57,6 @@ import VersionsButtonLight from './img/agent-twin-versions-button-light.png';
 import VersionsButtonDark from './img/agent-twin-versions-button-dark.png';
 import VersionsAvailableLight from './img/agent-twin-versions-available-updates-light.png';
 import VersionsAvailableDark from './img/agent-twin-versions-available-updates-dark.png';
-import VersionsReviewImpactLight from './img/agent-twin-versions-review-impact-light.png';
-import VersionsReviewImpactDark from './img/agent-twin-versions-review-impact-dark.png';
-import VersionsSummaryLight from './img/agent-twin-versions-summary-light.png';
-import VersionsSummaryDark from './img/agent-twin-versions-summary-dark.png';
-import VersionsResultLight from './img/agent-twin-versions-result-light.png';
-import VersionsResultDark from './img/agent-twin-versions-result-dark.png';
 
 In the following section we describe how configure and navigate the Tributech Agent via the Tributech Node UI.
 This requires an successful [Setup](../../tributech_agent/setup.mdx) (or [QuickStart](../../tributech_agent/quickstart.mdx)) and a completed [activation](../agent/agent_management.mdx#activate-agent) with a [Tributech Node](../overview.md).
@@ -264,47 +258,22 @@ By selecting the `Simulated Double Stream` we can directly go into the [stream v
 
 ## Digital Twin Versions (Upgrade / Downgrade)
 
-Every entry in the Twin Workspace — the device, its sources and their streams — is based on a versioned Digital Twin model, identified by its `dtmi` (for example `dtmi:io:tributech:device:edge;1`). Newer model versions can add or remove properties and relationships. With the **Update Twin Models** feature you can upgrade or downgrade these model versions directly from the agent configuration view. The versions of the device, sources and streams have to stay compatible with each other — the wizard validates this and prevents combinations that would break a relationship.
+Each edge or embedded device is represented in the Tributech Node as a **Digital Twin graph** — the configuration shown in the [`Twin Workspace`](#configuring-an-agent). The nodes of this graph are **twin instances** (the device, its sources and its streams), and every instance is based on a **twin model** identified by its `dtmi` (for example `dtmi:io:tributech:device:edge;2`). Like a software package, these twin models are **versioned** — the number after the `;` — and newer versions can add or remove properties, telemetries and relationships. (For background on the model language itself, see [DTDL Configuration](../overview.md#dtdl-configuration).)
 
-Open the wizard with the **`Update Twin Models`** button in the top-right of the configuration view (next to `Preview JSON`, `Load Configuration` and `Apply Configuration`). In this example the agent starts on version `1` for the device, source and stream.
+Some capabilities — such as **Verifiable Commands** and **Health Checks** — depend on properties and telemetries that only exist in newer twin model versions. The **Update Twin Models** feature provides a safe way to move an agent between these versions: it only offers versions that actually exist, keeps the device, source and stream versions compatible with each other, and shows the **impact** of a change before it is applied — a difference view of which parts are added or removed between the current and the selected version.
+
+The feature is opened with the **`Update Twin Models`** button in the top-right of the configuration view. In this example the agent starts on version `1` for the device, source and stream.
 
 <ThemedImage
   alt="Update Twin Models button in the agent configuration view"
   sources={{ light: VersionsButtonLight, dark: VersionsButtonDark }}
 />
 
-### 1. Available Updates
-
-The wizard lists every model in the current configuration that can be changed, showing its `Current` version and an `Update to` dropdown (the newest version is pre-selected). Select the models you want to change — the checkbox in the table header selects all of them — and click **`Review Impact`**.
+A window then lists every twin model in the current configuration that can be changed, together with its current version and a dropdown to select the target version. From here the feature guides you through reviewing the impact of the change and applying it.
 
 <ThemedImage
   alt="Available Updates window"
   sources={{ light: VersionsAvailableLight, dark: VersionsAvailableDark }}
 />
 
-### 2. Review Impact
-
-For each selected model the version change is shown (e.g. `edge;1 → edge;3`). The **Update Instances** column lets you choose which instances of that model are affected, and the **Impact** column shows exactly what the change adds or removes (properties and relationships). Click **`Confirm`** to continue.
-
-<ThemedImage
-  alt="Review Impact window"
-  sources={{ light: VersionsReviewImpactLight, dark: VersionsReviewImpactDark }}
-/>
-
-### 3. Summary
-
-A final overview lists the models that will be updated and how many instances each change targets; any instances you deselected appear under *Not Changed*. Click **`Apply Updates`** to apply the changes.
-
-<ThemedImage
-  alt="Update summary window"
-  sources={{ light: VersionsSummaryLight, dark: VersionsSummaryDark }}
-/>
-
-The wizard closes and the new versions appear in the Twin Workspace — in this example the device is now `dtmi:io:tributech:device:edge;3`, the source `dtmi:io:tributech:source:simulated;3` and the stream `dtmi:io:tributech:stream:simulated;2`. Added or changed fields are highlighted with a **yellow marker** in the list and a yellow border in the detail view.
-
-<ThemedImage
-  alt="Updated Twin model versions highlighted in the workspace"
-  sources={{ light: VersionsResultLight, dark: VersionsResultDark }}
-/>
-
-:warning: At this point the new versions are only shown in the UI. To actually send the updated configuration to the Tributech Agent you still have to click `APPLY CONFIGURATION`.
+Once the update is applied, the new versions are shown in the `Twin Workspace` with the changed fields highlighted. As with any other configuration change, the updated twin models are only sent to the Tributech Agent after they are applied to the device.
