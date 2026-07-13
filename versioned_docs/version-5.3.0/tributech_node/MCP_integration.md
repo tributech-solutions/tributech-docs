@@ -3,6 +3,10 @@ title: MCP (Beta)
 sidebar_position: 5
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import McpArchLight from './img/mcp-connection-overview-light.png';
+import McpArchDark from './img/mcp-connection-overview-dark.png';
+
 The Tributech Node can be accessed in three ways: the [REST API](./api_category/API_integration.md), [Webhooks](./Webhook_integration.md), and — described here — the **Model Context Protocol (MCP)** server. The MCP server lets AI assistants and MCP-capable tools interact with your Tributech Node through a standardized interface.
 
 :::info
@@ -13,7 +17,10 @@ The MCP Server is currently an **opt-in Beta feature**. It has to be enabled for
 
 [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) is an open standard that lets AI clients discover and call the tools and resources a server exposes. The Tributech MCP server runs in the Tributech backend and exposes Node operations — such as listing agents, reading stream data and proofs, and managing the Digital Twin configuration — as MCP tools, so an MCP-capable client can query and operate your Node in natural language.
 
-> 🖼️ **Diagram placeholder — MCP architecture:** MCP client (VS Code / Claude Code) → Keycloak (OAuth 2.0) → Demeter MCP server (backend) → Tributech Node (agents, streams, proofs, DTDL).
+<ThemedImage
+  alt="MCP Connection Overview"
+  sources={{ light: McpArchLight, dark: McpArchDark }}
+/>
 
 ## Prerequisites
 
@@ -36,8 +43,6 @@ The MCP server uses **HTTP transport** with **OAuth 2.0** authentication (handle
 
 Replace `<host>` with your environment's hostname (e.g. `dev-x.tributech-node.com`). On the first connection your client opens a browser window for the OAuth login; after authenticating, the server is registered and ready to use.
 
-> 🖼️ **Diagram placeholder — connection flow (optional):** client → Keycloak login (browser) → access token → MCP server → connected.
-
 ## Connecting a client
 
 There are several clients that can work with the MCP server. We provide guidance for two common ones below; this section may change as those clients are updated.
@@ -50,7 +55,7 @@ There are several clients that can work with the MCP server. We provide guidance
 4. Allow the connection and sign in with your Tributech Node user name and password.
 5. After the redirect, the server should show as **Running**.
 
-> 📷 **Screenshot placeholder — VS Code:** the `MCP: Add Server` HTTP setup and the server shown as "Running".
+![VS Code connected to the Tributech MCP server](./img/VSCode-Tributech-MCP-server.png)
 
 ### Claude Code
 
@@ -72,15 +77,7 @@ Verify the connection from inside the Claude Code console:
 
 The `demeter` server should be listed as **connected**, and its tools and resources are then available to Claude.
 
-> 📷 **Screenshot placeholder — Claude Code:** the `/mcp` output showing the `demeter` server connected.
-
-## Example usage
-
-Reference the MCP server name you configured when you talk to the client, for example:
-
-> You are working with the `demeter` MCP server and will assist me with my workflow. Can you show me the online agents?
-
-> 📷 **Screenshot placeholder — result:** a client answering a query (e.g. listing the online agents) using the Tributech MCP tools.
+![Claude Code connected to the Tributech MCP server](./img/ClaudeCode-Tributech-MCP-server.png)
 
 ## Available tools
 
