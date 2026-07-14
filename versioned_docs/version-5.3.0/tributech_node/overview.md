@@ -3,6 +3,10 @@ title: Overview
 sidebar_position: 1
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import ArchitectureLight from './img/tributech-architecture-light.png';
+import ArchitectureDark from './img/tributech-architecture-dark.png';
+
 # Tributech Node 
 The Tributech Node is the central layer of our Tributech Platform where every data will be collected, secured by our Tributech Agents. 
 
@@ -21,7 +25,10 @@ A Tributech Node can also be used for the following scenarios (excerpt):
 The following process overview shows how the Tributech Node interacts with the connected [Tributech Agents](../tributech_agent/overview.md)
 and the configuration, data flow.
 
-![Tributech Node - Overview](./img/TributechArchitectureNode.png)
+<ThemedImage
+  alt="Tributech Platform architecture overview"
+  sources={{ light: ArchitectureLight, dark: ArchitectureDark }}
+/>
 
 ### Tributech Agents
 
