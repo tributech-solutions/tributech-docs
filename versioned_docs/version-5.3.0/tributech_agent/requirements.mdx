@@ -5,6 +5,9 @@ sidebar_position: 2
 
 import CodeBlock from '@theme/CodeBlock';
 import SourceDockerCompose from '!!raw-loader!./examples/agent/docker-compose-agent-integration.yml';
+import ThemedImage from '@theme/ThemedImage';
+import SecretsDockerRegistryLight from './img/secrets-docker-registry-light.png';
+import SecretsDockerRegistryDark from './img/secrets-docker-registry-dark.png';
 
 In the following section we describe the hard- and software requirements to run a [Tributech Agent](overview.md) and a [Tributech Source](source_integration.md) on an edge device. An edge device serves as an endpoint on the network, bridging the gap between the [Tributech Node](../tributech_node/overview.md) and the real world (here represented as Customer Data).
 
@@ -96,4 +99,7 @@ and use the information provided in the `Docker Registry Token` to authenticate 
 
 In order to gain access to the Tributech Agent docker image we need to provide docker with the credentials to access the private Tributech Docker Registry (see [docker login](https://docs.docker.com/engine/reference/commandline/login/)). The authentication information can be found in the `Secrets` section of the Tributech Node.
 
-![**"Tributech Node Secrets area**](./img/secrets-docker-registry.png)
+<ThemedImage
+  alt="Tributech UI Secrets Docker Registry"
+  sources={{ light: SecretsDockerRegistryLight, dark: SecretsDockerRegistryDark }}
+/>

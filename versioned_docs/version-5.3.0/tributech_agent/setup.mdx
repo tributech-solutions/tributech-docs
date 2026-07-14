@@ -8,6 +8,17 @@ import SourceDockerCompose from '!!raw-loader!./examples/agent/docker-compose-ag
 import DockerComposeEnviromentExample from '!!raw-loader!./examples/agent-management/docker-compose-env-example.yml';
 import DockerComposeVolumesExample from '!!raw-loader!./examples/agent-management/docker-compose-volumes-example.yml';
 import EnvSample from '!!raw-loader!./examples/agent-management/agent-service-sample-values.yml';
+import ThemedImage from '@theme/ThemedImage';
+import AddEnrollmentLight from './img/node-agent-management-add-enrollment-light.png';
+import AddEnrollmentDark from './img/node-agent-management-add-enrollment-dark.png';
+import CertGenerationLight from './img/node-agent-management-certificate-generation-light.png';
+import CertGenerationDark from './img/node-agent-management-certificate-generation-dark.png';
+import BondEnrollmentLight from './img/agent-bond-enrollment-light.png';
+import BondEnrollmentDark from './img/agent-bond-enrollment-dark.png';
+import AgentActivationLight from './img/node-agent-management-agent-activation-light.png';
+import AgentActivationDark from './img/node-agent-management-agent-activation-dark.png';
+import BondActivatedLight from './img/agent-bond-activated-light.png';
+import BondActivatedDark from './img/agent-bond-activated-dark.png';
 
 In the following section we describe how to setup and activate a Tributech Agent with an existing [Tributech Node](../tributech_node/overview.md).
 We assume that all [Requirements](requirements.mdx) are met and a running [Tributech Node](../tributech_node/overview.md) is accessible. The goal is to create a basic setup with a [Simulated Tributech Source](./sources/simulated_source.mdx) that will generate random data and send it to the [Tributech Agent](overview.md) via MQTT. The [Tributech Agent](overview.md) will create proofs for the received values which can later be inspected in the [Tributech Node](../tributech_node/overview.md).
@@ -45,12 +56,18 @@ that is used during the initial authentication process to indicate that a Tribut
 In order to create the certificate we visit the `Enrollment` section in the Tributech Node UI and select
 `+ Add Enrollment`.
 
-![Tributech Add Enrollment](./img/node-agent-management-add-enrollment.png)
+<ThemedImage
+  alt="Tributech Add Enrollment"
+  sources={{ light: AddEnrollmentLight, dark: AddEnrollmentDark }}
+/>
 
 
 This action leads to the following window, which contains all the information the user needs to create the certificate.
 
-![Tributech Certificate Generation UI](./img/node-agent-management-certificate-generation.png)
+<ThemedImage
+  alt="Tributech Certificate Generation UI"
+  sources={{ light: CertGenerationLight, dark: CertGenerationDark }}
+/>
 
 Download the script for the operating system of your choice [Linux](https://github.com/tributech-solutions/tributech-enrollment/blob/main/Linux/generate-csr.sh)/[Windows](https://github.com/tributech-solutions/tributech-enrollment/blob/main/Windows/generate-csr.ps1) and execute the script in a empty folder named `enrollment`. Its important to note that the operating system does not
 need to be identical to the Edge Device operating system. These Certificate Signing Request and certificates can be
@@ -146,15 +163,24 @@ This message means that we now have a running Tributech Agent which requires per
 
 After the docker containers have been started successfully the Agent will connect to the specified environment automatically. The user has to check if the Agent is present in the `enrollment section`. To access the enrollment the user just has to click on `Enrollment` in the left management panel of the Tributech UI. 
 
-![***Activate Tributech Agent***](./img/agent-bond-enrollment.png)
+<ThemedImage
+  alt="Activate Tributech Agent"
+  sources={{ light: BondEnrollmentLight, dark: BondEnrollmentDark }}
+/>
 
  The Agent with our specific `Agent ID` should be in ne of the top most entries of the list and should be in the `Pending` state. 
  If too many agents are listed we can search for the Agent with the `AGENT_ID` we defined docker compose file (value for `EdgeDeviceOptions__AgentID` in our example `00000000-0000-0000-0000-000000000007`). By clicking on the ***Activate*** button we grant our agent the permission to connect and be managed by this [Tributech Node](../tributech_node/overview.md). For more information on agent management in the [Tributech Node](../tributech_node/overview.md) visit [agent management](../tributech_node/agent/agent_management.mdx).
 
-![***Activate Tributech Agent***](./img/node-agent-management-agent-activation.png)
+<ThemedImage
+  alt="Activate Tributech Agent"
+  sources={{ light: AgentActivationLight, dark: AgentActivationDark }}
+/>
 
 After the successfully activating the agent state will switch from `Pending` to `Online` which indicates that the Tributech Agent is now ready to be configured. In the current state the Tributech Agent has a connection to the [Tributech Node](../tributech_node/overview.md) established but does not have any configuration. This means it does not know of any [Tributech Sources](source_integration.md) on the same Edge Device.
 
-![***Online Tributech Agent***](./img/agent-bond-activated.png)
+<ThemedImage
+  alt="Online Tributech Agent"
+  sources={{ light: BondActivatedLight, dark: BondActivatedDark }}
+/>
 
 To complete the configuration of a Tributech Agent visit the [configuration section](../tributech_node/agent/agent_configuration.mdx#configuring-an-agent).

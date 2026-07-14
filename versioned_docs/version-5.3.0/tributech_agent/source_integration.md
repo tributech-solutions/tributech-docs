@@ -3,6 +3,26 @@ title: Source Integration
 sidebar_position: 6
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import StreamIdLight from './img/node-source-streamid-light.png';
+import StreamIdDark from './img/node-source-streamid-dark.png';
+import AgentIdLight from './img/node-agent-id-light.png';
+import AgentIdDark from './img/node-agent-id-dark.png';
+import ExportConfigLight from './img/node-source-export-config-light.png';
+import ExportConfigDark from './img/node-source-export-config-dark.png';
+import CommandOverviewLight from './img/node-source-command-overview-light.png';
+import CommandOverviewDark from './img/node-source-command-overview-dark.png';
+import CommandSendLight from './img/node-source-command-send-light.png';
+import CommandSendDark from './img/node-source-command-send-dark.png';
+import CommandEventGraphLight from './img/node-source-command-event-graph-light.png';
+import CommandEventGraphDark from './img/node-source-command-event-graph-dark.png';
+import CommandResultLight from './img/node-source-command-result-light.png';
+import CommandResultDark from './img/node-source-command-result-dark.png';
+import VcoAddLight from './img/node-source-quickstart-vco-add-light.png';
+import VcoAddDark from './img/node-source-quickstart-vco-add-dark.png';
+import VcoAddConfigLight from './img/node-source-quickstart-vco-add-config-light.png';
+import VcoAddConfigDark from './img/node-source-quickstart-vco-add-config-dark.png';
+
 ## Source Definition
 
 The Tributech Agent service supports the integration of external data sources with the help of Tributech Sources. In the following section we describe the general properties of Tributech Source and how they are used.
@@ -58,7 +78,12 @@ for processing data. An example of valid json data for the Tributech Agent is sh
 The json payload contains the following fields:
 
 - The ***DataStreamID*** is a unique identifier for streams and can be copied from the top right corner of a stream:
-   ![***StreamId***](img/node-source-streamid.png)
+
+<ThemedImage
+  alt="StreamId"
+  sources={{ light: StreamIdLight, dark: StreamIdDark }}
+/>
+
 - The ***Timestamp*** is a an [ISO 8601-1:2019](https://www.iso.org/iso-8601-date-and-time-format.html) formatted string
 - The ***Value*** is a Base64-encoded raw-bytes of the actual value. 
       For the data encoding and conversion to other formats we use the industry standards as implemented by the [**.NET Framework BitConverter**](https://docs.microsoft.com/en-us/dotnet/api/system.bitconverter?view=net-5.0).
@@ -110,7 +135,10 @@ public class Program
 
 By sending the previously described json payload to Topic endpoint `edge/{agent-id}/value/ValueSource` you can provide the data to the Tributech Agent directly. The Agent-Id can be found in the right top corner of an agent:
 
-![***AgentId****](img/node-agent-id.png)
+<ThemedImage
+  alt="AgentId"
+  sources={{ light: AgentIdLight, dark: AgentIdDark }}
+/>
 
 Note you can use tools like [MQTT Explorer](https://mqtt-explorer.com/) to send the data to the Tributech Agent Topic.
 
@@ -118,7 +146,10 @@ Note you can use tools like [MQTT Explorer](https://mqtt-explorer.com/) to send 
 
 The configuration of all Tributech Source is based on [Digital Twins](https://azure.microsoft.com/en-us/products/digital-twins). The best way to see how sources are configured is to export existing configuration, e.g. [QuickStart Configuration](quickstart.mdx):
 
-![**TwinConfig export**](img/node-source-export-config.png)
+<ThemedImage
+  alt="TwinConfig export"
+  sources={{ light: ExportConfigLight, dark: ExportConfigDark }}
+/>
 
 We support two different exports:
 
@@ -133,26 +164,41 @@ We also support three different types of imports:
 
 Note: The Twin Model can also be set directly for the Tributech Sources by submitting the value of the property ***digitalTwinsGraph*** to the MessageBroker of the Tributech Source and the topic `__edge/{agent-id}/twin/SetTwin__` (see the following Screenshot). However, we recommend this only for advanced users because an invalid twin config can render the Tributech Source non-operational.
 
-![***AgentId****](img/node-agent-id.png)
+<ThemedImage
+  alt="AgentId"
+  sources={{ light: AgentIdLight, dark: AgentIdDark }}
+/>
 
 ## Commands
 
 The Tributech Node is capable of sending commands to some Tributech Sources to control their behaviour.
 Commands can be send with one button in the  `COMMANDS` tab of an specific agent, e.g. Send command to [QuickStart Simulated Source](quickstart.mdx) 
 
-![**Command Overview**](img/node-source-command-overview.png)
+<ThemedImage
+  alt="Command Overview"
+  sources={{ light: CommandOverviewLight, dark: CommandOverviewDark }}
+/>
 
 With the following payload we trigger an anomaly, in the simulated source, that changes the next generated value to double the maximum value of the simulated stream, i.e. 20 based on the [QuickStart Simulated Source](quickstart.mdx). A simulated source example: 
 
-![**Command Send**](img/node-source-command-send.png)
+<ThemedImage
+  alt="Command Send"
+  sources={{ light: CommandSendLight, dark: CommandSendDark }}
+/>
 
 When we switch back to the `SOURCES` tab and select our `Simulated Stream` we see the anomaly with value 20.
 
-![**Anomaly Event Graph result**](img/node-source-command-event-graph.png)
+<ThemedImage
+  alt="Anomaly Event Graph result"
+  sources={{ light: CommandEventGraphLight, dark: CommandEventGraphDark }}
+/>
 
 We can also inspect the result of the source command by selecting the execution in the `COMMANDS` tab and select execution time.
 
-![**Source Command result**](img/node-source-command-result.png)
+<ThemedImage
+  alt="Source Command result"
+  sources={{ light: CommandResultLight, dark: CommandResultDark }}
+/>
 
 ## Value Change Options
 
@@ -160,11 +206,17 @@ All Tributech Sources support `Value Change Options` (`VCO`) that can be used to
 
 We first need to add the `VCO` to the stream by right clicking the `Simulated Stream`
 
-![**VOC Add**](img/node-source-quickstart-vco-add.png)
+<ThemedImage
+  alt="VCO Add"
+  sources={{ light: VcoAddLight, dark: VcoAddDark }}
+/>
 
 The value change options consist of three properties that can be set for a stream. We can either set all options or a subset of them.
 
-![**VOC Add**](img/node-source-quickstart-vco-add-config.png)
+<ThemedImage
+  alt="VCO Add config"
+  sources={{ light: VcoAddConfigLight, dark: VcoAddConfigDark }}
+/>
 
 The properties change the data stream the following way based on the values from the screenshot:
 - ***Minimum Period (Seconds)*** - defines the period in which additional values are discarded, i.e. if data is sent faster than 5 seconds then it will be discarded and the next submitted value is the value that arrives after 5sec. 

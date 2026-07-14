@@ -7,6 +7,27 @@ import CodeBlock from '@theme/CodeBlock';
 import SourceDockerCompose from '!!raw-loader!./examples/agent/docker-compose-quickstart.yml';
 import DockerLogin from '!!raw-loader!./examples/docker/docker-login-cmd';
 import EnvSample from '!!raw-loader!./examples/agent-management/agent-service-sample-values-quickstart.yml';
+import ThemedImage from '@theme/ThemedImage';
+import AgentActivationLight from './img/node-agent-management-agent-activation-light.png';
+import AgentActivationDark from './img/node-agent-management-agent-activation-dark.png';
+import AgentsOverviewLight from './img/node-agents-overview-light.png';
+import AgentsOverviewDark from './img/node-agents-overview-dark.png';
+import AgentConfigureLight from './img/node-agent-configure-light.png';
+import AgentConfigureDark from './img/node-agent-configure-dark.png';
+import ImportTemplateLight from './img/node-source-import-from-template-light.png';
+import ImportTemplateDark from './img/node-source-import-from-template-dark.png';
+import ApplyConfigLight from './img/node-source-quickstart-apply-config-light.png';
+import ApplyConfigDark from './img/node-source-quickstart-apply-config-dark.png';
+import SelectStreamLight from './img/node-source-quickstart-select-stream-light.png';
+import SelectStreamDark from './img/node-source-quickstart-select-stream-dark.png';
+import StreamGraphLight from './img/node-source-quickstart-stream-graph-light.png';
+import StreamGraphDark from './img/node-source-quickstart-stream-graph-dark.png';
+import AuditGraphLight from './img/node-source-audit-graph-light.png';
+import AuditGraphDark from './img/node-source-audit-graph-dark.png';
+import SelectAuditLight from './img/node-source-select-audit-light.png';
+import SelectAuditDark from './img/node-source-select-audit-dark.png';
+import AuditOverviewLight from './img/node-source-audit-overview-light.png';
+import AuditOverviewDark from './img/node-source-audit-overview-dark.png';
 
 In this QuickStart Guide we give a shortened overview on how to setup a Tributech Agent with a [Simulated Source](./sources/simulated_source.mdx) and connect it to a Tributech Node to display the random generated data.
 For a more detailed description on how to setup the Tributech Agent visit [Setup](./setup.mdx).
@@ -51,46 +72,78 @@ We start by setting up the docker-compose environment for the Tributech Agent an
 After starting the Tributech Agent we need to accept the Agent in the Tributech Node in order to receive data. For this we need to go to the Enrollment section of the Tributech Node and search for our agent.
 The Agent should be in the top most entries of the list and should be in the "Pending" state. Clicking on the ***Activate*** button is enough to enroll the agent on the Tributech Node.
 
-![***Activate Tributech Agent***](./img/node-agent-management-agent-activation.png)
+<ThemedImage
+  alt="Tributech UI Agent Activation"
+  sources={{ light: AgentActivationLight, dark: AgentActivationDark }}
+/>
 
 ## Source Configuration
 The previous steps established the communication between a Tributech Agent and a Tributech Node. Next we will setup a [Tributech Source](source_integration.md) to provide data for the Tributech Agent. The Tributech Agent will then be used to send the data to the Tributech Node. In the following section we complete our Tributech Agent QuickStart Setup by configuring a simple double stream for the [Tributech Simulated Source](sources/simulated_source.mdx) (The Agent name depends on the value of the `EdgeDeviceOptions__AgentID` agent environment variable defined in the previous section).
 
 
-![**"Activate Overview**](./img/node-agents-overview.png)
+<ThemedImage
+  alt="Activate Overview"
+  sources={{ light: AgentsOverviewLight, dark: AgentsOverviewDark }}
+/>
 
 
 Next we need to configure the Agent to receive data for the Tributech Simulated Source we defined in the docker-compose setup:
 
-![**"Configure Agent**](./img/node-agent-configure.png)
+<ThemedImage
+  alt="Configure Agent"
+  sources={{ light: AgentConfigureLight, dark: AgentConfigureDark }}
+/>
 
 
 We have prepared a Simulated Source configuration containing a double data stream, save the following [TwinConfiguration Template File](examples/agent-source/quick-start.json) locally and import it in the Agent Configuration:
 
-![**"Configure Agent**](./img/node-source-import-from-template.png)
+<ThemedImage
+  alt="Import TwinConfiguration Template"
+  sources={{ light: ImportTemplateLight, dark: ImportTemplateDark }}
+/>
 
 
 After successfully importing the `TwinConfiguration Template File` click the `APPLY CONFIGURATION` Button in the top right corner to persist the changes.
 
-![**"Apply configuration**](./img/node-source-quickstart-apply-config.png)
+<ThemedImage
+  alt="Apply configuration"
+  sources={{ light: ApplyConfigLight, dark: ApplyConfigDark }}
+/>
 
 We can now select the Simulated Stream of our newly configured `QuickStart Simulated Source` Agent
 
-![**"Select stream**](./img/node-source-quickstart-select-stream.png)
+<ThemedImage
+  alt="Select stream"
+  sources={{ light: SelectStreamLight, dark: SelectStreamDark }}
+/>
 
 The Stream generates a new data point between 1 and 10 every second.
 
-![**"QuickStart Stream Data**](./img/node-source-quickstart-stream-graph.png)
+<ThemedImage
+  alt="QuickStart Stream Data"
+  sources={{ light: StreamGraphLight, dark: StreamGraphDark }}
+/>
 
 ## Verify
 In order to detect [data tampering](https://www.tributech.io/blog/cybersecurity-threat-data-tampering) we provide the possibility to audit each stream proofs individually. We provide the two possibilities to view the audit results:
 
-- A Graph view, which displays pending validation in grey, successful validations in green and failed in red.
-    ![***Audit Graph***](img/node-source-audit-graph.png)
+**A Graph view**, which displays pending validation in grey, successful validations in green and failed in red.
 
-- A Table view, which includes a list of all proofs. For each proof the validation can be retriggered with a button click or display the history of validations by selecting a table entry.
-    ![***Select audit***](img/node-source-select-audit.png)
+<ThemedImage
+  alt="Audit Graph"
+  sources={{ light: AuditGraphLight, dark: AuditGraphDark }}
+/>
 
-    ![***Audit overview***](img/node-source-audit-overview.png)
+**A Table view**, which includes a list of all proofs. For each proof the validation can be retriggered with a button click or display the history of validations by selecting a table entry.
+
+<ThemedImage
+  alt="Select audit"
+  sources={{ light: SelectAuditLight, dark: SelectAuditDark }}
+/>
+
+<ThemedImage
+  alt="Audit overview"
+  sources={{ light: AuditOverviewLight, dark: AuditOverviewDark }}
+/>
 
 This completes the QuickStart, for a more detailed guide and information about the audit process visit [Stream Verification](../tributech_node/agent/verification.mdx). For more information on how to add other types of Tributech Sources visit [Source Integration](source_integration.md).
