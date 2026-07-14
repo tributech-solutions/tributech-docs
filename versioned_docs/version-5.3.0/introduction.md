@@ -2,13 +2,20 @@
 slug: /
 sidebar_position: 1
 ---
+import ThemedImage from '@theme/ThemedImage';
+import PlatformArchitectureLight from './img/introduction/platform-architecture-light.png';
+import PlatformArchitectureDark from './img/introduction/platform-architecture-dark.png';
+
 # Introduction
 
 Welcome to our official documentation page!
 
 The Tributech Platform is a solution for a secure data integration, from any sources, that enhances data security without compromising interoperability. It’s used to secure data against tampering and hijacking, making it trustworthy for any connected product, device, or service. The Tributech platform is available as a SaaS or PaaS solution and offers integration options for IT systems, OT infrastructure and IoT gateways or devices. The following diagram provides an overview of the platform's architecture.
 
-![Tributech Architecture - Overview](./img/introduction/DemeterArchitectureOverview.png)
+<ThemedImage
+  alt="Tributech Platform Architecture - Overview"
+  sources={{ light: PlatformArchitectureLight, dark: PlatformArchitectureDark }}
+/>
 
 The platform includes components like [Tributech Sources](tributech_agent/source_integration.md) and [Tributech Agents](tributech_agent/overview.md) which are used to collect the Customer Data and securely transmit it from an Edge Device to our [Tributech Node](tributech_node/overview.md). The [Tributech Node](tributech_node/overview.md) persist collected data reliable and ensure data integrity, authenticity throughout its lifecycle. Collected data can be
 inspected at anytime and reviewed with our provided Tributech Web UI. We also provide the possibility to access our [Tributech Node](tributech_node/overview.md) data and functionality for authenticated Customer Application via [REST](tributech_node/api_category/API_usage.md) or get notified of predefined events via [Webhooks](tributech_node/Webhook_integration.md).

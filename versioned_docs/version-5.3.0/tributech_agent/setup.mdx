@@ -19,6 +19,8 @@ import AgentActivationLight from './img/node-agent-management-agent-activation-l
 import AgentActivationDark from './img/node-agent-management-agent-activation-dark.png';
 import BondActivatedLight from './img/agent-bond-activated-light.png';
 import BondActivatedDark from './img/agent-bond-activated-dark.png';
+import ArchitectureLight from './img/tributech-architecture-light.png';
+import ArchitectureDark from './img/tributech-architecture-dark.png';
 
 In the following section we describe how to setup and activate a Tributech Agent with an existing [Tributech Node](../tributech_node/overview.md).
 We assume that all [Requirements](requirements.mdx) are met and a running [Tributech Node](../tributech_node/overview.md) is accessible. The goal is to create a basic setup with a [Simulated Tributech Source](./sources/simulated_source.mdx) that will generate random data and send it to the [Tributech Agent](overview.md) via MQTT. The [Tributech Agent](overview.md) will create proofs for the received values which can later be inspected in the [Tributech Node](../tributech_node/overview.md).
@@ -41,7 +43,10 @@ will be able to submit data is defined in [Digital Twin Configuration](../tribut
 This management of Agent is required after completing successfully the Agent [Enrollment](#authentication-certificates-enrollment)
 Process. 
 
-![Tributech Architecture - Overview](./img/TributechArchitectureAgent.png)
+<ThemedImage
+  alt="Tributech Platform architecture overview"
+  sources={{ light: ArchitectureLight, dark: ArchitectureDark }}
+/>
 
 The communication between [Tributech Sources](source_integration.md) and the Tributech Agent will take place on the same
 edge device via a local Message Broker connection. This channel is used on the one hand to send configurations and commands from Tributech Agent to the Tributech Source and on the other hand to send data streams from the Tributech Source to the Agent.
