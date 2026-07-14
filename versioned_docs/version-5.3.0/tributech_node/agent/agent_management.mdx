@@ -30,13 +30,21 @@ import DeleteFromEnrollmentLight from '../img/node-agent-management-delete-from-
 import DeleteFromEnrollmentDark from '../img/node-agent-management-delete-from-enrollment-dark.png';
 import UiDeleteLight from '../img/node-agent-management-ui-delete-light.png';
 import UiDeleteDark from '../img/node-agent-management-ui-delete-dark.png';
+import AgentLifecycleLight from './img/agent-lifecycle-light.png';
+import AgentLifecycleDark from './img/agent-lifecycle-dark.png';
 
 In this section we show the available management functions, provided by the Tributech Node UI, to manage [Tributech Agents](../../tributech_agent/overview.md).
 All of this examples assume that the [Tributech Node](../overview.md) is available and a [Tributech Agent](../../tributech_agent/setup.mdx) has established a connection to it.
 
 :arrow_right: All those operations can also be executed via the [Tributech Node REST API](../api_category/API_usage.md)
 
-![Enrollment Overview](../img/DemeterArchitectureOverviewAgentManagement.png)
+<ThemedImage
+  alt="Tributech Agent management Lifecycle"
+  sources={{
+    light: AgentLifecycleLight,
+    dark: AgentLifecycleDark,
+  }}
+/>
 
 The first time a [Tributech Agent](../../tributech_agent/overview.md) connects to a [Tributech Node](../overview.md)
 is during the `enrollment process` and the Tributech Agent will be listed with the state `Pending` in the `enrollment section`.
