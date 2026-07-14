@@ -28,16 +28,14 @@ services:
       - Logging__LogLevel__Default=Debug
       - Logging__Console__FormatterName=simple
       - MqttOptions__MQTTHost=mosquitto-server
-      - EdgeDeviceOptions__AgentID=${AGENT_ID:?"The Tributech Agent requires a GUID"}
       - EdgeDeviceOptions__NodeUrl=${NODE_URL:?"The Tributech Node Url is required"}
-      - EnrollmentOptions__EnrollmentCertBase64=${ENROLLMENT_CERT_BASE64:?"The base64 encoded Enrollment Cert is required"}
-      - EnrollmentOptions__EnrollmentKeyBase64=${ENROLLMENT_KEY_BASE64:?"The base64 encoded Enrollment Key is required"}
     networks:
       - rest-net
     ports:
       - "5001:8080" # enable access to agent REST-API (e.g. for configuration with Agent-Companion)
     volumes:
-      - ./volumes/rest/agent/:/app/data # volume mapping for permanent storage of keys and datatwin file
+      - app-data:/app/data # volume mapping for permanent storage of keys and datatwin file
+      - ./enrollment:/app/enrollment # local enrollment folder mounted to /app/enrollment
     restart: unless-stopped
     logging:
       driver: "json-file"
@@ -54,6 +52,9 @@ services:
     # - "127.0.0.1:9001:9001" # web-socket
     restart: unless-stopped
 
+
+volumes:
+  app-data:
 
 networks:
   rest-net:
