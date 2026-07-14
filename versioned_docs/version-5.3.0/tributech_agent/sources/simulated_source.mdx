@@ -5,7 +5,7 @@ sidebar_position: 4
 
 import CodeBlock from "@theme/CodeBlock";
 import SourceDockerCompose from "!!raw-loader!../examples/agent-source/simulated/docker-compose.yml";
-import EnvSample from "!!raw-loader!../examples/agent-management/agent-service-sample-values.yml";
+import EnvSample from "!!raw-loader!../examples/agent-management/agent-service-sample-values-source.yml";
 
 The Tributech Simulated Source allows us to simulate a data source for testing purposes.
 
@@ -24,6 +24,8 @@ Adjust the setting for the [Tributech Agent](../overview.md) to your environment
   {EnvSample}
 </CodeBlock>
 
+The Tributech Agent authenticates with the Tributech Node using enrollment certificates provided through a local `enrollment` folder mounted into the container (the `./enrollment:/app/enrollment` volume in the `docker-compose.yml` above). See [Authentication Certificates (Enrollment)](../setup.mdx#authentication-certificates-enrollment) and [Docker volumes](../setup.mdx#docker-volumes) in the Setup guide for how to create and provide it. If no Agent ID is configured, the agent generates a random one on first start.
+
 ## Configuration
 
 ![**Configure agent**](../img/node-agent-configure.png)
@@ -36,7 +38,7 @@ Right click the newly added **_Simulated Source_** and add a **_Simulated Stream
 
 ![**Simulated Stream Add**](../img/node-source-simulated-add-simulated-stream.png)
 
-Adjust the Stream settings to your needs and save the settings by clicking **_Save in workspace_**:
+Adjust the Stream settings to your needs:
 
 ![**Apply Stream Settings**](../img/node-source-simulated-add-stream.png)
 

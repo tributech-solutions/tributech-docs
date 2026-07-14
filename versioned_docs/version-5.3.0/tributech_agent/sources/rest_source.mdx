@@ -5,7 +5,7 @@ sidebar_position: 5
 
 import CodeBlock from '@theme/CodeBlock';
 import SourceDockerCompose from '!!raw-loader!../examples/agent-source/rest/docker-compose.yml';
-import EnvSample from '!!raw-loader!../examples/agent-management/agent-service-sample-values.yml';
+import EnvSample from '!!raw-loader!../examples/agent-management/agent-service-sample-values-source.yml';
 
 The Tributech Agent supports the integration of external data sources using [REST](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design#what-is-rest) with the  Tributech REST Source. The REST Source is configured via the Twin Configuration and is used to send data to the Tributech Agent via [MQTT](https://mqtt.org/).
  The data can be send to the Tributech Source via [Swagger](https://swagger.io/specification/).
@@ -32,6 +32,8 @@ In the following part we will describe the setup of a Tributech REST Source.
 Adjust the setting for the [Tributech Agent](../overview.md) to your environment, sample value:
 <CodeBlock className="language-plain" title="env specific settings">{EnvSample}</CodeBlock>
 
+The Tributech Agent authenticates with the Tributech Node using enrollment certificates provided through a local `enrollment` folder mounted into the container (the `./enrollment:/app/enrollment` volume in the `docker-compose.yml` above). See [Authentication Certificates (Enrollment)](../setup.mdx#authentication-certificates-enrollment) and [Docker volumes](../setup.mdx#docker-volumes) in the Setup guide for how to create and provide it. If no Agent ID is configured, the agent generates a random one on first start.
+
 
 
 ## Configuration
@@ -45,7 +47,7 @@ At first we add the REST Stream to our newly created Tributech REST Source. The 
 
 ![**"Add Stream Stream**](../img/node-source-rest-add-stream-stream.png)
 
-After adding the REST Stream we configure the Data Encoding (in `red`) and save the changes by clicking on the `SAVE IN WORKSPACE` button in the bottom right corner. The REST Stream is now configured but can be only be used to send data to the REST Source after submitting the changes to the Tributech Source via `APPLY CONFIGURATION`. The REST Stream will only accept data that contains the DataStreamId of the REST Stream. The DataStreamId can be found on the top of the REST Stream configuration (in `green`):
+After adding the REST Stream we configure the Data Encoding (in `red`). The REST Stream is now configured but can only be used to send data to the REST Source after submitting the changes to the Tributech Source via `APPLY CONFIGURATION`. The REST Stream will only accept data that contains the DataStreamId of the REST Stream. The DataStreamId can be found on the top of the REST Stream configuration (in `green`):
 
 ![**"Add Stream Stream**](../img/node-source-rest-add-stream-stream-config.png)
 
@@ -57,7 +59,7 @@ In contrast to a generated identifier of the REST Stream we can now define a two
 
 ![**"Add Pre-defined Payload Stream**](../img/node-source-rest-add-stream-payload.png)
 
-After adding the REST Stream we configured the Data Encoding, one or both of the identifiers (Source/Value) and save the changes by clicking on the `SAVE IN WORKSPACE` button in the bottom right corner.
+After adding the REST Stream we configured the Data Encoding and one or both of the identifiers (Source/Value).
 The Source Identifier and Value Identifier will be used to uniquely match data to the DataStreamId (not contained in payload).
 
 ![**"Add Pre-defined Payload Stream**](../img/node-source-rest-add-stream-payload-config.png)
