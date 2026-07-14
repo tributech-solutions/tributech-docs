@@ -8,12 +8,7 @@ import ArchitectureLight from './img/tributech-architecture-light.png';
 import ArchitectureDark from './img/tributech-architecture-dark.png';
 
 # Tributech Node 
-The Tributech Node is the central layer of our Tributech Platform where every data will be collected, secured by our Tributech Agents. 
-
- ![Tributech Node - Overview](./img/DemeterArchitectureOverviewFocusNode.png)
-
-:::info The diagram illustrates our default setup, for more infos visit [Deployment](#deployment)
-:::
+The Tributech Node is the central layer of the Tributech Platform. It receives the data collected and secured by the [Tributech Agents](../tributech_agent/overview.md), persists it reliably while preserving its integrity and authenticity, and makes it available for inspection, verification and integration.
 
 A Tributech Node can also be used for the following scenarios (excerpt):
 - Provide external application access to read the available data to provide customized user experience, see [API Integration](../tributech_node/api_category/API_integration.md)
