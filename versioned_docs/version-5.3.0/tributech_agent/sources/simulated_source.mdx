@@ -6,6 +6,17 @@ sidebar_position: 4
 import CodeBlock from "@theme/CodeBlock";
 import SourceDockerCompose from "!!raw-loader!../examples/agent-source/simulated/docker-compose.yml";
 import EnvSample from "!!raw-loader!../examples/agent-management/agent-service-sample-values-source.yml";
+import ThemedImage from "@theme/ThemedImage";
+import NodeAgentConfigurationLight from "../img/node-agent-configure-light.png";
+import NodeAgentConfigurationDark from "../img/node-agent-configure-dark.png";
+import NodeSimulatedAddSourceLight from "../img/node-source-simulated-add-light.png";
+import NodeSimulatedAddSourceDark from "../img/node-source-simulated-add-dark.png";
+import NodeSimulatedAddStreamLight from "../img/node-source-simulated-add-simulated-stream-light.png";
+import NodeSimulatedAddStreamDark from "../img/node-source-simulated-add-simulated-stream-dark.png";
+import NodeSimulatedStreamSettingsLight from "../img/node-source-simulated-add-stream-light.png";
+import NodeSimulatedStreamSettingsDark from "../img/node-source-simulated-add-stream-dark.png";
+import NodeSimulatedApplyLight from "../img/node-source-simulated-apply-light.png";
+import NodeSimulatedApplyDark from "../img/node-source-simulated-apply-dark.png";
 
 The Tributech Simulated Source allows us to simulate a data source for testing purposes.
 
@@ -28,24 +39,40 @@ The Tributech Agent authenticates with the Tributech Node using enrollment certi
 
 ## Configuration
 
-![**Configure agent**](../img/node-agent-configure.png)
+<ThemedImage
+  alt="Configure Agent"
+  sources={{ light: NodeAgentConfigurationLight, dark: NodeAgentConfigurationDark }}
+/>
 
 Right click the Edge Device and add a Simulated Source:
 
-![**Simulated Source Add**](../img/node-source-simulated-add.png)
+<ThemedImage
+  alt="Add Simulated Source"
+  sources={{ light: NodeSimulatedAddSourceLight, dark: NodeSimulatedAddSourceDark }}
+/>
 
 Right click the newly added **_Simulated Source_** and add a **_Simulated Stream_**:
 
-![**Simulated Stream Add**](../img/node-source-simulated-add-simulated-stream.png)
+<ThemedImage
+  alt="Add Simulated Stream"
+  sources={{ light: NodeSimulatedAddStreamLight, dark: NodeSimulatedAddStreamDark }}
+/>
 
 Adjust the Stream settings to your needs:
 
-![**Apply Stream Settings**](../img/node-source-simulated-add-stream.png)
+<ThemedImage
+  alt="Simulated Stream settings"
+  sources={{ light: NodeSimulatedStreamSettingsLight, dark: NodeSimulatedStreamSettingsDark }}
+/>
 
 Repeat this step for every stream you need.
 
 After saving all streams in the workspace we can send the configuration to the Tributech Agent and update currently running Tributech Source configuration by clicking **_Apply configuration_**
-![**Save Simulated Source0**](../img/node-source-simulated-apply.png)
+
+<ThemedImage
+  alt="Apply configuration"
+  sources={{ light: NodeSimulatedApplyLight, dark: NodeSimulatedApplyDark }}
+/>
 
 ### Value Change Options (VCO) Handling {#value-change-options}
 
