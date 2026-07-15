@@ -3,6 +3,22 @@ title: Webhooks
 sidebar_position: 4
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import WebhookOverviewEmptyLight from './img/Webhook_Overview_Empty-light.png';
+import WebhookOverviewEmptyDark from './img/Webhook_Overview_Empty-dark.png';
+import WebhookAddSubscriptionLight from './img/Webhook_AddSubscription-light.png';
+import WebhookAddSubscriptionDark from './img/Webhook_AddSubscription-dark.png';
+import WebhookCreationWizardLight from './img/Webhook_CreationWizard-light.png';
+import WebhookCreationWizardDark from './img/Webhook_CreationWizard-dark.png';
+import WebhookOverviewEditLight from './img/Webhook_Overview_Edit-light.png';
+import WebhookOverviewEditDark from './img/Webhook_Overview_Edit-dark.png';
+import WebhookEditLight from './img/Webhook_Edit-light.png';
+import WebhookEditDark from './img/Webhook_Edit-dark.png';
+import WebhookActivateToggleLight from './img/Webhook_Overview_ActivateToggle-light.png';
+import WebhookActivateToggleDark from './img/Webhook_Overview_ActivateToggle-dark.png';
+import WebhookOverviewDeleteLight from './img/Webhook_Overview_Delete-light.png';
+import WebhookOverviewDeleteDark from './img/Webhook_Overview_Delete-dark.png';
+
 ## General 
 We provide the possibility within our Tributech Node for external services to receive a wide variety of notifications about internal events via [Webhooks](https://en.wikipedia.org/wiki/Webhook). A webhook is an HTTP-based callback function that enables lightweight, event-driven communication between a Tributech Node and a client. The only requirement for a client is to provide a HTTP POST endpoint that returns Status code 200 if an event was successfully received (see [Error Handling](#error-handling) for more details).
 In the following section, we will demonstrate how to setup a Tributech Node to send events to an client and how a user can [verify](#verification) that the received event data has not been tampered with. 
@@ -14,37 +30,58 @@ In order to receive information about a Tributech Node [Event](#event-types) we 
 A webhook subscription defines the clients HTTP POST endpoint, a selection of [Events](#event-types) and a secret to sign the event data.
 In this section we will show how to create and manage a webhook subscription for a specific event in the Tributech Node `Webhook` Section.
 
-![Tributech Node - Webhooks](./img/Webhook_Overview_Empty.png) 
+<ThemedImage
+  alt="Tributech Node - Webhooks"
+  sources={{ light: WebhookOverviewEmptyLight, dark: WebhookOverviewEmptyDark }}
+/>
 
 ### Create
 We can create a Subscription by simple clicking the `ADD SUBSCRIPTION` button on the right side of the Tributech Node `Webhook` Section.
 
-![Tributech Node - Webhooks Add Subscription](./img/Webhook_AddSubscription.png) 
+<ThemedImage
+  alt="Tributech Node - Webhooks Add Subscription"
+  sources={{ light: WebhookAddSubscriptionLight, dark: WebhookAddSubscriptionDark }}
+/>
 
 In the following Dialog Box we add our clients HTTP POST endpoint (e.g. [Webhook.site](https://webhook.site/)), choose the desired [Event Types](#event-types) and add a secret for the event information [verification](#verification). Its important to note that the secret can later only be updated and not retrieved.
 In this example we subscribe to the Events `SourceCommandRequestEvent`, `SourceCommandResponseEvent` and `SourceCommandStateUpdateEvent` that occurs when interacting with Source commands that we can trigger within our [Quickstart Example](../tributech_agent/quickstart.mdx) (more information about events can be found [Events](#event-types)).
 
 
-![Tributech Node - Webhooks Create Wizard](./img/Webhook_CreationWizard.png) 
+<ThemedImage
+  alt="Tributech Node - Webhooks Create Wizard"
+  sources={{ light: WebhookCreationWizardLight, dark: WebhookCreationWizardDark }}
+/>
 
 ### Edit
 If we want to update the settings for a Webhook subscription, we can do that via the three dots in the actions column. 
 
-![Tributech Node - Webhooks Overview Edit](./img/Webhook_Overview_Edit.png) 
+<ThemedImage
+  alt="Tributech Node - Webhooks Overview Edit"
+  sources={{ light: WebhookOverviewEditLight, dark: WebhookOverviewEditDark }}
+/>
 
 This way the events, webhook url or secret can be adjusted for the current Subscription.
 
-![Tributech Node - Webhooks Edit](./img/Webhook_Edit.png)
+<ThemedImage
+  alt="Tributech Node - Webhooks Edit"
+  sources={{ light: WebhookEditLight, dark: WebhookEditDark }}
+/>
 
 ### Deactivate
 We can disable the previously created Webhook by clicking the three dots in the action column and choosing `Toggle Active` button to pause the notifications.
 
-![Tributech Node - Webhooks Deactivate](./img/Webhook_Overview_ActivateToggle.png) 
+<ThemedImage
+  alt="Tributech Node - Webhooks Deactivate"
+  sources={{ light: WebhookActivateToggleLight, dark: WebhookActivateToggleDark }}
+/>
 
 ### Deletion
 If we want to delete a Webhook subscription we can do that via the three dots in the actions column. 
 
-![Tributech Node - Webhooks Overview Edit](./img/Webhook_Overview_Delete.png) 
+<ThemedImage
+  alt="Tributech Node - Webhooks Overview Delete"
+  sources={{ light: WebhookOverviewDeleteLight, dark: WebhookOverviewDeleteDark }}
+/>
 
  ## Webhook Events
 A Webhook Event is a `json` object that is generated by a Tributech Node containing Event specific information when a certain condition is met.
