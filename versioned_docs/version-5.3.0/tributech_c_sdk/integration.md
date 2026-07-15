@@ -3,6 +3,29 @@ title: Integration
 sidebar_position: 2
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import SDKEnrollmentLight from './img/tributech_c_sdk_enrollment-light.png';
+import SDKEnrollmentDark from './img/tributech_c_sdk_enrollment-dark.png';
+import SDKActivationLight from './img/tributech_c_sdk_activation-light.png';
+import SDKActivationDark from './img/tributech_c_sdk_activation-dark.png';
+import SDKActivatedLight from './img/tributech_c_sdk_activated-light.png';
+import SDKActivatedDark from './img/tributech_c_sdk_activated-dark.png';
+import SDKAgentLight from './img/tributech_c_sdk_clean_agent-light.png';
+import SDKAgentDark from './img/tributech_c_sdk_clean_agent-dark.png';
+import SDKConfigurationLight from './img/tributech_c_sdk_configuration-light.png';
+import SDKConfigurationDark from './img/tributech_c_sdk_configuration-dark.png';
+import SDKAddSourceLight from './img/tributech_c_sdk_add_source-light.png';
+import SDKAddSourceDark from './img/tributech_c_sdk_add_source-dark.png';
+import SDKAddStreamLight from './img/tributech_c_sdk_add_stream-light.png';
+import SDKAddStreamDark from './img/tributech_c_sdk_add_stream-dark.png';
+import SDKExampleLight from './img/tributech_c_sdk_example_stream-light.png';
+import SDKExampleDark from './img/tributech_c_sdk_example_stream-dark.png';
+import SDKConfAgentLight from './img/tributech_c_sdk_configured_agent-light.png';
+import SDKConfAgentDark from './img/tributech_c_sdk_configured_agent-dark.png';
+import SDKStreamValueLight from './img/tributech_c_sdk_stream_values-light.png';
+import SDKStreamValueDark from './img/tributech_c_sdk_stream_values-dark.png';
+
+
 # Integration Guide
 
 This guide provides a high-level technical overview for integrating the Tributech C SDK into embedded and IoT systems, as well as into the Tributech Platform. It explains the SDK's plugins in broad strokes and the steps needed to integrate an SDK-enabled device into the Tributech Platform.
@@ -74,48 +97,71 @@ After logging into the Tributech Platform, the newly registered device will appe
 
 ### Agent Activation
 
-![Tributech C-SDK Agent Enrollment](./img/tributech_c_sdk_enrollment.png)
+<ThemedImage
+  alt="Tributech C-SDK Agent Enrollment"
+  sources={{ light: SDKEnrollmentLight, dark: SDKEnrollmentDark }}
+/>
 
 Agents in the Tributech enrollment section are sorted by creation date and timestamp, so the newly registered agent should appear at the top of the list. The agent should be named **SDK Agent** (the standard naming convention), and in the "Type" column, it should be identified as a **C-SDK agent**.  
 To complete the enrollment process, activate the agent in the enrollment window.
 
-![Tributech C-SDK Agent Activation](./img/tributech_c_sdk_activation.png)
+<ThemedImage
+  alt="Tributech C-SDK Agent Activation"
+  sources={{ light: SDKActivationLight, dark: SDKActivationDark }}
+/>
 
 Activating the agent triggers background processes that send a message to the activated agent, allowing it to access the Tributech Platform environment. The agent will initially be displayed with the status **"Activated"**. Once the agent successfully connects to the platform, its status will change to **"Online"**.  
 The agent will also appear in the standard agent listing of the platform:
 
-![Tributech C-SDK Activated Agent](./img/tributech_c_sdk_activated.png)
+<ThemedImage
+  alt="Tributech C-SDK Activated Agent"
+  sources={{ light: SDKActivatedLight, dark: SDKActivatedDark }}
+/>
 
 ### Agent Configuration
 
 After the agent status changes to **"Online"**, you can click on the agent to open its detail page, which should initially be blank for a newly added agent.
 
-![Tributech C-SDK Clean Agent](./img/tributech_c_sdk_clean_agent.png)
+<ThemedImage
+  alt="Tributech C-SDK Clean Agent"
+  sources={{ light: SDKAgentLight, dark: SDKAgentDark }}
+/>
 
-Click the **"Configure"** button in the upper right corner to customize the agent configuration as needed.
+Click the **"Configure"** button in the upper right corner to customize the agent configuration as needed.In this view, a newly added agent will display its device identity, including the device name, unique device ID, and connection endpoints for the MQTTS connection. You can also change the device name and other settings in this configuration section.
 
-![Tributech C-SDK Agent Configuration](./img/tributech_c_sdk_configuration.png)
-
-In this view, a newly added agent will display its device identity, including the device name, unique device ID, and connection endpoints for the MQTTS connection. You can also change the device name and other settings in this configuration section.
-
-![Tributech C-SDK Configuration Agent Identity](./img/tributech_c_sdk_configuration.png)
+<ThemedImage
+  alt="Tributech C-SDK Agent Configuration"
+  sources={{ light: SDKConfigurationLight, dark: SDKConfigurationDark }}
+/>
 
 To add a stream that can receive and notarize data points, you first need to add a **source** to the device. In complex setups, sources can help differentiate between multiple streams from different sensors connected to the C-SDK device.
 
-![Tributech C-SDK Configuration Add Source](./img/tributech_c_sdk_add_source.png)
+<ThemedImage
+  alt="Tributech C-SDK Configuration Add Source"
+  sources={{ light: SDKAddSourceLight, dark: SDKAddSourceDark }}
+/>
 
 Next, add a stream to the configuration by clicking the action menu of the source and selecting **"Add → SDK Stream"**.
 
-![Tributech C-SDK Configuration Add Stream](./img/tributech_c_sdk_add_stream.png)
+<ThemedImage
+  alt="Tributech C-SDK Configuration Add Stream"
+  sources={{ light: SDKAddStreamLight, dark: SDKAddStreamDark }}
+/>
 
 Finally, configure the stream. The most important setting is the data type that will be sent to the stream, as this affects how data points are displayed and processed. The stream name is used as a reference in the SDK for sending data, so it should be unique to avoid confusion.  
 Here is an example stream configuration:
 
-![Tributech C-SDK Stream Configuration](./img/tributech_c_sdk_example_stream.png)
+<ThemedImage
+  alt="Tributech C-SDK Stream Configuration"
+  sources={{ light: SDKExampleLight, dark: SDKExampleDark }}
+/>
 
 The final step is to apply the configuration to the agent by clicking the **"Apply Configuration"** button in the upper right corner of the configuration window. Upon success, a small pop-up at the bottom of the page will notify you that the configuration was applied successfully. After a successful configuration, the stream will also appear in the general agent detail page.
 
-![Tributech C-SDK Configured Agent](./img/tributech_c_sdk_configured_agent.png)
+<ThemedImage
+  alt="Tributech C-SDK Configured Agent"
+  sources={{ light: SDKConfAgentLight, dark: SDKConfAgentDark }}
+/>
 
 ### Agent Stream Values
 
@@ -124,7 +170,10 @@ To access this page, simply click on the configured stream in the Agent Detail p
 
 The Stream Detail page displays the stream name, stream type, and a graph of the received data points. When you hover over the graph, each data point will show its timestamp and a status indicator—showing whether it is already notarized, still pending notarization, or if the value was manipulated.
 
-![Tributech C-SDK Stream Detail page](./img/tributech_c_sdk_stream_values.png)
+<ThemedImage
+  alt="Tributech C-SDK Stream Detail page"
+  sources={{ light: SDKStreamValueLight, dark: SDKStreamValueDark }}
+/>
 
 **Questions?**  
 For integration support, contact the Tributech team at hello@tributech.io.
