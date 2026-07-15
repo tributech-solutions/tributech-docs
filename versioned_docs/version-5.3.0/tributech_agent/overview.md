@@ -3,13 +3,20 @@ title: Overview
 sidebar_position: 1
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import AgentOverviewArchitectureLight from './img/agent-overview-architecture-light.png';
+import AgentOverviewArchitectureDark from './img/agent-overview-architecture-dark.png';
+
 # Tributech Agent
 
 
 The Tributech Agent is responsible for securing the data collected by Tributech Sources and sending the collected data to a [Tributech Node](../tributech_node/overview.md) where it can be inspected and verified via the Tributech UI.
 Agents also provide a secure bidirectional communication channel between the Tributech Node platform and Tributech Agent which enables not only the secure gathering of data points and proofs, but also the issuing of commands back to the connected [Tributech Sources](source_integration.md). 
 
-![Tributech Architecture - Overview](./img/DemeterArchitectureOverviewFocusAgent.png)
+<ThemedImage
+  alt="Tributech Agent - Architecture Overview"
+  sources={{ light: AgentOverviewArchitectureLight, dark: AgentOverviewArchitectureDark }}
+/>
 
 :::info The diagram illustrates our default setup, for more infos visit [Deployment](../tributech_node/overview.md#deployment)
 :::
