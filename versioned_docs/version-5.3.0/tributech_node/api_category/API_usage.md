@@ -2,12 +2,20 @@
 title: Usage
 sidebar_position: 1
 ---
+
+import ThemedImage from '@theme/ThemedImage';
+import ApiUsageArchitectureLight from './img/api-usage-architecture-light.png';
+import ApiUsageArchitectureDark from './img/api-usage-architecture-dark.png';
+
 # API usage overview
 
 This page should show some of the most used endpoints from our node. 
 We will do all requests via our swagger doc website you can use your own http client or any third party application to do the rest request against our node. 
 
-![Tributech Node - API User Focus](./img/DemeterArchitectureOverviewAPIUsage.png) 
+<ThemedImage
+  alt="Tributech Node - API Usage"
+  sources={{ light: ApiUsageArchitectureLight, dark: ApiUsageArchitectureDark }}
+/>
 
 
 For this section we will use an example DTDL instance with a Tributech EDGE Agent with an OPC UA source.

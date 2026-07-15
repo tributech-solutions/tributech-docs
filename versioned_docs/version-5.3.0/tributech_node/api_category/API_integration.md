@@ -3,10 +3,17 @@ title: Integration
 sidebar_position: 2
 ---
 
+import ThemedImage from '@theme/ThemedImage';
+import ApiIntegrationArchitectureLight from './img/api-integration-architecture-light.png';
+import ApiIntegrationArchitectureDark from './img/api-integration-architecture-dark.png';
+
 ## Rest API
 Our REST API provides the interfaces as [OAS V3](https://swagger.io/specification/v3/) which can be used to generate REST API clients for multiple languages. 
 
-![Tributech Node - API Integration Focus](./img/DemeterArchitectureOverviewAPIIntegration.png) 
+<ThemedImage
+  alt="Tributech Node - API Integration"
+  sources={{ light: ApiIntegrationArchitectureLight, dark: ApiIntegrationArchitectureDark }}
+/>
 
 The api is generally reachable via the url `<your-node-url>/demeter/api/`  there you can find the json document and a swagger doc website with an general overview of the rest api endpoints. 
 
