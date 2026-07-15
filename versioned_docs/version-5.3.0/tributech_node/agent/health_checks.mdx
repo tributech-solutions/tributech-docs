@@ -6,6 +6,10 @@ sidebar_position: 4
 import ThemedImage from '@theme/ThemedImage';
 import HealthFlowLight from './img/health-check-messaging-flow-light.png';
 import HealthFlowDark from './img/health-check-messaging-flow-dark.png';
+import HealthRestApiEndLight from './img/HealthCheck-REST-API-endpoints-light.png';
+import HealthRestApiEndDark from './img/HealthCheck-REST-API-endpoints-dark.png';
+import HealthRestApiSampleLight from './img/HealthCheck-REST-API-sample-light.png';
+import HealthRestApiSampleDark from './img/HealthCheck-REST-API-sample-dark.png';
 
 Health Checks are a lightweight monitoring mechanism that lets a [Tributech Agent](../../tributech_agent/overview.md) and its connected [Tributech Sources](../../tributech_agent/source_integration.md) report their current operational state to the Tributech Node in near real time.
 
@@ -100,8 +104,14 @@ Health Check results are retrieved through the [Tributech Node REST API](../api_
 
 The Health Check endpoints are available in the Swagger UI:
 
-![Health Check REST API endpoints in the Swagger UI](./img/HealthCheck-REST-API-endpoints.png)
+<ThemedImage
+  alt="Health Check REST API endpoints in the Swagger UI"
+  sources={{ light: HealthRestApiEndLight, dark: HealthRestApiEndDark }}
+/>
 
 An example Health Check response:
 
-![Example Health Check REST API response](./img/HealthCheck-REST-API-sample.png)
+<ThemedImage
+  alt="Example Health Check REST API response"
+  sources={{ light: HealthRestApiSampleLight, dark: HealthRestApiSampleDark }}
+/>
