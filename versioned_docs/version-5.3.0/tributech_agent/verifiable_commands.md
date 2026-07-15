@@ -6,6 +6,8 @@ sidebar_position: 8
 import ThemedImage from '@theme/ThemedImage';
 import VerifiableFlowLight from './img/verifiable-command-flow-light.png';
 import VerifiableFlowDark from './img/verifiable-command-flow-dark.png';
+import VerifiableCommandTabLight from './img/verifiable-command-commands-tab-light.png';
+import VerifiableCommandTabDark from './img/verifiable-command-commands-tab-dark.png';
 
 Verifiable Commands are cryptographically signed [remote commands](../tributech_node/api_category/API_usage.md#remote-commands) that let a device confirm a command really came from a trusted, authorized user before executing it.
 
@@ -84,4 +86,7 @@ Registering the public key in the backend's key storage (Azure Key Vault, AWS KM
 
 Once sent, a Verifiable Command and its execution status can be followed in the `Commands` tab of the agent in the Tributech Node UI.
 
-![Verifiable Commands in the agent Commands tab](./img/verifiable-command-commands-tab.png)
+<ThemedImage
+  alt="Verifiable Commands in the agent Commands tab"
+  sources={{ light: VerifiableCommandTabLight, dark: VerifiableCommandTabDark }}
+/>
