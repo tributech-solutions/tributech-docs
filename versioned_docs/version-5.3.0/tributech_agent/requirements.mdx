@@ -8,10 +8,15 @@ import SourceDockerCompose from '!!raw-loader!./examples/agent/docker-compose-ag
 import ThemedImage from '@theme/ThemedImage';
 import SecretsDockerRegistryLight from './img/secrets-docker-registry-light.png';
 import SecretsDockerRegistryDark from './img/secrets-docker-registry-dark.png';
+import EdgeRequirementsLight from './img/edge-requirements-light.png';
+import EdgeRequirementsDark from './img/edge-requirements-dark.png';
 
 In the following section we describe the hard- and software requirements to run a [Tributech Agent](overview.md) and a [Tributech Source](source_integration.md) on an edge device. An edge device serves as an endpoint on the network, bridging the gap between the [Tributech Node](../tributech_node/overview.md) and the real world (here represented as Customer Data).
 
-![Tributech Edge Device - Overview](./img/EdgeDeviceOverview.png)
+<ThemedImage
+  alt="Tributech Edge Device - Requirements Overview"
+  sources={{ light: EdgeRequirementsLight, dark: EdgeRequirementsDark }}
+/>
 
 
 We will show how to gain access to the private Tributech Docker Images and what requirements need to be satisfied to
