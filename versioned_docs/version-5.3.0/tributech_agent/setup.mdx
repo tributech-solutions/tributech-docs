@@ -21,11 +21,16 @@ import BondActivatedLight from './img/agent-bond-activated-light.png';
 import BondActivatedDark from './img/agent-bond-activated-dark.png';
 import ArchitectureLight from './img/tributech-architecture-light.png';
 import ArchitectureDark from './img/tributech-architecture-dark.png';
+import ProcessOverviewLight from './img/setup-process-overview-light.png';
+import ProcessOverviewDark from './img/setup-process-overview-dark.png';
 
 In the following section we describe how to setup and activate a Tributech Agent with an existing [Tributech Node](../tributech_node/overview.md).
 We assume that all [Requirements](requirements.mdx) are met and a running [Tributech Node](../tributech_node/overview.md) is accessible. The goal is to create a basic setup with a [Simulated Tributech Source](./sources/simulated_source.mdx) that will generate random data and send it to the [Tributech Agent](overview.md) via MQTT. The [Tributech Agent](overview.md) will create proofs for the received values which can later be inspected in the [Tributech Node](../tributech_node/overview.md).
 
-![**Configure Agent**](./img/EdgeDeviceOverviewFocusAgent.png)
+<ThemedImage
+  alt="Setup - General Process Overview"
+  sources={{ light: ProcessOverviewLight, dark: ProcessOverviewDark }}
+/>
 
 
 :warning: [Requirements](requirements.mdx) must be satisfied
@@ -54,9 +59,7 @@ edge device via a local Message Broker connection. This channel is used on the o
 ## Authentication Certificates (Enrollment)
 
 Before starting a Tributech Agent we need to get a Certificate signed by the [Tributech Node](../tributech_node/overview.md)
-that is used during the initial authentication process to indicate that a Tributech Agent is allowed to establish a MQTTS connection to the [Tributech Node](../tributech_node/overview.md). The certificate handling and initial establishing of a connection to the [Tributech Node](../tributech_node/overview.md) is called `Enrollment` and more information can be found in [agent management](../tributech_node/agent/agent_management.mdx).
-
-![**"Configure Agent**](./img/EdgeDeviceOverviewFocusAgentToNode.png)
+that is used during the initial authentication process to indicate that a Tributech Agent is allowed to establish a MQTTS connection to the [Tributech Node](../tributech_node/overview.md). The certificate handling and initial establishing of a connection to the [Tributech Node](../tributech_node/overview.md) is called `Enrollment` and more information can be found in [agent management](../tributech_node/agent/agent_management.mdx). The overall enrollment flow — creating the certificate, providing it to the Agent and activating the connection — is summarized in the process overview diagram at the top of this page.
 
 In order to create the certificate we visit the `Enrollment` section in the Tributech Node UI and select
 `+ Add Enrollment`.
