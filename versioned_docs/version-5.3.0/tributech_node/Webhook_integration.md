@@ -177,15 +177,9 @@ A value of `1` indicates that the event is a high frequency event (like data rec
 ## Verification {#verification}
 In order to verify that the received Webhook Event has not been tampered with can verify the event using either [OpenSSL](https://github.com/openssl/openssl) or [Microsoft C#](https://learn.microsoft.com/en-us/dotnet/csharp/). We will show in this section how to use both approaches with examples based on the previously created webhook. We will use an arbitrary  secret `foobar` and choose as event `ProofStoredEvent` (see [Event Types](#event-types)) and assume that a Tributech Source is already successfully sending data to a Tributech Node (see [QuickStarter Guide](../tributech_agent/quickstart.mdx)). 
 
-In our examples we use a standard third-party webhook client to provide the HTTP POST endpoint for the subscription and to inspect the received events' `json` payload and HTTP Header attributes. The endpoint URL used in our samples needs to be adjusted to your own HTTP POST endpoint.
+In our examples we use a standard third-party webhook client to provide the HTTP POST endpoint for the subscription. The endpoint URL used in our samples needs to be adjusted to your own HTTP POST endpoint. The received event's `json` payload and HTTP Header attributes are shown below.
 
-![Tributech Node - Webhooks Overview](./img/Webhook.site.png) 
-
-Make sure that the Webhook Subscription is configured to listen to `ProofStoredEvent` events. Shortly after starting the Source and activating the Webhook Subscription we should receive our first events from an active Stream:
-
-![Tributech Node - Webhooks Received Event](./img/Webhook_ProofStoredEvent.png) 
-
-In the received request we see the Tributech Headers with the following headers (excerpt):
+Make sure that the Webhook Subscription is configured to listen to `ProofStoredEvent` events. Shortly after starting the Source and activating the Webhook Subscription we should receive our first events from an active Stream. In the received request we see the Tributech Headers with the following headers (excerpt):
 
 |Headers||
 |-|-|
