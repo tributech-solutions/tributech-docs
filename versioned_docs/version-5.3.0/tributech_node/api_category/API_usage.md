@@ -17,41 +17,6 @@ We will do all requests via our swagger doc website you can use your own http cl
   sources={{ light: ApiUsageArchitectureLight, dark: ApiUsageArchitectureDark }}
 />
 
-
-For this section we will use an example DTDL instance with a Tributech EDGE Agent with an OPC UA source.
-
-Example Data Stream DTDL Instance
-~~~ json
-{
-      "$dtId": "6e89214f-65a1-429c-8569-c0d14126b3da",
-      "$etag": "W/\"9f450a2f-1306-46c5-8f8e-ed33592f79bd\"",
-      "$metadata": {
-        "$model": "dtmi:io:tributech:stream:opcua;1"
-      },
-      "Name": "Double Stream",
-      "Unit": "",
-      "Identifier": "ns=3;i=2832",
-      "Encoding": "DOUBLE"
-}
-~~~
-
-Example EDGE Agent DTDL Instance
-~~~ json 
-{
-      "$dtId": "5d7f5a6f-1e90-4bc2-88d4-41a635ab9a89",
-      "$etag": "W/\"ef628b11-346e-4790-88fc-ef65804590f0\"",
-      "$metadata": {
-        "$model": "dtmi:io:tributech:device:edge;1"
-      },
-      "MaxMerkleTreeDepth": 5,
-      "MaxMerkleTreeAge": 600,
-      "Name": "Steel Factory Plant Line #24 test",
-      "PublicKey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2vZ+/prceZnTywahSGFH\nEcnGoZjYzzcCGAYVk5wPP3/n4qDj9HwP9dXNlvCE6NRoQwVZJ8JcO4Gjz50939dx\nvi+CCEh6xKL1SY6eh6lzSaATJdpcUwji4XOkv3zClRO32KIcNG2bWawiWQlZLxzMMhWJVlboKAbl/XIXB6XhWn/Fi5T7ViYblI9FjAaBDhHPizegGqDmRM8YGg5HcLJf\nw6To9bj603+/YIBPA4zEuP441RRCIj9WZi9J22gtF2ekFtq/N13GFa4wYfQeKmYQ\nowIDAQAB\n-----END PUBLIC KEY-----",
-      "KeyStorageType": "NONE",
-      "ProofKind": "SHA256_RSA2048_PSS",
-      "MQTTBroker": ""
-}
-~~~
 ## Data Streams
 Generally speaking a Data Stream is the metadata of a given source. The metadata contains the information that is used to describe the characteristics and limitations for values that can be imported by a specific endpoint.
 
@@ -112,7 +77,7 @@ We will see two Validation Results because we currently triggered one.
 
 ## Agent Configuration
 
-Our Tributech Agents can be configured either via SPA or DTDL. We recommend using the DTDL configuration option only for advanced users that are familiar with this technology. An invalid DTDL Model or Instance may result in an non-responsive Agent. The DTDL Model is required to be fully complete and partial updates are not supported. The node provides the following endpoints for the interacting with the DTDL model:
+Our Tributech Agents can be configured via DTDL. We recommend using the DTDL configuration option only for advanced users that are familiar with this technology. An invalid DTDL Model or Instance may result in an non-responsive Agent. The DTDL Model is required to be fully complete and partial updates are not supported. The node provides the following endpoints for the interacting with the DTDL model:
 
 - `agent/{deviceId}/get-config` to retrieve the current agent configuration which is provided by the agent itself 
 - `agent/{deviceId}/set-config` to submit the new configuration which will be presented to the agent

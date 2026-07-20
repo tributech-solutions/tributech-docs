@@ -57,7 +57,7 @@ We also provide a [Model Context Protocol (MCP)](MCP_integration.md) server so A
 :warning: The MCP Server is currently an opt-in Beta feature and has to be enabled for your Tributech Node by the Tributech team.
 
 ### DTDL Configuration
-To configure our Tributech Agents we currently use the [Digital Twins Definition Language Version 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/DTDL.v2.md) which is an open standard to describe real world applications or things. This enables us the have a semantic description and configuration of our agents (e.g. [configure Agent](./agent/agent_configuration.mdx#configuring-an-agent)).  
+To configure our Tributech Agents we currently use the [Digital Twins Definition Language Version 4](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v4/DTDL.v4.md) which is an open standard to describe real world applications or things. This enables us the have a semantic description and configuration of our agents (e.g. [configure Agent](./agent/agent_configuration.mdx#configuring-an-agent)).  
 
 There is also the possibility that customers may upload their own customized models *(via our [REST API](./api_category/API_usage.md))* to create a context between the ingested data and their application to unlock analytics or machine learning capabilities.  
 

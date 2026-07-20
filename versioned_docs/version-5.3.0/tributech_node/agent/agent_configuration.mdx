@@ -125,7 +125,7 @@ Agents can be referenced either by name or Id, e.g. [searching for an agent](#se
 
 ## Get a Stream Id
 Collected data is always bound to a data stream which is a collection of information that can be identified by the unique StreamId, i.e. a GUID (Globally Unique Identifier). The StreamId can be used to access values and proofs via the [Tributech Node API](../api_category/API_usage.md) and map data from [Webhook Events](../Webhook_integration.md).
-We can access the StreamId either via
+We can access the StreamId either via:
 
 agent details (can be access by clicking the agent entry in the *Agent section*) actions:
 
@@ -159,7 +159,7 @@ or by simply click the entry in the `Agents` section followed by `CONFIGURE` in 
   sources={{ light: DetailsConfigureLight, dark: DetailsConfigureDark }}
 />
 
-In the `Twin Workspace` we see on the right side, as the first fixed setting of the device entry (`dtmi:io:tributech:device:edge;2`), the [Agent Id](#get-the-agent-id) indicated by `dtId`. This field is an example for Meta data field which can not be adjusted by the Twin Workspace.
+In the `Twin Workspace` we see on the right side, as the first fixed setting of the device entry (`dtmi:io:tributech:device:edge;<version>`), the [Agent Id](#get-the-agent-id) indicated by `dtId`. This field is an example for Meta data field which can not be adjusted by the Twin Workspace.
 
 <ThemedImage
   alt="Tributech Agent Id"
@@ -190,7 +190,7 @@ By default the `Twin Workspace` shows the Digital Twin as a **list**. Using the 
 />
 
 ## Adding data to an Agent
-After the initial connect of a Tributech Agent only one entry exists on the left side of the `Twin Workspace`: the device entry `dtmi:io:tributech:device:edge;<version>` (by default version `2`). This entry represents the Tributech Agent and should not be deleted, but we can add a data ingress to this agent by adding [Tributech Sources](../../tributech_agent/source_integration.md). We show in the following steps how to add a [Simulated Tributech Source](../../tributech_agent/sources/simulated_source.mdx) which we set up in our [QuickStart](../../tributech_agent/quickstart.mdx) and [Setup](../../tributech_agent/setup.mdx) `docker-compose.yml` sample file.
+After the initial connect of a Tributech Agent only one entry exists on the left side of the `Twin Workspace`: the device entry `dtmi:io:tributech:device:edge;<version>`. This entry represents the Tributech Agent and should not be deleted, but we can add a data ingress to this agent by adding [Tributech Sources](../../tributech_agent/source_integration.md). We show in the following steps how to add a [Simulated Tributech Source](../../tributech_agent/sources/simulated_source.mdx) which we set up in our [QuickStart](../../tributech_agent/quickstart.mdx) and [Setup](../../tributech_agent/setup.mdx) `docker-compose.yml` sample file.
 
 To add a source, click the **⋮ (three-dot) menu** at the end of the device entry line and select **`+ Add`**:
 
@@ -255,7 +255,7 @@ By selecting the `Simulated Double Stream` we can directly go into the [stream v
 
 ## Digital Twin Versions (Upgrade / Downgrade)
 
-Each edge or embedded device is represented in the Tributech Node as a **Digital Twin graph** — the configuration shown in the [`Twin Workspace`](#configuring-an-agent). The nodes of this graph are **twin instances** (the device, its sources and its streams), and every instance is based on a **twin model** identified by its `dtmi` (for example `dtmi:io:tributech:device:edge;2`). Like a software package, these twin models are **versioned** — the number after the `;` — and newer versions can add or remove properties, telemetries and relationships. (For background on the model language itself, see [DTDL Configuration](../overview.md#dtdl-configuration).)
+Each edge or embedded device is represented in the Tributech Node as a **Digital Twin graph** — the configuration shown in the [`Twin Workspace`](#configuring-an-agent). The nodes of this graph are **twin instances** (the device, its sources and its streams), and every instance is based on a **twin model** identified by its `dtmi` (for example `dtmi:io:tributech:device:edge;<version>`). Like a software package, these twin models are **versioned** — the number after the `;` — and newer versions can add or remove properties, telemetries and relationships. (For background on the model language itself, see [DTDL Configuration](../overview.md#dtdl-configuration).)
 
 Some capabilities — such as **Verifiable Commands** and **Health Checks** — depend on properties and telemetries that only exist in newer twin model versions. The **Update Twin Models** feature provides a safe way to move an agent between these versions: it only offers versions that actually exist, keeps the device, source and stream versions compatible with each other, and shows the **impact** of a change before it is applied — a difference view of which parts are added or removed between the current and the selected version.
 
