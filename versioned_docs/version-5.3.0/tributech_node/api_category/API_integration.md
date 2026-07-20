@@ -54,7 +54,7 @@ In general following urls are used for authorization and token :
 
 Client Id and Client Credentials can be retrieved by our Node website or on request.
 
-Example Request done with [Insomnia](https://insomnia.rest/)
+Authorization against the REST API can be performed with any standard third-party REST API client. The following example requests illustrate both authorization flows.
 
 #### Authorization Flow
 

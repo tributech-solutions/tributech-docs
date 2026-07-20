@@ -48,7 +48,7 @@ We can create a Subscription by simple clicking the `ADD SUBSCRIPTION` button on
   sources={{ light: WebhookAddSubscriptionLight, dark: WebhookAddSubscriptionDark }}
 />
 
-In the following Dialog Box we add our clients HTTP POST endpoint (e.g. [Webhook.site](https://webhook.site/)), choose the desired [Event Types](#event-types) and add a secret for the event information [verification](#verification). Its important to note that the secret can later only be updated and not retrieved.
+In the following Dialog Box we add our clients HTTP POST endpoint, choose the desired [Event Types](#event-types) and add a secret for the event information [verification](#verification). Its important to note that the secret can later only be updated and not retrieved.
 In this example we subscribe to the Events `SourceCommandRequestEvent`, `SourceCommandResponseEvent` and `SourceCommandStateUpdateEvent` that occurs when interacting with Source commands that we can trigger within our [Quickstart Example](../tributech_agent/quickstart.mdx) (more information about events can be found [Events](#event-types)).
 
 
@@ -177,7 +177,7 @@ A value of `1` indicates that the event is a high frequency event (like data rec
 ## Verification {#verification}
 In order to verify that the received Webhook Event has not been tampered with can verify the event using either [OpenSSL](https://github.com/openssl/openssl) or [Microsoft C#](https://learn.microsoft.com/en-us/dotnet/csharp/). We will show in this section how to use both approaches with examples based on the previously created webhook. We will use an arbitrary  secret `foobar` and choose as event `ProofStoredEvent` (see [Event Types](#event-types)) and assume that a Tributech Source is already successfully sending data to a Tributech Node (see [QuickStarter Guide](../tributech_agent/quickstart.mdx)). 
 
-In our examples we use the free Webhook client [Webhook.site](https://webhook.site/) to provide the HTTP POST endpoint for the subscription. We will use the website to inspect the received events `json` payload and HTTP Header attributes. The URL `https://webhook.site/#!/view/c445d2cb-bbcb-4db6-b71c-04ca220eea6d` in our samples needs to be adjusted to your HTTP POST endpoint. Note that [Webhook.site](https://webhook.site/) limits the amount of events you can receive and high frequency events will reach those limits quickly.
+In our examples we use a standard third-party webhook client to provide the HTTP POST endpoint for the subscription and to inspect the received events' `json` payload and HTTP Header attributes. The endpoint URL used in our samples needs to be adjusted to your own HTTP POST endpoint.
 
 ![Tributech Node - Webhooks Overview](./img/Webhook.site.png) 
 
@@ -185,7 +185,7 @@ Make sure that the Webhook Subscription is configured to listen to `ProofStoredE
 
 ![Tributech Node - Webhooks Received Event](./img/Webhook_ProofStoredEvent.png) 
 
-On [Webhook.site](https://webhook.site/) we see the Tributech Headers with the following headers (excerpt) on the right side:
+In the received request we see the Tributech Headers with the following headers (excerpt):
 
 |Headers||
 |-|-|
