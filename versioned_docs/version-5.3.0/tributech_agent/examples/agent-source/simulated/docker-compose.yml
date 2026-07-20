@@ -7,7 +7,7 @@ services:
       - mosquitto-server
       - tributech-agent
     environment:
-      - Logging__LogLevel__Default=Trace
+      - Logging__LogLevel__Default=Information
       - Logging__Console__FormatterName=simple
       - MqttOptions__MQTTHost=mosquitto-server
     networks:
@@ -24,7 +24,7 @@ services:
     depends_on:
       - mosquitto-server
     environment:
-      - Logging__LogLevel__Default=Trace
+      - Logging__LogLevel__Default=Information
       - Logging__Console__FormatterName=simple
       - MqttOptions__MQTTHost=mosquitto-server
       - EdgeDeviceOptions__NodeUrl=${NODE_URL:?"The Tributech Node Url is required"}

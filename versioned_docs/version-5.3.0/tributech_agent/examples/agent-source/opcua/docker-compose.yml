@@ -9,7 +9,7 @@ services:
       - tributech-agent
     environment:
       - MqttOptions__MQTTHost=mosquitto-server
-      - Logging__LogLevel__Default=Debug
+      - Logging__LogLevel__Default=Information
       - Logging__LogLevel__ADSRouter=Error
     networks:
       - opcua-net
@@ -52,6 +52,3 @@ volumes:
 
 networks:
   opcua-net:
-    ipam:
-      config:
-        - subnet: 172.24.1.0/24

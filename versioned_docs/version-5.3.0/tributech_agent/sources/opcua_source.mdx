@@ -125,20 +125,3 @@ For example, to authenticate with a username and password over an encrypted chan
 ```
 
 To establish a secured channel the source uses an OPC-UA **application certificate**. By default an RSA application certificate is generated automatically on first start; a custom one can be supplied via `OPCUASourceOptions__AppCertificatePath`. When using `Certificate` auth mode, the application and user certificate key types (RSA/ECC) must be compatible with the security policies the server exposes.
-
-## Providing Data
-If an OPC-UA Server is used as a source, no specific settings are required — only the settings described in [Configuration](#configuration).
-
-The following table lists example Identifiers (as node IDs) and their data types:
-
-| Identifier | Relative Path | DataType |
-| --- | --- | --- |
-| `ns=3;i=2822` | 3:Data/3:Dynamic/3:Scalar/3:BooleanValue | Boolean |
-| `ns=3;i=2824` | 3:Data/3:Dynamic/3:Scalar/3:ByteStringValue | Byte Array |
-| `ns=3;i=2832` | 3:Data/3:Dynamic/3:Scalar/3:DoubleValue | Double |
-| `ns=3;i=2831` | 3:Data/3:Dynamic/3:Scalar/3:FloatValue | Float |
-| `ns=3;i=2827` | 3:Data/3:Dynamic/3:Scalar/3:Int32Value | Integer |
-| `ns=3;i=2829` | 3:Data/3:Dynamic/3:Scalar/3:Int64Value | Long |
-| `ns=3;i=2833` | 3:Data/3:Dynamic/3:Scalar/3:StringValue | UTF8 String |
-
-The same nodes can also be addressed by their relative browse path (see [Configuration](#configuration)) — for example `3:Data/3:Static/3:Scalar/3:DoubleValue` for a Double or `3:Data/3:Dynamic/3:Scalar/3:BooleanValue` for a Boolean.

@@ -63,14 +63,14 @@ After right clicking on the MQTT Source entry we can add a new MQTT Stream.
   sources={{ light: NodeMQTTAddStreamLight, dark: NodeMQTTAddStreamDark }}
 />
 
-We have two possible choice
-- **MQTT Jsonpath Collection**: A collection of streams that share an MQTT topic and use JSONPath expressions to extract individual values and optional timestamps from JSON payloads.
-- **MQTT Configurable Topic Stream**: A stream with a custom topic that supports wildcards for the MQTT Topic, e.g. `test/#` or `test/+/TEMP`
-- **MQTT Pre-defined Payload**: A stream with a predefined payload keypair that will be used as an identifier and be sent to a common MQTT Topic
+We have the following three options for MQTT streams:
+- **[MQTT Configurable Topic Stream](#configurable-topic-stream)**: A single stream bound to a custom MQTT Topic, whose payload is a simple JSON object carrying the reading in a `Value` field and a `Timestamp`. The topic can use wildcards (`#`, `+`), e.g. `test/#` or `test/+/TEMP`, so one stream definition can capture values arriving on many matching topics. Best suited when every sensor or value is published on its own dedicated topic.
+- **[MQTT Pre-defined Payload Stream](#pre-defined-payload-stream)**: A stream that listens on one common, shared MQTT Topic and is identified by a unique keypair carried inside the payload (for example `MachineID` and `SensorID`) rather than by the topic. Best suited when several values are published to the same common topic and have to be told apart by the identifiers in each message instead of by separate topics.
+- **[MQTT JSONPath Collection](#jsonpath-collection)**: A group of streams that all share a single MQTT Topic, where each stream extracts one value (and a timestamp) from the incoming JSON payload using a JSONPath expression. Best suited when a single JSON message bundles several values together, such as a power monitor reporting voltage, power and frequency in one message.
 
 ### Configurable Topic Stream
 
-In this section we configure a Stream that is linked to a freely customizable MQTT Topic. The following example shows how to setup a stream for a double value with the display name MQTT Stream and the MQTT Topic `xxo`. For custom topics, two wildcards are supported:
+A Configurable Topic Stream binds a single stream to a freely chosen MQTT Topic. Each message published to that topic is a simple JSON object that carries the reading in a `Value` field and a `Timestamp` (see [Sending Configurable Topic Stream Example](#sending-configurable-topic-stream-example)). This stream type is the right choice when every sensor or value has its own dedicated topic, and it can additionally use wildcards to subscribe to several related topics with a single stream definition. The following example shows how to setup a stream for a double value with the display name MQTT Stream and the MQTT Topic `xxo`. For custom topics, two wildcards are supported:
 
 - A `#` character represents a complete sub-tree of the hierarchy and thus must be the last character in a subscription topic string, such as `test/#`. This will match any topic starting with `test/`, such as `test/1/TEMP` and `test/2/HUMIDITY`.
 
@@ -93,7 +93,7 @@ This completes the configuration of the MQTT Source and we can now send data to 
 
 ### Pre-defined Payload Stream
 
-In this section we configure a Stream that is linked to a predefined payload keypair. The difference to the Topic Stream is that this Stream will not be linked to a custom MQTT Topic but to a common MQTT Topic. The following example shows how to setup a stream for a double value with the keypair `my-machine-id` and `my-sensor-id` as stream identifier. The MQTT Topic is set per default to `edge/+/value/GenericValueSource`. For payload streams, two identifier are supported and need to be unique for each stream. The following keypairs are:
+A Pre-defined Payload Stream is not bound to a custom topic; instead it listens on a common MQTT Topic that is shared by many streams and defaults to `edge/+/value/GenericValueSource`. Because all messages arrive on the same topic, each stream is identified by a unique keypair contained in the payload itself — two identifiers that together must be unique for every stream. In addition to those identifiers, the payload carries the reading in a `Value` field and a `Timestamp` (see [Sending Pre-defined Payload Stream Example](#sending-pre-defined-payload-stream-example)). This stream type is the right choice when several values are published to the same common topic and are distinguished by the identifiers in each message instead of by separate topics. The following example shows how to setup a stream for a double value with the keypair `my-machine-id` and `my-sensor-id` as stream identifier:
 
 <ThemedImage
   alt="Pre-defined Payload Stream"
@@ -104,7 +104,7 @@ We can now send data to the MQTT Source via an MQTT Client Application like [MQT
 
 ### JSONPath Collection
 
-In this section, we configure a JSONPath Collection that groups multiple streams under one shared MQTT Topic. Enter the MQTT Topic on which the JSON object is published, for example factory/power-monitor. Each stream in the collection then uses a JSONPath expression to extract an individual value and, optionally, a timestamp from the received payload.
+In this section, we configure a JSONPath Collection that groups multiple streams under one shared MQTT Topic. This stream type is the right choice when a single JSON message bundles several readings together — for example a power monitor that publishes voltage, power and frequency in one message. Enter the exact MQTT Topic on which the JSON object is published, for example `factory/power-monitor`. Each stream in the collection then uses a [JSONPath](https://goessner.net/articles/JsonPath/) expression to extract an individual value and a timestamp from the received payload.
 
 For example, a collection using the MQTT Topic `factory/power-monitor` could contain the following streams:
 
@@ -124,7 +124,7 @@ For the MQTT Topic field, enter the actual topic used by the publishing device o
 
 `factory/power-monitor`
 
-The topic is not a JSONPath expression. Based on the current concept document, I would use an exact topic rather than a wildcard unless wildcard support is explicitly implemented for JSONPath Collections.
+Note that this field expects an exact MQTT Topic — it is not a JSONPath expression.
 
 ### Value Change Options
 The basic handling of Value Change Options (VCO) can be found in [Source Integration](../source_integration.md#value-change-options). This section contains the concrete handling of the ***Step (Delta)*** for the simulated source. The following list contains the description for each supported ***Stream Data Encoding*** where ***X*** represents the value for ***Step (Delta)***:

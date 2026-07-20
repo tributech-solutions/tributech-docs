@@ -9,7 +9,7 @@ services:
       - tributech-agent
     environment:
       - MqttOptions__MQTTHost=mosquitto-server-ads
-      - Logging__LogLevel__Default=Debug
+      - Logging__LogLevel__Default=Information
       - Logging__LogLevel__ADSRouter=Error
     networks:
       ads-net:
