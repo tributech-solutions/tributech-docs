@@ -45,8 +45,11 @@ A Verifiable Command is sent to the REST API as a signed envelope around the nor
   "signature": "R75kThUmmrY2Xk_irT5XT_cdNbUNWSNd92IAXpI9UPAs85emJ5mzk66k1CnZEkjkMycXEFMb5jPqe3GYMy3IgQ",
   "signatureTimestamp": "2026-03-11T08:39:54.1680000+00:00",
   "commandPayload": {
-    "CommandName": "SetDataGenerationMode",
-    "CommandBody": "eyJOdW1lcmljRGF0YUdlbmVyYXRpb25Nb2RlIjoxfQ==",
+    "commandName": "TriggerAnomaly",
+    "commandBody": {
+      "AnomalyFactor": 2,
+      "AnomalyType": 1
+    },
     "Timeout": "00:00:30"
   }
 }
@@ -57,7 +60,7 @@ A Verifiable Command is sent to the REST API as a signed envelope around the nor
 | `nodeKeyId` | Identifier of the key used to sign the command; the backend uses it to look up your registered public key |
 | `signature` | Signature over the command, created with your private key |
 | `signatureTimestamp` | UTC timestamp of when the signature was created |
-| `commandPayload` | The command itself — same structure as a normal [remote command](../tributech_node/api_category/API_usage.md#remote-commands): `CommandName`, a Base64-encoded `CommandBody`, and a `Timeout` |
+| `commandPayload` | The command itself — same structure as a normal [remote command](../tributech_node/api_category/API_usage.md#remote-commands): `commandName`, an inline `commandBody`, and a `Timeout` |
 
 ## Signing keys
 
