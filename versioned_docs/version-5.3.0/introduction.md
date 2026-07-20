@@ -32,7 +32,7 @@ The following list provides an overview of the most important platform features.
 | Data integration | The platform provides a comprehensive set of data integration options ranging from IoT, OT to IT, enabling the secure data integration for any data source. In addition to the platform's open interfaces, industry protocols like e.g. MQTT, OPC-UA, ADS or UART are supported.     |
 | Data middleware | The data middleware provides a powerful data processing engine that is able to stream data between source and destination in near real time. Furthermore, the middleware also includes a warm storage to persist historical data. A powerful master data management based on the DTDL standard provides a uniform description of each connected data source.        |
 | Remote configuration  | Remote configurations allow you to manage and update the configuration parameters of any connected data source (e.g. sensor, machine, building, server, ...) via the platform dashboard or API.        |
-| Remote commands | Remote commands allow you to perform actions (e.g. trigger, on/off, set value, ...) on any connected data source (e.g. sensor, machine, building, server, ...) via the platform dashboard or API in near real-time.        |
+| Commands | Commands allow you to perform actions (e.g. trigger, on/off, set value, ...) on any connected data source (e.g. sensor, machine, building, server, ...) via the platform dashboard or API in near real-time.        |
 
 ## Quick Links
 

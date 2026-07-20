@@ -85,9 +85,9 @@ Our Tributech Agents can be configured via DTDL. We recommend using the DTDL con
 The Request will trigger an command which will be send to the Agent via our MQTT Broker and will be validated by the Agent itself. If some error occurs the existing Configuration will be used and an error will be shown as response for the request. 
 
 
-## Remote Commands
+## Commands
   
-The Tributech Node has the capability to send a command to a given Agent Source. This enables various use cases where an custom Tributech Agent Source can execute some kind of command or write a variable on the given Server which it is connected to. It may also read a specific metadata from the Server and returns it via the `CommandResponse` which will be send at the end of the command execution. Lastly the remote commands provide a way to notify the progress of the command execution via `CommandStateUpdates`. Those capabilities are mainly implementation specific may or may not be send from the Tributech Agent Source.
+The Tributech Node has the capability to send a command to a given Agent Source. This enables various use cases where an custom Tributech Agent Source can execute some kind of command or write a variable on the given Server which it is connected to. It may also read a specific metadata from the Server and returns it via the `CommandResponse` which will be send at the end of the command execution. Lastly, commands provide a way to notify the progress of the command execution via `CommandStateUpdates`. Those capabilities are mainly implementation specific may or may not be send from the Tributech Agent Source.
 
 
 The command it self will be triggered with following parameters: 
@@ -103,7 +103,7 @@ The commands it self various by the capability of the targeted Tributech Agent S
 
 ### Endpoints
 
-There are two main endpoints for the execution of remote commands : 
+There are two main endpoints for the execution of commands : 
 
 - `/agent/{agentId}/command/{sourceId}` will send an request and block the response till the command is executed and a response is received. It will abort if the command execution takes longer than the provided timeout
 - `/agent/{agentId}/commandtrigger/{sourceId}` will send the request and return a transaction id. This Transaction Id can be used to match the given state updates and command response via webhook events, those events will contain the returned transaction id so you are able to trigger a command in a non-blocking manner. 

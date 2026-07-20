@@ -9,7 +9,7 @@ import VerifiableFlowDark from './img/verifiable-command-flow-dark.png';
 import VerifiableCommandTabLight from './img/verifiable-command-commands-tab-light.png';
 import VerifiableCommandTabDark from './img/verifiable-command-commands-tab-dark.png';
 
-Verifiable Commands are cryptographically signed [remote commands](../tributech_node/api_category/API_usage.md#remote-commands) that let a device confirm a command really came from a trusted, authorized user before executing it.
+Verifiable Commands are an advanced, cryptographically signed variant of a regular [command](../tributech_node/api_category/API_usage.md#commands): they build on top of a regular command by letting a device confirm the command really came from a trusted, authorized user before executing it.
 
 :::info
 Verifiable Commands can be **viewed** in the `Commands` tab of an agent in the Tributech Node UI, but **sending** them is currently only possible via the [REST API](../tributech_node/api_category/API_integration.md). To send one you also need access to the **private key** used to sign the command body.
@@ -17,7 +17,7 @@ Verifiable Commands can be **viewed** in the `Commands` tab of an agent in the T
 
 ## Overview
 
-A [remote command](../tributech_node/api_category/API_usage.md#remote-commands) is trusted because it arrives through the authenticated Tributech Node API. A **Verifiable Command** adds a second, end-to-end layer of trust: the command is signed by the user and re-signed by the backend, so the receiving device can independently verify its authenticity. This guarantees that:
+A [command](../tributech_node/api_category/API_usage.md#commands) is trusted because it arrives through the authenticated Tributech Node API. A **Verifiable Command** adds a second, end-to-end layer of trust: the command is signed by the user and re-signed by the backend, so the receiving device can independently verify its authenticity. This guarantees that:
 
 - the command originates from a trusted, notarized user,
 - it was processed and forwarded by the Demeter backend, and
@@ -60,7 +60,7 @@ A Verifiable Command is sent to the REST API as a signed envelope around the com
 | `nodeKeyId` | Identifier of the key used to sign the command; the backend uses it to look up your registered public key |
 | `signature` | Signature over the command, created with your private key |
 | `signatureTimestamp` | UTC timestamp of when the signature was created |
-| `commandPayload` | The command itself — same structure as a [remote command](../tributech_node/api_category/API_usage.md#remote-commands): `commandName`, an inline `commandBody`, and a `Timeout` |
+| `commandPayload` | The command itself — same structure as a [command](../tributech_node/api_category/API_usage.md#commands): `commandName`, an inline `commandBody`, and a `Timeout` |
 
 ## Signing keys
 
