@@ -54,13 +54,4 @@ In general following urls are used for authorization and token :
 
 Client Id and Client Credentials can be retrieved by our Node website or on request.
 
-Authorization against the REST API can be performed with any standard third-party REST API client. The following example requests illustrate both authorization flows.
-
-#### Authorization Flow
-
-![Tributech Node - Authorization Flow](./img/AuthorizationCodeFlow.png)
-
-
-#### Client Credential Flow
-
-![Tributech Node - Client Credential Flow](./img/ClientCredentialFlow.png)
+Authorization against the REST API can be performed with any standard third-party REST API client.
