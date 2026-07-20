@@ -17,7 +17,7 @@ Verifiable Commands can be **viewed** in the `Commands` tab of an agent in the T
 
 ## Overview
 
-A normal [remote command](../tributech_node/api_category/API_usage.md#remote-commands) is trusted because it arrives through the authenticated Tributech Node API. A **Verifiable Command** adds a second, end-to-end layer of trust: the command is signed by the user and re-signed by the backend, so the receiving device can independently verify its authenticity. This guarantees that:
+A [remote command](../tributech_node/api_category/API_usage.md#remote-commands) is trusted because it arrives through the authenticated Tributech Node API. A **Verifiable Command** adds a second, end-to-end layer of trust: the command is signed by the user and re-signed by the backend, so the receiving device can independently verify its authenticity. This guarantees that:
 
 - the command originates from a trusted, notarized user,
 - it was processed and forwarded by the Demeter backend, and
@@ -37,7 +37,7 @@ Verifiable Commands use two layers of cryptographic verification:
 
 ## Command structure
 
-A Verifiable Command is sent to the REST API as a signed envelope around the normal command payload:
+A Verifiable Command is sent to the REST API as a signed envelope around the command payload:
 
 ```json
 {
@@ -60,7 +60,7 @@ A Verifiable Command is sent to the REST API as a signed envelope around the nor
 | `nodeKeyId` | Identifier of the key used to sign the command; the backend uses it to look up your registered public key |
 | `signature` | Signature over the command, created with your private key |
 | `signatureTimestamp` | UTC timestamp of when the signature was created |
-| `commandPayload` | The command itself — same structure as a normal [remote command](../tributech_node/api_category/API_usage.md#remote-commands): `commandName`, an inline `commandBody`, and a `Timeout` |
+| `commandPayload` | The command itself — same structure as a [remote command](../tributech_node/api_category/API_usage.md#remote-commands): `commandName`, an inline `commandBody`, and a `Timeout` |
 
 ## Signing keys
 
