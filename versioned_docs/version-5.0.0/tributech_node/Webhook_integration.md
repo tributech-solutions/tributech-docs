@@ -37,7 +37,7 @@ This way the events, webhook url or secret can be adjusted for the current Subsc
 ![Tributech Node - Webhooks Edit](./img/Webhook_Edit.png)
 
 ### Deactivate
-We can disable the previously created Webhook by clicking the three dots in the action colum and choosing `Toggle Active` button to pause the notifications.
+We can disable the previously created Webhook by clicking the three dots in the action column and choosing `Toggle Active` button to pause the notifications.
 
 ![Tributech Node - Webhooks Deactivate](./img/Webhook_Overview_ActivateToggle.png) 
 
@@ -133,7 +133,7 @@ A value of `1` indicates that the event is a high frequency event (like data rec
 - Standard Frequency events have **10 retries** before they are discarded.
 
 ## Verification {#verification}
-In order to verify that the received Webhook Event has not been tempered with can verify the event using either [OpenSSL](https://github.com/openssl/openssl) or [Microsoft C#](https://learn.microsoft.com/en-us/dotnet/csharp/). We will show in this section how to use both approaches with examples based on the previously created webhook. We will use an arbitrary  secret `foobar` and choose as event `ProofStoredEvent` (see [Event Types](#event-types)) and assume that a Tributech Source is already successfully sending data to a Tributech Node (see [QuickStarter Guide](../tributech_agent/quickstart.mdx)). 
+In order to verify that the received Webhook Event has not been tampered with can verify the event using either [OpenSSL](https://github.com/openssl/openssl) or [Microsoft C#](https://learn.microsoft.com/en-us/dotnet/csharp/). We will show in this section how to use both approaches with examples based on the previously created webhook. We will use an arbitrary  secret `foobar` and choose as event `ProofStoredEvent` (see [Event Types](#event-types)) and assume that a Tributech Source is already successfully sending data to a Tributech Node (see [QuickStarter Guide](../tributech_agent/quickstart.mdx)). 
 
 In our examples we use the free Webhook client [Webhook.site](https://webhook.site/) to provide the HTTP POST endpoint for the subscription. We will use the website to inspect the received events `json` payload and HTTP Header attributes. The URL `https://webhook.site/#!/view/c445d2cb-bbcb-4db6-b71c-04ca220eea6d` in our samples needs to be adjusted to your HTTP POST endpoint. Note that [Webhook.site](https://webhook.site/) limits the amount of events you can receive and high frequency events will reach those limits quickly.
 
@@ -152,7 +152,7 @@ On [Webhook.site](https://webhook.site/) we see the Tributech Headers with the f
 |x-tributech-signaturetimestamp |	2024-05-28T06:31:14.851318+00:00 |
 |x-tributech-signature|	sha256=065CF4E993CF1DF7399B2DF64A147567552EB4BB7DD91ACC73840D5B8411B940|
 
-The Headers contains the Tributech specific Attribute `x-tributech-signature` and `x-tributech-signaturetimestamp` which we will use in the next section to verify that the Payload was not tempered with. The payload itself contains the `EventQoS` flag for Standard Frequency (see [Error Handling](#error-handling)) and some information about the Agent, Stream and the Proof. Important to note is that in this example the Root hash of the MerkleTree and the Signature of the RootHash are `BASE64` encoded strings in byte array form.
+The Headers contains the Tributech specific Attribute `x-tributech-signature` and `x-tributech-signaturetimestamp` which we will use in the next section to verify that the Payload was not tampered with. The payload itself contains the `EventQoS` flag for Standard Frequency (see [Error Handling](#error-handling)) and some information about the Agent, Stream and the Proof. Important to note is that in this example the Root hash of the MerkleTree and the Signature of the RootHash are `BASE64` encoded strings in byte array form.
 
 ~~~~json
 {
@@ -191,7 +191,7 @@ We can now compare the output `SHA2-256(stdin)= 065cf4e993cf1df7399b2df64a147567
 ###  C# Code
 
 In the following section we use the previous example values to verify the ***HMAC SHA256*** signatures by using [MS C#](https://learn.microsoft.com/en-us/dotnet/csharp/)
-which can be pasted into [Fiddle](https://dotnetfiddle.net/) or Locale Development Environment:
+which can be pasted into [Fiddle](https://dotnetfiddle.net/) or Local Development Environment:
 
 ~~~ csharp
 using System;

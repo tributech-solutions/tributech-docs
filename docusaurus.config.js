@@ -102,7 +102,7 @@ export default {
       '@docusaurus/preset-classic',
       {
         docs: {
-          lastVersion: '5.0.0',
+          lastVersion: '5.3.0',
           routeBasePath: '/',
           disableVersioning: false,
           includeCurrentVersion: false,

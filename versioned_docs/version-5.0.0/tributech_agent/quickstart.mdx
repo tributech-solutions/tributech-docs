@@ -31,7 +31,7 @@ We start by setting up the docker-compose environment for the Tributech Agent an
 
     <CodeBlock className="language-yml" title="docker-compose.yml">{SourceDockerCompose}</CodeBlock>
 
-    Replace the placeholder values for `EdgeDeviceOptions__AgentID` with a [GUID](https://www.ietf.org/rfc/rfc4122.txt) for the agent unique Id thats not used by any other agent connected to the Node and the `EdgeDeviceOptions__NodeUrl` points to the [Triubtech Node](../tributech_node/overview.md) Url, for example
+    Replace the placeholder values for `EdgeDeviceOptions__AgentID` with a [GUID](https://www.ietf.org/rfc/rfc4122.txt) for the agent unique Id that's not used by any other agent connected to the Node and the `EdgeDeviceOptions__NodeUrl` points to the [Tributech Node](../tributech_node/overview.md) Url, for example
 
     <CodeBlock className="language-plain" title="env specific settings">{EnvSample}</CodeBlock>
     
@@ -49,7 +49,7 @@ We start by setting up the docker-compose environment for the Tributech Agent an
 ## Activate Agent
 
 After starting the Tributech Agent we need to accept the Agent in the Tributech Node in order to receive data. For this we need to go to the Enrollment section of the Tributech Node and search for our agent.
-The Agent should be in the top most entries of the list and should be in the "Pending" state. Clicking on the ***Activate*** button is enough to enrole the agent on the Tributech Node.
+The Agent should be in the top most entries of the list and should be in the "Pending" state. Clicking on the ***Activate*** button is enough to enroll the agent on the Tributech Node.
 
 ![***Activate Tributech Agent***](./img/node-agent-management-agent-activation.png)
 

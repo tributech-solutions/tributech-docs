@@ -6,7 +6,7 @@ sidebar_position: 2
 ## Rest API
 Our REST API provides the interfaces as [OAS V3](https://swagger.io/specification/v3/) which can be used to generate REST API clients for multiple languages. 
 
-![Tributech Node - API Integraton Focus](./img/DemeterArchitectureOverviewAPIIntegration.png) 
+![Tributech Node - API Integration Focus](./img/DemeterArchitectureOverviewAPIIntegration.png) 
 
 The api is generally reachable via the url `<your-node-url>/demeter/api/`  there you can find the json document and a swagger doc website with an general overview of the rest api endpoints. 
 
@@ -33,8 +33,8 @@ To do some example request just visit the above url, authorize yourself *(see be
 
 Our API Authorization is handled via a Keycloak instance. We support following authorization flows : 
 
-- [Client Crediential Flow](https://auth0.com/docs/get-started/authentication-and-authorization-flow/client-credentials-flow) (for api access)
-- [Authorization Code Flow with PCKE (sha256)](https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-proof-key-for-code-exchange-pkce) (for browser)
+- [Client Credential Flow](https://auth0.com/docs/get-started/authentication-and-authorization-flow/client-credentials-flow) (for api access)
+- [Authorization Code Flow with PKCE (sha256)](https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-proof-key-for-code-exchange-pkce) (for browser)
 
 Both can be configured within the Keycloak instance hosted on our Tributech Node Instance. 
 

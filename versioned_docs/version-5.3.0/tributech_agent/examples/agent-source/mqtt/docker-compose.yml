@@ -1,0 +1,58 @@
+version: "3.6"
+
+services:
+  source-mqtt:
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-source-mqtt:${SOURCE_TAG:-5.2.0}
+    depends_on:
+      - mosquitto-server
+      - tributech-agent
+    environment:
+      - MqttOptions__MQTTHost=mosquitto-server
+      - Logging__LogLevel__Default=Information
+    networks:
+      - mqtt-net
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "2m"
+        max-file: "5"
+
+  tributech-agent:
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-agent:${AGENT_TAG:-5.4.2}
+    depends_on:
+      - mosquitto-server
+    environment:
+      - Logging__LogLevel__Default=Information
+      - Logging__Console__FormatterName=simple
+      - MqttOptions__MQTTHost=mosquitto-server
+      - EdgeDeviceOptions__NodeUrl=${NODE_URL:?"The Tributech Node Url is required"}
+    networks:
+      - mqtt-net
+    ports:
+      - "5001:8080" # enable access to agent mqtt-API (e.g. for configuration with Agent-Companion)
+    volumes:
+      - app-data:/app/data # volume mapping for permanent storage of keys and datatwin file
+      - ./enrollment:/app/enrollment # local enrollment folder mounted to /app/enrollment
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "2m"
+        max-file: "5"
+
+  mosquitto-server:
+    image: eclipse-mosquitto:${MQTT_TAG:-1.6}
+    networks:
+      - mqtt-net
+    ports:
+     - '1883:1883' # MQTT
+    # - "127.0.0.1:9001:9001" # web-socket
+    restart: unless-stopped
+
+
+volumes:
+  app-data:
+
+networks:
+  mqtt-net:

@@ -74,7 +74,7 @@ After logging into the Tributech Platform, the newly registered device will appe
 
 ### Agent Activation
 
-![Tributech C-SDK Agent Enrollment](./img/tribuech_c_sdk_enrollment.png)
+![Tributech C-SDK Agent Enrollment](./img/tributech_c_sdk_enrollment.png)
 
 Agents in the Tributech enrollment section are sorted by creation date and timestamp, so the newly registered agent should appear at the top of the list. The agent should be named **SDK Agent** (the standard naming convention), and in the "Type" column, it should be identified as a **C-SDK agent**.  
 To complete the enrollment process, activate the agent in the enrollment window.
@@ -84,7 +84,7 @@ To complete the enrollment process, activate the agent in the enrollment window.
 Activating the agent triggers background processes that send a message to the activated agent, allowing it to access the Tributech Platform environment. The agent will initially be displayed with the status **"Activated"**. Once the agent successfully connects to the platform, its status will change to **"Online"**.  
 The agent will also appear in the standard agent listing of the platform:
 
-![Tributech C-SDK Activated Agent](./img/tribtuech_c_sdk_activated.png)
+![Tributech C-SDK Activated Agent](./img/tributech_c_sdk_activated.png)
 
 ### Agent Configuration
 
@@ -111,7 +111,7 @@ Next, add a stream to the configuration by clicking the action menu of the sourc
 Finally, configure the stream. The most important setting is the data type that will be sent to the stream, as this affects how data points are displayed and processed. The stream name is used as a reference in the SDK for sending data, so it should be unique to avoid confusion.  
 Here is an example stream configuration:
 
-![Tributech C-SDK Stream Configuration](./img/tributech_c_sdk_example_steram.png)
+![Tributech C-SDK Stream Configuration](./img/tributech_c_sdk_example_stream.png)
 
 The final step is to apply the configuration to the agent by clicking the **"Apply Configuration"** button in the upper right corner of the configuration window. Upon success, a small pop-up at the bottom of the page will notify you that the configuration was applied successfully. After a successful configuration, the stream will also appear in the general agent detail page.
 
