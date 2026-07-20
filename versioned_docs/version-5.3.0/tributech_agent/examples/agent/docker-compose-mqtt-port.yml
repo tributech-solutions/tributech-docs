@@ -8,7 +8,7 @@ services:
       - tributech-agent
     environment:
       - MqttOptions__MQTTHost=mosquitto-server-simulated
-      - Logging__LogLevel__Default=Debug
+      - Logging__LogLevel__Default=Information
     networks:
       - simulated-net
     restart: unless-stopped
@@ -23,10 +23,9 @@ services:
     depends_on:
       - mosquitto-server-simulated
     environment:
-      - Logging__LogLevel__Default=Debug
+      - Logging__LogLevel__Default=Information
       - Logging__Console__FormatterName=simple
       - MqttOptions__MQTTHost=mosquitto-server-simulated
-      - EdgeDeviceOptions__AgentID=${AGENT_ID:?"The Tributech Agent requires a GUID"}
       - EdgeDeviceOptions__NodeUrl=${NODE_URL:?"The Tributech Node Url is required"}
       - EnrollmentOptions__EnrollmentCertBase64=${ENROLLMENT_CERT_BASE64:?"The base64 encoded Enrollment Cert is required"}
       - EnrollmentOptions__EnrollmentKeyBase64=${ENROLLMENT_KEY_BASE64:?"The base64 encoded Enrollment Key is required"}

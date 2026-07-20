@@ -126,7 +126,7 @@ The second way to add enrollment certificates to a Tributech Agent is to use [en
 
 ## Starting a Tributech Agent
 After we have prepared the Tributech Agent certificates for the enrollment we can now startup whole environment.
- In our example, we will use the certificate reference via environment variables. If docker volumes are preferred
+ In our example, we will provide the enrollment certificates through a local `enrollment` folder mounted as a [docker volume](#docker-volumes). If the base64 environment variable method is preferred
 the `tributech-agent-simulated` `docker-compose.yml` file in the following examples must be adapted as described in the previous section.
 
 :warning: In our examples for the setup documentation, we will use different container images and configurations compared to the [Quickstart](quickstart.mdx). Please use a new empty folder for the files to prevent any configuration mix.
@@ -138,13 +138,13 @@ and will **not** be used for interactions with the [Tributech Node](../tributech
 
 Docker Compose provides a ready-made setup, but some settings must be adapted to the environment in which it is executed:
 
-- `EdgeDeviceOptions__AgentID` is a **GUID** that can be freely chosen but **must be unique for each agent** connecting to the same [Tributech Node](../tributech_node/overview.md)
 - `EdgeDeviceOptions__NodeUrl` is the absolute URL to the [Tributech Node](../tributech_node/overview.md) the agent should connect to
-- `EnrollmentOptions__EnrollmentCertBase64` and `EnrollmentOptions__EnrollmentKeyBase64` are base64 encoded certificates required to authenticate with a [Tributech Node](../tributech_node/overview.md) (see [Agent Management](../tributech_node/agent/agent_management.mdx)) 
 
 Sample values:
 
 <CodeBlock className="language-plain" title="env specific settings">{EnvSample}</CodeBlock>
+
+The Tributech Agent authenticates with the Tributech Node using enrollment certificates provided through a local `enrollment` folder mounted into the container (the `./enrollment:/app/enrollment` volume in the `docker-compose.yml` above). See [Authentication Certificates (Enrollment)](#authentication-certificates-enrollment) and [Docker volumes](#docker-volumes) above for how to create and provide it. If the base64 environment variable method is preferred instead, adapt the service as shown in the [Environment Variables](#environment-variables) section. If no Agent ID is configured, the agent generates a random one on first start.
 
 
 We can now ***Startup*** the environment by running the following command (or `docker-compose` for older versions):
@@ -176,8 +176,7 @@ After the docker containers have been started successfully the Agent will connec
   sources={{ light: BondEnrollmentLight, dark: BondEnrollmentDark }}
 />
 
- The Agent with our specific `Agent ID` should be in ne of the top most entries of the list and should be in the `Pending` state. 
- If too many agents are listed we can search for the Agent with the `AGENT_ID` we defined docker compose file (value for `EdgeDeviceOptions__AgentID` in our example `d7996ca3-5937-4720-afe3-d2cf8f5ac210`). By clicking on the ***Activate*** button we grant our agent the permission to connect and be managed by this [Tributech Node](../tributech_node/overview.md). For more information on agent management in the [Tributech Node](../tributech_node/overview.md) visit [agent management](../tributech_node/agent/agent_management.mdx).
+ The newly started Agent should be one of the top most entries of the list and should be in the `Pending` state. You can also identify it by the `Creation Date` column, which reflects when the enrollment started — sorting the list by `Creation Date` brings the most recently enrolled agent to the top. By clicking on the ***Activate*** button we grant our agent the permission to connect and be managed by this [Tributech Node](../tributech_node/overview.md). For more information on agent management in the [Tributech Node](../tributech_node/overview.md) visit [agent management](../tributech_node/agent/agent_management.mdx).
 
 <ThemedImage
   alt="Activate Tributech Agent"

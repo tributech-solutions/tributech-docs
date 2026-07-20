@@ -5,7 +5,6 @@ services:
       - mosquitto-server
     environment:
       - MqttOptions__MQTTHost=mosquitto-server
-      - EdgeDeviceOptions__AgentID=${AGENT_ID:?"The Tributech Agent requires a GUID"}
       - EdgeDeviceOptions__NodeUrl=${NODE_URL:?"The Tributech Node Url is required"}
       - EnrollmentOptions__EnrollmentCertBase64=LS0tLS1CR...VEUgS0VZLS0tLS5X
       - EnrollmentOptions__EnrollmentKeyBase64=LS0tLS1CRU...VEUgS0VZLS0tLS0K

@@ -5,7 +5,6 @@ services:
       - mosquitto-server
     environment:
       - MqttOptions__MQTTHost=mosquitto-server
-      - EdgeDeviceOptions__AgentID=${AGENT_ID:?"The Tributech Agent requires a GUID"}
       - EdgeDeviceOptions__NodeUrl=${NODE_URL:?"The Tributech Node Url is required"}
     volumes:
       - ./bin/data:/app/data #default directory for keys and datatwin file

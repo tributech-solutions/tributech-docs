@@ -8,7 +8,7 @@ services:
       - tributech-agent
     environment:
       - MqttOptions__MQTTHost=mosquitto-server-simulated
-      - Logging__LogLevel__Default=Debug
+      - Logging__LogLevel__Default=Information
     networks:
       - simulated-net
     restart: unless-stopped
@@ -23,17 +23,16 @@ services:
     depends_on:
       - mosquitto-server-simulated
     environment:
-      - Logging__LogLevel__Default=Debug
+      - Logging__LogLevel__Default=Information
       - Logging__Console__FormatterName=simple
       - MqttOptions__MQTTHost=mosquitto-server-simulated
-      - EdgeDeviceOptions__AgentID=${AGENT_ID:?"The Tributech Agent requires a GUID"}
       - EdgeDeviceOptions__NodeUrl=${NODE_URL:?"The Tributech Node Url is required"}
     ports:
       - "5001:8080"
     networks:
       - simulated-net
     volumes:
-      - ./volumes/simulated/agent/:/app/data # volume mapping for permanent storage of keys and datatwin file
+      - app-data:/app/data # volume mapping for permanent storage of keys and datatwin file
     restart: unless-stopped
     logging:
       driver: "json-file"
@@ -49,6 +48,9 @@ services:
     # - '1883:1883' # MQTT
     # - "127.0.0.1:9001:9001" # web-socket
     restart: unless-stopped
+
+volumes:
+  app-data:
 
 networks:
   simulated-net:
