@@ -36,7 +36,7 @@ Agents and Sources have **independent** Health Checks:
 - **Agent Health Checks** monitor the Agent's connectivity and internal reliability — e.g. the Agent-to-Node connection, the Agent-to-source-broker connection, MQTT client health, enrollment certificate availability, dead-letter-queue (DLQ) pressure and stalled streams.
 - **Source Health Checks** monitor the Source's own connectivity and its streams — e.g. the source-broker connection back to the Agent and faults in the Source's streams — plus protocol-specific conditions (OPC-UA server state, ADS/PLC readiness, MQTT subscriptions, REST post-failure ratios).
 
-A Source does not talk to the backend directly: it sends its Health Check to the Agent, and the **Agent signs and forwards** it to the Node, which relays it to the Demeter backend for signature validation and storage.
+A Source does not talk to the Tributech Node directly: it sends its Health Check to the Agent, and the **Agent signs and forwards** it to the Tributech Node, which verifies the signature and stores it.
 
 <ThemedImage
   alt="Health Check Messaging Flow"
@@ -96,7 +96,7 @@ Health Checks are enabled through the Digital Twin configuration via the `Expect
 
 If the interval is missing, empty or invalid, the Agent falls back to a **30-minute** reporting interval. This keeps Health Checks running, but at a much lower resolution.
 
-If connectivity to the Node or backend is temporarily unavailable, Health Checks continue to be generated and are stored in a size-limited local buffer (oldest entries are overwritten first) and transmitted once communication is restored.
+If connectivity to the Tributech Node is temporarily unavailable, Health Checks continue to be generated and are stored in a size-limited local buffer (oldest entries are overwritten first) and transmitted once communication is restored.
 
 ## Accessing Health Checks
 
