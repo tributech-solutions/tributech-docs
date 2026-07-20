@@ -2,7 +2,7 @@ version: "3.6"
 
 services:
   source-mqtt:
-    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-source-mqtt:${SOURCE_TAG:-latest}
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-source-mqtt:${SOURCE_TAG:-5.2.0}
     depends_on:
       - mosquitto-server
       - tributech-agent
@@ -19,7 +19,7 @@ services:
         max-file: "5"
 
   tributech-agent:
-    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-agent:${AGENT_TAG:-latest}
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-agent:${AGENT_TAG:-5.4.2}
     depends_on:
       - mosquitto-server
     environment:

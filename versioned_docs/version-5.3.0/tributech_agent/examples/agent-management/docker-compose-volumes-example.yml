@@ -1,6 +1,6 @@
 services:
   tributech-agent:
-    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-agent:${AGENT_TAG:-latest}
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-agent:${AGENT_TAG:-5.4.2}
     depends_on:
       - mosquitto-server
     environment:

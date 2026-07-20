@@ -3,7 +3,7 @@ version: '3.6'
 services:
   source-ads:
     restart: unless-stopped
-    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-source-ads:${SOURCE_TAG:-latest}
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-source-ads:${SOURCE_TAG:-5.1.3}
     depends_on:
       - mosquitto-server-mqtt
       - tributech-agent
@@ -21,7 +21,7 @@ services:
         max-file: "5"
 
   tributech-agent:
-    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-agent:${AGENT_TAG:-latest}
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-agent:${AGENT_TAG:-5.4.2}
     depends_on:
       - mosquitto-server
     environment:
