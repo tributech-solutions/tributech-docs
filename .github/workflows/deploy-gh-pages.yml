@@ -1,20 +1,19 @@
 name: Publish docs via GitHub Pages
 
 on:
-  pull_request:
-    branches:
-      - master
   push:
     branches:
       - master
+  pull_request:
+    branches: [ master ]
 
 jobs:
   checks:
-    if: github.event_name != 'push'
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: '23.x'
       - name: Test Build
@@ -23,14 +22,14 @@ jobs:
           npm run build
 
   gh-release:
-    if: github.event_name != 'pull_request'
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: '23.x'
-      - uses: webfactory/ssh-agent@v0.5.0
+      - uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555 # v0.10.0
         with:
           ssh-private-key: ${{ secrets.GH_PAGES_DEPLOY }}
       - name: Release to GitHub Pages
