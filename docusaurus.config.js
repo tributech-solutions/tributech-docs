@@ -11,7 +11,7 @@ export default {
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.png',
   organizationName: 'tributech-solutions',
-  projectName: 'tributech-dsk-docs',
+  projectName: 'tributech-docs',
   themeConfig: {
     navbar: {
       title: 'Tributech Documentation',
@@ -108,7 +108,7 @@ export default {
           includeCurrentVersion: false,
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
-            'https://github.com/tributech-solutions/tributech-dsk-docs/edit/master/',
+            'https://github.com/tributech-solutions/tributech-docs/edit/master/',
         },
         blog: false,
         theme: {

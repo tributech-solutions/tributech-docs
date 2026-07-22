@@ -59,7 +59,9 @@ This command generates static content into the `build` directory and can be serv
 
 ## Deployment
 
-The master branch get automatically deployed using Github-Actions.
+Pushing to master triggers the `Publish docs via GitHub Pages` workflow. The `build` job builds the site, and the `deploy` job publishes the build output straight to GitHub Pages using GitHub's native Actions deployment, authenticated via the workflow's own token.
+
+The site is live at docs.tributech.io, configured via `static/CNAME`.
 
 ## Versioning
 

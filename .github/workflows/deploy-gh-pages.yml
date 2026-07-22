@@ -1,44 +1,46 @@
 name: Publish docs via GitHub Pages
 
 on:
-  pull_request:
-    branches:
-      - master
   push:
     branches:
       - master
+  pull_request:
+    branches: [ master ]
+
+permissions:
+  contents: read
+  pages: write # to deploy to Pages
+  id-token: write # to verify the deployment originates from an appropriate source
+# deploy-pages can fail or race if two deployments to the same Pages environment run at once
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
-  checks:
-    if: github.event_name != 'push'
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: '23.x'
-      - name: Test Build
+      - name: Build
         run: |
           yarn install --frozen-lockfile
           npm run build
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        if: github.ref == 'refs/heads/master'
+        with:
+          path: build
 
-  gh-release:
-    if: github.event_name != 'pull_request'
+  deploy:
+    if: github.ref == 'refs/heads/master'
+    needs: build
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '23.x'
-      - uses: webfactory/ssh-agent@v0.5.0
-        with:
-          ssh-private-key: ${{ secrets.GH_PAGES_DEPLOY }}
-      - name: Release to GitHub Pages
-        env:
-          USE_SSH: true
-          GIT_USER: git
-        run: |
-          git config --global user.email "doc@tributech.io"
-          git config --global user.name "Documentation"
-          yarn install --frozen-lockfile
-          npm run deploy
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 # v5.0.0
