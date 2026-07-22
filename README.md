@@ -59,9 +59,9 @@ This command generates static content into the `build` directory and can be serv
 
 ## Deployment
 
-Pushing to master triggers the `Publish docs via GitHub Pages` workflow. Its `gh-release` job builds the site and runs `docusaurus deploy`, which pushes the build output to the `gh-pages` branch using the SSH deploy key stored in repo secrets.
+Pushing to master triggers the `Publish docs via GitHub Pages` workflow. The `build` job builds the site, and the `deploy` job publishes the build output straight to GitHub Pages using GitHub's native Actions deployment, authenticated via the workflow's own token.
 
-GitHub Pages is set to serve from the `gh-pages` branch. Every push to that branch is picked up automatically by GitHub's own Pages build system, which publishes the content live at docs.tributech.io.
+The site is live at docs.tributech.io, configured via `static/CNAME`.
 
 ## Versioning
 
