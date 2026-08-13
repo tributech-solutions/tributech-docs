@@ -93,6 +93,14 @@ The [Tributech Agent](overview.md) and [Tributech Sources](source_integration.md
 - ARM 32/64
 - x86/x64
 
+##### Hardened images and file permissions
+
+Since version 5.4.0 our images are hardened: they contain only what is required to run the application and they run as an
+unprivileged user with the user id `1654` instead of `root`. Local folders that are mounted into a container — the
+`enrollment` folder and the Agent's data folder — must therefore be accessible to that user id. Our
+`docker-compose.yml` examples take care of this, see
+[Container File Permissions](setup.mdx#container-file-permissions).
+
 ##### Docker login
 
 In Order to gain access to the private Azure Container Registry we must visit the `Tributech Node Secrets section`

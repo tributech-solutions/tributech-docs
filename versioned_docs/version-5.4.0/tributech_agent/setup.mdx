@@ -118,11 +118,82 @@ stay the same.
 
 <CodeBlock className="language-yml" title="docker-compose.yml section">{DockerComposeVolumesExample}</CodeBlock>
 
+The mounted folders must be accessible to the unprivileged user the Agent runs as, see
+[Container File Permissions](#container-file-permissions).
+
 
 ### Environment Variables
 The second way to add enrollment certificates to a Tributech Agent is to use [environment variables](https://docs.docker.com/compose/environment-variables/set-environment-variables/). The content of the certificate files needs to be converted into a base64 encoded string without whitespaces, i.e. detailed information on how to convert a file into a base64 representation can be found here for [Windows](https://github.com/tributech-solutions/tributech-enrollment/tree/main/Windows) and [Unix](https://github.com/tributech-solutions/tributech-enrollment/tree/main/Linux). We then add the base64 encoded content of the `enrollment.crt` (Certificate) as `EnrollmentOptions__EnrollmentCertBase64` value and the `EnrollmentOptions__EnrollmentKeyBase64` contains base64 encoded `enrollment.key` content.
 
 <CodeBlock className="language-yml" title="docker-compose.yml section">{DockerComposeEnviromentExample}</CodeBlock>
+
+Even without a mounted `enrollment` folder the Agent still needs a writable data folder, see
+[Container File Permissions](#container-file-permissions).
+
+## Container File Permissions
+
+Starting with version 5.4.0 the Tributech Agent and Tributech Source images are **hardened**: everything that is not
+required to run the application has been stripped from the image, and the application no longer runs as `root` but as a
+dedicated unprivileged user with the **user id `1654`**. This reduces the attack surface, because an attacker who gains
+access to a container finds neither a shell nor any stray tooling to work with, and holds no root privileges.
+
+This has one practical consequence for the setup. A Tributech Agent uses two local folders:
+
+- **`./enrollment`** — created by you, holds the [enrollment certificates](#authentication-certificates-enrollment) the
+  Agent reads on startup. Not needed when the certificates are supplied via [environment variables](#environment-variables).
+- **`./volumes`** — created by Docker on the first start, holds the Agent's own persistent data: its keys, the generated
+  certificates and the datatwin file. Always required.
+
+Both are mounted into the container from the host, and for such mounts the **host** file ownership applies inside the
+container. The folders must therefore be accessible to user id `1654`, otherwise the Agent cannot read its certificates
+or write its keys. It cannot correct this itself, because the hardened image contains no tooling to change ownership.
+
+:warning: ***This affects the enrollment certificates in particular:*** `enrollment.key` is created with owner-only
+permissions, so an Agent running as user id `1654` cannot read it even though the file is present. Mounting the folder
+read-only does **not** avoid the problem.
+
+### Preparing the folders
+
+Our `docker-compose.yml` examples solve this with an additional `init-permissions` service. It runs a small helper
+container that adjusts the ownership of both folders and then exits, before the Agent is started:
+
+```yml
+  init-permissions:
+    image: busybox:1.36
+    user: "0:0"
+    command: sh -c "chown -R 1654:1654 /mnt/enrollment /mnt/volumes"
+    volumes:
+      - ./enrollment:/mnt/enrollment
+      - ./volumes:/mnt/volumes
+```
+
+The Tributech Agent then waits for it to finish successfully:
+
+```yml
+  tributech-agent:
+    depends_on:
+      init-permissions:
+        condition: service_completed_successfully
+```
+
+The helper container needs no privileges on the host, because the Docker daemon already runs as `root`. The paths on the
+right hand side (`/mnt/...`) are only used inside the helper container and can be named freely — what matters are the
+host folders on the left. When the certificates are provided via [environment variables](#environment-variables), the
+`./enrollment` folder does not exist and only `./volumes` needs to be prepared.
+
+Alternatively the ownership can be adjusted once manually on the host, which requires root privileges:
+
+```bash
+sudo chown -R 1654:1654 enrollment volumes
+```
+
+:bulb: Both variants transfer the folders to user id `1654`, which means your own user can no longer modify them. To keep
+access, e.g. to renew the enrollment certificates later, set your own group instead of `1654` as the group
+(`id -g` prints it):
+
+```bash
+chown -R 1654:<your group id> enrollment volumes
+```
 
 ## Starting a Tributech Agent
 After we have prepared the Tributech Agent certificates for the enrollment we can now startup whole environment.

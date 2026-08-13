@@ -29,6 +29,9 @@ The Tributech Simulated Source image can be started without any dependencies but
     {SourceDockerCompose}
   </CodeBlock>
 
+The `enrollment` and `volumes` folders must be accessible to the unprivileged user the Agent runs as, see
+[Container File Permissions](../setup.mdx#container-file-permissions).
+
 Adjust the setting for the [Tributech Agent](../overview.md) to your environment, sample value:
 
 <CodeBlock className="language-plain" title="env specific settings">
