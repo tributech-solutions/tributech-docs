@@ -4,8 +4,8 @@ sidebar_position: 1
 ---
 
 import ThemedImage from '@theme/ThemedImage';
-import ArchitectureLight from './img/tributech-architecture-light.png';
-import ArchitectureDark from './img/tributech-architecture-dark.png';
+import ArchitectureLight from './img/data-middleware-architecture-light.svg';
+import ArchitectureDark from './img/data-middleware-architecture-dark.svg';
 
 # Tributech Node 
 The Tributech Node is the central layer of the Tributech Platform. It receives the data collected and secured by the [Tributech Agents](../tributech_agent/overview.md), persists it reliably while preserving its integrity and authenticity, and makes it available for inspection, verification and integration.
