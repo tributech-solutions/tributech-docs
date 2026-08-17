@@ -53,8 +53,29 @@ Process.
   sources={{ light: ArchitectureLight, dark: ArchitectureDark }}
 />
 
+The diagram above shows where a Tributech Agent fits into the overall platform. On the edge device the Agent receives its
+data from [Tributech Sources](source_integration.md), which connect to the existing infrastructure via protocols such as
+[OPC-UA](sources/opcua_source.mdx), [MQTT](sources/mqtt_source.mdx), [ADS](sources/ads_source.mdx) or
+[REST](sources/rest_source.mdx) — the [Simulated Source](sources/simulated_source.mdx) used in this guide generates its
+values itself. Embedded devices that cannot run a container can instead integrate the
+[Tributech C-SDK](../tributech_c_sdk/overview.md) into their firmware and submit their data without a separate Source.
+
 The communication between [Tributech Sources](source_integration.md) and the Tributech Agent will take place on the same
 edge device via a local Message Broker connection. This channel is used on the one hand to send configurations and commands from Tributech Agent to the Tributech Source and on the other hand to send data streams from the Tributech Source to the Agent.
+
+The Agent creates the proofs for the received values and transfers them together with the data to the
+[Tributech Node](../tributech_node/overview.md) over an outgoing MQTTS connection. The same connection is used for the
+[Enrollment](#authentication-certificates-enrollment) of the Agent and, in the opposite direction, for its
+[Digital Twin Configuration](../tributech_node/agent/agent_configuration.mdx#configuring-an-agent) and for
+[commands](source_integration.md#commands). Within the Node the data is notarized, processed and persisted, so that the
+values, their proofs and the resulting twin graph remain available for
+[verification](../tributech_node/agent/verification.mdx).
+
+External applications never communicate with a Tributech Agent directly. They consume the data through the interfaces of
+the [Tributech Node](../tributech_node/overview.md) — the [REST API](../tributech_node/api_category/API_integration.md),
+[Webhooks](../tributech_node/Webhook_integration.md), a message broker or the
+[MCP server](../tributech_node/MCP_integration.md) — for which access is
+[authorized](../tributech_node/api_category/API_integration.md#authorization) following the OAuth 2.0 specification.
 
 ## Authentication Certificates (Enrollment)
 
