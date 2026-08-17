@@ -218,7 +218,7 @@ Sample values:
 The Tributech Agent authenticates with the Tributech Node using enrollment certificates provided through a local `enrollment` folder mounted into the container (the `./enrollment:/app/enrollment` volume in the `docker-compose.yml` above). See [Authentication Certificates (Enrollment)](#authentication-certificates-enrollment) and [Docker volumes](#docker-volumes) above for how to create and provide it. If the base64 environment variable method is preferred instead, adapt the service as shown in the [Environment Variables](#environment-variables) section. If no Agent ID is configured, the agent generates a random one on first start.
 
 
-We can now ***Startup*** the environment by running the following command (or `docker-compose` for older versions):
+We can now ***Startup*** the environment by running the following command:
 <CodeBlock className="bash" title="terminal">
 docker compose up -d
 </CodeBlock>

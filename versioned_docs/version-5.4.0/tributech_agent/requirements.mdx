@@ -3,8 +3,6 @@ title: Requirements
 sidebar_position: 2
 ---
 
-import CodeBlock from '@theme/CodeBlock';
-import SourceDockerCompose from '!!raw-loader!./examples/agent/docker-compose-agent-integration.yml';
 import ThemedImage from '@theme/ThemedImage';
 import SecretsDockerRegistryLight from './img/secrets-docker-registry-light.png';
 import SecretsDockerRegistryDark from './img/secrets-docker-registry-dark.png';
@@ -88,6 +86,9 @@ that those ports need only be exposed in a private network between the customer 
 
 #### Container environment
 In our examples we use the [**Docker Engine**](https://docs.docker.com/engine/) and [**Docker Compose**](https://docs.docker.com/compose/) for the management/orchestration of the Docker services on an Ubuntu x86 system, for other systems visit the [official docker documentation](https://docs.docker.com/engine/install).
+
+**Docker Compose v2 or later is required** (the `docker compose` command). Our `docker-compose.yml` examples use
+`depends_on` conditions, which the discontinued standalone `docker-compose` v1 does not support.
 
 The [Tributech Agent](overview.md) and [Tributech Sources](source_integration.md) support the following architectures
 - ARM 32/64
