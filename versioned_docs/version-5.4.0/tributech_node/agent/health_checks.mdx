@@ -90,6 +90,24 @@ The remaining fields are diagnostic indicators that differ between the Agent and
 | `-1` | Unhealthy |
 | `-2` | Critical |
 
+## Health state during a reporting period
+
+The reported `healthState` describes the **whole reporting period**, not only the moment the message is sent. Negative
+states are retained: if a problem occurs at any point during the period, it is reported even when it has already
+resolved itself before the message is sent.
+
+- If no problem occurred during the period, the message reports the current state — normally `Ok`.
+- If a problem occurred during the period, the message reports the negative state, e.g. `Degraded`, and the
+  `healthMessage` names the problem and how often it occurred during that period.
+
+This matters because a Health Check is only sent once per interval. With a reporting interval of five minutes — or the
+30-minute fallback interval — a connection that drops and recovers in between would otherwise leave no trace at all, and
+a recurring short interruption would stay invisible.
+
+A negative state therefore does not necessarily mean that the component is broken **right now**. The `healthMessage` and
+its occurrence count show what happened during the period, and the following period reports `Ok` again if the problem
+does not occur any more.
+
 ## Configuration
 
 Health Checks are enabled through the Digital Twin configuration via the `ExpectedHealthFrequency` property (an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations), e.g. `PT30S`) — on a Digital Twin model version that supports it (see the requirements above).
