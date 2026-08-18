@@ -102,7 +102,7 @@ export default {
       '@docusaurus/preset-classic',
       {
         docs: {
-          lastVersion: '5.3.0',
+          lastVersion: '5.4.0',
           routeBasePath: '/',
           disableVersioning: false,
           includeCurrentVersion: false,
@@ -111,6 +111,9 @@ export default {
             'https://github.com/tributech-solutions/tributech-docs/edit/master/',
         },
         blog: false,
+        // SVG imports resolve to a URL instead of a React component, so they
+        // can be passed to <img>/<ThemedImage> just like the PNG imports.
+        svgr: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },

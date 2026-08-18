@@ -1,0 +1,130 @@
+---
+title: OPC-UA Source
+sidebar_position: 3
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import SourceDockerCompose from '!!raw-loader!../examples/agent-source/opcua/docker-compose.yml';
+import EnvSample from '!!raw-loader!../examples/agent-management/agent-service-sample-values-source.yml';
+import ThemedImage from '@theme/ThemedImage';
+import NodeAgentConfigurationLight from '../img/node-agent-configure-light.png';
+import NodeAgentConfigurationDark from '../img/node-agent-configure-dark.png';
+import NodeOPCUAAddSourceLight from '../img/node-source-opcua-add-light.png';
+import NodeOPCUAAddSourceDark from '../img/node-source-opcua-add-dark.png';
+import NodeOPCUAConfigSourceLight from '../img/node-source-opcua-add-config-light.png';
+import NodeOPCUAConfigSourceDark from '../img/node-source-opcua-add-config-dark.png';
+import NodeOPCUAAddStreamLight from '../img/node-source-opcua-add-stream-light.png';
+import NodeOPCUAAddStreamDark from '../img/node-source-opcua-add-stream-dark.png';
+import NodeOPCUAStreamConfigLight from '../img/node-source-opcua-add-stream-config-light.png';
+import NodeOPCUAStreamConfigDark from '../img/node-source-opcua-add-stream-config-dark.png';
+
+The Tributech OPC-UA Source allows to connect to an [**OPC Unified Architecture (UA)**](https://opcfoundation.org/about/opc-technologies/opc-ua/) server and receive data.  The Tributech OPC-UA Source acts like a OPC-UA Client in a docker environment and enables the forwarding of the data to a Tributech Agent stream.
+
+## Setup
+The Tributech OPC-UA Source image can be started without any dependencies but will not be functional without a valid Twin Configuration or MessageBroker connect to the Tributech Agent. The TwinConfiguration can be provided via the Tributech Node (recommended) or MessageBroker (see [Source Integration](../source_integration#twin-model)). The OPC-UA Source will automatically connect to the Tributech Agent if the Tributech Agent is running and correct MessageBroker settings are set. In the following part we will describe the setup of a Tributech OPC-UA Source:
+
+- Create a `docker-compose.yml` file with the following content (adjustments required):
+<CodeBlock className="language-yml" title="docker-compose.yml">{SourceDockerCompose}</CodeBlock>
+
+The `enrollment` and `volumes` folders must be accessible to the unprivileged user the Agent runs as, see
+[Container File Permissions](../setup.mdx#container-file-permissions).
+
+Adjust the setting for the [Tributech Agent](../overview.md) to your environment, sample value:
+<CodeBlock className="language-plain" title="env specific settings">{EnvSample}</CodeBlock>
+
+The Tributech Agent authenticates with the Tributech Node using enrollment certificates provided through a local `enrollment` folder mounted into the container (the `./enrollment:/app/enrollment` volume in the `docker-compose.yml` above). See [Authentication Certificates (Enrollment)](../setup.mdx#authentication-certificates-enrollment) and [Docker volumes](../setup.mdx#docker-volumes) in the Setup guide for how to create and provide it. If no Agent ID is configured, the agent generates a random one on first start.
+
+## Configuration
+
+After setting up the Tributech OPC-UA Source we need to activate it in the Tributech Node (see [Agent Management](../../tributech_node/agent/agent_management.mdx#activate-agent)) and configure the TwinConfiguration.
+
+<ThemedImage
+  alt="Configure Agent"
+  sources={{ light: NodeAgentConfigurationLight, dark: NodeAgentConfigurationDark }}
+/>
+
+We can then add a new OPC-UA Stream by right clicking on the OPC-UA Source entry:
+
+<ThemedImage
+  alt="Add OPC-UA Source"
+  sources={{ light: NodeOPCUAAddSourceLight, dark: NodeOPCUAAddSourceDark }}
+/>
+
+In order to connect to the OPC-UA Server we need to configure the OPC-UA Server settings. The following screenshot shows the description for each setting (an example server endpoint is `opc.tcp://<host>:62541/Quickstarts/ReferenceServer`):
+
+
+<ThemedImage
+  alt="Config OPC-UA Source"
+  sources={{ light: NodeOPCUAConfigSourceLight, dark: NodeOPCUAConfigSourceDark }}
+/>
+
+Next we can add a new OPC-UA Stream by clicking on the `Add Streams` and `OPC UA Stream`:
+
+<ThemedImage
+  alt="Add OPC-UA Stream"
+  sources={{ light: NodeOPCUAAddStreamLight, dark: NodeOPCUAAddStreamDark }}
+/>
+
+The OPC-UA Stream can be configured with the following settings (the Identifier shown is an example):
+
+<ThemedImage
+  alt="Add OPC-UA Stream config"
+  sources={{ light: NodeOPCUAStreamConfigLight, dark: NodeOPCUAStreamConfigDark }}
+/>
+
+
+We can continue adding every Identifier we want to read from the OPC-UA Server.
+
+Each OPC-UA Stream is bound to a node on the server via its **Identifier**, which can be given in two forms:
+
+- **Node ID** — the server's node identifier, e.g. `ns=3;i=1837` (`ns` is the namespace index, `i` the numeric identifier).
+- **Relative (browse) path** — a path of `namespaceIndex:BrowseName` segments separated by `/`, e.g. `3:Data/3:Static/3:Scalar/3:DoubleValue`. The source resolves the path by browsing the server's address space.
+
+Node IDs continue to work as before. Relative paths are often more convenient when the same configuration is deployed to **multiple servers or devices**, where the numeric node IDs and namespace indices can differ from server to server while the browse path stays the same. If an Identifier cannot be resolved on the server, the corresponding stream is marked as faulty and reported in the source's [Health Check](../../tributech_node/agent/health_checks.mdx).
+
+After all streams have been configured, we can apply the configuration to the Tributech Agent by clicking on the `APPLY CONFIGURATION` button in the top right corner.
+
+:::warning
+Without a running OPC-UA Server we will not receive any data on the Tributech Node.
+:::
+
+### Value Change Options
+The basic handling of Value Change Options (VCO) can be found in [Source Integration](../source_integration.md). This section contains the concrete handling of the ***Step (Delta)*** for the simulated source. The following list contains the description for each supported ***Stream Data Encoding*** where ***X*** represents the value for ***Step (Delta)***:
+
+- ***Double***, ***Int32***, ***Long***, ***Float***: defines the minimum difference between values to be submitted, the change is always compared to the last successful submitted value, e.g. if ***X***= 3 if the double values 1, 2, 5, 8, 10, 11, 14 are received by the Tributech Source only 1, 5, 8, 11, 14 will be submitted.
+- ***Byte Array***: will only be submitted if the current and last submitted value are not equal
+- ***String UTF 8***: will only be submitted if the current and last submitted value are not equal
+- ***Boolean***: will only be submitted if the current and last submitted value are not equal
+
+## Authentication and Security
+
+How the OPC-UA Source connects to the server is controlled by two independent options, set as environment variables on the `opcua-source` service. What the server actually accepts depends on the OPC-UA server's own configuration.
+
+- **`OPCUASourceOptions__UseSecurity`** — when `true`, the communication channel to the server is encrypted (message signing/encryption); when `false` the channel is unencrypted.
+- **`OPCUASourceOptions__AuthMode`** — how the source authenticates as a user:
+  - **`Anonymous`** (default) — no user identity.
+  - **`UsernamePassword`** — user-level access control with a username and password (`OPCUASourceOptions__Username` / `OPCUASourceOptions__Password`).
+  - **`Certificate`** — user identity via an X.509 client certificate (`OPCUASourceOptions__UserCertificatePath`).
+
+The two options can be combined:
+
+| AuthMode | UseSecurity | Result |
+| --- | --- | --- |
+| `Anonymous` | `false` | Unencrypted channel, no user identity |
+| `Anonymous` | `true` | Encrypted channel, no user identity |
+| `UsernamePassword` | `false` | Unencrypted channel, user-level access control |
+| `UsernamePassword` | `true` | Encrypted channel **and** user-level access control (recommended) |
+| `Certificate` | *(always secured)* | Encrypted channel + user identity via certificate |
+
+For example, to authenticate with a username and password over an encrypted channel, add the following to the `opcua-source` service environment:
+
+```yaml
+    environment:
+      # ...
+      - OPCUASourceOptions__UseSecurity=true
+      - OPCUASourceOptions__AuthMode=UsernamePassword
+      - OPCUASourceOptions__Username=user1
+      - OPCUASourceOptions__Password=password
+```
+
+To establish a secured channel the source uses an OPC-UA **application certificate**. By default an RSA application certificate is generated automatically on first start; a custom one can be supplied via `OPCUASourceOptions__AppCertificatePath`. When using `Certificate` auth mode, the application and user certificate key types (RSA/ECC) must be compatible with the security policies the server exposes.

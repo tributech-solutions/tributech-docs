@@ -1,0 +1,124 @@
+---
+title: ADS Source
+sidebar_position: 2
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import SourceDockerCompose from '!!raw-loader!../examples/agent-source/ads/docker-compose.yml';
+import EnvSample from '!!raw-loader!../examples/agent-management/agent-service-sample-values-source.yml';
+import ThemedImage from '@theme/ThemedImage';
+import NodeAgentConfigurationLight from '../img/node-agent-configure-light.png';
+import NodeAgentConfigurationDark from '../img/node-agent-configure-dark.png';
+import NodeADSAddSourceLight from '../img/node-source-ads-add-light.png';
+import NodeADSAddSourceDark from '../img/node-source-ads-add-dark.png';
+import NodeADSConfigSourceLight from '../img/node-source-ads-config-light.png';
+import NodeADSConfigSourceDark from '../img/node-source-ads-config-dark.png';
+import NodeADSAddStreamLight from '../img/node-source-ads-stream-add-light.png';
+import NodeADSAddStreamDark from '../img/node-source-ads-stream-add-dark.png';
+import NodeADSStreamConfigLight from '../img/node-source-ads-stream-config-light.png';
+import NodeADSStreamConfigDark from '../img/node-source-ads-stream-config-dark.png';
+import NodeADSStreamDataLight from '../img/node-source-ads-stream-data-light.png';
+import NodeADSStreamDataDark from '../img/node-source-ads-stream-data-dark.png';
+
+
+The Tributech ADS Source allows to connect to an [Beckhoff ADS Server](https://infosys.beckhoff.com/english.php?content=../content/1033/cx8190_hw/5091854987.html) and receive or write values to the ADS Server.
+The Source acts like a ADS Client in a docker environment and enables the forwarding of the data to a Tributech Agent stream.
+
+The Tributech ADS Source provides control over the single symbol paths:
+- Which symbol path to receive
+- How and when to receive a value from the symbol
+- What kind of datatype should be received from the symbol
+- When should a symbol be written to (Optional)
+
+We generally provide two different ways to configure the Tributech ADS Source read operations for each symbol path individually:
+- ***Cyclic Reading*** - The symbol path will be read in a defined interval
+- ***On Change*** - The symbol path will be read when the value of the symbol has been changed
+
+
+## Setup
+The Tributech ADS Source image can be started without any dependencies but will not be functional without a valid Twin Configuration or MessageBroker connect to the Tributech Agent. The TwinConfiguration can be provided via the Tributech Node (recommended) or MessageBroker (see [Source Integration](../source_integration#twin-model)). The ADS Source will automatically connect to the Tributech Agent if the Tributech Agent is running and correct MessageBroker settings are set.
+
+In the following part we will describe the setup of a Tributech ADS Source.
+
+- Create a `docker-compose.yml` file with the following content (adjustments required):
+<CodeBlock className="language-yml" title="docker-compose.yml">{SourceDockerCompose}</CodeBlock>
+
+The `enrollment` and `volumes` folders must be accessible to the unprivileged user the Agent runs as, see
+[Container File Permissions](../setup.mdx#container-file-permissions).
+
+Adjust the setting for the [Tributech Agent](../overview.md) to your environment, sample value:
+<CodeBlock className="language-plain" title="env specific settings">{EnvSample}</CodeBlock>
+
+The Tributech Agent authenticates with the Tributech Node using enrollment certificates provided through a local `enrollment` folder mounted into the container (the `./enrollment:/app/enrollment` volume in the `docker-compose.yml` above). See [Authentication Certificates (Enrollment)](../setup.mdx#authentication-certificates-enrollment) and [Docker volumes](../setup.mdx#docker-volumes) in the Setup guide for how to create and provide it. If no Agent ID is configured, the agent generates a random one on first start.
+
+## Configuration
+
+After setting up the Tributech ADS Source we need to activate it in the Tributech Node (see [Agent Management](../../tributech_node/agent/agent_management.mdx#activate-agent)) and configure the TwinConfiguration.
+
+<ThemedImage
+  alt="Configure Agent"
+  sources={{ light: NodeAgentConfigurationLight, dark: NodeAgentConfigurationDark }}
+/>
+
+We can now add by right clicking the Device Edge entry a new Beckhoff TwinCat ADS Source.
+
+<ThemedImage
+  alt="Add ADS Source"
+  sources={{ light: NodeADSAddSourceLight, dark: NodeADSAddSourceDark }}
+/>
+
+In order to connect to the ADS Server we need to configure the ADS Server settings. The following table contains the description for each setting:
+
+<ThemedImage
+  alt="Config ADS Source"
+  sources={{ light: NodeADSConfigSourceLight, dark: NodeADSConfigSourceDark }}
+/>
+
+Description for the settings:
+
+| Setting | Description |
+| --- | --- |
+| **Server AMS Net Id** | AMS Net Id of the PLC ADS Server |
+| **ADS Server Port** | Port of the PLC ADS Server |
+| **ADS Server IP Address** | IP-Address of the PLC ADS Server (needed for whitelist) |
+| **Client AMS Net Id** | AMS Net Id of the ADS Source |
+| **InProcess Router Port** | Should always be **48898**, only needs to be changed if the network configuration changes |
+| **Read Cycle Default Interval** | Default read interval value for all cyclic streams, will only be overruled if defined in the stream itself |
+| **Configuration writing Cycle** | Write function cycle time to write values to the server (used for every parameter) |
+
+We can then add a new ADS Stream by right clicking on the ADS Source entry:
+
+<ThemedImage
+  alt="Add ADS Stream"
+  sources={{ light: NodeADSAddStreamLight, dark: NodeADSAddStreamDark }}
+/>
+
+The following screenshot contains the information for each setting for the ADS Stream path for a type LREAL (double), that will be read every 10sec from the ADS Server:
+
+<ThemedImage
+  alt="Add ADS Stream config"
+  sources={{ light: NodeADSStreamConfigLight, dark: NodeADSStreamConfigDark }}
+/>
+
+We can continue adding every symbol path we want to read from the ADS Server.
+
+After all symbol paths have been configured, we can apply the configuration to the Tributech Agent by clicking on the `APPLY CONFIGURATION` button in the top right corner.
+
+:::warning
+Without a running ADS Server we will not receive any data on the Tributech Node.
+:::
+
+We can now see the value of the symbol path in the `Beckhoff TwinCat ADS Stream`:
+
+<ThemedImage
+  alt="ADS Stream data"
+  sources={{ light: NodeADSStreamDataLight, dark: NodeADSStreamDataDark }}
+/>
+
+### Value Change Options
+The basic handling of Value Change Options (VCO) can be found in [Source Integration](../source_integration.md#value-change-options). This section contains the concrete handling of the ***Step (Delta)*** for the simulated source. The following list contains the description for each supported ***ADSDataType*** where ***X*** represents the value for ***Step (Delta)***:
+
+- ***INT***, ***UINT***, ***WORD***, ***SINT***, ***DINT***, ***UDINT***, ***DWORD***, ***REAL***, ***LREAL***: defines the minimum difference between values to be submitted, the change is always compared to the last successful submitted value, e.g. if ***X***= 3 if the values 1, 2, 5, 8, 10, 11, 14 are received by the Tributech Source only 1, 5, 8, 11, 14 will be submitted.
+-  ***USINT***,  ***BYTE***: will only be submitted if the value of the first byte of the current value is bigger or equal than the previous value
+- ***BOOL***: will only be submitted if the current and last submitted value are not equal
+- ***STRING***: will only be submitted if the current and last submitted value are not equal

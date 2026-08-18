@@ -1,0 +1,124 @@
+---
+title: REST Source
+sidebar_position: 5
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import SourceDockerCompose from '!!raw-loader!../examples/agent-source/rest/docker-compose.yml';
+import EnvSample from '!!raw-loader!../examples/agent-management/agent-service-sample-values-source.yml';
+import ThemedImage from '@theme/ThemedImage';
+import NodeRESTAddSourceLight from '../img/node-source-rest-add-light.png';
+import NodeRESTAddSourceDark from '../img/node-source-rest-add-dark.png';
+import NodeRESTAddStreamLight from '../img/node-source-rest-add-stream-stream-light.png';
+import NodeRESTAddStreamDark from '../img/node-source-rest-add-stream-stream-dark.png';
+import NodeRESTStreamConfigLight from '../img/node-source-rest-add-stream-stream-config-light.png';
+import NodeRESTStreamConfigDark from '../img/node-source-rest-add-stream-stream-config-dark.png';
+import NodeRESTAddPayloadLight from '../img/node-source-rest-add-stream-payload-light.png';
+import NodeRESTAddPayloadDark from '../img/node-source-rest-add-stream-payload-dark.png';
+import NodeRESTPayloadConfigLight from '../img/node-source-rest-add-stream-payload-config-light.png';
+import NodeRESTPayloadConfigDark from '../img/node-source-rest-add-stream-payload-config-dark.png';
+
+The Tributech Agent supports the integration of external data sources using [REST](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design#what-is-rest) with the  Tributech REST Source. The REST Source is configured via the Twin Configuration and is used to send data to the Tributech Agent via [MQTT](https://mqtt.org/).
+ The data can be send to the Tributech Source via [Swagger](https://swagger.io/specification/).
+
+ We currently support two types of data format for the REST Source:
+
+- __REST Pre-defined Payload__: Data will be provided in a pre-defined format containing a unique combination of
+  MachineId and SensorId to identify the DataStreamId of the Twin Configuration (see [Swagger](#rest-endpointswagger) for details)
+- __REST Stream__: Data will be provided with the DataStreamId of the Twin Configuration contained in the data (see
+  [Swagger](#rest-endpointswagger) for details)
+
+We will show in [Configuration](#configuration) how to configure the REST Source to accept data for each specific stream type and provide the examples for [Swagger](#rest-endpointswagger).
+
+The Source will return a status code [200 OK](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) if the data was successfully received and is queued to be published to the Tributech Agent. The status code does not indicate that the data was successfully transferred to the Tributech Agent or Tributech Node. Queueing the data to be published means that the Source received the data and publishes the data after applying options contained by the Twin configuration if defined, e.g. [ValueChangeOptions](#value-change-options).
+
+## Setup
+The Tributech REST Source image can be started without any dependencies but will not be functional without a valid Twin Configuration or MessageBroker connect to the Tributech Agent. The TwinConfiguration can be provided via the Tributech Node (recommended) or MessageBroker (see [Source Integration](../source_integration#twin-model)). The REST Source will automatically connect to the Tributech Agent if the Tributech Agent is running and correct MessageBroker settings are set.
+
+In the following part we will describe the setup of a Tributech REST Source.
+
+- Create a `docker-compose.yml` file with the following content (adjustments required):
+<CodeBlock className="language-yml" title="docker-compose.yml">{SourceDockerCompose}</CodeBlock>
+
+The `enrollment` and `volumes` folders must be accessible to the unprivileged user the Agent runs as, see
+[Container File Permissions](../setup.mdx#container-file-permissions).
+
+Adjust the setting for the [Tributech Agent](../overview.md) to your environment, sample value:
+<CodeBlock className="language-plain" title="env specific settings">{EnvSample}</CodeBlock>
+
+The Tributech Agent authenticates with the Tributech Node using enrollment certificates provided through a local `enrollment` folder mounted into the container (the `./enrollment:/app/enrollment` volume in the `docker-compose.yml` above). See [Authentication Certificates (Enrollment)](../setup.mdx#authentication-certificates-enrollment) and [Docker volumes](../setup.mdx#docker-volumes) in the Setup guide for how to create and provide it. If no Agent ID is configured, the agent generates a random one on first start.
+
+
+
+## Configuration
+After setting up the Tributech REST Source we need to activate it in the Tributech Node (see [Agent Management](../../tributech_node/agent/agent_management.mdx#activate-agent)) and configure the TwinConfiguration. For both Streams we need first to create a new Source in the Tributech Node and then add the Streams to the Source. The following sections will show how to create a new Source and add the Streams to the Source. One Source can include multiple Streams of both types.
+
+<ThemedImage
+  alt="Add REST Source"
+  sources={{ light: NodeRESTAddSourceLight, dark: NodeRESTAddSourceDark }}
+/>
+
+
+### REST Stream
+At first we add the REST Stream to our newly created Tributech REST Source. The REST Stream will be used to send data to the Tributech Node based on an unique identifier contained in the json payload. The REST Stream can be added by right clicking the REST Source and selecting ***Add Streams***. The following dialog will appear:
+
+<ThemedImage
+  alt="Add REST Stream"
+  sources={{ light: NodeRESTAddStreamLight, dark: NodeRESTAddStreamDark }}
+/>
+
+After adding the REST Stream we configure the Data Encoding (in `red`). The REST Stream is now configured but can only be used to send data to the REST Source after submitting the changes to the Tributech Source via `APPLY CONFIGURATION`. The REST Stream will only accept data that contains the DataStreamId of the REST Stream. The DataStreamId can be found on the top of the REST Stream configuration (in `green`):
+
+<ThemedImage
+  alt="REST Stream config"
+  sources={{ light: NodeRESTStreamConfigLight, dark: NodeRESTStreamConfigDark }}
+/>
+
+
+After we have configured the REST Source we can apply the configuration to the Tributech Agent by clicking on the `APPLY CONFIGURATION` button in the top right corner.
+
+### Pre-defined Payload Stream
+In contrast to a generated identifier of the REST Stream we can now define a two string's used to identify the DataStreamId for the REST Source. The pre-defined payload will be added by right clicking the REST Source and selecting ***Add Streams***. The following dialog will appear:
+
+<ThemedImage
+  alt="Add Pre-defined Payload Stream"
+  sources={{ light: NodeRESTAddPayloadLight, dark: NodeRESTAddPayloadDark }}
+/>
+
+After adding the REST Stream we configured the Data Encoding and one or both of the identifiers (Source/Value).
+The Source Identifier and Value Identifier will be used to uniquely match data to the DataStreamId (not contained in payload).
+
+<ThemedImage
+  alt="Pre-defined Payload Stream config"
+  sources={{ light: NodeRESTPayloadConfigLight, dark: NodeRESTPayloadConfigDark }}
+/>
+
+After we have configured the REST Source we can apply the configuration to the Tributech Agent by clicking on the `APPLY CONFIGURATION` button in the top right corner. The REST Stream is now configured and can be used to send data to the REST Source. The REST Stream will only accept data that contains the same combination of `source identifier` and `value identifier`.
+
+### Value Change Options
+The basic handling of Value Change Options (VCO) can be found in [Source Integration](../source_integration.md). This section contains the concrete handling of the ***Step (Delta)*** for the simulated source. The following list contains the description for each supported ***Stream Data Encoding*** where ***X*** represents the value for ***Step (Delta)***:
+
+- ***Double***, ***Int32***, ***Long***, ***Float***: defines the minimum difference between values to be submitted, the change is always compared to the last successful submitted value, e.g. if ***X***= 3 if the double values 1, 2, 5, 8, 10, 11, 14 are received by the Tributech Source only 1, 5, 8, 11, 14 will be submitted.
+- ***Byte Array***: will only be submitted if the current and last submitted value are not equal
+- ***String UTF 8***: will only be submitted if the current and last submitted value are not equal
+- ***Boolean***: will only be submitted if the current and last submitted value are not equal
+
+
+## Providing Data
+In the following section we describe how to provide data to the REST Source using the Swagger UI. The following sections show how to send data to the REST Source for each type of Stream.
+
+### REST Endpoint/Swagger
+The REST Source provides a Swagger UI to send data to the REST Source. The Swagger UI can be accessed via the following url: `http://<host>:5080/swagger/index.html`. There are different endpoints available for each type of Stream and type of data (encoding provided values based on  [**.NET Framework BitConverter**](https://docs.microsoft.com/en-us/dotnet/api/system.bitconverter?view=net-5.0)).
+
+#### REST Stream
+The data for the REST Stream needs to be submitted in the Endpoint Group `Stream` and contain the DataStreamId (previously marked `green` in the [configuration section](#rest-stream)) of the REST Stream. The Swagger UI will only accept data that contains the same DataStreamId in the json payload as defined in the TwinConfiguration for a REST Stream.
+Examples on how to submit data to the REST Source can be found in the Swagger UI under __Stream__ directly, e.g. double stream:
+
+![**"Stream Double Example**](../img/source-rest-stream-double.png)
+
+
+#### REST Pre-defined Payload
+The data for the Pre-defined Payload Stream needs to be submitted in the Endpoint Group `Pre-defined Payload` and contain the same identifier combination as the TwinConfiguration (Set the previously, in the [configuration section](#pre-defined-payload-stream), i.e. defined `source identifier` value as `MachineId` and `value identifier` as `SensorId` of the json payload).
+Examples on how to submit data to the REST Source can be found in the Swagger UI under __Pre-defined Payload__ directly, e.g. double stream:
+
+![**"Stream Double Example**](../img/source-rest-stream-payload-double.png)
