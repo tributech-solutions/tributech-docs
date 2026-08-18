@@ -13,7 +13,7 @@ services:
       - ./volumes:/mnt/volumes
 
   source-mqtt:
-    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-source-mqtt:${SOURCE_TAG:-5.2.0}
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-source-mqtt:${SOURCE_TAG:-5.3.0}
     depends_on:
       - mosquitto-server
       - tributech-agent
@@ -30,7 +30,7 @@ services:
         max-file: "5"
 
   tributech-agent:
-    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-agent:${AGENT_TAG:-5.4.2}
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-agent:${AGENT_TAG:-5.5.0}
     depends_on:
       mosquitto-server:
         condition: service_started

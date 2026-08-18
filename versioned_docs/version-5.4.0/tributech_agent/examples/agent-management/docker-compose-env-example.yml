@@ -10,7 +10,7 @@ services:
       - ./volumes:/mnt/volumes
 
   tributech-agent:
-    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-agent:${AGENT_TAG:-5.4.2}
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-agent:${AGENT_TAG:-5.5.0}
     depends_on:
       mosquitto-server:
         condition: service_started
