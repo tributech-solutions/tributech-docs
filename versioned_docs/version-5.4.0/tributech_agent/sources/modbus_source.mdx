@@ -42,7 +42,7 @@ Adjust the setting for the [Tributech Agent](../overview.md) to your environment
 
 The Tributech Agent authenticates with the Tributech Node using enrollment certificates provided through a local `enrollment` folder mounted into the container (the `./enrollment:/app/enrollment` volume in the `docker-compose.yml` above). See [Authentication Certificates (Enrollment)](../setup.mdx#authentication-certificates-enrollment) and [Docker volumes](../setup.mdx#docker-volumes) in the Setup guide for how to create and provide it. If no Agent ID is configured, the agent generates a random one on first start.
 
-The Modbus Source needs to reach the Modbus TCP device on its Modbus port (`5020` by default) in the private network, see [Tributech Agent Source Requirements](../requirements.mdx#tributech-agent-source-requirements).
+The Modbus Source needs to reach the Modbus TCP device on its Modbus port (`502` by default) in the private network, see [Tributech Agent Source Requirements](../requirements.mdx#tributech-agent-source-requirements).
 
 ## Configuration
 
@@ -66,7 +66,7 @@ We can now add by right clicking the Device Edge entry a new Modbus Source. In o
 | Setting | Value | Required | Default | Description |
 | --- | --- | --- | --- | --- |
 | **Host** | string | Yes | — | IP address or hostname of the Modbus TCP device or gateway. DNS names are resolved before connecting. |
-| **Port** | integer | No | `5020` | Modbus TCP port. |
+| **Port** | integer | No | `502` | Modbus TCP port. |
 | **UnitIdentifier** | 0…255 | No | `255` | Use `255` or `0` for a device addressed directly over TCP. Behind a TCP-to-serial gateway, use the slave ID of the device (1…247). |
 | **WordOrder** | `HighWordFirst` / `LowWordFirst` | No | `HighWordFirst` | Register order for 32/64-bit values. Must match what the device documentation states. |
 | **DefaultReadCycleInterval** | seconds | No | `10` | How often the Source polls. Applies to every stream that does not define its own interval. |
@@ -79,7 +79,7 @@ A sample connection configuration:
 {
   "Name": "Modbus Source",
   "Host": "192.168.1.50",
-  "Port": 5020,
+  "Port": 502,
   "UnitIdentifier": 255,
   "WordOrder": "HighWordFirst",
   "DefaultReadCycleInterval": 5,
