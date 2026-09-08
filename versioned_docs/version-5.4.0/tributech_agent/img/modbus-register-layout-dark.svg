@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1380" width="2560" height="1380" role="img" aria-labelledby="ttl dsc">
+<title id="ttl">Modbus register addressing: value width and word order</title>
+<desc id="dsc">Four 16-bit holding registers at PDU addresses 100 to 103 (vendor numbering 40101 to 40104). INT16 and UINT16 occupy register 100 only; INT32, UINT32 and FLOAT32 occupy 100 and 101; FLOAT64 occupies 100 to 103 — all configured as Identifier HoldingRegister:100. Below, one FLOAT32 read from registers 100 and 101 with WordOrder HighWordFirst gives -16.98, while LowWordFirst swaps the words and gives -7.8866737e+24.</desc>
+<rect width="2560" height="1380" fill="#0C192A"></rect>
+<text x="100" y="104" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="50" font-weight="700" fill="#F4FFFF" text-anchor="start">How wide is a value</text>
+<text x="100" y="152" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="33" font-weight="400" fill="#8C9AAB" text-anchor="start">The PDU address goes in Identifier. The Datatype decides how many 16-bit registers the value covers.</text>
+<text x="480" y="238" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="34" font-weight="600" fill="#F4FFFF" text-anchor="end">PDU address</text>
+<text x="480" y="286" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="34" font-weight="600" fill="#8C9AAB" text-anchor="end">Vendor numbering</text>
+<text x="480" y="352" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="32" font-weight="400" fill="#8C9AAB" text-anchor="end">vendor docs often</text>
+<text x="480" y="388" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="32" font-weight="400" fill="#8C9AAB" text-anchor="end">count from 1</text>
+<text x="717" y="238" font-family="'SFMono-Regular',Menlo,Consolas,'Liberation Mono',monospace" font-size="46" font-weight="700" fill="#F4FFFF" text-anchor="middle">100</text>
+<text x="717" y="286" font-family="'SFMono-Regular',Menlo,Consolas,'Liberation Mono',monospace" font-size="34" font-weight="400" fill="#8C9AAB" text-anchor="middle">40101</text>
+<rect x="512" y="310" width="410" height="100" rx="10" fill="#162334" stroke="#8C9AAB" stroke-width="3"></rect>
+<text x="717" y="372" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="36" font-weight="500" fill="#F4FFFF" text-anchor="middle">16 bits</text>
+<text x="1143" y="238" font-family="'SFMono-Regular',Menlo,Consolas,'Liberation Mono',monospace" font-size="46" font-weight="700" fill="#F4FFFF" text-anchor="middle">101</text>
+<text x="1143" y="286" font-family="'SFMono-Regular',Menlo,Consolas,'Liberation Mono',monospace" font-size="34" font-weight="400" fill="#8C9AAB" text-anchor="middle">40102</text>
+<rect x="938" y="310" width="410" height="100" rx="10" fill="#162334" stroke="#8C9AAB" stroke-width="3"></rect>
+<text x="1143" y="372" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="36" font-weight="500" fill="#F4FFFF" text-anchor="middle">16 bits</text>
+<text x="1569" y="238" font-family="'SFMono-Regular',Menlo,Consolas,'Liberation Mono',monospace" font-size="46" font-weight="700" fill="#F4FFFF" text-anchor="middle">102</text>
+<text x="1569" y="286" font-family="'SFMono-Regular',Menlo,Consolas,'Liberation Mono',monospace" font-size="34" font-weight="400" fill="#8C9AAB" text-anchor="middle">40103</text>
+<rect x="1364" y="310" width="410" height="100" rx="10" fill="#162334" stroke="#8C9AAB" stroke-width="3"></rect>
+<text x="1569" y="372" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="36" font-weight="500" fill="#F4FFFF" text-anchor="middle">16 bits</text>
+<text x="1995" y="238" font-family="'SFMono-Regular',Menlo,Consolas,'Liberation Mono',monospace" font-size="46" font-weight="700" fill="#F4FFFF" text-anchor="middle">103</text>
+<text x="1995" y="286" font-family="'SFMono-Regular',Menlo,Consolas,'Liberation Mono',monospace" font-size="34" font-weight="400" fill="#8C9AAB" text-anchor="middle">40104</text>
+<rect x="1790" y="310" width="410" height="100" rx="10" fill="#162334" stroke="#8C9AAB" stroke-width="3"></rect>
+<text x="1995" y="372" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="36" font-weight="500" fill="#F4FFFF" text-anchor="middle">16 bits</text>
+<text x="2234" y="350" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="30" font-weight="400" fill="#8C9AAB" text-anchor="start">device</text>
+<text x="2234" y="386" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="30" font-weight="400" fill="#8C9AAB" text-anchor="start">registers</text>
+<path d="M 512 418 L 512 718" stroke="#8C9AAB" stroke-width="2.5" fill="none" stroke-dasharray="6 12" opacity="0.5" stroke-linecap="round"></path>
+<path d="M 922 418 L 922 470" stroke="#8C9AAB" stroke-width="2.5" fill="none" stroke-dasharray="6 12" opacity="0.5" stroke-linecap="round"></path>
+<path d="M 512 470 L 922 470" stroke="#1DC1FD" stroke-width="4" fill="none" stroke-linecap="round"></path>
+<path d="M 512 470 L 512 452" stroke="#1DC1FD" stroke-width="4" fill="none" stroke-linecap="round"></path>
+<path d="M 922 470 L 922 452" stroke="#1DC1FD" stroke-width="4" fill="none" stroke-linecap="round"></path>
+<text x="512" y="518" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="38" font-weight="700" fill="#F4FFFF">INT16 / UINT16<tspan font-family="'SFMono-Regular',Menlo,Consolas,'Liberation Mono',monospace" font-size="32" font-weight="400" fill="#8C9AAB">   Identifier: HoldingRegister:100</tspan></text>
+<text x="2460" y="482" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="34" font-weight="700" fill="#1DC1FD" text-anchor="end">1 register</text>
+<path d="M 1348 418 L 1348 594" stroke="#8C9AAB" stroke-width="2.5" fill="none" stroke-dasharray="6 12" opacity="0.5" stroke-linecap="round"></path>
+<path d="M 512 594 L 1348 594" stroke="#1DC1FD" stroke-width="4" fill="none" stroke-linecap="round"></path>
+<path d="M 512 594 L 512 576" stroke="#1DC1FD" stroke-width="4" fill="none" stroke-linecap="round"></path>
+<path d="M 1348 594 L 1348 576" stroke="#1DC1FD" stroke-width="4" fill="none" stroke-linecap="round"></path>
+<text x="512" y="642" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="38" font-weight="700" fill="#F4FFFF">INT32 / UINT32 / FLOAT32<tspan font-family="'SFMono-Regular',Menlo,Consolas,'Liberation Mono',monospace" font-size="32" font-weight="400" fill="#8C9AAB">   Identifier: HoldingRegister:100</tspan></text>
+<text x="2460" y="606" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="34" font-weight="700" fill="#1DC1FD" text-anchor="end">2 registers</text>
+<path d="M 2200 418 L 2200 718" stroke="#8C9AAB" stroke-width="2.5" fill="none" stroke-dasharray="6 12" opacity="0.5" stroke-linecap="round"></path>
+<path d="M 512 718 L 2200 718" stroke="#1DC1FD" stroke-width="4" fill="none" stroke-linecap="round"></path>
+<path d="M 512 718 L 512 700" stroke="#1DC1FD" stroke-width="4" fill="none" stroke-linecap="round"></path>
+<path d="M 2200 718 L 2200 700" stroke="#1DC1FD" stroke-width="4" fill="none" stroke-linecap="round"></path>
+<text x="512" y="766" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="38" font-weight="700" fill="#F4FFFF">FLOAT64<tspan font-family="'SFMono-Regular',Menlo,Consolas,'Liberation Mono',monospace" font-size="32" font-weight="400" fill="#8C9AAB">   Identifier: HoldingRegister:100</tspan></text>
+<text x="2460" y="730" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="34" font-weight="700" fill="#1DC1FD" text-anchor="end">4 registers</text>
+<rect x="512" y="812" width="1688" height="84" rx="12" fill="#2A2013" stroke="#E0A464" stroke-width="2.5"></rect>
+<path d="M 556 870 L 584 836 L 612 870 Z" fill="none" stroke="#E0A464" stroke-width="3.5" stroke-linejoin="round"></path>
+<text x="644" y="866" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="33" font-weight="600" fill="#F2CFA6" text-anchor="start">Do not configure a second stream on an address a wider value already covers.</text>
+<path d="M 100 956 L 2460 956" stroke="#8C9AAB" stroke-width="2.5" fill="none" opacity="0.45" stroke-linecap="round"></path>
+<text x="100" y="1020" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="50" font-weight="700" fill="#F4FFFF" text-anchor="start">What WordOrder does</text>
+<text x="100" y="1066" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="33" font-weight="400" fill="#8C9AAB" text-anchor="start">Datatype: FLOAT32 at Identifier: HoldingRegister:100 — the same two registers, two Encoding settings.</text>
+<circle cx="532" cy="1130" r="20" fill="none" stroke="#1DC1FD" stroke-width="3.5"></circle>
+<path d="M 522 1130 L 529 1139 L 543 1119" fill="none" stroke="#1DC1FD" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path>
+<text x="570" y="1142" font-family="'SFMono-Regular',Menlo,Consolas,'Liberation Mono',monospace" font-size="34" font-weight="700" fill="#F4FFFF">WordOrder: HighWordFirst<tspan font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="31" font-weight="400" fill="#8C9AAB">  (default)</tspan></text>
+<text x="1312" y="1142" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="32" font-weight="700" fill="#1DC1FD" text-anchor="end">correct</text>
+<text x="712" y="1188" font-family="'SFMono-Regular',Menlo,Consolas,'Liberation Mono',monospace" font-size="34" font-weight="400" fill="#8C9AAB" text-anchor="middle">100</text>
+<rect x="522" y="1204" width="380" height="96" rx="10" fill="#123C55" stroke="#1DC1FD" stroke-width="3"></rect>
+<text x="712" y="1262" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="36" font-weight="700" fill="#F4FFFF" text-anchor="middle">high word</text>
+<text x="1112" y="1188" font-family="'SFMono-Regular',Menlo,Consolas,'Liberation Mono',monospace" font-size="34" font-weight="400" fill="#8C9AAB" text-anchor="middle">101</text>
+<rect x="922" y="1204" width="380" height="96" rx="10" fill="#162334" stroke="#8C9AAB" stroke-width="3"></rect>
+<text x="1112" y="1262" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="36" font-weight="400" fill="#F4FFFF" text-anchor="middle">low word</text>
+<text x="522" y="1354" font-family="'SFMono-Regular',Menlo,Consolas,'Liberation Mono',monospace" font-size="38" font-weight="700" fill="#F4FFFF" text-anchor="start">→  result   -16.98</text>
+<circle cx="1420" cy="1130" r="20" fill="none" stroke="#E0A464" stroke-width="3.5"></circle>
+<path d="M 1411 1121 L 1429 1139" stroke="#E0A464" stroke-width="3.5" stroke-linecap="round"></path>
+<path d="M 1429 1121 L 1411 1139" stroke="#E0A464" stroke-width="3.5" stroke-linecap="round"></path>
+<text x="1458" y="1142" font-family="'SFMono-Regular',Menlo,Consolas,'Liberation Mono',monospace" font-size="34" font-weight="700" fill="#F4FFFF">WordOrder: LowWordFirst</text>
+<text x="2200" y="1142" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="32" font-weight="700" fill="#E0A464" text-anchor="end">wrong</text>
+<text x="1600" y="1188" font-family="'SFMono-Regular',Menlo,Consolas,'Liberation Mono',monospace" font-size="34" font-weight="400" fill="#8C9AAB" text-anchor="middle">100</text>
+<rect x="1410" y="1204" width="380" height="96" rx="10" fill="#162334" stroke="#8C9AAB" stroke-width="3"></rect>
+<text x="1600" y="1262" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="36" font-weight="400" fill="#F4FFFF" text-anchor="middle">low word</text>
+<text x="2000" y="1188" font-family="'SFMono-Regular',Menlo,Consolas,'Liberation Mono',monospace" font-size="34" font-weight="400" fill="#8C9AAB" text-anchor="middle">101</text>
+<rect x="1810" y="1204" width="380" height="96" rx="10" fill="#123C55" stroke="#1DC1FD" stroke-width="3"></rect>
+<text x="2000" y="1262" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="36" font-weight="700" fill="#F4FFFF" text-anchor="middle">high word</text>
+<text x="1410" y="1354" font-family="'SFMono-Regular',Menlo,Consolas,'Liberation Mono',monospace" font-size="38" font-weight="700" fill="#F2CFA6" text-anchor="start">→  result   -7.8866737e+24</text>
+</svg>

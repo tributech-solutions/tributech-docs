@@ -1,0 +1,227 @@
+---
+title: Modbus Source
+sidebar_position: 6
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import SourceDockerCompose from '!!raw-loader!../examples/agent-source/modbus/docker-compose.yml';
+import EnvSample from '!!raw-loader!../examples/agent-management/agent-service-sample-values-source.yml';
+import ThemedImage from '@theme/ThemedImage';
+import NodeAgentConfigurationLight from '../img/node-agent-configure-light.png';
+import NodeAgentConfigurationDark from '../img/node-agent-configure-dark.png';
+import ModbusRegisterLayoutLight from '../img/modbus-register-layout-light.svg';
+import ModbusRegisterLayoutDark from '../img/modbus-register-layout-dark.svg';
+
+The Tributech Modbus Source allows to connect to a [**Modbus TCP**](https://www.modbus.org/specs.php) device, or to a TCP-to-serial gateway, and read coils and registers from it. The Source acts like a Modbus TCP client in a docker environment and enables the forwarding of the data to a Tributech Agent stream.
+
+:::info
+The Tributech Modbus Source is released as **version 0.1.0 (beta)** and requires Tributech platform **5.6** or later.
+:::
+
+The Tributech Modbus Source repeatedly, in a fixed cycle:
+
+- ***reads*** the coils and registers configured as streams and forwards each value to the Tributech Agent (one value stream per address),
+- ***writes*** the values configured as parameters onto the device and keeps them asserted,
+- ***reports its health***, so the reachability of the device and the state of every configured address is visible in the Tributech Node (see [Health Check](../../tributech_node/agent/health_checks.mdx)).
+
+Single values can additionally be written on demand with the [WriteOnce Command](#writeonce-command).
+
+## Setup
+The Tributech Modbus Source image can be started without any dependencies but will not be functional without a valid Twin Configuration or MessageBroker connect to the Tributech Agent. The TwinConfiguration can be provided via the Tributech Node (recommended) or MessageBroker (see [Source Integration](../source_integration#twin-model)). The Modbus Source will automatically connect to the Tributech Agent if the Tributech Agent is running and correct MessageBroker settings are set.
+
+In the following part we will describe the setup of a Tributech Modbus Source.
+
+- Create a `docker-compose.yml` file with the following content (adjustments required):
+<CodeBlock className="language-yml" title="docker-compose.yml">{SourceDockerCompose}</CodeBlock>
+
+The `enrollment` and `volumes` folders must be accessible to the unprivileged user the Agent runs as, see
+[Container File Permissions](../setup.mdx#container-file-permissions).
+
+Adjust the setting for the [Tributech Agent](../overview.md) to your environment, sample value:
+<CodeBlock className="language-plain" title="env specific settings">{EnvSample}</CodeBlock>
+
+The Tributech Agent authenticates with the Tributech Node using enrollment certificates provided through a local `enrollment` folder mounted into the container (the `./enrollment:/app/enrollment` volume in the `docker-compose.yml` above). See [Authentication Certificates (Enrollment)](../setup.mdx#authentication-certificates-enrollment) and [Docker volumes](../setup.mdx#docker-volumes) in the Setup guide for how to create and provide it. If no Agent ID is configured, the agent generates a random one on first start.
+
+The Modbus Source needs to reach the Modbus TCP device on its Modbus port (`5020` by default) in the private network, see [Tributech Agent Source Requirements](../requirements.mdx#tributech-agent-source-requirements).
+
+## Configuration
+
+After setting up the Tributech Modbus Source we need to activate it in the Tributech Node (see [Agent Management](../../tributech_node/agent/agent_management.mdx#activate-agent)) and configure the TwinConfiguration.
+
+<ThemedImage
+  alt="Configure Agent"
+  sources={{ light: NodeAgentConfigurationLight, dark: NodeAgentConfigurationDark }}
+/>
+
+The complete configuration of the Modbus Source is done with the Twin Configuration, there are no configuration files on the edge device. Changes are picked up by the running Source, it does not need to be restarted.
+
+| Twin | Model | Purpose |
+| --- | --- | --- |
+| **Modbus Source** | `dtmi:io:tributech:source:modbus;2` | The connection to the device and the global read/write timing. Attached to the edge device twin. |
+| **Modbus Stream** | `dtmi:io:tributech:stream:modbus;2` | One per address to be ***read***. Attached to the source twin via the `Streams` relationship. |
+| **Modbus Parameter** | `dtmi:io:tributech:parameter:modbus;1` | One per address to be held at a fixed value. Attached to the source twin via the `Parameter` relationship. |
+
+We can now add by right clicking the Device Edge entry a new Modbus Source. In order to connect to the Modbus device we need to configure the connection settings. The following table contains the description for each setting:
+
+| Setting | Value | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| **Host** | string | Yes | — | IP address or hostname of the Modbus TCP device or gateway. DNS names are resolved before connecting. |
+| **Port** | integer | No | `5020` | Modbus TCP port. |
+| **UnitIdentifier** | 0…255 | No | `255` | Use `255` or `0` for a device addressed directly over TCP. Behind a TCP-to-serial gateway, use the slave ID of the device (1…247). |
+| **WordOrder** | `HighWordFirst` / `LowWordFirst` | No | `HighWordFirst` | Register order for 32/64-bit values. Must match what the device documentation states. |
+| **DefaultReadCycleInterval** | seconds | No | `10` | How often the Source polls. Applies to every stream that does not define its own interval. |
+| **WriteCycleInterval** | seconds | No | `10` | How often configured parameter values are re-asserted. Values below 1s are treated as 1s. |
+| **Name** | string | No | — | Display name only. |
+
+A sample connection configuration:
+
+```json
+{
+  "Name": "Modbus Source",
+  "Host": "192.168.1.50",
+  "Port": 5020,
+  "UnitIdentifier": 255,
+  "WordOrder": "HighWordFirst",
+  "DefaultReadCycleInterval": 5,
+  "WriteCycleInterval": 5
+}
+```
+
+:::warning
+A wrong `WordOrder` does not cause an error. The values arrive, but the two halves of every 32/64-bit number are swapped, the result looks plausible and is wrong. If numbers are far off, this is the first thing to check.
+:::
+
+### Modbus Stream
+
+We can then add a new Modbus Stream by right clicking on the Modbus Source entry and selecting ***Add Streams***. Each stream describes exactly one address on the device.
+
+| Setting | Value | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| **Identifier** | `RegisterType:Address` | Yes | — | Which address to read, see [Addressing](#addressing). |
+| **Datatype** | `BOOL`, `INT16`, `UINT16`, `INT32`, `UINT32`, `FLOAT32`, `FLOAT64` | Yes | — | How the device stores the value. This also decides how many registers are read. |
+| **Encoding** | `BOOL`, `INT32`, `INT64`, `FLOAT`, `DOUBLE`, `BYTEARRAY`, `STRING_UTF8`, `STRING_BASE64` | Yes | — | How the value is published to the platform. Must match the width of the **Datatype**, see [Datatype and Encoding](#datatype-and-encoding). |
+| **ReadCycleInterval** | seconds | No | source default | Overrides **DefaultReadCycleInterval** for this stream only. |
+| **Name**, **Unit** | string | No | — | Descriptive only. |
+
+We can continue adding every address we want to read from the Modbus device. After all streams have been configured, we can apply the configuration to the Tributech Agent by clicking on the `APPLY CONFIGURATION` button in the top right corner.
+
+A sample stream configuration:
+
+```json
+{
+  "Name": "Motor temperature",
+  "Identifier": "HoldingRegister:100",
+  "Datatype": "INT32",
+  "Encoding": "INT32",
+  "Unit": "°C"
+}
+```
+
+:::warning
+Without a reachable Modbus device we will not receive any data on the Tributech Node.
+:::
+
+#### Addressing
+
+The **Identifier** is written as `RegisterType:Address`, for example `HoldingRegister:100`. The following register types are supported:
+
+| Register type | Access | Typical content |
+| --- | --- | --- |
+| `Coil` | read / write | Switchable digital output |
+| `DiscreteInput` | read only | Digital input |
+| `HoldingRegister` | read / write | Setpoints, configuration, measured values |
+| `InputRegister` | read only | Measured values |
+
+- The register type is **case-sensitive**, `holdingregister:100` is not accepted.
+- The address is the **0-based PDU address**. Vendor documentation often uses 1-based or 4xxxx-style numbering, i.e. the vendor register **40101** corresponds to `HoldingRegister:100`.
+- An address that cannot be parsed marks the stream as permanently faulty. It is then no longer polled and the Source reports `Degraded`, all other streams keep working.
+
+#### Datatype and Encoding
+
+**Datatype** describes the device side, **Encoding** the platform side. They are **not** matched up automatically and need to be selected together:
+
+| Datatype | Registers read | Encoding to use |
+| --- | --- | --- |
+| `BOOL` (only for `Coil` / `DiscreteInput`) | — | `BOOL` |
+| `INT16` / `UINT16` | 1 | There is no 16-bit encoding. Either use `BYTEARRAY`, or widen the datatype to `INT32` / `UINT32`. |
+| `INT32` / `UINT32` | 2 | `INT32` |
+| `FLOAT32` | 2 | `FLOAT` |
+| `FLOAT64` | 4 | `DOUBLE` |
+
+If the widths do not match, e.g. **Datatype** `INT16` with **Encoding** `INT32`, the published value cannot be decoded downstream and **no values arrive at all**, without an obvious error.
+
+A multi-register datatype consumes consecutive addresses: `INT32` at `HoldingRegister:100` reads 100 and 101, `FLOAT64` reads 100 to 103. The device needs to store the value across all of them, and no other stream should be configured on an address that is already part of a wider value.
+
+The following figure shows how the **Datatype** decides the width of a value behind one **Identifier**, and what the **WordOrder** of the source does to a value spanning two registers:
+
+<ThemedImage
+  alt="Modbus register layout: datatype width and word order"
+  sources={{ light: ModbusRegisterLayoutLight, dark: ModbusRegisterLayoutDark }}
+/>
+
+### Modbus Parameter
+
+A parameter tells the Source to write a fixed value onto the device and keep it asserted. It is used for setpoints that must survive a device restart and is added by right clicking on the Modbus Source entry.
+
+| Setting | Value | Required | Description |
+| --- | --- | --- | --- |
+| **Identifier** | `RegisterType:Address` | Yes | Same syntax as for streams, but only `Coil` and `HoldingRegister` are allowed. |
+| **Datatype** | same list as for streams | Yes | `BOOL` only together with `Coil`. Decides how many registers the value spans. |
+| **Value** | string | Yes | Converted to the datatype when written. |
+| **Name**, **Unit** | string | No | Descriptive only. |
+
+The parameter handling behaves as follows:
+
+- The value is written once after start-up or after a configuration change, and then only again when **Value** is changed in the twin. As long as nothing changes the write is skipped.
+- If something else changes the same address on the device, i.e. another system or a [WriteOnce Command](#writeonce-command), the Source does **not** write its value back. It does not read the address back to compare. To re-assert the value, change the parameter value in the twin or restart the Source.
+- Parameters themselves publish no values. To see the effect, configure a stream on the same address.
+- A read-only target (`DiscreteInput`, `InputRegister`) or an unparseable address is reported as permanently faulty and puts the Source into `Degraded`.
+
+### WriteOnce Command
+
+The Modbus Source supports the command `WriteOnce`, which writes a single value immediately and does not keep it asserted. The command is sent in the `COMMANDS` tab of the agent (see [Commands](../source_integration.md#commands)), `commandBody` is the base64 encoded payload:
+
+```json
+{
+  "Identifier": "HoldingRegister:100",
+  "Datatype": "INT32",
+  "Value": "777"
+}
+```
+
+- **Identifier** is required and must point at a `Coil` or a `HoldingRegister`. Anything else is rejected before any communication with the device.
+- **Value** is required and is always given as a string.
+- **Datatype** is optional but recommended. Without it, a `Coil` is written as a boolean and a `HoldingRegister` as a single 16-bit register, which is wrong for a value that spans several registers. The datatype should be stated explicitly whenever the address holds a 32 or 64-bit value.
+
+The command returns one of the following results:
+
+| Result | Meaning |
+| --- | --- |
+| `Success` | The device confirmed the write. The written address and value are contained in the response. |
+| `Rejected` | The request itself is not valid, i.e. a read-only address space, an unknown datatype (the tokens are case-sensitive, `int32` is not accepted), or a datatype that does not fit the register type. Nothing was written. |
+| `CommandFailed` | The request was valid but the value could not be converted or the write failed on the device. |
+
+## Health States
+
+When health messages are enabled on the source twin, the Modbus Source reports one of three states to the Tributech Node (see [Health Check](../../tributech_node/agent/health_checks.mdx)):
+
+| State | Meaning |
+| --- | --- |
+| `Ok` | Device connected, all configured streams and parameters are working. |
+| `Degraded` | At least one stream or parameter is permanently faulty, e.g. a wrong address or a read-only write target. Everything else keeps working. |
+| `Critical` | The device is unreachable or the connection is failing. |
+
+Modbus TCP has no keep-alive, so a lost connection is only detected once a number of reads or writes in a row have failed, with a slow read cycle this can take about a minute. The Source then reconnects on its own and returns to `Ok` as soon as the device answers again. An error response from the device (illegal address, illegal value) proves that the connection is alive and results in `Degraded` for the affected address, not `Critical`.
+
+## Troubleshooting
+
+| Symptom | Likely cause |
+| --- | --- |
+| No values arrive for a stream, no obvious error | **Datatype** and **Encoding** do not match in width, see [Datatype and Encoding](#datatype-and-encoding). |
+| Values arrive but are far off | **WordOrder** does not match the device, or the value does not actually span all the registers the datatype reads. |
+| Values read from the wrong place | Off-by-one address, the **Identifier** uses the 0-based PDU address, vendor documentation often counts from 1. |
+| Source reports `Degraded` | A stream or parameter has an unparseable address, or a parameter targets a read-only register type. Fix or remove it, the state returns to `Ok`. |
+| Source reports `Critical` | **Host**, **Port** or **UnitIdentifier** wrong, device switched off, or blocked by a firewall. |
+| Values arrive less often than expected | **ReadCycleInterval**, or [Value Change Options](../source_integration.md#value-change-options) attached to the stream. |
+| A parameter value was overwritten and is not restored | Expected behaviour, change the parameter value in the twin or restart the Source to assert it again. |
+| A `WriteOnce` only changed part of a value | **Datatype** was omitted, so only a single 16-bit register was written. |
