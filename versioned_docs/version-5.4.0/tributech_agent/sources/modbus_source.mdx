@@ -11,6 +11,8 @@ import NodeAgentConfigurationLight from '../img/node-agent-configure-light.png';
 import NodeAgentConfigurationDark from '../img/node-agent-configure-dark.png';
 import ModbusRegisterLayoutLight from '../img/modbus-register-layout-light.svg';
 import ModbusRegisterLayoutDark from '../img/modbus-register-layout-dark.svg';
+import ModbusDeviceHierarchyLight from '../img/modbus-device-hierarchy-light.svg';
+import ModbusDeviceHierarchyDark from '../img/modbus-device-hierarchy-dark.svg';
 
 The Tributech Modbus Source allows to connect to [**Modbus TCP**](https://www.modbus.org/specs.php) devices, or to serial slaves behind a TCP-to-serial gateway, and read coils and registers from them. The Source acts like a Modbus TCP client in a docker environment and enables the forwarding of the data to a Tributech Agent stream.
 
@@ -66,19 +68,10 @@ The complete configuration of the Modbus Source is done with the Twin Configurat
 
 Streams and parameters always belong to a **device**, not to the source. The same address can therefore be configured on several devices without the configurations interfering with each other.
 
-{/* TODO(TP-7609): add the source/device/stream hierarchy diagram once the SVGs are in ../img/.
-     Add the two imports at the top of this file:
-
-       import ModbusDeviceHierarchyLight from '../img/modbus-device-hierarchy-light.svg';
-       import ModbusDeviceHierarchyDark from '../img/modbus-device-hierarchy-dark.svg';
-
-     and replace this comment with:
-
-       <ThemedImage
-         alt="Modbus twin hierarchy: one source, many devices, one connection per endpoint"
-         sources={{ light: ModbusDeviceHierarchyLight, dark: ModbusDeviceHierarchyDark }}
-       />
-*/}
+<ThemedImage
+  alt="Modbus twin hierarchy: one source, many devices, one connection per endpoint"
+  sources={{ light: ModbusDeviceHierarchyLight, dark: ModbusDeviceHierarchyDark }}
+/>
 
 We can now add by right clicking the Device Edge entry a new Modbus Source. The Source itself needs no settings beyond its name.
 
