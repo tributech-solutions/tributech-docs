@@ -32,7 +32,7 @@ services:
         max-file: "5"
 
   tributech-agent:
-    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-agent:${AGENT_TAG:-5.6.0}
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-agent:${AGENT_TAG:-5.5.0}
     depends_on:
       mosquitto-server:
         condition: service_started

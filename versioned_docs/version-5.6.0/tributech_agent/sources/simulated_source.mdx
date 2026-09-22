@@ -1,0 +1,87 @@
+---
+title: Simulated Source
+sidebar_position: 4
+---
+
+import CodeBlock from "@theme/CodeBlock";
+import SourceDockerCompose from "!!raw-loader!../examples/agent-source/simulated/docker-compose.yml";
+import EnvSample from "!!raw-loader!../examples/agent-management/agent-service-sample-values-source.yml";
+import ThemedImage from "@theme/ThemedImage";
+import NodeAgentConfigurationLight from "../img/node-agent-configure-light.png";
+import NodeAgentConfigurationDark from "../img/node-agent-configure-dark.png";
+import NodeSimulatedAddSourceLight from "../img/node-source-simulated-add-light.png";
+import NodeSimulatedAddSourceDark from "../img/node-source-simulated-add-dark.png";
+import NodeSimulatedAddStreamLight from "../img/node-source-simulated-add-simulated-stream-light.png";
+import NodeSimulatedAddStreamDark from "../img/node-source-simulated-add-simulated-stream-dark.png";
+import NodeSimulatedStreamSettingsLight from "../img/node-source-simulated-add-stream-light.png";
+import NodeSimulatedStreamSettingsDark from "../img/node-source-simulated-add-stream-dark.png";
+import NodeSimulatedApplyLight from "../img/node-source-simulated-apply-light.png";
+import NodeSimulatedApplyDark from "../img/node-source-simulated-apply-dark.png";
+
+The Tributech Simulated Source allows us to simulate a data source for testing purposes.
+
+## Setup
+
+The Tributech Simulated Source image can be started without any dependencies but will not be functional without a valid Twin Configuration or MessageBroker connect to the Tributech Agent. The TwinConfiguration can be provided via the Tributech Node (recommended) or MessageBroker (see [Source Integration](../source_integration#twin-model)). The Simulated Source will automatically connect to the Tributech Agent if the Tributech Agent is running and the Simulated Source is configured with the correct MessageBroker settings. In the following section we will describe the setup of a Tributech Simulated Source:
+
+- Create a `docker-compose.yml` file with the following content (adjustments required):
+  <CodeBlock className="language-yml" title="docker-compose.yml">
+    {SourceDockerCompose}
+  </CodeBlock>
+
+The `enrollment` and `volumes` folders must be accessible to the unprivileged user the Agent runs as, see
+[Container File Permissions](../setup.mdx#container-file-permissions).
+
+Adjust the setting for the [Tributech Agent](../overview.md) to your environment, sample value:
+
+<CodeBlock className="language-plain" title="env specific settings">
+  {EnvSample}
+</CodeBlock>
+
+The Tributech Agent authenticates with the Tributech Node using enrollment certificates provided through a local `enrollment` folder mounted into the container (the `./enrollment:/app/enrollment` volume in the `docker-compose.yml` above). See [Authentication Certificates (Enrollment)](../setup.mdx#authentication-certificates-enrollment) and [Docker volumes](../setup.mdx#docker-volumes) in the Setup guide for how to create and provide it. If no Agent ID is configured, the agent generates a random one on first start.
+
+## Configuration
+
+<ThemedImage
+  alt="Configure Agent"
+  sources={{ light: NodeAgentConfigurationLight, dark: NodeAgentConfigurationDark }}
+/>
+
+Right click the Edge Device and add a Simulated Source:
+
+<ThemedImage
+  alt="Add Simulated Source"
+  sources={{ light: NodeSimulatedAddSourceLight, dark: NodeSimulatedAddSourceDark }}
+/>
+
+Right click the newly added **_Simulated Source_** and add a **_Simulated Stream_**:
+
+<ThemedImage
+  alt="Add Simulated Stream"
+  sources={{ light: NodeSimulatedAddStreamLight, dark: NodeSimulatedAddStreamDark }}
+/>
+
+Adjust the Stream settings to your needs:
+
+<ThemedImage
+  alt="Simulated Stream settings"
+  sources={{ light: NodeSimulatedStreamSettingsLight, dark: NodeSimulatedStreamSettingsDark }}
+/>
+
+Repeat this step for every stream you need.
+
+After saving all streams in the workspace we can send the configuration to the Tributech Agent and update currently running Tributech Source configuration by clicking **_Apply configuration_**
+
+<ThemedImage
+  alt="Apply configuration"
+  sources={{ light: NodeSimulatedApplyLight, dark: NodeSimulatedApplyDark }}
+/>
+
+### Value Change Options (VCO) Handling {#value-change-options}
+
+The basic handling of VCO can be found in [Source Integration](../source_integration.md). This section contains the concrete handling of the **_Step (Delta)_** for the simulated source. The following list contains the description for each supported **_Stream Data Encoding_** where **_X_** represents the value for **_Step (Delta)_**:
+
+- **_Double_**, **_Int32_**, **_Long_**, **_Float_**: defines the minimum difference between values to be submitted, the change is always compared to the last successful submitted value, e.g. if **_X_**= 3 if the double values 1, 2, 5, 8, 10, 11, 14 are received by the Tributech Source only 1, 5, 8, 11, 14 will be submitted.
+- **_Byte Array_**: will only be submitted if the current and last submitted value are not equal
+- **_String UTF 8_**: will only be submitted if the current and last submitted value are not equal
+- **_Boolean_**: will only be submitted if the current and last submitted value are not equal

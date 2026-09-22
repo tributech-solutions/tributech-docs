@@ -52,7 +52,7 @@ First, we need access to the same MessageBroker the Tributech Agent uses. We can
 
 ```yaml
     mosquitto-server-simulated:
-        image: eclipse-mosquitto:${MQTT_TAG:-1.6}
+        image: eclipse-mosquitto:${MQTT_TAG:-latest}
         networks:
         - simulated-net
         ports: 
