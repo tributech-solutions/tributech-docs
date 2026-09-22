@@ -36,6 +36,7 @@ For a detailed guide on how to use the different sources visit:
 | Beckhoff ADS | The [**ADS Source Guide**](./sources/ads_source.mdx) integrates data provided by an Beckhoff ADS PLC Server.    |
 | Simulated Sensor | The [**Simulated Source Guide**](./sources/simulated_source.mdx) integrates data provided by test sources generating random data.        |
 | REST  | The [**REST Source Guide**](./sources/rest_source.mdx) integrates data provided via [HTTP APIs](https://swagger.io/specification/).        |
+| Modbus | The [**Modbus Source Guide**](./sources/modbus_source.mdx) integrates data provided by a [Modbus TCP](https://www.modbus.org/specs.php) device or gateway.        |
 
 In order to add sources to a Tributech Agent we need to go to the [Agent configuration](../tributech_node/agent/agent_configuration.mdx#configuring-an-agent)
 or import existing Twin Models, which we will describe in a later section (see [Twin Models](#twin-model)).
@@ -204,7 +205,7 @@ We can also inspect the result of the source command by selecting the execution 
 
 All Tributech Sources support `Value Change Options` (`VCO`) that can be used to apply additional adjustments to Streams, if the `Stream Data Encoding` is set. If `VCO` can not be applied the data is submitted to the Tributech Agent without changes. In the following example we assume that a [QuickStart Simulated Source](quickstart.mdx) is set up, an describe the `VCO` behavior based on a double stream defined in a simulated source. 
 
-We first need to add the `VCO` to the stream by right clicking the `Simulated Stream`
+We first need to add the `VCO` to the stream with the three dots menu on the right side of the `Simulated Stream`
 
 <ThemedImage
   alt="VCO Add"
