@@ -73,11 +73,11 @@ Streams and parameters always belong to a **device**, not to the source. The sam
   sources={{ light: ModbusDeviceHierarchyLight, dark: ModbusDeviceHierarchyDark }}
 />
 
-We can now add by right clicking the Device Edge entry a new Modbus Source. The Source itself needs no settings beyond its name.
+We can now add a new Modbus Source with the three dots menu on the right side of the Device Edge entry. The Source itself needs no settings beyond its name.
 
 ### Modbus Device
 
-We then add a Modbus Device by right clicking on the Modbus Source entry and selecting ***Add Devices***. Every device we want to read from gets its own entry, with the connection settings of that device:
+We then add a Modbus Device with the three dots menu on the right side of the Modbus Source entry, selecting ***Add Devices***. Every device we want to read from gets its own entry, with the connection settings of that device:
 
 | Setting | Value | Required | Default | Description |
 | --- | --- | --- | --- | --- |
@@ -127,7 +127,7 @@ A value outside `0`…`255` does not fit into the Modbus protocol header. The de
 
 ### Modbus Stream
 
-We can then add a new Modbus Stream by right clicking on a Modbus Device entry and selecting ***Add Streams***. Each stream describes exactly one address on that device.
+We can then add a new Modbus Stream with the three dots menu on the right side of a Modbus Device entry, selecting ***Add Streams***. Each stream describes exactly one address on that device.
 
 | Setting | Value | Required | Default | Description |
 | --- | --- | --- | --- | --- |
@@ -212,7 +212,7 @@ The following figure shows how the **Datatype** decides the width of a value beh
 
 ### Modbus Parameter
 
-A parameter tells the Source to write a fixed value onto a device and keep it asserted. It is used for setpoints that must survive a device restart and is added by right clicking on the Modbus Device entry.
+A parameter tells the Source to write a fixed value onto a device and keep it asserted. It is used for setpoints that must survive a device restart and is added with the three dots menu on the right side of the Modbus Device entry, selecting ***Add Parameter***.
 
 | Setting | Value | Required | Default | Description |
 | --- | --- | --- | --- | --- |
