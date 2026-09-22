@@ -229,12 +229,12 @@ A parameter tells the Source to write a fixed value onto a device and keep it as
 | **Value** | string | Yes | — | Converted to the datatype when written. |
 | **Name**, **Unit** | string | No | — | Descriptive only. |
 
-The parameter handling behaves as follows:
+A parameter is configuration, not an action: it describes the state the address is supposed to be in, and the Source is what carries out the writes. The handling behaves as follows:
 
-- Every **WriteCycleInterval** the Source reads the address back and compares it with the configured **Value**. It only writes when the device holds something else, so an unchanged setpoint causes no write traffic.
-- If something else changes the address on the device, i.e. another system or a [WriteOnce Command](#writeonce-command), the Source writes its value back on the next cycle. A parameter describes the state the address is supposed to be in, and a `WriteOnce` onto a parameter address is undone again.
+- Every **WriteCycleInterval** the Source reads the address back and compares it with the **Value** configured on the parameter. It only writes when the device holds something else, so an unchanged setpoint causes no write traffic.
+- If something else changes the address on the device, i.e. another system or a [WriteOnce Command](#writeonce-command), the Source writes the configured **Value** back on the next cycle. A `WriteOnce` onto a parameter address is therefore undone again.
 - Each device runs its own write cycle, on its own **WriteCycleInterval**.
-- Parameters themselves publish no values. To see the effect, configure a stream on the same address of the same device.
+- A parameter creates no data stream in the Tributech Node. The value the Source reads back is only used for the comparison and is not forwarded, so nothing about a parameter shows up in the Node on its own. To see the value there, configure a stream on the same address of the same device.
 - A read-only target (`DiscreteInput`, `InputRegister`), an unparseable address or a **Value** that does not fit the datatype is reported as permanently failed and puts the Source into `Degraded`.
 - Some devices refuse to be read on a write-only register. If a device answers the read-back with an illegal-address or illegal-function error, the Source writes the value unconditionally on every cycle instead of giving up on the parameter.
 
