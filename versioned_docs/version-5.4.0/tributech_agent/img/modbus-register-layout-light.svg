@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1380" width="2560" height="1380" role="img" aria-labelledby="ttl dsc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1350" width="2560" height="1350" role="img" aria-labelledby="ttl dsc">
 <title id="ttl">Modbus register addressing: value width and word order</title>
-<desc id="dsc">Four 16-bit holding registers at PDU addresses 100 to 103 (vendor numbering 40101 to 40104). INT16 and UINT16 occupy register 100 only; INT32, UINT32 and FLOAT32 occupy 100 and 101; FLOAT64 occupies 100 to 103 — all configured as Identifier HoldingRegister:100. Below, one FLOAT32 read from registers 100 and 101 with WordOrder HighWordFirst gives -16.98, while LowWordFirst swaps the words and gives -7.8866737e+24.</desc>
-<rect width="2560" height="1380" fill="#FFFFFF"></rect>
+<desc id="dsc">Four 16-bit holding registers at PDU addresses 100 to 103 (vendor numbering 40101 to 40104). INT16 and UINT16 occupy register 100 only; INT32, UINT32 and FLOAT32 occupy 100 and 101; FLOAT64 occupies 100 to 103 — all configured as Identifier HoldingRegister:100. Below, the same pair of registers 100 and 101 holds one FLOAT32 value. With WordOrder HighWordFirst, register 100 is read as the high word and register 101 as the low word, which is correct for this device. With LowWordFirst the two halves are taken the other way round, which is wrong and silently yields a different number.</desc>
+<rect width="2560" height="1350" fill="#FFFFFF"></rect>
 <text x="100" y="104" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="50" font-weight="700" fill="#052850" text-anchor="start">How wide is a value</text>
 <text x="100" y="152" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="33" font-weight="400" fill="#5C7392" text-anchor="start">The PDU address goes in Identifier. The Datatype decides how many 16-bit registers the value covers.</text>
 <text x="480" y="238" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="34" font-weight="600" fill="#052850" text-anchor="end">PDU address</text>
@@ -50,7 +50,7 @@
 <text x="644" y="866" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="33" font-weight="600" fill="#7A400A" text-anchor="start">Do not configure a second stream on an address a wider value already covers.</text>
 <path d="M 100 956 L 2460 956" stroke="#5C7392" stroke-width="2.5" fill="none" opacity="0.45" stroke-linecap="round"></path>
 <text x="100" y="1020" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="50" font-weight="700" fill="#052850" text-anchor="start">What WordOrder does</text>
-<text x="100" y="1066" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="33" font-weight="400" fill="#5C7392" text-anchor="start">Datatype: FLOAT32 at Identifier: HoldingRegister:100 — the same two registers, two Encoding settings.</text>
+<text x="100" y="1066" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="33" font-weight="400" fill="#5C7392" text-anchor="start">Datatype: FLOAT32 at Identifier: HoldingRegister:100 — the same two registers, two WordOrder settings.</text>
 <circle cx="532" cy="1130" r="20" fill="none" stroke="#0488C2" stroke-width="3.5"></circle>
 <path d="M 522 1130 L 529 1139 L 543 1119" fill="none" stroke="#0488C2" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path>
 <text x="570" y="1142" font-family="'SFMono-Regular',Menlo,Consolas,'Liberation Mono',monospace" font-size="34" font-weight="700" fill="#052850">WordOrder: HighWordFirst<tspan font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="31" font-weight="400" fill="#5C7392">  (default)</tspan></text>
@@ -61,7 +61,6 @@
 <text x="1112" y="1188" font-family="'SFMono-Regular',Menlo,Consolas,'Liberation Mono',monospace" font-size="34" font-weight="400" fill="#5C7392" text-anchor="middle">101</text>
 <rect x="922" y="1204" width="380" height="96" rx="10" fill="#F4F5F9" stroke="#0B2A4A" stroke-width="3"></rect>
 <text x="1112" y="1262" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="36" font-weight="400" fill="#052850" text-anchor="middle">low word</text>
-<text x="522" y="1354" font-family="'SFMono-Regular',Menlo,Consolas,'Liberation Mono',monospace" font-size="38" font-weight="700" fill="#052850" text-anchor="start">→  result   -16.98</text>
 <circle cx="1420" cy="1130" r="20" fill="none" stroke="#B4600C" stroke-width="3.5"></circle>
 <path d="M 1411 1121 L 1429 1139" stroke="#B4600C" stroke-width="3.5" stroke-linecap="round"></path>
 <path d="M 1429 1121 L 1411 1139" stroke="#B4600C" stroke-width="3.5" stroke-linecap="round"></path>
@@ -73,5 +72,4 @@
 <text x="2000" y="1188" font-family="'SFMono-Regular',Menlo,Consolas,'Liberation Mono',monospace" font-size="34" font-weight="400" fill="#5C7392" text-anchor="middle">101</text>
 <rect x="1810" y="1204" width="380" height="96" rx="10" fill="#DDF4FE" stroke="#1DC1FD" stroke-width="3"></rect>
 <text x="2000" y="1262" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="36" font-weight="700" fill="#052850" text-anchor="middle">high word</text>
-<text x="1410" y="1354" font-family="'SFMono-Regular',Menlo,Consolas,'Liberation Mono',monospace" font-size="38" font-weight="700" fill="#7A400A" text-anchor="start">→  result   -7.8866737e+24</text>
 </svg>

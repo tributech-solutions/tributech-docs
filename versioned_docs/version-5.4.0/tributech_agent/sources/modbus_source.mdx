@@ -204,11 +204,7 @@ Writing is not widened. A [parameter](#modbus-parameter) or a [WriteOnce Command
 
 #### Word Order
 
-**WordOrder** decides in which order the registers of a value spanning several registers are combined, and is set per stream and per parameter. The two halves of the same pair of registers give `305419896` under `HighWordFirst` and `1450709556` under `LowWordFirst`.
-
-:::warning
-A wrong **WordOrder** does not cause an error. The values arrive, but the halves of every multi-register number are swapped, the result looks plausible and is wrong. If numbers are far off, this is the first thing to check.
-:::
+**WordOrder** decides in which order the registers of a value spanning several registers are combined, and is set per stream and per parameter.
 
 The following figure shows how the **Datatype** decides the width of a value behind one **Identifier**, and what the **WordOrder** does to a value spanning two registers:
 
@@ -216,6 +212,24 @@ The following figure shows how the **Datatype** decides the width of a value beh
   alt="Modbus register layout: datatype width and word order"
   sources={{ light: ModbusRegisterLayoutLight, dark: ModbusRegisterLayoutDark }}
 />
+
+Take an `INT32` stream on `HoldingRegister:100`, which reads two registers:
+
+| Register | Content on the device |
+| --- | --- |
+| `HoldingRegister:100` | `0x1234` |
+| `HoldingRegister:101` | `0x5678` |
+
+The same two registers then produce two different values, depending on which one is taken as the high half:
+
+| WordOrder | Combined | Published value |
+| --- | --- | --- |
+| `HighWordFirst` | `0x1234` `0x5678` = `0x12345678` | `305419896` |
+| `LowWordFirst` | `0x5678` `0x1234` = `0x56781234` | `1450709556` |
+
+:::warning
+A wrong **WordOrder** does not cause an error. The values arrive, but the halves of every multi-register number are swapped, the result looks plausible and is wrong. If numbers are far off, this is the first thing to check.
+:::
 
 ### Modbus Parameter
 
@@ -267,10 +281,6 @@ The command returns one of the following results:
 | `Success` | The device confirmed the write. The device, the address and the value are contained in the response. |
 | `Rejected` | The request itself is not valid and nothing was sent to the device, i.e. an unknown **DeviceId**, a read-only address space, a missing or unknown **Datatype** (the tokens are case-sensitive, `int32` is not accepted), a datatype that does not fit the register type, or a **Value** that cannot be read as the given datatype or does not fit into it. |
 | `CommandFailed` | The request was valid, but it could not be carried out: the connection to the device is down, or the device answered with an error. |
-
-:::note
-**Datatype** is required, also for a coil. It is what decides how many registers are written, so a 32 or 64-bit value cannot be written without it.
-:::
 
 ## Health States
 
