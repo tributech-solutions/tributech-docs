@@ -172,7 +172,7 @@ An Agent Health Check reports the following indicators:
 | `snapshot.isSourceMqttClientHealthy` | Snapshot | The MQTT client towards the sources is publishing normally. |
 | `snapshot.isNodeMqttClientHealthy` | Snapshot | The MQTT client towards the Tributech Node is publishing normally. |
 | `snapshot.dlqQueuePercentage` | Snapshot | Current fill level of the dead-letter queue, in percent. |
-| `snapshot.isInInitialConfiguration` | Snapshot | The Agent is still running on its initial, unconfigured twin — it has connected, but no Sources or Streams have been configured yet. |
+| `snapshot.isInInitialConfiguration` | Snapshot | `true` while the Agent still runs on the initial twin it was enrolled with, before any Sources or Streams have been configured. It turns `false` once the Agent has been configured, which is the normal state for an Agent in operation. Note that this is the one indicator where `false` is the good value. |
 | `windowed.sourceBrokerDisconnectionCount` | Windowed | How often the source broker connection dropped during the interval. |
 | `windowed.nodeBrokerDisconnectionCount` | Windowed | How often the connection to the Tributech Node dropped during the interval. |
 | `windowed.sourceMqttClientWasUnhealthyCount` | Windowed | How often the MQTT client towards the sources went unhealthy. |
