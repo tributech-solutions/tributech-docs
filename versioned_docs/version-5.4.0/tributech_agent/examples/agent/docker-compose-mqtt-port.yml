@@ -56,7 +56,7 @@ services:
         max-file: "5"
 
   mosquitto-server-simulated:
-    image: eclipse-mosquitto:${MQTT_TAG:-latest}
+    image: eclipse-mosquitto:${MQTT_TAG:-1.6}
     networks:
       - simulated-net
     ports:
