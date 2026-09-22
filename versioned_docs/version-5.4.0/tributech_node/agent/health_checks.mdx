@@ -19,6 +19,8 @@ Health Checks are currently a **Beta feature** and are only accessible via the [
 
 :::caution
 Health Checks require **Tributech Agent version 5.4.0 or later**, and the Digital Twin models of both the **agent (device) and its sources** must be **version 3 or higher** (`;3+`). Older model versions do not include the health-check telemetry. See [Digital Twin Versions](./agent_configuration.mdx#digital-twin-versions-upgrade--downgrade) for how to upgrade.
+
+The [**windowed indicators**](#snapshot-and-windowed-indicators) require **Tributech Agent version 5.5.0 or later** and health message model `;2`. An older Agent reports the same health states, but derives them from point-in-time values only.
 :::
 
 ## What a Health Check is
@@ -50,22 +52,34 @@ Health Checks are transmitted as structured JSON. The example below shows a typi
 ```json
 {
   "$dtId": "45478977-e8d4-4a6e-bad2-293d62f55271",
-  "healthState": 1,
-  "healthMessage": "Agent is healthy.",
+  "healthState": 2,
+  "healthMessage": "Cloud broker was disconnected 1 time(s) during the reporting period.",
   "healthTimestamp": "2026-02-05T12:16:13.08515+00:00",
   "$telemetryMetadata": {
-    "$model": "dtmi:io:tributech:healthmessage:edge;1"
+    "$model": "dtmi:io:tributech:healthmessage:edge;2"
   },
-  "ageLimitHitStreams": [],
-  "dlqQueuePercentage": 0,
   "expectedHealthFrequency": "PT30S",
-  "isNodeMqttClientHealthy": true,
-  "isConnectedToCloudBroker": true,
-  "isConnectedToSourceBroker": true,
-  "isSourceMqttClientHealthy": true,
-  "enrollmentCertificatesExist": true
+  "snapshot": {
+    "isConnectedToSourceBroker": true,
+    "isConnectedToCloudBroker": true,
+    "enrollmentCertificatesExist": true,
+    "isSourceMqttClientHealthy": true,
+    "isNodeMqttClientHealthy": true,
+    "dlqQueuePercentage": 10
+  },
+  "windowed": {
+    "twinWasClearedDueToEnrollmentFailureCount": 0,
+    "ageLimitHitStreams": [],
+    "sourceBrokerDisconnectionCount": 0,
+    "nodeBrokerDisconnectionCount": 1,
+    "sourceMqttClientWasUnhealthyCount": 0,
+    "nodeMqttClientWasUnhealthyCount": 0,
+    "dlqFullCount": 0
+  }
 }
 ```
+
+In this example the connection to the Tributech Node dropped once and recovered before the message was sent: `snapshot.isConnectedToCloudBroker` is `true` again, but `windowed.nodeBrokerDisconnectionCount` is `1`. The Agent therefore reports `Degraded` rather than `Ok`, so the interruption is not lost.
 
 The core fields are present in every Health Check message:
 
@@ -78,7 +92,7 @@ The core fields are present in every Health Check message:
 | `healthState` | Machine-readable health status (see below) |
 | `healthMessage` | Human-readable status description |
 
-The remaining fields are diagnostic indicators that differ between the Agent and each Source type.
+The remaining fields are diagnostic indicators that differ between the Agent and each Source type. On the Agent they are grouped into [snapshot and windowed indicators](#snapshot-and-windowed-indicators).
 
 **`healthState` values:**
 
@@ -89,6 +103,61 @@ The remaining fields are diagnostic indicators that differ between the Agent and
 | `2` | Degraded |
 | `-1` | Unhealthy |
 | `-2` | Critical |
+
+## Snapshot and windowed indicators
+
+An Agent reports its diagnostic indicators in two groups, which answer two different questions.
+
+- **Snapshot** indicators are read at the moment the health tick fires. They answer *"what is true right now?"*.
+- **Windowed** indicators cover the whole interval since the previous Health Check. They answer *"did this go wrong at any point in between?"*.
+
+The distinction matters because a problem that appears and recovers between two ticks would otherwise be invisible. A brief interruption of the connection to the Tributech Node, a dead-letter queue that briefly ran full, or a stream that hit its Merkle age limit can all be over by the time the next message is assembled — and the Agent would simply report `Ok`, with nothing to show that anything had happened. The windowed indicators count these events as they occur and are reset with every Health Check, so each message describes the interval it covers rather than a single instant.
+
+The counters answer *how often*, not *how long*: a value of `2` means the condition occurred twice since the last message, regardless of how long it lasted.
+
+| Indicator | Group | Meaning |
+| --- | --- | --- |
+| `snapshot.isConnectedToSourceBroker` | Snapshot | The Agent is connected to the source broker right now. |
+| `snapshot.isConnectedToCloudBroker` | Snapshot | The Agent is connected to the Tributech Node right now. |
+| `snapshot.enrollmentCertificatesExist` | Snapshot | The enrollment certificates are present. |
+| `snapshot.isSourceMqttClientHealthy` | Snapshot | The MQTT client towards the sources is publishing normally. |
+| `snapshot.isNodeMqttClientHealthy` | Snapshot | The MQTT client towards the Tributech Node is publishing normally. |
+| `snapshot.dlqQueuePercentage` | Snapshot | Current fill level of the dead-letter queue, in percent. |
+| `windowed.sourceBrokerDisconnectionCount` | Windowed | How often the source broker connection dropped during the interval. |
+| `windowed.nodeBrokerDisconnectionCount` | Windowed | How often the connection to the Tributech Node dropped during the interval. |
+| `windowed.sourceMqttClientWasUnhealthyCount` | Windowed | How often the MQTT client towards the sources went unhealthy. |
+| `windowed.nodeMqttClientWasUnhealthyCount` | Windowed | How often the MQTT client towards the Tributech Node went unhealthy. |
+| `windowed.dlqFullCount` | Windowed | How often the dead-letter queue reached 100%, which means messages may have been lost. Only the transition to full is counted, not every message that arrives while it stays full. |
+| `windowed.twinWasClearedDueToEnrollmentFailureCount` | Windowed | How often the twin was cleared because enrollment failed. This is an event with no current-state counterpart, so it exists only as a windowed value. |
+| `windowed.ageLimitHitStreams` | Windowed | The streams whose Merkle proof hit its age limit during the interval. A stream stays in this list for the interval even if later batches complete normally. |
+
+:::note
+The field for the connection to the Tributech Node is called `nodeBrokerDisconnectionCount`, while its snapshot counterpart is called `isConnectedToCloudBroker`. Both describe the same connection.
+:::
+
+## How the Agent's health state is derived
+
+The conditions below are evaluated in order and **the first match wins**. Because the `Critical` conditions test the connections as they are *right now*, a connection that dropped but has since recovered can never be reported as `Critical` — it falls through to `Degraded`.
+
+| Health State | Any of these conditions |
+| --- | --- |
+| `Critical` | Currently not connected to the source broker; currently not connected to the Tributech Node; the twin was cleared due to an enrollment failure during the interval; the dead-letter queue is currently above 80%; the dead-letter queue reached 100% during the interval. |
+| `Unhealthy` | The dead-letter queue is currently above 50%. |
+| `Degraded` | Enrollment certificates are currently missing; the source broker or the Tributech Node connection dropped during the interval but is connected again; either MQTT client is unhealthy now or was unhealthy during the interval; one or more streams hit their Merkle age limit during the interval; the dead-letter queue is currently above 20%. |
+| `Ok` | None of the above. |
+
+A few examples of how the two groups combine:
+
+| Situation | At tick time | During the interval | Reported |
+| --- | --- | --- | --- |
+| The Node connection dropped and recovered | Connected | `nodeBrokerDisconnectionCount = 1` | `Degraded` |
+| The Node connection is still down | Disconnected | `nodeBrokerDisconnectionCount = 1` | `Critical` |
+| The dead-letter queue ran full, then drained | 5% | `dlqFullCount = 1` | `Critical` |
+| The dead-letter queue climbed and stayed there | 30% | `dlqFullCount = 0` | `Degraded` |
+| A stream hit its Merkle age limit, later batches were fine | Not age-limited | Stream listed in `ageLimitHitStreams` | `Degraded` |
+| Nothing unusual happened | All healthy | All counters `0` | `Ok` |
+
+Note that a dead-letter queue which ran full is reported as `Critical` even after it has drained, because reaching 100% means messages may have been dropped.
 
 ## Configuration
 
