@@ -138,19 +138,31 @@ The distinction matters because a problem that appears and recovers between two 
 
 The counters answer *how often*, not *how long*: a value of `2` means the condition occurred twice since the last message, regardless of how long it lasted.
 
-The value of the windowed group shows when an interruption has already passed. In the following excerpt the
-connection to the Tributech Node dropped once and recovered before the message was sent, so the snapshot looks
-healthy while the windowed counter still reports the interruption — and the Agent reports `Degraded` instead of `Ok`:
+The value of the windowed group shows when an interruption has already passed. In the excerpt below the
+connection to the Tributech Node dropped once and recovered before the message was sent. Every snapshot value
+is healthy, but the windowed counters still report what happened, so the Agent reports `Degraded` instead of
+`Ok` and names the reason in `healthMessage`:
 
 ```json
 "healthState": "Degraded",
+"healthMessage": "Cloud broker was disconnected 1 time(s) during the reporting period.",
 "snapshot": {
-  "isConnectedToCloudBroker": true
+  "isConnectedToCloudBroker": true,
+  "isNodeMqttClientHealthy": true
 },
 "windowed": {
-  "nodeBrokerDisconnectionCount": 1
+  "nodeBrokerDisconnectionCount": 1,
+  "nodeMqttClientWasUnhealthyCount": 1
 }
 ```
+
+:::note
+A single interruption often raises more than one counter. In the example above the dropped connection is
+counted both as a disconnection and as an unhealthy MQTT client, because the client cannot publish while the
+connection is down. Two counters at `1` here describe **one** event from two angles, not two separate problems.
+:::
+
+An Agent Health Check reports the following indicators:
 
 | Indicator | Group | Meaning |
 | --- | --- | --- |
