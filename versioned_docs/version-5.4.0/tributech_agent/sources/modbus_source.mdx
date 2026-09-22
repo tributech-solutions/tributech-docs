@@ -204,7 +204,19 @@ Writing is not widened. A [parameter](#modbus-parameter) or a [WriteOnce Command
 
 #### Word Order
 
-**WordOrder** decides in which order the registers of a value spanning several registers are combined, and is set per stream and per parameter. The two halves of the same pair of registers give `305419896` under `HighWordFirst` and `1450709556` under `LowWordFirst`.
+**WordOrder** decides in which order the registers of a value spanning several registers are combined, and is set per stream and per parameter. Take an `INT32` stream on `HoldingRegister:100`, which reads two registers:
+
+| Register | Content on the device |
+| --- | --- |
+| `HoldingRegister:100` | `0x1234` |
+| `HoldingRegister:101` | `0x5678` |
+
+The same two registers then produce two different values, depending on which one is taken as the high half:
+
+| WordOrder | Combined | Published value |
+| --- | --- | --- |
+| `HighWordFirst` | `0x1234` `0x5678` = `0x12345678` | `305419896` |
+| `LowWordFirst` | `0x5678` `0x1234` = `0x56781234` | `1450709556` |
 
 :::warning
 A wrong **WordOrder** does not cause an error. The values arrive, but the halves of every multi-register number are swapped, the result looks plausible and is wrong. If numbers are far off, this is the first thing to check.
