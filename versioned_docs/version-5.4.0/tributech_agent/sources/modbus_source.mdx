@@ -268,10 +268,6 @@ The command returns one of the following results:
 | `Rejected` | The request itself is not valid and nothing was sent to the device, i.e. an unknown **DeviceId**, a read-only address space, a missing or unknown **Datatype** (the tokens are case-sensitive, `int32` is not accepted), a datatype that does not fit the register type, or a **Value** that cannot be read as the given datatype or does not fit into it. |
 | `CommandFailed` | The request was valid, but it could not be carried out: the connection to the device is down, or the device answered with an error. |
 
-:::note
-**Datatype** is required, also for a coil. It is what decides how many registers are written, so a 32 or 64-bit value cannot be written without it.
-:::
-
 ## Health States
 
 With an **Expected Health Frequency** configured on the source twin (see [Modbus Source](#modbus-source)), the Modbus Source reports one state for the whole source to the Tributech Node in that interval (see [Health Check](../../tributech_node/agent/health_checks.mdx)). The state covers every device and every connection:
