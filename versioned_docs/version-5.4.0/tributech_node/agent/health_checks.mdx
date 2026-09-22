@@ -47,50 +47,73 @@ A Source does not talk to the Tributech Node directly: it sends its Health Check
 
 ## Message structure
 
-Health Checks are transmitted as structured JSON. The example below shows a typical **Agent** Health Check message:
+Health Checks are transmitted as structured JSON. A Health Check consists of a signed **envelope** and the **payload** carrying the actual health data. The example below shows a complete **Agent** Health Check of a healthy Agent:
 
 ```json
 {
-  "$dtId": "45478977-e8d4-4a6e-bad2-293d62f55271",
-  "healthState": 2,
-  "healthMessage": "Cloud broker was disconnected 1 time(s) during the reporting period.",
-  "healthTimestamp": "2026-02-05T12:16:13.08515+00:00",
-  "$telemetryMetadata": {
-    "$model": "dtmi:io:tributech:healthmessage:edge;2"
-  },
-  "expectedHealthFrequency": "PT30S",
-  "snapshot": {
-    "isConnectedToSourceBroker": true,
-    "isConnectedToCloudBroker": true,
-    "enrollmentCertificatesExist": true,
-    "isSourceMqttClientHealthy": true,
-    "isNodeMqttClientHealthy": true,
-    "dlqQueuePercentage": 10
-  },
-  "windowed": {
-    "twinWasClearedDueToEnrollmentFailureCount": 0,
-    "ageLimitHitStreams": [],
-    "sourceBrokerDisconnectionCount": 0,
-    "nodeBrokerDisconnectionCount": 1,
-    "sourceMqttClientWasUnhealthyCount": 0,
-    "nodeMqttClientWasUnhealthyCount": 0,
-    "dlqFullCount": 0
+  "messageId": "01a0c951-444a-7d6b-916a-0a4350f6aa52",
+  "dtId": "2404fc19-8204-47f1-9942-f42a1831dbfd",
+  "healthState": "Ok",
+  "healthTimestamp": "2026-09-22T13:32:21.450762+00:00",
+  "signature": "ggrn2E0JSggymskdalSvCglpyVbWIdzx...DGU2lipgmPrj",
+  "signatureTimestamp": "2026-09-22T13:32:21.453132+00:00",
+  "payload": {
+    "$dtId": "2404fc19-8204-47f1-9942-f42a1831dbfd",
+    "$telemetryMetadata": {
+      "$model": "dtmi:io:tributech:healthmessage:edge;2"
+    },
+    "healthState": "Ok",
+    "healthMessage": "Agent is healthy.",
+    "healthTimestamp": "2026-09-22T13:32:21.450762+00:00",
+    "expectedHealthFrequency": "00:00:10",
+    "snapshot": {
+      "dlqQueuePercentage": 0,
+      "isNodeMqttClientHealthy": true,
+      "isConnectedToCloudBroker": true,
+      "isInInitialConfiguration": false,
+      "isConnectedToSourceBroker": true,
+      "isSourceMqttClientHealthy": true,
+      "enrollmentCertificatesExist": true
+    },
+    "windowed": {
+      "dlqFullCount": 0,
+      "ageLimitHitStreams": [],
+      "nodeBrokerDisconnectionCount": 0,
+      "sourceBrokerDisconnectionCount": 0,
+      "nodeMqttClientWasUnhealthyCount": 0,
+      "sourceMqttClientWasUnhealthyCount": 0,
+      "twinWasClearedDueToEnrollmentFailureCount": 0
+    }
   }
 }
 ```
 
-In this example the connection to the Tributech Node dropped once and recovered before the message was sent: `snapshot.isConnectedToCloudBroker` is `true` again, but `windowed.nodeBrokerDisconnectionCount` is `1`. The Agent therefore reports `Degraded` rather than `Ok`, so the interruption is not lost.
+The envelope carries the identity and the signature of the message:
 
-The core fields are present in every Health Check message:
+| Field | Description |
+| --- | --- |
+| `messageId` | Unique identifier of this Health Check message |
+| `dtId` | Digital Twin identifier of the Agent or Source that sent it |
+| `healthState` | The state from the payload, repeated on the envelope |
+| `healthTimestamp` | Time the health data was collected (UTC) |
+| `signature` | Signature over the payload, used to verify the message came from that device unaltered |
+| `signatureTimestamp` | Time the signature was created (UTC) |
+| `payload` | The health data itself, described below |
+
+The following fields are present in the payload of every Health Check:
 
 | Field | Description |
 | --- | --- |
 | `$dtId` | Digital Twin identifier of the Agent or Source |
 | `$telemetryMetadata.$model` | Digital Twin model used to interpret the message |
-| `healthTimestamp` | Time the health data was collected (UTC) |
-| `expectedHealthFrequency` | Configured reporting interval |
 | `healthState` | Machine-readable health status (see below) |
 | `healthMessage` | Human-readable status description |
+| `healthTimestamp` | Time the health data was collected (UTC) |
+| `expectedHealthFrequency` | Reporting interval the message was produced with, as `hh:mm:ss` |
+
+:::note
+`expectedHealthFrequency` is **configured** as an ISO 8601 duration (e.g. `PT30S`, see [Configuration](#configuration)), but it is **reported back** in the `hh:mm:ss` form — `00:00:10` in the example above is a ten second interval.
+:::
 
 The remaining fields are diagnostic indicators that differ between the Agent and each Source type. On the Agent they are grouped into [snapshot and windowed indicators](#snapshot-and-windowed-indicators).
 
@@ -98,11 +121,11 @@ The remaining fields are diagnostic indicators that differ between the Agent and
 
 | Value | Meaning |
 | --- | --- |
-| `0` | Unknown |
-| `1` | Ok |
-| `2` | Degraded |
-| `-1` | Unhealthy |
-| `-2` | Critical |
+| `Ok` | The component is operating normally. |
+| `Degraded` | Something is wrong, or briefly went wrong, but the component keeps working. |
+| `Unhealthy` | The component is impaired. |
+| `Critical` | The component cannot do its job. |
+| `Unknown` | No state could be determined. |
 
 ## Snapshot and windowed indicators
 
@@ -115,6 +138,20 @@ The distinction matters because a problem that appears and recovers between two 
 
 The counters answer *how often*, not *how long*: a value of `2` means the condition occurred twice since the last message, regardless of how long it lasted.
 
+The value of the windowed group shows when an interruption has already passed. In the following excerpt the
+connection to the Tributech Node dropped once and recovered before the message was sent, so the snapshot looks
+healthy while the windowed counter still reports the interruption — and the Agent reports `Degraded` instead of `Ok`:
+
+```json
+"healthState": "Degraded",
+"snapshot": {
+  "isConnectedToCloudBroker": true
+},
+"windowed": {
+  "nodeBrokerDisconnectionCount": 1
+}
+```
+
 | Indicator | Group | Meaning |
 | --- | --- | --- |
 | `snapshot.isConnectedToSourceBroker` | Snapshot | The Agent is connected to the source broker right now. |
@@ -123,6 +160,7 @@ The counters answer *how often*, not *how long*: a value of `2` means the condit
 | `snapshot.isSourceMqttClientHealthy` | Snapshot | The MQTT client towards the sources is publishing normally. |
 | `snapshot.isNodeMqttClientHealthy` | Snapshot | The MQTT client towards the Tributech Node is publishing normally. |
 | `snapshot.dlqQueuePercentage` | Snapshot | Current fill level of the dead-letter queue, in percent. |
+| `snapshot.isInInitialConfiguration` | Snapshot | The Agent is still running on its initial, unconfigured twin — it has connected, but no Sources or Streams have been configured yet. |
 | `windowed.sourceBrokerDisconnectionCount` | Windowed | How often the source broker connection dropped during the interval. |
 | `windowed.nodeBrokerDisconnectionCount` | Windowed | How often the connection to the Tributech Node dropped during the interval. |
 | `windowed.sourceMqttClientWasUnhealthyCount` | Windowed | How often the MQTT client towards the sources went unhealthy. |
