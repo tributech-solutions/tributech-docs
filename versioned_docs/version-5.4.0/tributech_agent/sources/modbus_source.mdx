@@ -57,7 +57,7 @@ After setting up the Tributech Modbus Source we need to activate it in the Tribu
   sources={{ light: NodeAgentConfigurationLight, dark: NodeAgentConfigurationDark }}
 />
 
-The complete configuration of the Modbus Source is done with the Twin Configuration, there are no configuration files on the edge device. Changes are picked up by the running Source, it does not need to be restarted.
+The complete configuration of the Modbus Source is done with the Twin Configuration, there is nothing to edit by hand on the edge device. The Agent keeps the configuration it receives in its `volumes` folder, together with its keys and certificates (see [Docker volumes](../setup.mdx#docker-volumes)), so it survives a restart of the edge device and does not have to be applied again. Changes are picked up by the running Source, it does not need to be restarted.
 
 | Twin | Model | Purpose |
 | --- | --- | --- |
