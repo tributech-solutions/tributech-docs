@@ -14,7 +14,7 @@ services:
 
   source-modbus:
     restart: unless-stopped
-    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-source-modbus:${SOURCE_TAG:-0.1.0}
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-source-modbus:${SOURCE_TAG:-0.2.0}
     depends_on:
       - mosquitto-server
       - tributech-agent
