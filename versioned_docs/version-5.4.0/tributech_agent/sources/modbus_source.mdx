@@ -204,7 +204,16 @@ Writing is not widened. A [parameter](#modbus-parameter) or a [WriteOnce Command
 
 #### Word Order
 
-**WordOrder** decides in which order the registers of a value spanning several registers are combined, and is set per stream and per parameter. Take an `INT32` stream on `HoldingRegister:100`, which reads two registers:
+**WordOrder** decides in which order the registers of a value spanning several registers are combined, and is set per stream and per parameter.
+
+The following figure shows how the **Datatype** decides the width of a value behind one **Identifier**, and what the **WordOrder** does to a value spanning two registers:
+
+<ThemedImage
+  alt="Modbus register layout: datatype width and word order"
+  sources={{ light: ModbusRegisterLayoutLight, dark: ModbusRegisterLayoutDark }}
+/>
+
+Take an `INT32` stream on `HoldingRegister:100`, which reads two registers:
 
 | Register | Content on the device |
 | --- | --- |
@@ -221,13 +230,6 @@ The same two registers then produce two different values, depending on which one
 :::warning
 A wrong **WordOrder** does not cause an error. The values arrive, but the halves of every multi-register number are swapped, the result looks plausible and is wrong. If numbers are far off, this is the first thing to check.
 :::
-
-The following figure shows how the **Datatype** decides the width of a value behind one **Identifier**, and what the **WordOrder** does to a value spanning two registers:
-
-<ThemedImage
-  alt="Modbus register layout: datatype width and word order"
-  sources={{ light: ModbusRegisterLayoutLight, dark: ModbusRegisterLayoutDark }}
-/>
 
 ### Modbus Parameter
 
