@@ -75,7 +75,12 @@ Streams and parameters always belong to a **device**, not to the source. The sam
 
 ### Modbus Source
 
-We can now add a new Modbus Source with the three dots menu on the right side of the Device Edge entry. The Source itself needs no settings beyond its name, the connection settings live on the devices below it.
+We can now add a new Modbus Source with the three dots menu on the right side of the Device Edge entry. The Source carries no connection settings, those live on the devices below it:
+
+| Setting | Value | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| **Name** | string | No | — | Human-readable name of the source. Display name only. |
+| **Expected Health Frequency** | [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations) | No | — | How often the Source reports its [health state](#health-states), i.e. `PT30S` for 30 seconds, `PT5M` for 5 minutes, `PT1H` for one hour. Left empty, the Source sends no health messages. |
 
 ### Modbus Device
 
@@ -269,7 +274,7 @@ The command returns one of the following results:
 
 ## Health States
 
-When health messages are enabled on the source twin, the Modbus Source reports one state for the whole source to the Tributech Node (see [Health Check](../../tributech_node/agent/health_checks.mdx)). The state covers every device and every connection:
+With an **Expected Health Frequency** configured on the source twin (see [Modbus Source](#modbus-source)), the Modbus Source reports one state for the whole source to the Tributech Node in that interval (see [Health Check](../../tributech_node/agent/health_checks.mdx)). The state covers every device and every connection:
 
 | State | Meaning |
 | --- | --- |
