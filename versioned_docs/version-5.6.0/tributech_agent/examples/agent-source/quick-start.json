@@ -1,0 +1,61 @@
+{
+  "digitalTwinsFileInfo": {
+    "fileVersion": "2.0.0"
+  },
+  "digitalTwinsGraph": {
+    "digitalTwins": [
+      {
+        "MaxMerkleTreeDepth": 5,
+        "MaxMerkleTreeAge": 600,
+        "Name": "QuickStart Simulated Source",
+        "PublicKey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnZ42wlY7Nhl3q/ZlFngB\ntzNkAGb7rxQdBoWSs1F1UMczd0B5IWxs0RI2gXe0VZequc5/tCRqH7cgywS4eqCv\nkLhgXxH0qnGcuImpGQtHuyZxpB1gkiyynRZEY/EOeeEdYTcwBEMKbUgQ8GEocqkb\nHwe8plu5YizBWUT8PGXEHQI+I7IGvlGxSja2fszkpU1wBUwBlFZFdMVcJ1teMG5u\nqRwR1AADi+v4Uook7qN/G95VTg7H6Rguio76pQERl6yWrMulzSTxy4PRkcp9nURZ\nbA3O8njvWJ1F6UAGzFF9rB3SH46cmm1/8DV1w5RhaqNh8R18fwGx9NnngzSE+zug\nkwIDAQAB\n-----END PUBLIC KEY-----",
+        "KeyStorageType": "NONE",
+        "ProofKind": "SHA256_RSA2048_PSS",
+        "$dtId": "$$root_uuid$$",
+        "$etag": "bb0939b6-d298-2ff2-08bb-bf177e2647b9",
+        "$metadata": {
+          "$model": "dtmi:io:tributech:device:edge;2"
+        }
+      },
+      {
+        "$dtId": "$$uuid1$$",
+        "$etag": "W/\"$$uuid1$$\"",
+        "$metadata": {
+          "$model": "dtmi:io:tributech:source:simulated;2"
+        },
+        "Name": "Simulated Source"
+      },
+      {
+        "$dtId": "$$uuid2$$",
+        "$etag": "W/\"$$uuid2$$\"",
+        "$metadata": {
+          "$model": "dtmi:io:tributech:stream:simulated;2"
+        },
+        "Type": "Double",
+        "MinValue": 1,
+        "MaxValue": 10,
+        "Frequency": 1,
+        "Name": "Simulated Stream",
+        "Encoding": "DOUBLE",
+        "Unit": ""
+      }
+    ],
+    "relationships": [
+      {
+        "$relationshipId": "$$rel_uuid$$",
+        "$etag": "af25e043-030a-f952-767a-b105f60a51b0",
+        "$sourceId": "$$uuid1$$",
+        "$targetId": "$$uuid2$$",
+        "$relationshipName": "Streams"
+      },
+      {
+        "$relationshipId": "$$rel_uuid$$",
+        "$etag": "d3ad950e-314c-2e4d-ecf0-133318f3db03",
+        "$sourceId": "$$root_uuid$$",
+        "$targetId": "$$uuid1$$",
+        "$relationshipName": "Sources"
+      }
+    ]
+  },
+  "digitalTwinsModels": []
+}

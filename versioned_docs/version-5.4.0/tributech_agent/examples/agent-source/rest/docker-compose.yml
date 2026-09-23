@@ -1,19 +1,8 @@
 version: "3.6"
 
 services:
-  # Prepares the bind-mounted folders for the Tributech Agent, which runs as the
-  # non-root user 1654 and ships without the tooling to change ownership itself.
-  # This replaces a manual `sudo chown -R 1654:1654 enrollment volumes` on the host.
-  init-permissions:
-    image: busybox:1.36
-    user: "0:0"
-    command: sh -c "chown -R 1654:1654 /mnt/enrollment /mnt/volumes"
-    volumes:
-      - ./enrollment:/mnt/enrollment
-      - ./volumes:/mnt/volumes
-
   source-rest:
-    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-source-rest:${SOURCE_TAG:-5.4.0}
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-source-rest:${SOURCE_TAG:-5.3.0}
     depends_on:
       - mosquitto-server
       - tributech-agent
@@ -32,12 +21,10 @@ services:
         max-file: "5"
 
   tributech-agent:
-    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-agent:${AGENT_TAG:-5.5.0}
+    image: ${DOCKER_REGISTRY-tributech.azurecr.io/}tributech-agent:${AGENT_TAG:-5.4.2}
     depends_on:
       mosquitto-server:
         condition: service_started
-      init-permissions:
-        condition: service_completed_successfully
     environment:
       - Logging__LogLevel__Default=Information
       - Logging__Console__FormatterName=simple

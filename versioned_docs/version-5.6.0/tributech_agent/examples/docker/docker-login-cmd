@@ -1,0 +1,1 @@
+echo <Client Secret> | docker login --username <Client ID> --password-stdin <Endpoint>
